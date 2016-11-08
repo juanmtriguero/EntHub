@@ -82,7 +82,32 @@ class GraphicNovel(Item):
 class Comic(Item):
 	agents = models.ManyToManyField(Agent, through="ComicInvolvement")
 
-# TODO all items
+class Movie(Item):
+	CATEGORY_CHOICES = (
+		('pel', 'película'),
+		('cor', 'corto'),
+		('doc', 'docufilm'),
+	)
+	category = models.CharField(max_length=3, choices=CATEGORY_CHOICES)
+	duration = models.IntegerField()
+	agents = models.ManyToManyField(Agent, through="MovieInvolvement")
+
+class Series(Item):
+	CATEGORY_CHOICES = (
+		('ser', 'serie'),
+		('min', 'miniserie'),
+		('pro', 'programa de TV'),
+		('doc', 'documental'),
+	)
+	category = models.CharField(max_length=3, choices=CATEGORY_CHOICES)
+	STATUS_CHOICES = (
+		('emi', 'en emisión'),
+		('can', 'cancelado'),
+		('fin', 'finalizado'),
+		('esp', 'a espera de nueva temporada'),
+	)
+	status = models.CharField(max_length=3, choices=STATUS_CHOICES)
+	agents = models.ManyToManyField(Agent, through="SeriesInvolvement")
 
 # Sub-items
 
@@ -100,7 +125,9 @@ class Subitem(models.Model):
 class Number(Subitem):
 	comic = models.ForeignKey(Comic, on_delete=models.CASCADE)
 
-# TODO sub-items
+class Chapter(Subitem):
+	season = models.IntegerField()
+	series = models.ForeignKey(Series, on_delete=models.CASCADE)
 
 # Marks
 
@@ -185,7 +212,24 @@ class ComicMark(GroupMark):
 		return unicode(self.user) + " ha marcado el cómic "\
 			   + unicode(self.comic) + " como " + unicode(self.get_option_display())
 
-# TODO all marks
+class SeriesMark(GroupMark):
+	series = models.ForeignKey(Series, on_delete=models.CASCADE)
+
+	def __unicode__(self):
+		return unicode(self.user) + " ha marcado el " + unicode(self.series.category)\
+			   + " " + unicode(self.series) + " como " + unicode(self.get_option_display())
+
+class MovieMark(Mark):
+	movie = models.ForeignKey(Movie, on_delete=models.CASCADE)
+	OPTION_CHOICES = (
+		('vis', 'visto'),
+		('pen', 'pendiente'),
+	)
+	option = models.CharField(max_length=3, choices=OPTION_CHOICES)
+
+	def __unicode__(self):
+		return unicode(self.user) + " ha marcado el " + unicode(self.movie.category)\
+			   + " " + unicode(self.movie) + " como " + unicode(self.get_option_display())
 
 # Involvements
 
@@ -258,4 +302,31 @@ class ComicInvolvement(ComicItemInvolvement):
 		return unicode(self.agent) + " aparece en el cómic "\
 			   + unicode(self.comic) + " como " + unicode(self.get_role_display())
 
-# TODO all involvements
+class MovieItemInvolvement(Involvement):
+	ROLE_CHOICES = (
+		('pra', 'productora'),
+		('dis', 'distribuidora'),
+		('pro', 'productora'),
+		('dir', 'director'),
+		('gui', 'guionista'),
+		('act', 'actor'),
+		('pre', 'presentador'),
+	)
+	role = models.CharField(max_length=3, choices=ROLE_CHOICES)
+
+	class Meta:
+		abstract = True
+
+class MovieInvolvement(MovieItemInvolvement):
+	movie = models.ForeignKey(Movie, on_delete=models.CASCADE)
+
+	def __unicode__(self):
+		return unicode(self.agent) + " aparece en el " + unicode(self.movie.category)\
+			   + " " + unicode(self.movie) + " como " + unicode(self.get_option_display())
+
+class SeriesInvolvement(MovieItemInvolvement):
+	series = models.ForeignKey(Series, on_delete=models.CASCADE)
+
+	def __unicode__(self):
+		return unicode(self.agent) + " aparece en el " + unicode(self.series.category)\
+			   + " " + unicode(self.series) + " como " + unicode(self.get_option_display())

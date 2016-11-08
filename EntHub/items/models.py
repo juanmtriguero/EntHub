@@ -132,7 +132,7 @@ class DLCMark(PlayableMark):
 
 	def __unicode__(self):
 		return unicode(self.user) + " ha marcado el DLC "\
-			   + unicode(self.game) + " como " + unicode(self.get_option_display())
+			   + unicode(self.dlc) + " como " + unicode(self.get_option_display())
 
 # TODO all marks
 
@@ -168,7 +168,7 @@ class GameInvolvement(Involvement):
 
 	def __unicode__(self):
 		return unicode(self.agent) + " aparece en el juego "\
-			   + unicode(self.book) + " como " + unicode(self.get_role_display())
+			   + unicode(self.game) + " como " + unicode(self.get_role_display())
 
 class DLCInvolvement(Involvement):
 	dlc = models.ForeignKey(DLC, on_delete=models.CASCADE)
@@ -180,6 +180,6 @@ class DLCInvolvement(Involvement):
 
 	def __unicode__(self):
 		return unicode(self.agent) + " aparece en el DLC "\
-			   + unicode(self.book) + " como " + unicode(self.get_role_display())
+			   + unicode(self.dlc) + " como " + unicode(self.get_role_display())
 
 # TODO all involvements

@@ -106,8 +106,8 @@ class Number(Subitem):
 
 class Mark(models.Model):
 	user = models.ForeignKey(Account, on_delete=models.CASCADE)
-	rating = models.IntegerField(blank=True, choices=
-		[(i, i) for i in range(1,5)])
+	rating = models.IntegerField(null=True, blank=True, choices=
+		[(i, i) for i in range(1,6)]) # TODO Update item rating
 	fav = models.BooleanField(default=False)
 
 	class Meta:

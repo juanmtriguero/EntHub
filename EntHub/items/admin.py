@@ -11,10 +11,19 @@ admin.site.register(models.Book)
 admin.site.register(models.Game)
 admin.site.register(models.DLC)
 
+admin.site.register(models.GraphicNovel)
+admin.site.register(models.Comic)
+
+admin.site.register(models.Number)
+
 admin.site.register(models.BookMark)
 admin.site.register(models.GameMark)
 admin.site.register(models.DLCMark)
+admin.site.register(models.GraphicNovelMark)
+admin.site.register(models.ComicMark)
 
 admin.site.register(models.BookInvolvement)
 admin.site.register(models.GameInvolvement)
 admin.site.register(models.DLCInvolvement)
+admin.site.register(models.GraphicNovelInvolvement)
+admin.site.register(models.ComicInvolvement)

@@ -76,9 +76,29 @@ class DLC(GameItem):
 	agents = models.ManyToManyField(Agent, through="DLCInvolvement")
 	game = models.ForeignKey(Game, on_delete=models.CASCADE)
 
+class GraphicNovel(Item):
+	agents = models.ManyToManyField(Agent, through="GraphicNovelInvolvement")
+
+class Comic(Item):
+	agents = models.ManyToManyField(Agent, through="ComicInvolvement")
+
 # TODO all items
 
 # Sub-items
+
+class Subitem(models.Model):
+	number = models.IntegerField()
+	name = models.CharField(max_length=100, blank=True)
+	tics = models.ManyToManyField(Account)
+
+	class Meta:
+		abstract = True
+
+	def __unicode__(self):
+		return unicode(self.number) + " - " + unicode(self.name)
+
+class Number(Subitem):
+	comic = models.ForeignKey(Comic, on_delete=models.CASCADE)
 
 # TODO sub-items
 
@@ -93,8 +113,7 @@ class Mark(models.Model):
 	class Meta:
 		abstract = True
 
-class BookMark(Mark):
-	book = models.ForeignKey(Book, on_delete=models.CASCADE)
+class IndividualMark(Mark):
 	OPTION_CHOICES = (
 		('lei', 'leído'),
 		('pen', 'pendiente'),
@@ -102,6 +121,12 @@ class BookMark(Mark):
 		('pau', 'pausado'),
 	)
 	option = models.CharField(max_length=3, choices=OPTION_CHOICES)
+
+	class Meta:
+		abstract = True
+
+class BookMark(IndividualMark):
+	book = models.ForeignKey(Book, on_delete=models.CASCADE)
 
 	def __unicode__(self):
 		return unicode(self.user) + " ha marcado el libro "\
@@ -134,6 +159,32 @@ class DLCMark(PlayableMark):
 		return unicode(self.user) + " ha marcado el DLC "\
 			   + unicode(self.dlc) + " como " + unicode(self.get_option_display())
 
+class GraphicNovelMark(IndividualMark):
+	graphicNovel = models.ForeignKey(GraphicNovel, on_delete=models.CASCADE)
+
+	def __unicode__(self):
+		return unicode(self.user) + " ha marcado la novela gráfica "\
+			   + unicode(self.graphicNovel) + " como " + unicode(self.get_option_display())
+
+class GroupMark(Mark):
+	OPTION_CHOICES = (
+		('fin', 'finalizado'),
+		('pen', 'pendiente'),
+		('sig', 'siguiendo'),
+		('pau', 'pausado'),
+	)
+	option = models.CharField(max_length=3, choices=OPTION_CHOICES)
+
+	class Meta:
+		abstract = True
+
+class ComicMark(GroupMark):
+	comic = models.ForeignKey(Comic, on_delete=models.CASCADE)
+
+	def __unicode__(self):
+		return unicode(self.user) + " ha marcado el cómic "\
+			   + unicode(self.comic) + " como " + unicode(self.get_option_display())
+
 # TODO all marks
 
 # Involvements
@@ -158,28 +209,53 @@ class BookInvolvement(Involvement):
 		return unicode(self.agent) + " aparece en el libro "\
 			   + unicode(self.book) + " como " + unicode(self.get_role_display())
 
-class GameInvolvement(Involvement):
-	game = models.ForeignKey(Game, on_delete=models.CASCADE)
+class GameItemInvolvement(Involvement):
 	ROLE_CHOICES = (
 		('des', 'desarrollador'),
 		('dis', 'distribuidor'),
 	)
 	role = models.CharField(max_length=3, choices=ROLE_CHOICES)
+
+	class Meta:
+		abstract = True
+
+class GameInvolvement(GameItemInvolvement):
+	game = models.ForeignKey(Game, on_delete=models.CASCADE)
 
 	def __unicode__(self):
 		return unicode(self.agent) + " aparece en el juego "\
 			   + unicode(self.game) + " como " + unicode(self.get_role_display())
 
-class DLCInvolvement(Involvement):
+class DLCInvolvement(GameItemInvolvement):
 	dlc = models.ForeignKey(DLC, on_delete=models.CASCADE)
-	ROLE_CHOICES = (
-		('des', 'desarrollador'),
-		('dis', 'distribuidor'),
-	)
-	role = models.CharField(max_length=3, choices=ROLE_CHOICES)
 
 	def __unicode__(self):
 		return unicode(self.agent) + " aparece en el DLC "\
 			   + unicode(self.dlc) + " como " + unicode(self.get_role_display())
+
+class ComicItemInvolvement(Involvement):
+	ROLE_CHOICES = (
+		('edi', 'editorial'),
+		('gui', 'guionista'),
+		('dib', 'dibujante'),
+	)
+	role = models.CharField(max_length=3, choices=ROLE_CHOICES)
+
+	class Meta:
+		abstract = True
+
+class GraphicNovelInvolvement(ComicItemInvolvement):
+	graphicNovel = models.ForeignKey(GraphicNovel, on_delete=models.CASCADE)
+
+	def __unicode__(self):
+		return unicode(self.agent) + " aparece en la novela gráfica "\
+			   + unicode(self.graphicNovel) + " como " + unicode(self.get_role_display())
+
+class ComicInvolvement(ComicItemInvolvement):
+	comic = models.ForeignKey(Comic, on_delete=models.CASCADE)
+
+	def __unicode__(self):
+		return unicode(self.agent) + " aparece en el cómic "\
+			   + unicode(self.comic) + " como " + unicode(self.get_role_display())
 
 # TODO all involvements

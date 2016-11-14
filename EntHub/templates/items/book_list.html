@@ -1,0 +1,44 @@
+{% extends 'base/base.html' %}
+
+{% block content %}
+
+<div class="container">
+
+	<h1>Catálogo de libros</h1>
+	<hr/>
+
+	<div class="row">
+	
+		{% if object_list %}
+
+	  	{% for book in object_list %}
+		<div class="col-md-4">
+			<div class="panel panel-primary">
+				<div class="panel-heading">
+					<h3 class="panel-title">{{book}}</h3>
+		  		</div>
+		  		<div class="panel-body">
+					<a href="/books/{{book.id}}" class="btn btn-link">Ver</a>
+					<a href="/books/edit/{{book.id}}" class="btn btn-link">Editar</a>
+					<a href="/books/delete/{{book.id}}" class="btn btn-link">Eliminar</a>
+		  		</div>
+			</div>
+		</div>
+	    {% endfor %}
+
+		{% else %}
+
+		<div class="alert alert-info">
+			<span>No hay nada para mostrar</span>
+		</div>
+
+		{% endif %}
+
+	</div>
+
+	<hr/>
+	<a href="/books/new" class="btn btn-primary">Nuevo libro</a>
+
+</div>
+
+{% endblock %}

@@ -2,6 +2,25 @@
 
 {% block content %}
 
-Hola
+<!-- TODO Contenido de prueba -->
+
+<div class="container">
+	<div class="row">
+		<div class="col-md-4">
+			<div class="panel panel-primary">
+				<div class="panel-heading">
+					<h3 class="panel-title">Videojuegos</h3>
+				</div>
+				<div class="panel-body">
+					<ul>
+						{% for game in games %}
+						<li>{{game.title}}</li>
+						{% endfor %}
+					</ul>
+				</div>
+			</div>
+			</div>
+	</div>
+</div>
 
 {% endblock %}

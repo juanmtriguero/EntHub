@@ -4,8 +4,8 @@
 
 <div class="container">
 	<form method="post" class="form-horizontal col-md-8">
-			{% csrf_token %}
-			<fieldset>
+		{% csrf_token %}
+		<fieldset>
 			<legend>{{legend}}</legend>
 			{% for field in form %}
 			<div class="form-group {% if field.errors %}has-error{% endif %}">
@@ -32,10 +32,10 @@
 			</div>
 			{% endfor %}
 			<div class="form-group">
-					<div class="col-md-10 col-md-offset-2">
-						<button type="submit" class="btn btn-primary">Guardar</button>
-						<a href="{{cancel}}" class="btn btn-danger">Cancelar</a>
-					</div>
+				<div class="col-md-10 col-md-offset-2">
+					<button type="submit" class="btn btn-primary">Guardar</button>
+					<a href="{{cancel}}" class="btn btn-danger">Cancelar</a>
+				</div>
 			</div>
 		</fieldset>
 	</form>

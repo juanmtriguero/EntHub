@@ -1,0 +1,17 @@
+body{
+	background-image: url('http://www.gtreview.com/wp-content/uploads/2014/11/Sky-Clouds.jpg');
+	background-color: lightblue;
+	background-size: cover;
+}
+
+.jumbotron{
+	margin-top: 75px;
+}
+
+.jumbotron h1{
+	margin-bottom: 22px;
+}
+
+.buttons{
+	margin-top: 30px;
+}

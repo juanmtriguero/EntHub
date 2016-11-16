@@ -5,7 +5,7 @@ from django.contrib.auth.models import User
 
 class Account(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
-    birth = models.DateField(blank=True)
+    birth = models.DateField(blank=True, null=True)
     text = models.TextField(blank=True)
     avatar = models.URLField(blank=True)
 

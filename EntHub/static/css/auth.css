@@ -6,6 +6,7 @@ body{
 
 .jumbotron{
 	margin-top: 75px;
+	background-color: rgba(247, 247, 247, 0.7);
 }
 
 .jumbotron h1{

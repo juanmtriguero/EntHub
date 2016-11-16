@@ -4,11 +4,13 @@
 
 <div class="container">
 	<div class="jumbotron col-md-6 col-md-offset-3 text-center">
-		<h1>EntHub</h1>
+		<h2>Crear cuenta</h2>
 		<div class="col-md-8 col-md-offset-2">
-			<form method="post" action="{% url 'main:login' %}">
+			<form method="post">
 				{% csrf_token %}
-				<div class="form-group {% if form.username.errors %}has-error{% endif %}">
+				{{form2.as_p}}
+				{{form.as_p}}
+				<!--<div class="form-group {% if form.username.errors %}has-error{% endif %}">
 					<label for="username" class="control-label">Nombre de usuario</label>
 					<input type="text" name="username" class="form-control">
 				</div>
@@ -24,10 +26,10 @@
 					<span>El nombre de usuario y/o la contraseña son incorrectos</span>
 					{% endif %}
 				</div>
-				{% endif %}
+				{% endif %}-->
 				<div class="buttons">
-					<button type="submit" class="btn btn-primary">Iniciar sesión</button>
-					<a href="{% url 'main:register' %}" class="btn btn-link">Crear cuenta</a>
+					<button type="submit" class="btn btn-primary">Guardar</button>
+					<a href="{% url 'main:login' %}" class="btn btn-danger">Cancelar</a>
 				</div>
 			</form>
 		</div>

@@ -5,28 +5,27 @@
 <div class="container">
 	<div class="jumbotron col-md-6 col-md-offset-3 text-center">
 		<h2>Crear cuenta</h2>
+		<br/>
 		<div class="col-md-8 col-md-offset-2">
 			<form method="post">
 				{% csrf_token %}
-				{{form2.as_p}}
-				{{form.as_p}}
-				<!--<div class="form-group {% if form.username.errors %}has-error{% endif %}">
-					<label for="username" class="control-label">Nombre de usuario</label>
-					<input type="text" name="username" class="form-control">
-				</div>
-				<div class="form-group {% if form.password.errors %}has-error{% endif %}">
-					<label for="password" class="control-label">Contraseña</label>
-					<input type="password" name="password" class="form-control">
-				</div>
-				{% if form.errors %}
-				<div class="alert alert-danger error-message">
-					{% if form.username.errors or form.password.errors %}
-					<span>Por favor, introduzca su nombre de usuario y contraseña</span>
+				{% for field in form %}
+				<div class="form-group {% if field.errors %}has-error{% endif %}">
+					<label class="control-label">{{field.label}}</label>
+					{% if 'password' in field.name %}
+					<input type="password" name="{{field.name}}" class="form-control">
 					{% else %}
-					<span>El nombre de usuario y/o la contraseña son incorrectos</span>
+					{{field}}
+					{% endif %}
+					{% if field.errors %}
+					<div class="alert alert-danger error-message">
+						{% for error in field.errors %}
+						<span>{{error}}</span>
+						{% endfor %}
+					</div>
 					{% endif %}
 				</div>
-				{% endif %}-->
+				{% endfor %}
 				<div class="buttons">
 					<button type="submit" class="btn btn-primary">Guardar</button>
 					<a href="{% url 'main:login' %}" class="btn btn-danger">Cancelar</a>

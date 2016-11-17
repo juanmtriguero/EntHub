@@ -20,6 +20,12 @@ class UserForm(UserCreationForm):
 			'last_name': 'Apellidos',
 			'email': 'Correo electrónico',
 		}
+		widgets = {
+			'username': forms.TextInput(attrs={'class':'form-control'}),
+			'first_name': forms.TextInput(attrs={'class':'form-control'}),
+			'last_name': forms.TextInput(attrs={'class':'form-control'}),
+			'email': forms.EmailInput(attrs={'class':'form-control'}),
+		}
 
 class AccountForm(forms.ModelForm):
 	class Meta:

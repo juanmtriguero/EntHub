@@ -9,6 +9,14 @@
 	<link rel="stylesheet" href="{% static 'css/auth.css' %}">
 </head>
 <body>
-	{% block content %}
-	{% endblock %}
+	<div class="container">
+		<div class="jumbotron col-md-6 col-md-offset-3 text-center">
+			{% block header %}
+			{% endblock %}
+			<div class="col-md-8 col-md-offset-2">
+				{% block content %}
+				{% endblock %}
+			</div>
+		</div>
+	</div>
 </body>

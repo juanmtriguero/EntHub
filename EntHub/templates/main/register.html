@@ -1,38 +1,35 @@
-{% extends 'main/auth.html' %}
+{% extends 'base/auth.html' %}
+
+{% block header %}
+<h2>Crear cuenta</h2>
+<br/>
+{% endblock %}
 
 {% block content %}
 
-<div class="container">
-	<div class="jumbotron col-md-6 col-md-offset-3 text-center">
-		<h2>Crear cuenta</h2>
-		<br/>
-		<div class="col-md-8 col-md-offset-2">
-			<form method="post">
-				{% csrf_token %}
-				{% for field in form %}
-				<div class="form-group {% if field.errors %}has-error{% endif %}">
-					<label class="control-label">{{field.label}}</label>
-					{% if 'password' in field.name %}
-					<input type="password" name="{{field.name}}" class="form-control">
-					{% else %}
-					{{field}}
-					{% endif %}
-					{% if field.errors %}
-					<div class="alert alert-danger error-message">
-						{% for error in field.errors %}
-						<span>{{error}}</span>
-						{% endfor %}
-					</div>
-					{% endif %}
-				</div>
-				{% endfor %}
-				<div class="buttons">
-					<button type="submit" class="btn btn-primary">Guardar</button>
-					<a href="{% url 'main:login' %}" class="btn btn-danger">Cancelar</a>
-				</div>
-			</form>
+<form method="post">
+	{% csrf_token %}
+	{% for field in form %}
+	<div class="form-group {% if field.errors %}has-error{% endif %}">
+		<label class="control-label">{{field.label}}</label>
+		{% if 'password' in field.name %}
+		<input type="password" name="{{field.name}}" class="form-control">
+		{% else %}
+		{{field}}
+		{% endif %}
+		{% if field.errors %}
+		<div class="alert alert-danger error-message">
+			{% for error in field.errors %}
+			<span>{{error}}</span>
+			{% endfor %}
 		</div>
+		{% endif %}
 	</div>
-</div>
+	{% endfor %}
+	<div class="buttons">
+		<button type="submit" class="btn btn-primary">Guardar</button>
+		<a href="{% url 'main:login' %}" class="btn btn-danger">Cancelar</a>
+	</div>
+</form>
 
 {% endblock %}

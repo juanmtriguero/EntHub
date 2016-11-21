@@ -13,16 +13,6 @@ class BookList(ListView):
 class BookDetail(DetailView):
 	model = models.Book
 	template_name = 'items/book_detail.html'
-	
-	def get_context_data(self, **kwargs):
-		context = super(BookDetail, self).get_context_data(**kwargs)
-		# TODO Bidireccionalidad
-		involvements = []
-		for i in models.BookInvolvement.objects.all():
-			if i.book == self.object:
-				involvements.append(i)
-		context['involvements'] = involvements
-		return context
 
 class BookCreate(CreateView):
 	model = models.Book

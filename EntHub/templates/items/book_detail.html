@@ -28,16 +28,16 @@
 			<span class="list-group-item active">
 				<b>Agentes</b>
 			</span>
-			{% if involvements %}
-				{% for involvement in involvements %}
-				<a href="/items/agents/{{involvement.agent.id}}" class="list-group-item">
+			{% if object.bookinvolvement_set.all %}
+				{% for i in object.bookinvolvement_set.all %}
+				<a href="/items/agents/{{i.agent.id}}" class="list-group-item">
 					<div class="row">
 						<div class="col-md-4">
-							<img src="{{involvement.agent.image}}" class="img-responsive">
+							<img src="{{i.agent.image}}" class="img-responsive">
 						</div>
 						<div class="col-md-8">
-							<span>{{involvement.agent}}</span><br/>
-							<span class="label label-default">{{involvement.get_role_display}}</span>
+							<span>{{i.agent}}</span><br/>
+							<span class="label label-default">{{i.get_role_display}}</span>
 						</div>
 					</div>
 				</a>

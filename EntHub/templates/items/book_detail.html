@@ -1,0 +1,59 @@
+{% extends 'base/base.html' %}
+
+{% block content %}
+
+<div class="container">
+
+	<div class="row">
+		
+		<div class="col-md-3">
+			<img src="{{object.image}}" class="img-responsive">
+		</div>
+		
+		<div class="col-md-6">
+			<h1>{{object.title}}</h1>
+			<hr/>
+			<p><b>Año: </b>{{object.year}}</p>
+			<p><b>Puntuación: </b>{{object.rating}}</p>
+			<p><b>Descripción: </b>{{object.description|linebreaks}}</p>
+			<p>
+				<b>Géneros:</b>
+				{% for genre in object.genres.all %}
+				<a href="/items/genres/{{genre.id}}" class="label label-default">{{genre}}</a>
+				{% endfor %}
+			</p>
+		</div>
+
+		<div class="col-md-3 list-group">
+			<span class="list-group-item active">
+				<b>Agentes</b>
+			</span>
+			{% if involvements %}
+				{% for involvement in involvements %}
+				<a href="/items/agents/{{involvement.agent.id}}" class="list-group-item">
+					<div class="row">
+						<div class="col-md-4">
+							<img src="{{involvement.agent.image}}" class="img-responsive">
+						</div>
+						<div class="col-md-8">
+							<span>{{involvement.agent}}</span><br/>
+							<span class="label label-default">{{involvement.get_role_display}}</span>
+						</div>
+					</div>
+				</a>
+				{% endfor %}
+			{% else %}
+			<span class="list-group-item text-danger">No hay ningún agente</span>
+			{% endif %}
+		</div>
+	
+	</div>
+
+	<hr/>
+	<a href="/items/books/edit/{{object.id}}" class="btn btn-primary">Editar</a>
+	<a href="/items/books/delete/{{object.id}}" class="btn btn-danger">Eliminar</a>
+	<a href="/items/books" class="btn btn-link">Volver al catálogo</a>
+
+</div>
+
+{% endblock %}

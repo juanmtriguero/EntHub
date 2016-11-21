@@ -1,3 +1,9 @@
+/* General */
+
+body{
+	padding-bottom: 50px !important;
+}
+
 /* Book form */
 
 .error-message{

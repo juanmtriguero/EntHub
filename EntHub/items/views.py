@@ -34,7 +34,15 @@ class BookUpdate(UpdateView):
 	model = models.Book
 	form_class = forms.BookForm
 	template_name = 'items/book_update.html'
-	success_url = reverse_lazy('items:book_list')
+	
+	def get_context_data(self, **kwargs):
+		context = super(BookUpdate, self).get_context_data(**kwargs)
+		context['cancel_url'] = "/items/books/" + unicode(self.object.id)
+		return context
+
+	def get_success_url(self):
+		return reverse_lazy('items:book_detail', 
+			kwargs={'pk': self.object.id})
 
 class BookDelete(DeleteView):
 	model = models.Book

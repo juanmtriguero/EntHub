@@ -38,3 +38,15 @@ class BookDelete(DeleteView):
 	model = models.Book
 	template_name = 'items/book_delete.html'
 	success_url = reverse_lazy('items:book_list')
+
+# Films & TV
+
+class FilmTVList(ListView):
+	model = models.Movie
+	template_name = 'items/film_tv_list.html'
+	context_object_name = 'movie_list'
+
+	def get_context_data(self, **kwargs):
+	    context = super(FilmTVList, self).get_context_data(**kwargs)
+	    context['series_list'] = models.Series.objects.all()
+	    return context

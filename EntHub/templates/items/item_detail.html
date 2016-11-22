@@ -1,0 +1,64 @@
+{% extends 'base/base.html' %}
+
+{% block content %}
+
+<div class="container">
+
+	<div class="row">
+		
+		<div class="col-md-3">
+			<img src="{{object.image}}" class="img-responsive">
+		</div>
+		
+		<div align="justify" class="col-md-6">
+			<a href="/items/{{item_path}}" class="label label-primary">{{item_name}}</a>
+			<h1>{{object.title}}</h1>
+			<hr/>
+			<p><b>Año: </b>{{object.year}}</p>
+			<p><b>Puntuación: </b>{{object.rating|floatformat}}</p>
+			{% block more_fields %}
+			{% endblock %}
+			<p><b>Descripción: </b>{{object.description|linebreaks}}</p>
+			<p>
+				<b>Géneros:</b>
+				{% for genre in object.genres.all %}
+				<a href="/items/genres/{{genre.id}}" class="label label-default">{{genre}}</a>
+				{% endfor %}
+			</p>
+		</div>
+
+		<div class="col-md-3">
+			<div class="list-group">
+				<span class="list-group-item active">
+					<b>Agentes</b>
+				</span>
+				{% if involvements %}
+					{% for i in involvements %}
+					<a href="/items/agents/{{i.agent.id}}" class="list-group-item">
+						<div class="row">
+							<div class="col-md-4">
+								<img src="{{i.agent.image}}" class="img-responsive">
+							</div>
+							<div class="col-md-8">
+								<span>{{i.agent}}</span><br/>
+								<span class="label label-default">{{i.get_role_display}}</span>
+							</div>
+						</div>
+					</a>
+					{% endfor %}
+				{% else %}
+				<span class="list-group-item text-danger">No hay ningún agente</span>
+				{% endif %}
+			</div>
+		</div>
+	
+	</div>
+
+	<hr/>
+	<a href="/items/{{item_path}}/edit/{{object.id}}" class="btn btn-primary">Editar</a>
+	<a href="/items/{{item_path}}/delete/{{object.id}}" class="btn btn-danger">Eliminar</a>
+	<a href="/items/{{item_path}}" class="btn btn-link">Volver al catálogo</a>
+
+</div>
+
+{% endblock %}

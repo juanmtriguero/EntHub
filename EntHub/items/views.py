@@ -14,6 +14,13 @@ class BookDetail(DetailView):
 	model = models.Book
 	template_name = 'items/book_detail.html'
 
+	def get_context_data(self, **kwargs):
+	    context = super(BookDetail, self).get_context_data(**kwargs)
+	    context['item_path'] = 'books'
+	    context['item_name'] = 'Libro'
+	    context['involvements'] = self.object.bookinvolvement_set.all()
+	    return context
+
 class BookCreate(CreateView):
 	model = models.Book
 	form_class = forms.BookForm

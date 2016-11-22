@@ -7,9 +7,9 @@
 		{% csrf_token %}
 		<div class="jumbotron col-md-6 col-md-offset-3 text-center">
 			<h1>¡Atención!</h1>
-			<p>Usted va a borrar el libro <b>{{book}}</b>. ¿Está seguro?</p>
+			<p>Usted va a eliminar {{message}} <b>{{item}}</b>. ¿Está seguro?</p>
 			<button type="submit" class="btn btn-danger">Sí, eliminar</button>
-			<a href="/items/books/{{book.id}}" class="btn btn-primary">No, cancelar</a>
+			<a href="{{cancel_url}}" class="btn btn-primary">No, cancelar</a>
 		</div>
 	</form>
 </div>

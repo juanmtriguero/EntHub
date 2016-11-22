@@ -25,16 +25,23 @@ class BookDetail(DetailView):
 class BookCreate(CreateView):
 	model = models.Book
 	form_class = forms.BookForm
-	template_name = 'items/book_create.html'
+	template_name = 'items/item_form.html'
 	success_url = reverse_lazy('items:book_list')
+	
+	def get_context_data(self, **kwargs):
+		context = super(BookCreate, self).get_context_data(**kwargs)
+		context['legend'] = "Nuevo libro"
+		context['cancel_url'] = "/items/books"
+		return context
 
 class BookUpdate(UpdateView):
 	model = models.Book
 	form_class = forms.BookForm
-	template_name = 'items/book_update.html'
+	template_name = 'items/item_form.html'
 	
 	def get_context_data(self, **kwargs):
 		context = super(BookUpdate, self).get_context_data(**kwargs)
+		context['legend'] = "Editar libro"
 		context['cancel_url'] = "/items/books/" + unicode(self.object.id)
 		return context
 
@@ -44,8 +51,15 @@ class BookUpdate(UpdateView):
 
 class BookDelete(DeleteView):
 	model = models.Book
-	template_name = 'items/book_delete.html'
+	context_object_name = 'item'
+	template_name = 'items/item_delete.html'
 	success_url = reverse_lazy('items:book_list')
+	
+	def get_context_data(self, **kwargs):
+		context = super(BookDelete, self).get_context_data(**kwargs)
+		context['message'] = "el libro"
+		context['cancel_url'] = "/items/books/" + unicode(self.object.id)
+		return context
 
 # Films & TV
 
@@ -58,6 +72,8 @@ class FilmTVList(ListView):
 	    context = super(FilmTVList, self).get_context_data(**kwargs)
 	    context['series_list'] = models.Series.objects.all()
 	    return context
+
+# Movie
 
 class MovieDetail(DetailView):
 	model = models.Movie

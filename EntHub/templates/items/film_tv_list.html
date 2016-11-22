@@ -16,8 +16,8 @@
 	
 			{% if movie_list %}
 
-		  	{% for movie in movie_list %}
 		  	<div class="row">
+		  		{% for movie in movie_list %}
 				<div class="col-md-6">
 					<div class="panel panel-primary">
 						<div class="panel-heading">
@@ -30,8 +30,8 @@
 				  		</div>
 					</div>
 				</div>
+		    	{% endfor %}
 			</div>
-		    {% endfor %}
 
 			{% else %}
 
@@ -50,8 +50,8 @@
 	
 			{% if series_list %}
 
-		  	{% for series in series_list %}
 		  	<div class="row">
+		  		{% for series in series_list %}
 				<div class="col-md-6">
 					<div class="panel panel-primary">
 						<div class="panel-heading">
@@ -64,8 +64,8 @@
 				  		</div>
 					</div>
 				</div>
+		    	{% endfor %}
 			</div>
-		    {% endfor %}
 
 			{% else %}
 

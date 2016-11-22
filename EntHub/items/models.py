@@ -120,15 +120,20 @@ class Subitem(models.Model):
 	class Meta:
 		abstract = True
 
-	def __unicode__(self):
-		return unicode(self.number) + " - " + unicode(self.name)
-
 class Number(Subitem):
 	comic = models.ForeignKey(Comic, on_delete=models.CASCADE)
+
+	def __unicode__(self):
+		return unicode(self.comic) + " - " + unicode(self.number)\
+			   + ": " + unicode(self.name)
 
 class Chapter(Subitem):
 	season = models.IntegerField()
 	series = models.ForeignKey(Series, on_delete=models.CASCADE)
+
+	def __unicode__(self):
+		return unicode(self.series) + " - " + unicode(self.season)\
+			   + "x" + unicode(self.number) + ": " + unicode(self.name)
 
 # Marks
 

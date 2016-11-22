@@ -16,11 +16,11 @@ class BookDetail(DetailView):
 	template_name = 'items/book_detail.html'
 
 	def get_context_data(self, **kwargs):
-	    context = super(BookDetail, self).get_context_data(**kwargs)
-	    context['item_path'] = 'books'
-	    context['item_name'] = 'Libro'
-	    context['involvements'] = self.object.bookinvolvement_set.all()
-	    return context
+		context = super(BookDetail, self).get_context_data(**kwargs)
+		context['item_path'] = 'books'
+		context['item_name'] = 'Libro'
+		context['involvements'] = self.object.bookinvolvement_set.all()
+		return context
 
 class BookCreate(CreateView):
 	model = models.Book
@@ -69,9 +69,9 @@ class FilmTVList(ListView):
 	context_object_name = 'movie_list'
 
 	def get_context_data(self, **kwargs):
-	    context = super(FilmTVList, self).get_context_data(**kwargs)
-	    context['series_list'] = models.Series.objects.all()
-	    return context
+		context = super(FilmTVList, self).get_context_data(**kwargs)
+		context['series_list'] = models.Series.objects.all()
+		return context
 
 # Movie
 
@@ -80,17 +80,17 @@ class MovieDetail(DetailView):
 	template_name = 'items/movie_detail.html'
 
 	def get_context_data(self, **kwargs):
-	    context = super(MovieDetail, self).get_context_data(**kwargs)
-	    context['item_path'] = 'movies'
-	    context['item_name'] = 'Cine'
-	    context['involvements'] = self.object.movieinvolvement_set.all()
-	    return context
+		context = super(MovieDetail, self).get_context_data(**kwargs)
+		context['item_path'] = 'movies'
+		context['item_name'] = 'Cine'
+		context['involvements'] = self.object.movieinvolvement_set.all()
+		return context
 
 class MovieCreate(CreateView):
 	model = models.Movie
 	form_class = forms.MovieForm
 	template_name = 'items/item_form.html'
-	success_url = reverse_lazy('items:film_tv_list')
+	success_url = reverse_lazy('items:movie_list')
 	
 	def get_context_data(self, **kwargs):
 		context = super(MovieCreate, self).get_context_data(**kwargs)
@@ -117,10 +117,49 @@ class MovieDelete(DeleteView):
 	model = models.Movie
 	context_object_name = 'item'
 	template_name = 'items/item_delete.html'
-	success_url = reverse_lazy('items:film_tv_list')
+	success_url = reverse_lazy('items:movie_list')
 	
 	def get_context_data(self, **kwargs):
 		context = super(MovieDelete, self).get_context_data(**kwargs)
 		context['message'] = "la película"
 		context['cancel_url'] = "/items/movies/" + unicode(self.object.id)
 		return context
+
+# Series
+
+class SeriesDetail(DetailView):
+	model = models.Series
+	template_name = 'items/series_detail.html'
+
+	def get_context_data(self, **kwargs):
+		context = super(SeriesDetail, self).get_context_data(**kwargs)
+		context['item_path'] = 'series'
+		context['item_name'] = 'TV'
+		context['involvements'] = self.object.seriesinvolvement_set.all()
+		context['label'] = self.get_label()
+		context['chapters'] = self.get_chapters()
+		return context
+	
+	# Set label color by status
+	def get_label(self):
+		if self.object.status == 'emi':
+			label = 'label-primary'
+		elif self.object.status == 'can':
+			label = 'label-danger'
+		elif self.object.status == 'fin':
+			label = 'label-success'
+		elif self.object.status == 'esp':
+			label = 'label-info'
+		else:
+			label = 'label-default'
+		return label
+
+	# Return chapters by seasons
+	def get_chapters(self):
+		chapters = {}
+		for chapter in self.object.chapter_set.all():
+			if chapter.season in chapters:
+				chapters[chapter.season].append(chapter)
+			else:
+				chapters[chapter.season] = [chapter,]
+		return chapters

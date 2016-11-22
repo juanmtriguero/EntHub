@@ -1,0 +1,21 @@
+{% extends 'items/item_detail.html' %}
+
+{% block more_fields %}
+
+<p>
+	<b>Categoría:</b>
+	<span class="label label-default">{{object.get_category_display}}</span>
+</p>
+<p>
+	<b>Status:</b>
+	<span class="label {{label}}">{{object.get_status_display}}</span>
+</p>
+
+{% endblock %}
+
+{% block chapters %}
+
+<!-- TODO show chapters -->
+{{chapters}}
+
+{% endblock %}

@@ -84,9 +84,9 @@ class Comic(Item):
 
 class Movie(Item):
 	CATEGORY_CHOICES = (
-		('pel', 'película'),
-		('cor', 'corto'),
-		('doc', 'docufilm'),
+		('pel', 'Película'),
+		('cor', 'Corto'),
+		('doc', 'Docufilm'),
 	)
 	category = models.CharField(max_length=3, choices=CATEGORY_CHOICES)
 	duration = models.IntegerField()
@@ -94,17 +94,17 @@ class Movie(Item):
 
 class Series(Item):
 	CATEGORY_CHOICES = (
-		('ser', 'serie'),
-		('min', 'miniserie'),
-		('pro', 'programa de TV'),
-		('doc', 'documental'),
+		('ser', 'Serie'),
+		('min', 'Miniserie'),
+		('pro', 'Programa de TV'),
+		('doc', 'Documental'),
 	)
 	category = models.CharField(max_length=3, choices=CATEGORY_CHOICES)
 	STATUS_CHOICES = (
-		('emi', 'en emisión'),
-		('can', 'cancelado'),
-		('fin', 'finalizado'),
-		('esp', 'a espera de nueva temporada'),
+		('emi', 'En emisión'),
+		('can', 'Cancelado'),
+		('fin', 'Finalizado'),
+		('esp', 'A espera de nueva temporada'),
 	)
 	status = models.CharField(max_length=3, choices=STATUS_CHOICES)
 	agents = models.ManyToManyField(Agent, through="SeriesInvolvement")
@@ -142,10 +142,10 @@ class Mark(models.Model):
 
 class IndividualMark(Mark):
 	OPTION_CHOICES = (
-		('lei', 'leído'),
-		('pen', 'pendiente'),
-		('ley', 'leyendo'),
-		('pau', 'pausado'),
+		('lei', 'Leído'),
+		('pen', 'Pendiente'),
+		('ley', 'Leyendo'),
+		('pau', 'Pausado'),
 	)
 	option = models.CharField(max_length=3, choices=OPTION_CHOICES)
 
@@ -161,11 +161,11 @@ class BookMark(IndividualMark):
 
 class PlayableMark(Mark):
 	OPTION_CHOICES = (
-		('ter', 'terminado'),
-		('com', 'completado'),
-		('pen', 'pendiente'),
-		('jug', 'jugando'),
-		('pau', 'pausado'),
+		('ter', 'Terminado'),
+		('com', 'Completado'),
+		('pen', 'Pendiente'),
+		('jug', 'Jugando'),
+		('pau', 'Pausado'),
 	)
 	option = models.CharField(max_length=3, choices=OPTION_CHOICES)
 
@@ -195,10 +195,10 @@ class GraphicNovelMark(IndividualMark):
 
 class GroupMark(Mark):
 	OPTION_CHOICES = (
-		('fin', 'finalizado'),
-		('pen', 'pendiente'),
-		('sig', 'siguiendo'),
-		('pau', 'pausado'),
+		('fin', 'Finalizado'),
+		('pen', 'Pendiente'),
+		('sig', 'Siguiendo'),
+		('pau', 'Pausado'),
 	)
 	option = models.CharField(max_length=3, choices=OPTION_CHOICES)
 
@@ -222,8 +222,8 @@ class SeriesMark(GroupMark):
 class MovieMark(Mark):
 	movie = models.ForeignKey(Movie, on_delete=models.CASCADE)
 	OPTION_CHOICES = (
-		('vis', 'visto'),
-		('pen', 'pendiente'),
+		('vis', 'Visto'),
+		('pen', 'Pendiente'),
 	)
 	option = models.CharField(max_length=3, choices=OPTION_CHOICES)
 
@@ -242,10 +242,10 @@ class Involvement(models.Model):
 class BookInvolvement(Involvement):
 	book = models.ForeignKey(Book, on_delete=models.CASCADE)
 	ROLE_CHOICES = (
-		('esc', 'escritor'),
-		('ilu', 'ilustrador'),
-		('tra', 'traductor'),
-		('edi', 'editorial'),
+		('esc', 'Escritor'),
+		('ilu', 'Ilustrador'),
+		('tra', 'Traductor'),
+		('edi', 'Editorial'),
 	)
 	role = models.CharField(max_length=3, choices=ROLE_CHOICES)
 
@@ -255,8 +255,8 @@ class BookInvolvement(Involvement):
 
 class GameItemInvolvement(Involvement):
 	ROLE_CHOICES = (
-		('des', 'desarrollador'),
-		('dis', 'distribuidor'),
+		('des', 'Desarrollador'),
+		('dis', 'Distribuidor'),
 	)
 	role = models.CharField(max_length=3, choices=ROLE_CHOICES)
 
@@ -279,9 +279,9 @@ class DLCInvolvement(GameItemInvolvement):
 
 class ComicItemInvolvement(Involvement):
 	ROLE_CHOICES = (
-		('edi', 'editorial'),
-		('gui', 'guionista'),
-		('dib', 'dibujante'),
+		('edi', 'Editorial'),
+		('gui', 'Guionista'),
+		('dib', 'Dibujante'),
 	)
 	role = models.CharField(max_length=3, choices=ROLE_CHOICES)
 
@@ -304,13 +304,13 @@ class ComicInvolvement(ComicItemInvolvement):
 
 class MovieItemInvolvement(Involvement):
 	ROLE_CHOICES = (
-		('pra', 'productora'),
-		('dis', 'distribuidora'),
-		('pro', 'productora'),
-		('dir', 'director'),
-		('gui', 'guionista'),
-		('act', 'actor'),
-		('pre', 'presentador'),
+		('pra', 'Productora'),
+		('dis', 'Distribuidora'),
+		('pro', 'Productora'),
+		('dir', 'Director'),
+		('gui', 'Guionista'),
+		('act', 'Actor'),
+		('pre', 'Presentador'),
 	)
 	role = models.CharField(max_length=3, choices=ROLE_CHOICES)
 

@@ -15,7 +15,44 @@
 
 {% block chapters %}
 
-<!-- TODO show chapters -->
-{{chapters}}
+<hr/>
+<h4>Capítulos</h4>
+
+{% if chapters %}
+
+<ul class="nav nav-tabs chapters">
+	{% for season in chapters.keys %}
+	<li class="{% if season == 1 %}active{% endif %}">
+		<a href="#{{season}}" data-toggle="tab">
+			{% if season == 0 %}Extras{% else %}{{season}}{% endif %}
+		</a>
+	</li>
+	{% endfor %}
+</ul>
+
+<div class="tab-content">
+	{% for season, season_chapters in chapters.items %}
+	<div id="{{season}}" class="tab-pane fade {% if season == 1 %}in active{% endif %}">
+		<table class="table table-striped table-hover">
+			<tbody>
+				{% for c in season_chapters|dictsort:"number" %}
+				<tr>
+					<td>{{c.number}}</td>
+					<td>{{c.name}}</td>
+				</tr>
+				{% endfor %}
+			</tbody>
+		</table>
+    </div>
+	{% endfor %}
+</div>
+
+{% else %}
+
+<div class="alert alert-warning">
+	<span>No hay capítulos</span>
+</div>
+
+{% endif %}
 
 {% endblock %}

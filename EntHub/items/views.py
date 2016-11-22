@@ -134,7 +134,7 @@ class SeriesDetail(DetailView):
 	def get_context_data(self, **kwargs):
 		context = super(SeriesDetail, self).get_context_data(**kwargs)
 		context['item_path'] = 'series'
-		context['item_name'] = 'TV'
+		context['item_name'] = 'Televisión'
 		context['involvements'] = self.object.seriesinvolvement_set.all()
 		context['label'] = self.get_label()
 		context['chapters'] = self.get_chapters()

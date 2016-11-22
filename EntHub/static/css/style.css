@@ -11,3 +11,9 @@ body{
 	margin-top: 5px;
 	margin-bottom: 0;
 }
+
+/* Series detail */
+
+.chapters{
+	border-bottom: 0;
+}

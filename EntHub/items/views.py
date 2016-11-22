@@ -1,4 +1,5 @@
-import math
+#encoding:utf-8
+
 from django.shortcuts import render
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
 from django.core.urlresolvers import reverse_lazy
@@ -56,4 +57,15 @@ class FilmTVList(ListView):
 	def get_context_data(self, **kwargs):
 	    context = super(FilmTVList, self).get_context_data(**kwargs)
 	    context['series_list'] = models.Series.objects.all()
+	    return context
+
+class MovieDetail(DetailView):
+	model = models.Movie
+	template_name = 'items/movie_detail.html'
+
+	def get_context_data(self, **kwargs):
+	    context = super(MovieDetail, self).get_context_data(**kwargs)
+	    context['item_path'] = 'movies'
+	    context['item_name'] = 'Cine'
+	    context['involvements'] = self.object.movieinvolvement_set.all()
 	    return context

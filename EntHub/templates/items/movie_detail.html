@@ -1,0 +1,11 @@
+{% extends 'items/item_detail.html' %}
+
+{% block more_fields %}
+
+<p><b>Duración:</b> {{object.duration}} minutos</p>
+<p>
+	<b>Categoría:</b>
+	<span class="label label-default">{{object.get_category_display}}</span>
+</p>
+
+{% endblock %}

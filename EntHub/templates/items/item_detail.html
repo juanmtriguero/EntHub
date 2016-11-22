@@ -10,7 +10,7 @@
 			<img src="{{object.image}}" class="img-responsive">
 		</div>
 		
-		<div align="justify" class="col-md-6">
+		<div class="col-md-6">
 			<a href="/items/{{item_path}}" class="label label-primary">{{item_name}}</a>
 			<h1>{{object.title}}</h1>
 			<hr/>
@@ -18,7 +18,9 @@
 			<p><b>Puntuación: </b>{{object.rating|floatformat}}</p>
 			{% block more_fields %}
 			{% endblock %}
-			<p><b>Descripción: </b>{{object.description|linebreaks}}</p>
+			<div align="justify">
+				<p><b>Descripción:</b>{{object.description|linebreaks}}</p>
+			</div>
 			<p>
 				<b>Géneros:</b>
 				{% for genre in object.genres.all %}

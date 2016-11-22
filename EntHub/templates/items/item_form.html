@@ -11,15 +11,21 @@
 			<div class="form-group {% if field.errors %}has-error{% endif %}">
 				<label class="col-md-2 control-label">{{field.label}}</label> 
 				<div class="col-md-10">
-					{% if field != form.genres %}
+					{% if field != form.genres and field != form.category %}
 					{{field}}
-					{% else %}
+					{% elif field == form.genres %}
 					<div class="checkbox">
 						{% for checkbox in field %}
 						<label>{{checkbox.tag}}{{checkbox.choice_label}}</label>
 						<br/>
 						{% endfor %}
 					</div>
+					{% else %}
+						{% for radio in field %}
+						<div class="radio">
+							<label>{{radio.tag}}{{radio.choice_label}}</label>
+						</div>
+						{% endfor %}
 					{% endif %}
 					{% if field.errors %}
 					<div class="alert alert-danger error-message">

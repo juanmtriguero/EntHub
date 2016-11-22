@@ -85,3 +85,42 @@ class MovieDetail(DetailView):
 	    context['item_name'] = 'Cine'
 	    context['involvements'] = self.object.movieinvolvement_set.all()
 	    return context
+
+class MovieCreate(CreateView):
+	model = models.Movie
+	form_class = forms.MovieForm
+	template_name = 'items/item_form.html'
+	success_url = reverse_lazy('items:film_tv_list')
+	
+	def get_context_data(self, **kwargs):
+		context = super(MovieCreate, self).get_context_data(**kwargs)
+		context['legend'] = "Nueva película"
+		context['cancel_url'] = "/items/movies"
+		return context
+
+class MovieUpdate(UpdateView):
+	model = models.Movie
+	form_class = forms.MovieForm
+	template_name = 'items/item_form.html'
+	
+	def get_context_data(self, **kwargs):
+		context = super(MovieUpdate, self).get_context_data(**kwargs)
+		context['legend'] = "Editar película"
+		context['cancel_url'] = "/items/movies/" + unicode(self.object.id)
+		return context
+
+	def get_success_url(self):
+		return reverse_lazy('items:movie_detail', 
+			kwargs={'pk': self.object.id})
+
+class MovieDelete(DeleteView):
+	model = models.Movie
+	context_object_name = 'item'
+	template_name = 'items/item_delete.html'
+	success_url = reverse_lazy('items:film_tv_list')
+	
+	def get_context_data(self, **kwargs):
+		context = super(MovieDelete, self).get_context_data(**kwargs)
+		context['message'] = "la película"
+		context['cancel_url'] = "/items/movies/" + unicode(self.object.id)
+		return context

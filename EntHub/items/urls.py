@@ -9,7 +9,11 @@ urlpatterns = [
 	url(r'^books/edit/(?P<pk>\d+)/', login_required(views.BookUpdate.as_view()), name='book_update'),
 	url(r'^books/delete/(?P<pk>\d+)/', login_required(views.BookDelete.as_view()), name='book_delete'),
 
-	url(r'^movies$', login_required(views.FilmTVList.as_view()), name='film_tv_list'),
 	url(r'^series$', login_required(views.FilmTVList.as_view()), name='film_tv_list'),
+
+	url(r'^movies$', login_required(views.FilmTVList.as_view()), name='film_tv_list'),
 	url(r'^movies/(?P<pk>\d+)/', login_required(views.MovieDetail.as_view()), name='movie_detail'),
+	url(r'^movies/new$', login_required(views.MovieCreate.as_view()), name='movie_create'),
+	url(r'^movies/edit/(?P<pk>\d+)/', login_required(views.MovieUpdate.as_view()), name='movie_update'),
+	url(r'^movies/delete/(?P<pk>\d+)/', login_required(views.MovieDelete.as_view()), name='movie_delete'),
 ]

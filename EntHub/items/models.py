@@ -88,7 +88,7 @@ class Movie(Item):
 		('cor', 'Corto'),
 		('doc', 'Docufilm'),
 	)
-	category = models.CharField(max_length=3, choices=CATEGORY_CHOICES)
+	category = models.CharField(max_length=3, choices=CATEGORY_CHOICES, default='pel')
 	duration = models.IntegerField()
 	agents = models.ManyToManyField(Agent, through="MovieInvolvement")
 
@@ -99,14 +99,14 @@ class Series(Item):
 		('pro', 'Programa de TV'),
 		('doc', 'Documental'),
 	)
-	category = models.CharField(max_length=3, choices=CATEGORY_CHOICES)
+	category = models.CharField(max_length=3, choices=CATEGORY_CHOICES, default='ser')
 	STATUS_CHOICES = (
 		('emi', 'En emisión'),
 		('can', 'Cancelado'),
 		('fin', 'Finalizado'),
 		('esp', 'A espera de nueva temporada'),
 	)
-	status = models.CharField(max_length=3, choices=STATUS_CHOICES)
+	status = models.CharField(max_length=3, choices=STATUS_CHOICES, default='emi')
 	agents = models.ManyToManyField(Agent, through="SeriesInvolvement")
 
 # Sub-items

@@ -113,7 +113,7 @@ class Series(Item):
 
 class Subitem(models.Model):
 	number = models.IntegerField()
-	name = models.CharField(max_length=100, blank=True)
+	name = models.CharField(max_length=100)
 	# TODO Tics in Account (and optional)
 	# tics = models.ManyToManyField(Account)
 

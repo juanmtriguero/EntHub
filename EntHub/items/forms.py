@@ -40,3 +40,18 @@ class MovieForm(ItemForm):
             'category': forms.RadioSelect(),
         }
         widgets.update(ItemForm.Meta.widgets)
+
+class SeriesForm(ItemForm):
+    class Meta(ItemForm.Meta):
+        model = models.Series
+        fields = ItemForm.Meta.fields + ['status','category']
+        labels = {
+            'status': 'Status',
+            'category': 'Categoría',
+        }
+        labels.update(ItemForm.Meta.labels)
+        widgets = {
+            'status': forms.RadioSelect(),
+            'category': forms.RadioSelect(),
+        }
+        widgets.update(ItemForm.Meta.widgets)

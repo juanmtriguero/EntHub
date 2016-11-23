@@ -11,7 +11,7 @@
 			<div class="form-group {% if field.errors %}has-error{% endif %}">
 				<label class="col-md-2 control-label">{{field.label}}</label> 
 				<div class="col-md-10">
-					{% if field != form.genres and field != form.category %}
+					{% if field != form.genres and field != form.category and field != form.status %}
 					{{field}}
 					{% elif field == form.genres %}
 					<div class="checkbox">

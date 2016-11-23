@@ -26,13 +26,16 @@ class BookCreate(CreateView):
 	model = models.Book
 	form_class = forms.BookForm
 	template_name = 'items/item_form.html'
-	success_url = reverse_lazy('items:book_list')
 	
 	def get_context_data(self, **kwargs):
 		context = super(BookCreate, self).get_context_data(**kwargs)
 		context['legend'] = "Nuevo libro"
 		context['cancel_url'] = "/items/books"
 		return context
+
+	def get_success_url(self):
+		return reverse_lazy('items:book_detail', 
+			kwargs={'pk': self.object.id})
 
 class BookUpdate(UpdateView):
 	model = models.Book
@@ -90,13 +93,16 @@ class MovieCreate(CreateView):
 	model = models.Movie
 	form_class = forms.MovieForm
 	template_name = 'items/item_form.html'
-	success_url = reverse_lazy('items:movie_list')
 	
 	def get_context_data(self, **kwargs):
 		context = super(MovieCreate, self).get_context_data(**kwargs)
 		context['legend'] = "Nueva película"
 		context['cancel_url'] = "/items/movies"
 		return context
+
+	def get_success_url(self):
+		return reverse_lazy('items:movie_detail', 
+			kwargs={'pk': self.object.id})
 
 class MovieUpdate(UpdateView):
 	model = models.Movie
@@ -168,13 +174,16 @@ class SeriesCreate(CreateView):
 	model = models.Series
 	form_class = forms.SeriesForm
 	template_name = 'items/item_form.html'
-	success_url = reverse_lazy('items:series_list')
 	
 	def get_context_data(self, **kwargs):
 		context = super(SeriesCreate, self).get_context_data(**kwargs)
 		context['legend'] = "Nueva serie"
 		context['cancel_url'] = "/items/series"
 		return context
+
+	def get_success_url(self):
+		return reverse_lazy('items:series_detail', 
+			kwargs={'pk': self.object.id})
 
 class SeriesUpdate(UpdateView):
 	model = models.Series

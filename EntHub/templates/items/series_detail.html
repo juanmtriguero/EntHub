@@ -16,7 +16,7 @@
 {% block chapters %}
 
 <hr/>
-<h4>Capítulos</h4>
+<h4 class="chapters-title">Capítulos</h4>
 
 {% if chapters %}
 
@@ -50,9 +50,11 @@
 {% else %}
 
 <div class="alert alert-warning">
-	<span>No hay capítulos</span>
+	<span>No hay ningún capítulo</span>
 </div>
 
 {% endif %}
+
+<a href="/items/series/add/{{object.id}}" class="btn btn-primary">Añadir capítulo</a>
 
 {% endblock %}

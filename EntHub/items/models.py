@@ -327,12 +327,12 @@ class MovieInvolvement(MovieItemInvolvement):
 	movie = models.ForeignKey(Movie, on_delete=models.CASCADE)
 
 	def __unicode__(self):
-		return unicode(self.agent) + " aparece en el " + unicode(self.movie.category)\
+		return unicode(self.agent) + " aparece en " + unicode(self.movie.get_category_display())\
 			   + " " + unicode(self.movie) + " como " + unicode(self.get_role_display())
 
 class SeriesInvolvement(MovieItemInvolvement):
 	series = models.ForeignKey(Series, on_delete=models.CASCADE)
 
 	def __unicode__(self):
-		return unicode(self.agent) + " aparece en el " + unicode(self.series.category)\
+		return unicode(self.agent) + " aparece en " + unicode(self.series.get_category_display())\
 			   + " " + unicode(self.series) + " como " + unicode(self.get_role_display())

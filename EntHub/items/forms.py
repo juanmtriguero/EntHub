@@ -3,6 +3,8 @@
 from django import forms
 from items import models
 
+# Items
+
 class ItemForm(forms.ModelForm):
     class Meta:
         abstract = True
@@ -55,3 +57,20 @@ class SeriesForm(ItemForm):
             'category': forms.RadioSelect(),
         }
         widgets.update(ItemForm.Meta.widgets)
+
+# Sub-items
+
+class ChapterForm(forms.ModelForm):
+    class Meta:
+        model = models.Chapter
+        fields = ['season','number','name']
+        labels = {
+            'season': 'Temporada',
+            'number': 'Número',
+            'name': 'Nombre',
+        }
+        widgets = {
+            'season': forms.NumberInput(attrs={'class':'form-control'}),
+            'number': forms.NumberInput(attrs={'class':'form-control'}),
+            'name': forms.TextInput(attrs={'class':'form-control'}),
+        }

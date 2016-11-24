@@ -211,3 +211,22 @@ class SeriesDelete(DeleteView):
 		context['message'] = "la serie"
 		context['cancel_url'] = "/items/series/" + unicode(self.object.id)
 		return context
+
+class ChapterCreate(CreateView):
+	model = models.Chapter
+	form_class = forms.ChapterForm
+	template_name = 'items/item_form.html'
+	
+	def get_context_data(self, **kwargs):
+		context = super(ChapterCreate, self).get_context_data(**kwargs)
+		context['legend'] = "Añadir capítulo"
+		context['cancel_url'] = "/items/series/" + unicode(self.kwargs['pk'])
+		return context
+
+	def form_valid(self, form):
+		form.instance.series = models.Series.objects.get(pk=self.kwargs['pk'])
+		return super(ChapterCreate, self).form_valid(form)
+
+	def get_success_url(self):
+		return reverse_lazy('items:series_detail', 
+			kwargs={'pk': self.kwargs['pk']})

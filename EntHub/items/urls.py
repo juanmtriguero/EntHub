@@ -20,4 +20,6 @@ urlpatterns = [
 	url(r'^series/new$', login_required(views.SeriesCreate.as_view()), name='series_create'),
 	url(r'^series/edit/(?P<pk>\d+)/', login_required(views.SeriesUpdate.as_view()), name='series_update'),
 	url(r'^series/delete/(?P<pk>\d+)/', login_required(views.SeriesDelete.as_view()), name='series_delete'),
+
+	url(r'^chapter/add/(?P<pk>\d+)/', login_required(views.ChapterCreate.as_view()), name='add_chapter'),
 ]

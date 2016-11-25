@@ -352,3 +352,22 @@ class ComicSeriesDelete(DeleteView):
 		context['message'] = "la serie de cómics"
 		context['cancel_url'] = "/items/comicseries/" + unicode(self.object.id)
 		return context
+
+class NumberCreate(CreateView):
+	model = models.Number
+	form_class = forms.NumberForm
+	template_name = 'items/item_form.html'
+	
+	def get_context_data(self, **kwargs):
+		context = super(NumberCreate, self).get_context_data(**kwargs)
+		context['legend'] = "Añadir número"
+		context['cancel_url'] = "/items/comicseries/" + unicode(self.kwargs['pk'])
+		return context
+
+	def form_valid(self, form):
+		form.instance.comic = models.ComicSeries.objects.get(pk=self.kwargs['pk'])
+		return super(NumberCreate, self).form_valid(form)
+
+	def get_success_url(self):
+		return reverse_lazy('items:comic_series_detail', 
+			kwargs={'pk': self.kwargs['pk']})

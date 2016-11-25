@@ -82,3 +82,16 @@ class ChapterForm(forms.ModelForm):
             'number': forms.NumberInput(attrs={'class':'form-control'}),
             'name': forms.TextInput(attrs={'class':'form-control'}),
         }
+
+class NumberForm(forms.ModelForm):
+    class Meta:
+        model = models.Number
+        fields = ['number','name']
+        labels = {
+            'number': 'Número',
+            'name': 'Nombre',
+        }
+        widgets = {
+            'number': forms.NumberInput(attrs={'class':'form-control'}),
+            'name': forms.TextInput(attrs={'class':'form-control'}),
+        }

@@ -13,14 +13,14 @@
 
 {% endblock %}
 
-{% block chapters %}
+{% block subitems %}
 
 <hr/>
-<h4 class="chapters-title">Capítulos</h4>
+<h4 class="subitems-title">Capítulos</h4>
 
 {% if chapters %}
 
-<ul class="nav nav-tabs chapters">
+<ul class="nav nav-tabs seasons">
 	{% for season in chapters.keys %}
 	<li class="{% if season == 1 %}active{% endif %}">
 		<a href="#{{season}}" data-toggle="tab">

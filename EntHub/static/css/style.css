@@ -12,12 +12,12 @@ body{
 	margin-bottom: 0;
 }
 
-/* Series detail */
+/* Series items detail */
 
-.chapters-title{
+.subitems-title{
 	margin-bottom: 22px;
 }
 
-.chapters{
+.seasons{
 	border-bottom: 0;
 }

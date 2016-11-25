@@ -34,4 +34,6 @@ urlpatterns = [
 	url(r'^comicseries/edit/(?P<pk>\d+)/', login_required(views.ComicSeriesUpdate.as_view()), name='comic_series_update'),
 	url(r'^comicseries/delete/(?P<pk>\d+)/', login_required(views.ComicSeriesDelete.as_view()), name='comic_series_delete'),
 	url(r'^number/add/(?P<pk>\d+)/', login_required(views.NumberCreate.as_view()), name='add_number'),
+
+	url(r'^games$', login_required(views.GameList.as_view()), name='game_list'),
 ]

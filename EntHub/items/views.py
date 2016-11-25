@@ -371,3 +371,9 @@ class NumberCreate(CreateView):
 	def get_success_url(self):
 		return reverse_lazy('items:comic_series_detail', 
 			kwargs={'pk': self.kwargs['pk']})
+
+# Game
+
+class GameList(ListView):
+	model = models.Game
+	template_name = 'items/game_list.html'

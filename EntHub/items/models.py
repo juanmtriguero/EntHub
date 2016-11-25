@@ -76,11 +76,11 @@ class DLC(GameItem):
 	agents = models.ManyToManyField(Agent, through="DLCInvolvement")
 	game = models.ForeignKey(Game, on_delete=models.CASCADE)
 
-class GraphicNovel(Item):
-	agents = models.ManyToManyField(Agent, through="GraphicNovelInvolvement")
-
 class Comic(Item):
 	agents = models.ManyToManyField(Agent, through="ComicInvolvement")
+
+class ComicSeries(Item):
+	agents = models.ManyToManyField(Agent, through="ComicSeriesInvolvement")
 
 class Movie(Item):
 	CATEGORY_CHOICES = (
@@ -121,7 +121,7 @@ class Subitem(models.Model):
 		abstract = True
 
 class Number(Subitem):
-	comic = models.ForeignKey(Comic, on_delete=models.CASCADE)
+	comic = models.ForeignKey(ComicSeries, on_delete=models.CASCADE)
 
 	def __unicode__(self):
 		return unicode(self.comic) + " - " + unicode(self.number)\
@@ -192,11 +192,11 @@ class DLCMark(PlayableMark):
 		return unicode(self.user) + " ha marcado el DLC "\
 			   + unicode(self.dlc) + " como " + unicode(self.get_option_display())
 
-class GraphicNovelMark(IndividualMark):
-	graphicNovel = models.ForeignKey(GraphicNovel, on_delete=models.CASCADE)
+class ComicMark(IndividualMark):
+	comic = models.ForeignKey(Comic, on_delete=models.CASCADE)
 
 	def __unicode__(self):
-		return unicode(self.user) + " ha marcado la novela gráfica "\
+		return unicode(self.user) + " ha marcado el cómic "\
 			   + unicode(self.graphicNovel) + " como " + unicode(self.get_option_display())
 
 class GroupMark(Mark):
@@ -211,11 +211,11 @@ class GroupMark(Mark):
 	class Meta:
 		abstract = True
 
-class ComicMark(GroupMark):
-	comic = models.ForeignKey(Comic, on_delete=models.CASCADE)
+class ComicSeriesMark(GroupMark):
+	comic = models.ForeignKey(ComicSeries, on_delete=models.CASCADE)
 
 	def __unicode__(self):
-		return unicode(self.user) + " ha marcado el cómic "\
+		return unicode(self.user) + " ha marcado la serie de cómics "\
 			   + unicode(self.comic) + " como " + unicode(self.get_option_display())
 
 class SeriesMark(GroupMark):
@@ -294,18 +294,18 @@ class ComicItemInvolvement(Involvement):
 	class Meta:
 		abstract = True
 
-class GraphicNovelInvolvement(ComicItemInvolvement):
-	graphicNovel = models.ForeignKey(GraphicNovel, on_delete=models.CASCADE)
-
-	def __unicode__(self):
-		return unicode(self.agent) + " aparece en la novela gráfica "\
-			   + unicode(self.graphicNovel) + " como " + unicode(self.get_role_display())
-
 class ComicInvolvement(ComicItemInvolvement):
 	comic = models.ForeignKey(Comic, on_delete=models.CASCADE)
 
 	def __unicode__(self):
 		return unicode(self.agent) + " aparece en el cómic "\
+			   + unicode(self.comic) + " como " + unicode(self.get_role_display())
+
+class ComicSeriesInvolvement(ComicItemInvolvement):
+	comic = models.ForeignKey(ComicSeries, on_delete=models.CASCADE)
+
+	def __unicode__(self):
+		return unicode(self.agent) + " aparece en la serie de cómics "\
 			   + unicode(self.comic) + " como " + unicode(self.get_role_display())
 
 class MovieItemInvolvement(Involvement):

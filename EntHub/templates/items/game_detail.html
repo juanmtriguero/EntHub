@@ -1,0 +1,36 @@
+{% extends 'items/item_detail.html' %}
+
+{% block more_fields %}
+
+<p>
+	<b>Plataformas:</b>
+	{% for platform in object.platforms.all %}
+	<a href="/items/platforms/{{platform.id}}" class="label label-default">{{platform.short}}</a>
+	{% endfor %}
+</p>
+
+{% endblock %}
+
+{% block subitems %}
+
+<hr/>
+<h4 class="subitems-title">DLCs y expansiones</h4>
+
+{% if object.dlc_set %}
+<div class="list-group">
+	{% for dlc in object.dlc_set.all %}
+	<a href="/items/dlcs/{{dlc.id}}" class="list-group-item">{{dlc}}</a>
+	{% endfor %}
+</div>
+{% else %}
+
+<div class="alert alert-warning">
+	<span>No hay ningún DLC</span>
+</div>
+
+{% endif %}
+
+<!-- TODO 'items:add_chapter' >>> 'items:add_dlc' -->
+<a href="{% url 'items:add_chapter' pk=object.id %}" class="btn btn-primary">Añadir DLC</a>
+
+{% endblock %}

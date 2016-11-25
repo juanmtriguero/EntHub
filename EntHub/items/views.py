@@ -380,7 +380,7 @@ class GameList(ListView):
 
 class GameDetail(DetailView):
 	model = models.Game
-	template_name = 'items/item_detail.html'
+	template_name = 'items/game_detail.html'
 
 	def get_context_data(self, **kwargs):
 		context = super(GameDetail, self).get_context_data(**kwargs)

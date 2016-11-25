@@ -36,4 +36,8 @@ urlpatterns = [
 	url(r'^number/add/(?P<pk>\d+)/', login_required(views.NumberCreate.as_view()), name='add_number'),
 
 	url(r'^games$', login_required(views.GameList.as_view()), name='game_list'),
+	url(r'^games/(?P<pk>\d+)/', login_required(views.GameDetail.as_view()), name='game_detail'),
+	url(r'^games/new$', login_required(views.GameCreate.as_view()), name='game_create'),
+	url(r'^games/edit/(?P<pk>\d+)/', login_required(views.GameUpdate.as_view()), name='game_update'),
+	url(r'^games/delete/(?P<pk>\d+)/', login_required(views.GameDelete.as_view()), name='game_delete'),
 ]

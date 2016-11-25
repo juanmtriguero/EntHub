@@ -377,3 +377,56 @@ class NumberCreate(CreateView):
 class GameList(ListView):
 	model = models.Game
 	template_name = 'items/game_list.html'
+
+class GameDetail(DetailView):
+	model = models.Game
+	template_name = 'items/item_detail.html'
+
+	def get_context_data(self, **kwargs):
+		context = super(GameDetail, self).get_context_data(**kwargs)
+		context['item_path'] = 'games'
+		context['item_name'] = 'Videojuego'
+		context['involvements'] = self.object.gameinvolvement_set.all()
+		return context
+
+class GameCreate(CreateView):
+	model = models.Game
+	form_class = forms.GameForm
+	template_name = 'items/item_form.html'
+	
+	def get_context_data(self, **kwargs):
+		context = super(GameCreate, self).get_context_data(**kwargs)
+		context['legend'] = "Nuevo videojuego"
+		context['cancel_url'] = "/items/games"
+		return context
+
+	def get_success_url(self):
+		return reverse_lazy('items:game_detail', 
+			kwargs={'pk': self.object.id})
+
+class GameUpdate(UpdateView):
+	model = models.Game
+	form_class = forms.GameForm
+	template_name = 'items/item_form.html'
+	
+	def get_context_data(self, **kwargs):
+		context = super(GameUpdate, self).get_context_data(**kwargs)
+		context['legend'] = "Editar videojuego"
+		context['cancel_url'] = "/items/games/" + unicode(self.object.id)
+		return context
+
+	def get_success_url(self):
+		return reverse_lazy('items:game_detail', 
+			kwargs={'pk': self.object.id})
+
+class GameDelete(DeleteView):
+	model = models.Game
+	context_object_name = 'item'
+	template_name = 'items/item_delete.html'
+	success_url = reverse_lazy('items:game_list')
+	
+	def get_context_data(self, **kwargs):
+		context = super(GameDelete, self).get_context_data(**kwargs)
+		context['message'] = "el videojuego"
+		context['cancel_url'] = "/items/games/" + unicode(self.object.id)
+		return context

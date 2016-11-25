@@ -66,6 +66,19 @@ class ComicSeriesForm(ItemForm):
     class Meta(ItemForm.Meta):
         model = models.ComicSeries
 
+class GameForm(ItemForm):
+    class Meta(ItemForm.Meta):
+        model = models.Game
+        fields = ItemForm.Meta.fields + ['platforms',]
+        labels = {
+            'platforms': 'Plataformas',
+        }
+        labels.update(ItemForm.Meta.labels)
+        widgets = {
+            'platforms': forms.CheckboxSelectMultiple(),
+        }
+        widgets.update(ItemForm.Meta.widgets)
+
 # Sub-items
 
 class ChapterForm(forms.ModelForm):

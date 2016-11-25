@@ -13,7 +13,7 @@ class BookList(ListView):
 
 class BookDetail(DetailView):
 	model = models.Book
-	template_name = 'items/book_detail.html'
+	template_name = 'items/item_detail.html'
 
 	def get_context_data(self, **kwargs):
 		context = super(BookDetail, self).get_context_data(**kwargs)
@@ -230,3 +230,125 @@ class ChapterCreate(CreateView):
 	def get_success_url(self):
 		return reverse_lazy('items:series_detail', 
 			kwargs={'pk': self.kwargs['pk']})
+
+# Comic items
+
+class ComicItemList(ListView):
+	model = models.Comic
+	template_name = 'items/comic_item_list.html'
+	context_object_name = 'comic_list'
+
+	def get_context_data(self, **kwargs):
+		context = super(ComicItemList, self).get_context_data(**kwargs)
+		context['comic_series_list'] = models.ComicSeries.objects.all()
+		return context
+
+# Comic
+
+class ComicDetail(DetailView):
+	model = models.Comic
+	template_name = 'items/item_detail.html'
+
+	def get_context_data(self, **kwargs):
+		context = super(ComicDetail, self).get_context_data(**kwargs)
+		context['item_path'] = 'comics'
+		context['item_name'] = 'Cómic'
+		context['involvements'] = self.object.comicinvolvement_set.all()
+		return context
+
+class ComicCreate(CreateView):
+	model = models.Comic
+	form_class = forms.ComicForm
+	template_name = 'items/item_form.html'
+	
+	def get_context_data(self, **kwargs):
+		context = super(ComicCreate, self).get_context_data(**kwargs)
+		context['legend'] = "Nuevo cómic"
+		context['cancel_url'] = "/items/comics"
+		return context
+
+	def get_success_url(self):
+		return reverse_lazy('items:comic_detail', 
+			kwargs={'pk': self.object.id})
+
+class ComicUpdate(UpdateView):
+	model = models.Comic
+	form_class = forms.ComicForm
+	template_name = 'items/item_form.html'
+	
+	def get_context_data(self, **kwargs):
+		context = super(ComicUpdate, self).get_context_data(**kwargs)
+		context['legend'] = "Editar cómic"
+		context['cancel_url'] = "/items/comics/" + unicode(self.object.id)
+		return context
+
+	def get_success_url(self):
+		return reverse_lazy('items:comic_detail', 
+			kwargs={'pk': self.object.id})
+
+class ComicDelete(DeleteView):
+	model = models.Comic
+	context_object_name = 'item'
+	template_name = 'items/item_delete.html'
+	success_url = reverse_lazy('items:comic_list')
+	
+	def get_context_data(self, **kwargs):
+		context = super(ComicDelete, self).get_context_data(**kwargs)
+		context['message'] = "el cómic"
+		context['cancel_url'] = "/items/comics/" + unicode(self.object.id)
+		return context
+
+# ComicSeries
+
+class ComicSeriesDetail(DetailView):
+	model = models.ComicSeries
+	template_name = 'items/comic_series_detail.html'
+
+	def get_context_data(self, **kwargs):
+		context = super(ComicSeriesDetail, self).get_context_data(**kwargs)
+		context['item_path'] = 'comicseries'
+		context['item_name'] = 'Serie de cómics'
+		context['involvements'] = self.object.comicseriesinvolvement_set.all()
+		return context
+
+class ComicSeriesCreate(CreateView):
+	model = models.ComicSeries
+	form_class = forms.ComicSeriesForm
+	template_name = 'items/item_form.html'
+	
+	def get_context_data(self, **kwargs):
+		context = super(ComicSeriesCreate, self).get_context_data(**kwargs)
+		context['legend'] = "Nueva serie de cómics"
+		context['cancel_url'] = "/items/comicseries"
+		return context
+
+	def get_success_url(self):
+		return reverse_lazy('items:comic_series_detail', 
+			kwargs={'pk': self.object.id})
+
+class ComicSeriesUpdate(UpdateView):
+	model = models.ComicSeries
+	form_class = forms.ComicSeriesForm
+	template_name = 'items/item_form.html'
+	
+	def get_context_data(self, **kwargs):
+		context = super(ComicSeriesUpdate, self).get_context_data(**kwargs)
+		context['legend'] = "Editar serie de cómics"
+		context['cancel_url'] = "/items/comicseries/" + unicode(self.object.id)
+		return context
+
+	def get_success_url(self):
+		return reverse_lazy('items:comic_series_detail', 
+			kwargs={'pk': self.object.id})
+
+class ComicSeriesDelete(DeleteView):
+	model = models.ComicSeries
+	context_object_name = 'item'
+	template_name = 'items/item_delete.html'
+	success_url = reverse_lazy('items:comic_series_list')
+	
+	def get_context_data(self, **kwargs):
+		context = super(ComicSeriesDelete, self).get_context_data(**kwargs)
+		context['message'] = "la serie de cómics"
+		context['cancel_url'] = "/items/comicseries/" + unicode(self.object.id)
+		return context

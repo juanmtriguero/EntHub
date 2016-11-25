@@ -20,6 +20,17 @@ urlpatterns = [
 	url(r'^series/new$', login_required(views.SeriesCreate.as_view()), name='series_create'),
 	url(r'^series/edit/(?P<pk>\d+)/', login_required(views.SeriesUpdate.as_view()), name='series_update'),
 	url(r'^series/delete/(?P<pk>\d+)/', login_required(views.SeriesDelete.as_view()), name='series_delete'),
-
 	url(r'^chapter/add/(?P<pk>\d+)/', login_required(views.ChapterCreate.as_view()), name='add_chapter'),
+
+	url(r'^comics$', login_required(views.ComicItemList.as_view()), name='comic_list'),
+	url(r'^comics/(?P<pk>\d+)/', login_required(views.ComicDetail.as_view()), name='comic_detail'),
+	url(r'^comics/new$', login_required(views.ComicCreate.as_view()), name='comic_create'),
+	url(r'^comics/edit/(?P<pk>\d+)/', login_required(views.ComicUpdate.as_view()), name='comic_update'),
+	url(r'^comics/delete/(?P<pk>\d+)/', login_required(views.ComicDelete.as_view()), name='comic_delete'),
+
+	url(r'^comicseries$', login_required(views.ComicItemList.as_view()), name='comic_series_list'),
+	url(r'^comicseries/(?P<pk>\d+)/', login_required(views.ComicSeriesDetail.as_view()), name='comic_series_detail'),
+	url(r'^comicseries/new$', login_required(views.ComicSeriesCreate.as_view()), name='comic_series_create'),
+	url(r'^comicseries/edit/(?P<pk>\d+)/', login_required(views.ComicSeriesUpdate.as_view()), name='comic_series_update'),
+	url(r'^comicseries/delete/(?P<pk>\d+)/', login_required(views.ComicSeriesDelete.as_view()), name='comic_series_delete'),
 ]

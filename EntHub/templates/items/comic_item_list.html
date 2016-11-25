@@ -1,0 +1,95 @@
+{% extends 'base/base.html' %}
+
+{% block content %}
+
+<div class="container">
+
+	<h1>Catálogo de cómics</h1>
+	<hr/>
+
+	<div class="row">
+
+		<div class="col-md-6">
+			
+			<h3>Cómics</h3>
+			<hr/>
+	
+			{% if comic_list %}
+
+		  	<div class="row">
+		  		{% for comic in comic_list %}
+				<div class="col-md-6">
+					<div class="panel panel-primary">
+						<div class="panel-heading">
+							<h3 class="panel-title">{{comic}}</h3>
+				  		</div>
+				  		<div class="panel-body">
+							<a href="/items/comics/{{comic.id}}" class="btn btn-link">Ver</a>
+							<a href="/items/comics/edit/{{comic.id}}" class="btn btn-link">Editar</a>
+							<a href="/items/comics/delete/{{comic.id}}" class="btn btn-link">Eliminar</a>
+				  		</div>
+					</div>
+				</div>
+		    	{% endfor %}
+			</div>
+
+			{% else %}
+
+			<div class="alert alert-warning">
+				<span>No hay nada para mostrar</span>
+			</div>
+
+			{% endif %}
+
+		</div>
+
+		<div class="col-md-6">
+			
+			<h3>Series de cómics</h3>
+			<hr/>
+	
+			{% if comic_series_list %}
+
+		  	<div class="row">
+		  		{% for comic_series in comic_series_list %}
+				<div class="col-md-6">
+					<div class="panel panel-primary">
+						<div class="panel-heading">
+							<h3 class="panel-title">{{comic_series}}</h3>
+				  		</div>
+				  		<div class="panel-body">
+							<a href="/items/comicseries/{{comic_series.id}}" class="btn btn-link">Ver</a>
+							<a href="/items/comicseries/edit/{{comic_series.id}}" class="btn btn-link">Editar</a>
+							<a href="/items/comicseries/delete/{{comic_series.id}}" class="btn btn-link">Eliminar</a>
+				  		</div>
+					</div>
+				</div>
+		    	{% endfor %}
+			</div>
+
+			{% else %}
+
+			<div class="alert alert-warning">
+				<span>No hay nada para mostrar</span>
+			</div>
+
+			{% endif %}
+
+		</div>
+
+	</div>
+
+	<div class="row">
+		<div class="col-md-6">
+			<hr/>
+			<a href="/items/comics/new" class="btn btn-primary">Nuevo cómic</a>
+		</div>
+		<div class="col-md-6">
+			<hr/>
+			<a href="/items/comicseries/new" class="btn btn-primary">Nueva serie de cómics</a>
+		</div>
+	</div>
+
+</div>
+
+{% endblock %}

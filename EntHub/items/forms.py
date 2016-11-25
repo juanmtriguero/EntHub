@@ -58,6 +58,14 @@ class SeriesForm(ItemForm):
         }
         widgets.update(ItemForm.Meta.widgets)
 
+class ComicForm(ItemForm):
+    class Meta(ItemForm.Meta):
+        model = models.Comic
+
+class ComicSeriesForm(ItemForm):
+    class Meta(ItemForm.Meta):
+        model = models.ComicSeries
+
 # Sub-items
 
 class ChapterForm(forms.ModelForm):

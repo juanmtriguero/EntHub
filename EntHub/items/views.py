@@ -444,6 +444,55 @@ class DLCDetail(DetailView):
 		context['agents'] = group_agents(self.object.dlcinvolvement_set.all())
 		return context
 
+class DLCCreate(CreateView):
+	model = models.DLC
+	form_class = forms.DLCForm
+	template_name = 'items/item_form.html'
+	
+	def get_context_data(self, **kwargs):
+		context = super(DLCCreate, self).get_context_data(**kwargs)
+		context['legend'] = "Nuevo DLC"
+		context['cancel_url'] = "/items/games/" + unicode(self.kwargs['pk'])
+		return context
+
+	def form_valid(self, form):
+		form.instance.game = models.Game.objects.get(pk=self.kwargs['pk'])
+		return super(DLCCreate, self).form_valid(form)
+
+	def get_success_url(self):
+		return reverse_lazy('items:dlc_detail', 
+			kwargs={'pk': self.object.id})
+
+class DLCUpdate(UpdateView):
+	model = models.DLC
+	form_class = forms.DLCForm
+	template_name = 'items/item_form.html'
+	
+	def get_context_data(self, **kwargs):
+		context = super(DLCUpdate, self).get_context_data(**kwargs)
+		context['legend'] = "Editar DLC"
+		context['cancel_url'] = "/items/dlcs/" + unicode(self.object.id)
+		return context
+
+	def get_success_url(self):
+		return reverse_lazy('items:dlc_detail', 
+			kwargs={'pk': self.object.id})
+
+class DLCDelete(DeleteView):
+	model = models.DLC
+	context_object_name = 'item'
+	template_name = 'items/item_delete.html'
+	
+	def get_context_data(self, **kwargs):
+		context = super(DLCDelete, self).get_context_data(**kwargs)
+		context['message'] = "el DLC"
+		context['cancel_url'] = "/items/dlcs/" + unicode(self.object.id)
+		return context
+
+	def get_success_url(self):
+		return reverse_lazy('items:game_detail', 
+			kwargs={'pk': self.object.game.id})
+
 # Return involvements gruped by agent
 def group_agents(involvements):
 	agents = {}

@@ -37,8 +37,7 @@
 </div>
 {% endif %}
 
-<!-- TODO 'items:add_chapter' >>> 'items:add_dlc' -->
-<a href="{% url 'items:add_chapter' pk=object.id %}" class="btn btn-primary">Añadir DLC</a>
+<a href="{% url 'items:dlc_create' pk=object.id %}" class="btn btn-primary">Añadir DLC</a>
 
 {% endif %}
 

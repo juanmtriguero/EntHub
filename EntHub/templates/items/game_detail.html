@@ -2,6 +2,13 @@
 
 {% block more_fields %}
 
+{% if object.game %}
+<p>
+	<b>Videojuego:</b>
+	<a href="/items/games/{{object.game.id}}">{{object.game}}</a>
+</p>
+{% endif %}
+
 <p>
 	<b>Plataformas:</b>
 	{% for platform in object.platforms.all %}
@@ -13,6 +20,8 @@
 
 {% block subitems %}
 
+{% if object.dlc_set %}
+
 <hr/>
 <h4 class="subitems-title">DLCs y expansiones</h4>
 
@@ -23,14 +32,25 @@
 	{% endfor %}
 </div>
 {% else %}
-
 <div class="alert alert-warning">
 	<span>No hay ningún DLC</span>
 </div>
-
 {% endif %}
 
 <!-- TODO 'items:add_chapter' >>> 'items:add_dlc' -->
 <a href="{% url 'items:add_chapter' pk=object.id %}" class="btn btn-primary">Añadir DLC</a>
 
+{% endif %}
+
+{% endblock %}
+
+{% block buttons %}
+{% if object.game %}
+<hr/>
+<a href="/items/dlcs/edit/{{object.id}}" class="btn btn-primary">Editar</a>
+<a href="/items/dlcs/delete/{{object.id}}" class="btn btn-danger">Eliminar</a>
+<a href="/items/{{item_path}}" class="btn btn-link">Volver al juego</a>
+{% else %}
+{{block.super}}
+{% endif %}
 {% endblock %}

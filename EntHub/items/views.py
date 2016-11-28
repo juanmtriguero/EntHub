@@ -430,3 +430,16 @@ class GameDelete(DeleteView):
 		context['message'] = "el videojuego"
 		context['cancel_url'] = "/items/games/" + unicode(self.object.id)
 		return context
+
+# DLC
+
+class DLCDetail(DetailView):
+	model = models.DLC
+	template_name = 'items/game_detail.html'
+
+	def get_context_data(self, **kwargs):
+		context = super(DLCDetail, self).get_context_data(**kwargs)
+		context['item_path'] = 'games/' + unicode(self.object.game.id)
+		context['item_name'] = 'DLC'
+		context['involvements'] = self.object.dlcinvolvement_set.all()
+		return context

@@ -58,10 +58,12 @@
 	
 	</div>
 
+	{% block buttons %}
 	<hr/>
 	<a href="/items/{{item_path}}/edit/{{object.id}}" class="btn btn-primary">Editar</a>
 	<a href="/items/{{item_path}}/delete/{{object.id}}" class="btn btn-danger">Eliminar</a>
 	<a href="/items/{{item_path}}" class="btn btn-link">Volver al catálogo</a>
+	{% endblock %}
 
 </div>
 

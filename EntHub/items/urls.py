@@ -40,4 +40,6 @@ urlpatterns = [
 	url(r'^games/new$', login_required(views.GameCreate.as_view()), name='game_create'),
 	url(r'^games/edit/(?P<pk>\d+)/', login_required(views.GameUpdate.as_view()), name='game_update'),
 	url(r'^games/delete/(?P<pk>\d+)/', login_required(views.GameDelete.as_view()), name='game_delete'),
+	
+	url(r'^dlcs/(?P<pk>\d+)/', login_required(views.DLCDetail.as_view()), name='dlc_detail'),
 ]

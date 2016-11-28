@@ -19,7 +19,7 @@ class BookDetail(DetailView):
 		context = super(BookDetail, self).get_context_data(**kwargs)
 		context['item_path'] = 'books'
 		context['item_name'] = 'Libro'
-		context['involvements'] = self.object.bookinvolvement_set.all()
+		context['agents'] = group_agents(self.object.bookinvolvement_set.all())
 		return context
 
 class BookCreate(CreateView):
@@ -86,7 +86,7 @@ class MovieDetail(DetailView):
 		context = super(MovieDetail, self).get_context_data(**kwargs)
 		context['item_path'] = 'movies'
 		context['item_name'] = 'Cine'
-		context['involvements'] = self.object.movieinvolvement_set.all()
+		context['agents'] = group_agents(self.object.movieinvolvement_set.all())
 		return context
 
 class MovieCreate(CreateView):
@@ -141,7 +141,7 @@ class SeriesDetail(DetailView):
 		context = super(SeriesDetail, self).get_context_data(**kwargs)
 		context['item_path'] = 'series'
 		context['item_name'] = 'Televisión'
-		context['involvements'] = self.object.seriesinvolvement_set.all()
+		context['agents'] = group_agents(self.object.seriesinvolvement_set.all())
 		context['label'] = self.get_label()
 		context['chapters'] = self.get_chapters()
 		return context
@@ -253,7 +253,7 @@ class ComicDetail(DetailView):
 		context = super(ComicDetail, self).get_context_data(**kwargs)
 		context['item_path'] = 'comics'
 		context['item_name'] = 'Cómic'
-		context['involvements'] = self.object.comicinvolvement_set.all()
+		context['agents'] = group_agents(self.object.comicinvolvement_set.all())
 		return context
 
 class ComicCreate(CreateView):
@@ -308,7 +308,7 @@ class ComicSeriesDetail(DetailView):
 		context = super(ComicSeriesDetail, self).get_context_data(**kwargs)
 		context['item_path'] = 'comicseries'
 		context['item_name'] = 'Serie de cómics'
-		context['involvements'] = self.object.comicseriesinvolvement_set.all()
+		context['agents'] = group_agents(self.object.comicseriesinvolvement_set.all())
 		return context
 
 class ComicSeriesCreate(CreateView):
@@ -386,7 +386,7 @@ class GameDetail(DetailView):
 		context = super(GameDetail, self).get_context_data(**kwargs)
 		context['item_path'] = 'games'
 		context['item_name'] = 'Videojuego'
-		context['involvements'] = self.object.gameinvolvement_set.all()
+		context['agents'] = group_agents(self.object.gameinvolvement_set.all())
 		return context
 
 class GameCreate(CreateView):
@@ -441,5 +441,15 @@ class DLCDetail(DetailView):
 		context = super(DLCDetail, self).get_context_data(**kwargs)
 		context['item_path'] = 'games/' + unicode(self.object.game.id)
 		context['item_name'] = 'DLC'
-		context['involvements'] = self.object.dlcinvolvement_set.all()
+		context['agents'] = group_agents(self.object.dlcinvolvement_set.all())
 		return context
+
+# Return involvements gruped by agent
+def group_agents(involvements):
+	agents = {}
+	for i in involvements:
+		if i.agent in agents:
+			agents[i.agent].append(i.get_role_display())
+		else:
+			agents[i.agent] = [i.get_role_display(),]
+	return agents

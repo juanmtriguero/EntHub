@@ -34,16 +34,18 @@
 				<span class="list-group-item active">
 					<b>Agentes</b>
 				</span>
-				{% if involvements %}
-					{% for i in involvements %}
-					<a href="/items/agents/{{i.agent.id}}" class="list-group-item">
+				{% if agents %}
+					{% for a, roles in agents.items %}
+					<a href="/items/agents/{{a.id}}" class="list-group-item">
 						<div class="row">
 							<div class="col-md-4">
-								<img src="{{i.agent.image}}" class="img-responsive">
+								<img src="{{a.image}}" class="img-responsive">
 							</div>
 							<div class="col-md-8">
-								<span>{{i.agent}}</span><br/>
-								<span class="label label-default">{{i.get_role_display}}</span>
+								<span>{{a}}</span><br/>
+								{% for role in roles %}
+								<span class="label label-default">{{role}}</span>
+								{% endfor %}
 							</div>
 						</div>
 					</a>

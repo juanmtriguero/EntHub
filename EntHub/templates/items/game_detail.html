@@ -16,7 +16,7 @@
 <hr/>
 <h4 class="subitems-title">DLCs y expansiones</h4>
 
-{% if object.dlc_set %}
+{% if object.dlc_set.all %}
 <div class="list-group">
 	{% for dlc in object.dlc_set.all %}
 	<a href="/items/dlcs/{{dlc.id}}" class="list-group-item">{{dlc}}</a>

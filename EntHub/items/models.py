@@ -196,7 +196,7 @@ class ComicMark(IndividualMark):
 	comic = models.ForeignKey(Comic, on_delete=models.CASCADE)
 
 	def __unicode__(self):
-		return unicode(self.user) + " ha marcado el cómic "\
+		return unicode(self.user) + u" ha marcado el cómic "\
 			   + unicode(self.graphicNovel) + " como " + unicode(self.get_option_display())
 
 class GroupMark(Mark):
@@ -215,7 +215,7 @@ class ComicSeriesMark(GroupMark):
 	comic = models.ForeignKey(ComicSeries, on_delete=models.CASCADE)
 
 	def __unicode__(self):
-		return unicode(self.user) + " ha marcado la serie de cómics "\
+		return unicode(self.user) + u" ha marcado la serie de cómics "\
 			   + unicode(self.comic) + " como " + unicode(self.get_option_display())
 
 class SeriesMark(GroupMark):
@@ -298,14 +298,14 @@ class ComicInvolvement(ComicItemInvolvement):
 	comic = models.ForeignKey(Comic, on_delete=models.CASCADE)
 
 	def __unicode__(self):
-		return unicode(self.agent) + " aparece en el cómic "\
+		return unicode(self.agent) + u" aparece en el cómic "\
 			   + unicode(self.comic) + " como " + unicode(self.get_role_display())
 
 class ComicSeriesInvolvement(ComicItemInvolvement):
 	comic = models.ForeignKey(ComicSeries, on_delete=models.CASCADE)
 
 	def __unicode__(self):
-		return unicode(self.agent) + " aparece en la serie de cómics "\
+		return unicode(self.agent) + u" aparece en la serie de cómics "\
 			   + unicode(self.comic) + " como " + unicode(self.get_role_display())
 
 class MovieItemInvolvement(Involvement):

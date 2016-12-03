@@ -5,6 +5,35 @@ from django.views.generic import ListView, DetailView, CreateView, UpdateView, D
 from django.core.urlresolvers import reverse_lazy
 from items import models, forms
 
+# Items catalogue
+
+def catalogue(request):
+
+	# Filter by category
+	c = request.POST.get('c', 'books')
+	if c == "books":
+		items = models.Book.objects.all()
+	elif c == "movies":
+		items = models.Movie.objects.all()
+	elif c == "series":
+		items = models.Series.objects.all()
+	elif c == "comics":
+		items = models.Comic.objects.all()
+	elif c == "comicseries":
+		items = models.ComicSeries.objects.all()
+	elif c == "games":
+		items = models.Game.objects.all()
+	else:
+		items = None
+
+	# Filter by search
+	q = request.POST.get('q', '')
+	if q:
+		items = items.filter(title__icontains=q)
+
+	context = {'items': items, 'q': q, 'c': c}
+	return render(request, 'items/catalogue.html', context)
+
 # Book
 
 class BookList(ListView):

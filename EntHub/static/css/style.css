@@ -21,3 +21,20 @@ body{
 .seasons{
 	border-bottom: 0;
 }
+
+/* Item catalogue */
+
+.filter .form-group{
+	margin-left: 0;
+	margin-right: 0;
+	margin-top: -9px;
+}
+
+.has-feedback-left .form-control-feedback{
+	left: 0;
+}
+
+.has-feedback-left input.form-control {
+  padding-left: 35px;
+  padding-right: 12px;
+}

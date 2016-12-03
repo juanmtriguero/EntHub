@@ -45,4 +45,6 @@ urlpatterns = [
 	url(r'^dlcs/new/(?P<pk>\d+)/', login_required(views.DLCCreate.as_view()), name='dlc_create'),
 	url(r'^dlcs/edit/(?P<pk>\d+)/', login_required(views.DLCUpdate.as_view()), name='dlc_update'),
 	url(r'^dlcs/delete/(?P<pk>\d+)/', login_required(views.DLCDelete.as_view()), name='dlc_delete'),
+
+	url(r'^$', login_required(views.catalogue), name='catalogue'),
 ]

@@ -6,8 +6,20 @@
 
 	<div class="row">
 		
-		<div class="col-md-3">
+		<div class="col-md-3 text-center">
 			<img src="{{object.image}}" class="img-responsive">
+			<p><div class="btn-group">
+				<a href="#" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+					Marcar como&nbsp;<span class="caret"></span>
+				</a>
+				<ul class="dropdown-menu">
+					{% for o, option in mark_options %}
+					<li><a href="#">{{option}}</a></li>
+					{% endfor %}
+					<li class="divider"></li>
+					<li><a href="#">No marcar</a></li>
+				</ul>
+			</div></p>
 		</div>
 		
 		<div class="col-md-6">

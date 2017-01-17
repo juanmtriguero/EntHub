@@ -148,10 +148,10 @@ class Mark(models.Model):
 
 class IndividualMark(Mark):
 	OPTION_CHOICES = (
-		('lei', 'Leído'),
 		('pen', 'Pendiente'),
 		('ley', 'Leyendo'),
 		('pau', 'Pausado'),
+		('lei', 'Leído'),
 	)
 	option = models.CharField(max_length=3, choices=OPTION_CHOICES)
 
@@ -167,11 +167,11 @@ class BookMark(IndividualMark):
 
 class PlayableMark(Mark):
 	OPTION_CHOICES = (
-		('ter', 'Terminado'),
-		('com', 'Completado'),
 		('pen', 'Pendiente'),
 		('jug', 'Jugando'),
 		('pau', 'Pausado'),
+		('ter', 'Terminado'),
+		('com', 'Completado'),
 	)
 	option = models.CharField(max_length=3, choices=OPTION_CHOICES)
 
@@ -201,10 +201,10 @@ class ComicMark(IndividualMark):
 
 class GroupMark(Mark):
 	OPTION_CHOICES = (
-		('fin', 'Finalizado'),
 		('pen', 'Pendiente'),
 		('sig', 'Siguiendo'),
 		('pau', 'Pausado'),
+		('fin', 'Finalizado'),
 	)
 	option = models.CharField(max_length=3, choices=OPTION_CHOICES)
 
@@ -228,8 +228,8 @@ class SeriesMark(GroupMark):
 class MovieMark(Mark):
 	movie = models.ForeignKey(Movie, on_delete=models.CASCADE)
 	OPTION_CHOICES = (
-		('vis', 'Visto'),
 		('pen', 'Pendiente'),
+		('vis', 'Visto'),
 	)
 	option = models.CharField(max_length=3, choices=OPTION_CHOICES)
 

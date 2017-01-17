@@ -49,6 +49,7 @@ class BookDetail(DetailView):
 		context['item_path'] = 'books'
 		context['item_name'] = 'Libro'
 		context['agents'] = group_agents(self.object.bookinvolvement_set.all())
+		context['mark_options'] = models.BookMark.OPTION_CHOICES
 		return context
 
 class BookCreate(CreateView):
@@ -116,6 +117,7 @@ class MovieDetail(DetailView):
 		context['item_path'] = 'movies'
 		context['item_name'] = 'Cine'
 		context['agents'] = group_agents(self.object.movieinvolvement_set.all())
+		context['mark_options'] = models.MovieMark.OPTION_CHOICES
 		return context
 
 class MovieCreate(CreateView):
@@ -173,6 +175,7 @@ class SeriesDetail(DetailView):
 		context['agents'] = group_agents(self.object.seriesinvolvement_set.all())
 		context['label'] = self.get_label()
 		context['chapters'] = self.get_chapters()
+		context['mark_options'] = models.SeriesMark.OPTION_CHOICES
 		return context
 	
 	# Set label color by status
@@ -283,6 +286,7 @@ class ComicDetail(DetailView):
 		context['item_path'] = 'comics'
 		context['item_name'] = 'Cómic'
 		context['agents'] = group_agents(self.object.comicinvolvement_set.all())
+		context['mark_options'] = models.ComicMark.OPTION_CHOICES
 		return context
 
 class ComicCreate(CreateView):
@@ -338,6 +342,7 @@ class ComicSeriesDetail(DetailView):
 		context['item_path'] = 'comicseries'
 		context['item_name'] = 'Serie de cómics'
 		context['agents'] = group_agents(self.object.comicseriesinvolvement_set.all())
+		context['mark_options'] = models.ComicSeriesMark.OPTION_CHOICES
 		return context
 
 class ComicSeriesCreate(CreateView):
@@ -416,6 +421,7 @@ class GameDetail(DetailView):
 		context['item_path'] = 'games'
 		context['item_name'] = 'Videojuego'
 		context['agents'] = group_agents(self.object.gameinvolvement_set.all())
+		context['mark_options'] = models.GameMark.OPTION_CHOICES
 		return context
 
 class GameCreate(CreateView):
@@ -471,6 +477,7 @@ class DLCDetail(DetailView):
 		context['item_path'] = 'games/' + unicode(self.object.game.id)
 		context['item_name'] = 'DLC'
 		context['agents'] = group_agents(self.object.dlcinvolvement_set.all())
+		context['mark_options'] = models.DLCMark.OPTION_CHOICES
 		return context
 
 class DLCCreate(CreateView):

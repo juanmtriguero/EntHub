@@ -34,7 +34,7 @@ body{
 	left: 0;
 }
 
-.has-feedback-left input.form-control {
-  padding-left: 35px;
-  padding-right: 12px;
+.has-feedback-left input.form-control{
+	padding-left: 35px;
+	padding-right: 12px;
 }

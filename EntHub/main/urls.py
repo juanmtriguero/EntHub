@@ -9,5 +9,6 @@ urlpatterns = [
     url(r'^accounts/logout/', logout_then_login, name='logout'),
     url(r'^accounts/register/', views.UserRegister.as_view(), name='register'),
 
+    url(r'^accounts$', login_required(views.account_list), name='account_list'),
 	url(r'^accounts/(?P<pk>\d+)/', login_required(views.AccountDetail.as_view()), name='account_detail'),
 ]

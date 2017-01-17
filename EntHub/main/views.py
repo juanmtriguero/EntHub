@@ -33,6 +33,28 @@ class UserRegister(CreateView):
 		else:
 			return self.render_to_response(self.get_context_data(form=form))
 
+def account_list(request):
+
+	# Filter by status
+	s = request.POST.get('s', 'all')
+	if s == "all":
+		accounts = models.Account.objects.all()
+	# TODO followers and following
+	elif s == "fers":
+		accounts = None
+	elif s == "fing":
+		accounts = None
+	else:
+		accounts = None
+
+	# Filter by search
+	q = request.POST.get('q', '')
+	if q:
+		accounts = accounts.filter(user__username__icontains=q)
+
+	context = {'accounts': accounts, 'q': q, 's': s}
+	return render(request, 'main/account_list.html', context)
+
 class AccountDetail(DetailView):
 	model = models.Account
 	template_name = 'main/account_detail.html'

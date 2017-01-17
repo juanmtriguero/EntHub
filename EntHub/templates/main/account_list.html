@@ -1,0 +1,80 @@
+{% extends 'base/base.html' %}
+
+{% block content %}
+
+<div class="container">
+
+	<div class="col-md-3 well filter">
+		<form method="post" class="form-horizontal">
+			{% csrf_token %}
+			<fieldset>
+
+				<legend>Comunidad</legend>
+
+				<div class="has-feedback has-feedback-left">
+					<input type="text" class="form-control" name="q" placeholder="Buscar" value="{% if q %}{{q}}{% endif %}">
+					<i class="glyphicon glyphicon-search form-control-feedback"></i>
+				</div>
+				<hr/>
+
+				<div class="form-group">
+					<div class="radio">
+						<label>
+							<input type="radio" name="s" value="all" {% if s == "all" %}checked{% endif %}>
+							Todo
+						</label>
+					</div>
+					<div class="radio">
+						<label>
+							<input type="radio" name="s" value="fers" {% if s == "fers" %}checked{% endif %}>
+							Seguidores
+						</label>
+					</div>
+					<div class="radio">
+						<label>
+							<input type="radio" name="s" value="fing" {% if s == "fing" %}checked{% endif %}>
+							Siguiendo
+						</label>
+					</div>
+				</div>
+			<hr/>
+
+				<button type="submit" class="btn btn-primary">Filtrar</button>
+
+			</fieldset>
+		</form>
+	</div>
+		
+	<div class="col-md-9">
+		
+		{% if accounts %}
+
+		{% for account in accounts %}
+
+		<div class="col-md-6 account-block">
+			<div class="row">
+				<div class="col-md-5">
+					<img src="{{account.avatar}}" class="img-circle img-responsive" />
+				</div>
+				<div class="col-md-7">
+					<h3>{{account.user.username}}</h3>
+					<a href="/accounts/{{account.id}}" class="btn btn-link">Ver perfil</a>
+				</div>
+			</div>
+		</div>
+
+		{% endfor %}
+
+		{% else %}
+
+		<div class="alert alert-warning">
+			<span>No hay nada para mostrar</span>
+		</div>
+			
+		{% endif %}
+
+	</div>
+
+</div>
+
+{% endblock %}

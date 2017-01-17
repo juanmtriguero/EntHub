@@ -22,7 +22,7 @@ body{
 	border-bottom: 0;
 }
 
-/* Item catalogue */
+/* Item catalogue and Account list */
 
 .filter .form-group{
 	margin-left: 0;
@@ -37,4 +37,8 @@ body{
 .has-feedback-left input.form-control{
 	padding-left: 35px;
 	padding-right: 12px;
+}
+
+.account-block{
+	margin-bottom: 20px;
 }

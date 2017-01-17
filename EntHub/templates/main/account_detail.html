@@ -1,0 +1,56 @@
+{% extends 'base/base.html' %}
+
+{% block content %}
+
+<div class="container">
+
+	<div class="row">
+
+		<div class="col-md-3 text-center">
+			
+			<img src="{{object.avatar}}" class="img-responsive" />
+			
+			<h2>{{object.user.username}}</h2>
+			
+			{% if object.user.first_name or object.user.last_name %}
+			<h4>{{object.user.first_name}}&nbsp;{{object.user.last_name}}</h4>
+			{% endif %}
+			
+			<p>{{object.text}}</p>
+			
+			{% if object.birth %}
+			<p><span class="label label-default">
+				<span class="glyphicon glyphicon-gift"></span>
+				&nbsp;Nacido el {{object.birth}}
+			</span></p>
+			{% endif %}
+			
+			<p><span class="label label-default">
+				<span class="glyphicon glyphicon-time"></span>
+				&nbsp;Se unió el {{object.user.date_joined.date}}
+			</span></p>
+
+			{% if te_sigue %}
+			<p><span class="label label-primary">
+				<span class="glyphicon glyphicon-ok"></span>
+				&nbsp;Te sigue
+			</span></p>
+			{% endif %}
+			
+			<hr/>
+			{% if user.id == object.user.id %}
+			<a href="/accounts/edit" class="btn btn-primary">Editar</a>
+			<a href="/accounts/delete" class="btn btn-danger">Eliminar</a>
+			{% else %}
+			<a href="#" class="btn btn-primary">Seguir usuario</a>
+			{% endif %}
+
+		</div>
+
+		<!-- TODO resto del perfil -->
+	
+	</div>
+
+</div>
+
+{% endblock %}

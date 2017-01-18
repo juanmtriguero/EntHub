@@ -37,8 +37,8 @@
 						</label>
 					</div>
 				</div>
-			<hr/>
-
+			
+				<hr/>
 				<button type="submit" class="btn btn-primary">Filtrar</button>
 
 			</fieldset>
@@ -54,10 +54,17 @@
 		<div class="col-md-6 account-block">
 			<div class="row">
 				<div class="col-md-5">
-					<img src="{{account.avatar}}" class="img-circle img-responsive" />
+					<a href="/accounts/{{account.id}}">
+						<img src="{{account.avatar}}" class="img-circle img-responsive" />
+					</a>
 				</div>
 				<div class="col-md-7">
 					<h3>{{account.user.username}}</h3>
+					{% if user.id == account.user.id %}
+					<a href="/accounts/edit" class="btn btn-primary">Editar</a>
+					{% else %}
+					<a href="#" class="btn btn-primary">Seguir</a>
+					{% endif %}
 					<a href="/accounts/{{account.id}}" class="btn btn-link">Ver perfil</a>
 				</div>
 			</div>

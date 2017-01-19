@@ -1,7 +1,7 @@
 #encoding:utf-8
 
 from django.db import models
-from main.models import Account
+from django.contrib.auth.models import User
 
 # Genre
 
@@ -35,8 +35,8 @@ class Platform(models.Model):
 
 class List(models.Model):
 	name = models.CharField(max_length=100)
-	creator = models.ForeignKey(Account, related_name="creator", on_delete=models.CASCADE)
-	followers = models.ManyToManyField(Account, related_name="follower", blank=True)
+	creator = models.ForeignKey(User, related_name="creator", on_delete=models.CASCADE)
+	followers = models.ManyToManyField(User, related_name="follower", blank=True)
 
 	def __unicode__(self):
 		return unicode(self.name)
@@ -114,8 +114,8 @@ class Series(Item):
 class Subitem(models.Model):
 	number = models.IntegerField()
 	name = models.CharField(max_length=100)
-	# TODO Tics in Account (and optional)
-	# tics = models.ManyToManyField(Account)
+	# TODO Tics in User (and optional)
+	# tics = models.ManyToManyField(User)
 
 	class Meta:
 		abstract = True
@@ -138,7 +138,7 @@ class Chapter(Subitem):
 # Marks
 
 class Mark(models.Model):
-	user = models.ForeignKey(Account, on_delete=models.CASCADE)
+	user = models.ForeignKey(User, on_delete=models.CASCADE)
 	rating = models.IntegerField(null=True, blank=True, choices=
 		[(i, i) for i in range(1,6)]) # TODO Update item rating
 	fav = models.BooleanField(default=False)

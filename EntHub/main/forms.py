@@ -3,7 +3,7 @@
 from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm
 from django import forms
-from items import models
+from main import models
 
 class UserForm(UserCreationForm):
 	class Meta:

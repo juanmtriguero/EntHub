@@ -3,98 +3,96 @@
 {% block content %}
 
 <div class="container">
-	<div class="row">
 
-		<div class="col-md-3 well filter">
-			<form method="post" class="form-horizontal">
-				{% csrf_token %}
-				<fieldset>
+	<div class="col-md-3 well filter">
+		<form method="post" class="form-horizontal">
+			{% csrf_token %}
+			<fieldset>
 	
 				<legend>Catálogo</legend>
 
-					<div class="has-feedback has-feedback-left">
-						<input type="text" class="form-control" name="q" placeholder="Buscar" value="{% if q %}{{q}}{% endif %}">
-						<i class="glyphicon glyphicon-search form-control-feedback"></i>
-					</div>
-					<hr/>
-
-					<div class="form-group">
-						<label class="control-label">Categoría</label>
-						<div class="radio">
-							<label>
-								<input type="radio" name="c" value="books" {% if c == "books" %}checked{% endif %}>
-								Libros
-							</label>
-						</div>
-						<div class="radio">
-							<label>
-								<input type="radio" name="c" value="movies" {% if c == "movies" %}checked{% endif %}>
-								Películas
-							</label>
-						</div>
-						<div class="radio">
-							<label>
-								<input type="radio" name="c" value="series" {% if c == "series" %}checked{% endif %}>
-								Televisión
-							</label>
-						</div>
-						<div class="radio">
-							<label>
-								<input type="radio" name="c" value="comics" {% if c == "comics" %}checked{% endif %}>
-								Cómics
-							</label>
-						</div>
-						<div class="radio">
-							<label>
-								<input type="radio" name="c" value="comicseries" {% if c == "comicseries" %}checked{% endif %}>
-								Series de cómics
-							</label>
-						</div>
-						<div class="radio">
-							<label>
-								<input type="radio" name="c" value="games" {% if c == "games" %}checked{% endif %}>
-								Videojuegos
-							</label>
-						</div>
-					</div>
-					<hr/>
-
-					<button type="submit" class="btn btn-primary">Filtrar</button>
-
-				</fieldset>
-			</form>
-		</div>
-
-		<div class="col-md-9">
-
-			{% if items %}
-
-		  	{% for item in items %}
-			<div class="col-md-4">
-				<div class="panel panel-primary">
-					<div class="panel-heading">
-						<h3 class="panel-title">{{item}}</h3>
-			  		</div>
-			  		<div class="panel-body">
-						<a href="/items/{{c}}/{{item.id}}" class="btn btn-link">Ver</a>
-						<a href="/items/{{c}}/edit/{{item.id}}" class="btn btn-link">Editar</a>
-						<a href="/items/{{c}}/delete/{{item.id}}" class="btn btn-link">Eliminar</a>
-			  		</div>
+				<div class="has-feedback has-feedback-left">
+					<input type="text" class="form-control" name="q" placeholder="Buscar" value="{% if q %}{{q}}{% endif %}">
+					<i class="glyphicon glyphicon-search form-control-feedback"></i>
 				</div>
+				<hr/>
+
+				<div class="form-group">
+					<label class="control-label">Categoría</label>
+					<div class="radio">
+						<label>
+							<input type="radio" name="c" value="books" {% if c == "books" %}checked{% endif %}>
+							Libros
+						</label>
+					</div>
+					<div class="radio">
+						<label>
+							<input type="radio" name="c" value="movies" {% if c == "movies" %}checked{% endif %}>
+							Películas
+						</label>
+					</div>
+					<div class="radio">
+						<label>
+							<input type="radio" name="c" value="series" {% if c == "series" %}checked{% endif %}>
+							Televisión
+						</label>
+					</div>
+					<div class="radio">
+						<label>
+							<input type="radio" name="c" value="comics" {% if c == "comics" %}checked{% endif %}>
+							Cómics
+						</label>
+					</div>
+					<div class="radio">
+						<label>
+							<input type="radio" name="c" value="comicseries" {% if c == "comicseries" %}checked{% endif %}>
+							Series de cómics
+						</label>
+					</div>
+					<div class="radio">
+						<label>
+							<input type="radio" name="c" value="games" {% if c == "games" %}checked{% endif %}>
+							Videojuegos
+						</label>
+					</div>
+				</div>
+				<hr/>
+
+				<button type="submit" class="btn btn-primary">Filtrar</button>
+
+			</fieldset>
+		</form>
+	</div>
+
+	<div class="col-md-9">
+
+		{% if items %}
+
+	  	{% for item in items %}
+		<div class="col-md-4">
+			<div class="panel panel-primary">
+				<div class="panel-heading">
+					<h3 class="panel-title">{{item}}</h3>
+		  		</div>
+		  		<div class="panel-body">
+					<a href="/items/{{c}}/{{item.id}}" class="btn btn-link">Ver</a>
+					<a href="/items/{{c}}/edit/{{item.id}}" class="btn btn-link">Editar</a>
+					<a href="/items/{{c}}/delete/{{item.id}}" class="btn btn-link">Eliminar</a>
+			 		</div>
 			</div>
-		    {% endfor %}
-
-			{% else %}
-
-			<div class="alert alert-warning">
-				<span>No hay nada para mostrar</span>
-			</div>
-
-			{% endif %}
-
 		</div>
+	    {% endfor %}
+
+		{% else %}
+
+		<div class="alert alert-warning">
+			<span>No hay nada para mostrar</span>
+		</div>
+
+		{% endif %}
 
 	</div>
+
 </div>
 
 {% endblock %}

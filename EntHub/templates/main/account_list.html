@@ -60,7 +60,7 @@
 				<div class="col-md-7">
 					<h3>{{account.user.username}}</h3>
 					{% if user.id == account.user.id %}
-					<a href="/accounts/edit" class="btn btn-primary">Editar</a>
+					<a href="/accounts/edit" class="btn btn-default">Editar</a>
 					{% elif account in user.account.following.all %}
 					<a href="#" class="btn btn-danger">No seguir</a>
 					{% else %}

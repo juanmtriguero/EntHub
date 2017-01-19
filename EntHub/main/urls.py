@@ -8,7 +8,8 @@ urlpatterns = [
     url(r'^accounts/login/', login, {'template_name': 'main/login.html'}, name='login'),
     url(r'^accounts/logout/', logout_then_login, name='logout'),
     url(r'^accounts/register/', views.UserRegister.as_view(), name='register'),
-
+    
     url(r'^accounts$', login_required(views.account_list), name='account_list'),
 	url(r'^accounts/(?P<pk>\d+)/', login_required(views.AccountDetail.as_view()), name='account_detail'),
+    url(r'^accounts/edit/', login_required(views.AccountUpdate.as_view()), name='account_update'),
 ]

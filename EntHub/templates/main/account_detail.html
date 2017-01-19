@@ -40,8 +40,7 @@
 			
 			<hr/>
 			{% if user.id == object.user.id %}
-			<a href="/accounts/edit" class="btn btn-primary">Editar</a>
-			<a href="/accounts/delete" class="btn btn-danger">Eliminar</a>
+			<a href="/accounts/edit" class="btn btn-default">Editar mi perfil</a>
 			{% elif object in user.account.following.all %}
 			<a href="#" class="btn btn-danger">Dejar de seguir</a>
 			{% else %}

@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.http import HttpResponseRedirect
-from django.views.generic import CreateView, DetailView
+from django.views.generic import CreateView, DetailView, UpdateView
 from django.core.urlresolvers import reverse_lazy
 from django.contrib.auth import authenticate, login
 from django.contrib.auth.models import User
@@ -58,3 +58,15 @@ def account_list(request):
 class AccountDetail(DetailView):
 	model = models.Account
 	template_name = 'main/account_detail.html'
+
+class AccountUpdate(UpdateView):
+	model = models.Account
+	form_class = forms.AccountForm
+	template_name = 'main/account_form.html'
+	
+	def get_object(self):
+		return self.request.user.account
+
+	def get_success_url(self):
+		return reverse_lazy('main:account_detail', 
+			kwargs={'pk': self.object.id})

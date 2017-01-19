@@ -61,12 +61,36 @@ class AccountDetail(DetailView):
 
 class AccountUpdate(UpdateView):
 	model = models.Account
+	second_model = User
 	form_class = forms.AccountForm
+	second_form_class = forms.UserNameForm
 	template_name = 'main/account_form.html'
-	
+
+	def get_context_data(self, **kwargs):
+		context = super(AccountUpdate, self).get_context_data(**kwargs)
+		user = self.request.user
+		if 'form' not in context:
+			context['form'] = self.form_class()
+		if 'form2' not in context:
+			context['form2'] = self.second_form_class(instance=user)
+		return context
+
 	def get_object(self):
 		return self.request.user.account
 
 	def get_success_url(self):
 		return reverse_lazy('main:account_detail', 
 			kwargs={'pk': self.object.id})
+
+	def post(self, request, *args, **kwargs):
+		self.object = self.get_object()
+		user = request.user
+		account = user.account
+		form = self.form_class(request.POST, instance=account)
+		form2 = self.second_form_class(request.POST, instance=user)
+		if form.is_valid() and form2.is_valid():
+			form.save()
+			form2.save()
+			return HttpResponseRedirect(self.get_success_url())
+		else:
+			return self.render_to_response(self.get_context_data(form=form, form2=form2))

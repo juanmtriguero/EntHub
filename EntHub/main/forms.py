@@ -45,3 +45,19 @@ class AccountForm(forms.ModelForm):
 			'text': forms.Textarea(attrs={'class':'form-control'}),
 			'avatar': forms.URLInput(attrs={'class':'form-control'}),
 		}
+
+class UserNameForm(forms.ModelForm):
+	class Meta:
+		model = User
+		fields = [
+			'first_name',
+			'last_name',
+		]
+		labels = {
+			'first_name': 'Nombre',
+			'last_name': 'Apellidos',
+		}
+		widgets = {
+			'first_name': forms.TextInput(attrs={'class':'form-control'}),
+			'last_name': forms.TextInput(attrs={'class':'form-control'}),
+		}

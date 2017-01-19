@@ -14,6 +14,22 @@
 		{% csrf_token %}
 		<fieldset>
 			<legend>Información del perfil</legend>
+			{% for field in form2 %}
+			<div class="form-group {% if field.errors %}has-error{% endif %}">
+				<label class="col-md-3 control-label">{{field.label}}</label> 
+				<div class="col-md-9">
+					{{field}}
+					{% if field.errors %}
+					<div class="alert alert-danger error-message">
+						{% for error in field.errors %}
+						<span>{{error}}</span>
+						{% endfor %}
+					</div>
+					{% endif %}
+				</div>
+			</div>
+			{% endfor %}
+			<hr/>
 			{% for field in form %}
 			<div class="form-group {% if field.errors %}has-error{% endif %}">
 				<label class="col-md-3 control-label">{{field.label}}</label> 

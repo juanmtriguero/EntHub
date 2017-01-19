@@ -8,7 +8,7 @@ class Account(models.Model):
     birth = models.DateField(blank=True, null=True)
     text = models.TextField(blank=True)
     avatar = models.URLField(blank=True)
-    following = models.ManyToManyField("self", blank=True)
+    following = models.ManyToManyField("self", symmetrical=False, related_name="followers", blank=True)
 
     def __unicode__(self):
         return unicode(self.user.username)

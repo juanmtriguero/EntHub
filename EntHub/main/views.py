@@ -37,13 +37,13 @@ def account_list(request):
 
 	# Filter by status
 	s = request.POST.get('s', 'all')
+	acc = request.user.account
 	if s == "all":
 		accounts = models.Account.objects.all()
-	# TODO followers and following
 	elif s == "fers":
-		accounts = None
+		accounts = acc.followers.all()
 	elif s == "fing":
-		accounts = None
+		accounts = acc.following.all()
 	else:
 		accounts = None
 

@@ -15,8 +15,21 @@
 		<fieldset>
 			<legend>Desactivar la cuenta</legend>
 			<div class="alert alert-warning">
-				<p>¿Está seguro de que desea desactivar su cuenta? Su perfil no aparecerá en la web y no podrá iniciar sesión de nuevo con esta cuenta.</p>
+				<p>Por seguridad, introduzca su contraseña actual</p>
 			</div>
+			<div class="form-group {% if error %}has-error{% endif %}">
+				<label for="password" class="col-md-3 control-label">Contraseña actual</label>
+				<div class="col-md-9">
+					<input type="password" name="password" class="form-control">
+					{% if error %}
+					<div class="alert alert-danger error-message">
+						<span>La contraseña introducida no es correcta.</span>
+					</div>
+					{% endif %}
+				</div>
+			</div>
+			<hr/>
+			<p class="lead">¿Está seguro de que desea desactivar su cuenta? Su perfil no aparecerá en la web y no podrá iniciar sesión de nuevo con esta cuenta.</p>
 			<button type="submit" class="btn btn-danger">Sí, estoy seguro</button>
 			<a href="/accounts/{{user.account.id}}" class="btn btn-link">No, cancelar</a>
 			</div>

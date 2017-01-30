@@ -101,6 +101,10 @@ def user_deactivate(request):
 		return render(request, 'main/user_deactivate.html')
 	if request.method == "POST":
 		user = request.user
-		user.is_active = False
-		user.save()
-		return HttpResponseRedirect(reverse_lazy('main:logout'))
+		if user.check_password(request.POST['password']):
+			user.is_active = False
+			user.save()
+			return HttpResponseRedirect(reverse_lazy('main:logout'))
+		else:
+			context = {'error': True}
+			return render(request, 'main/user_deactivate.html', context)

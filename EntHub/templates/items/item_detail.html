@@ -8,18 +8,29 @@
 		
 		<div class="col-md-3 text-center">
 			<img src="{{object.image}}" class="img-responsive">
-			<p><div class="btn-group">
-				<a href="#" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-					Marcar como&nbsp;<span class="caret"></span>
+			{# TODO Añadir funcionalidad #}
+			<br/>
+			<div class="btn-group btn-block">
+				<a href="#" class="btn btn-default btn-block dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+					No marcar&nbsp;<span class="caret"></span>
 				</a>
-				<ul class="dropdown-menu">
+				<ul class="dropdown-menu btn-block">
 					{% for o, option in mark_options %}
-					<li><a href="#">{{option}}</a></li>
+					<li data-value="{{o}}"><a href="#" class="text-center">{{option}}</a></li>
 					{% endfor %}
 					<li class="divider"></li>
-					<li><a href="#">No marcar</a></li>
+					<li data-value="not"><a href="#" class="text-center">No marcar</a></li>
 				</ul>
-			</div></p>
+			</div>
+			{% if True %}
+			<a href="#" class="btn btn-primary btn-block">
+				<span class="glyphicon glyphicon-heart"></span>&nbsp;&nbsp;Añadir a favoritos
+			</a>
+			{% else %}
+			<a href="#" class="btn btn-danger btn-block">
+				<span class="glyphicon glyphicon-heart"></span>&nbsp;&nbsp;Quitar de favoritos
+			</a>
+			{% endif %}
 		</div>
 		
 		<div class="col-md-6">
@@ -81,4 +92,13 @@
 
 </div>
 
+{% endblock %}
+
+{% block scripts %}
+<script type="text/javascript">
+	$('ul.dropdown-menu').on('click', 'li a', function(){
+		$(this).parents(".btn-group").find('.btn').html($(this).text()
+				+ '&nbsp;<span class="caret"></span>');
+	});
+</script>
 {% endblock %}

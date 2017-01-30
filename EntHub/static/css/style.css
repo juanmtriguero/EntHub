@@ -48,3 +48,9 @@ body{
 .account-block{
 	margin-bottom: 20px;
 }
+
+/* Mark button */
+
+.btn .glyphicon{
+	font-size: 14px;
+}

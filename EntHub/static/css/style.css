@@ -12,6 +12,12 @@ body{
 	margin-bottom: 0;
 }
 
+.non-field-error-message{
+	padding: 5px 10px;
+	margin-top: 20px;
+	margin-bottom: 15px;
+}
+
 /* Series items detail */
 
 .subitems-title{

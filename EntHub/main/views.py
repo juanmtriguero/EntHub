@@ -4,6 +4,7 @@ from django.views.generic import CreateView, DetailView, UpdateView
 from django.core.urlresolvers import reverse_lazy
 from django.contrib.auth import authenticate, login
 from django.contrib.auth.models import User
+from django.contrib.auth.views import logout_then_login
 from items.models import Game
 from main import models, forms
 
@@ -94,3 +95,12 @@ class AccountUpdate(UpdateView):
 			return HttpResponseRedirect(self.get_success_url())
 		else:
 			return self.render_to_response(self.get_context_data(form=form, form2=form2))
+
+def user_deactivate(request):
+	if request.method == "GET":
+		return render(request, 'main/user_deactivate.html')
+	if request.method == "POST":
+		user = request.user
+		user.is_active = False
+		user.save()
+		return HttpResponseRedirect(reverse_lazy('main:logout'))

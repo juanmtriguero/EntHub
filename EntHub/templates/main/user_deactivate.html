@@ -1,0 +1,28 @@
+{% extends 'base/base.html' %}
+
+{% block content %}
+
+<div class="container">
+
+	<div class="list-group col-md-3">
+		<a href="/accounts/edit" class="list-group-item">Información del perfil</a>
+		<a href="/accounts/password" class="list-group-item">Cambiar contraseña</a>
+		<a href="/accounts/deactivate" class="list-group-item active">Desactivar la cuenta</a>
+	</div>
+
+	<form method="post" class="form-horizontal col-md-9">
+		{% csrf_token %}
+		<fieldset>
+			<legend>Desactivar la cuenta</legend>
+			<div class="alert alert-warning">
+				<p>¿Está seguro de que desea desactivar su cuenta? Su perfil no aparecerá en la web y no podrá iniciar sesión de nuevo con esta cuenta.</p>
+			</div>
+			<button type="submit" class="btn btn-danger">Sí, estoy seguro</button>
+			<a href="/accounts/{{user.account.id}}" class="btn btn-link">No, cancelar</a>
+			</div>
+		</fieldset>
+	</form>
+
+</div>
+
+{% endblock %}

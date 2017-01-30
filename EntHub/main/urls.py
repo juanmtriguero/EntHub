@@ -14,4 +14,5 @@ urlpatterns = [
     url(r'^accounts/edit/', login_required(views.AccountUpdate.as_view()), name='account_update'),
     url(r'^accounts/password/', login_required(password_change), {'template_name': 'main/password_change.html',
     		'post_change_redirect': 'main:account_update'}, name='password_change'),
+    url(r'^accounts/deactivate/', login_required(views.user_deactivate), name='user_deactivate'),
 ]

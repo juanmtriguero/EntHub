@@ -197,7 +197,7 @@ class ComicMark(IndividualMark):
 
 	def __unicode__(self):
 		return unicode(self.user) + u" ha marcado el cómic "\
-			   + unicode(self.graphicNovel) + " como " + unicode(self.get_option_display())
+			   + unicode(self.comic) + " como " + unicode(self.get_option_display())
 
 class GroupMark(Mark):
 	OPTION_CHOICES = (
@@ -222,7 +222,7 @@ class SeriesMark(GroupMark):
 	series = models.ForeignKey(Series, on_delete=models.CASCADE)
 
 	def __unicode__(self):
-		return unicode(self.user) + " ha marcado el " + unicode(self.series.category)\
+		return unicode(self.user) + " ha marcado el " + unicode(self.series.get_category_display())\
 			   + " " + unicode(self.series) + " como " + unicode(self.get_option_display())
 
 class MovieMark(Mark):
@@ -234,7 +234,7 @@ class MovieMark(Mark):
 	option = models.CharField(max_length=3, choices=OPTION_CHOICES)
 
 	def __unicode__(self):
-		return unicode(self.user) + " ha marcado el " + unicode(self.movie.category)\
+		return unicode(self.user) + " ha marcado el " + unicode(self.movie.get_category_display())\
 			   + " " + unicode(self.movie) + " como " + unicode(self.get_option_display())
 
 # Involvements

@@ -8,36 +8,77 @@
 	<hr/>
 
 	<div class="row">
-	
-		{% if object_list %}
 
-	  	{% for book in object_list %}
 		<div class="col-md-3">
-			<div class="panel panel-primary">
-				<div class="panel-heading">
-					<h3 class="panel-title">{{book}}</h3>
-		  		</div>
-		  		<div class="panel-body">
-					<a href="/items/books/{{book.id}}" class="btn btn-link">Ver</a>
-					<a href="/items/books/edit/{{book.id}}" class="btn btn-link">Editar</a>
-					<a href="/items/books/delete/{{book.id}}" class="btn btn-link">Eliminar</a>
-		  		</div>
+			
+			<form method="post">
+				{% csrf_token %}
+				<div class="list-group">
+					<button type="submit" class="list-group-item {% if not m %}active{% endif %}">
+						Todo
+					</button>
+					<button type="submit" name="m" value="pen"
+							class="list-group-item {% if m == 'pen' %}active{% endif %}">
+						<span class="badge">{{pen}}</span>
+						<i class="glyphicon glyphicon-time"></i>Pendiente
+					</button>
+					<button type="submit" name="m" value="ley"
+							class="list-group-item {% if m == 'ley' %}active{% endif %}">
+						<span class="badge">{{ley}}</span>
+						<i class="glyphicon glyphicon-play"></i>Leyendo
+					</button>
+					<button type="submit" name="m" value="pau"
+							class="list-group-item {% if m == 'pau' %}active{% endif %}">
+						<span class="badge">{{pau}}</span>
+						<i class="glyphicon glyphicon-pause"></i>Pausado
+					</button>
+					<button type="submit" name="m" value="lei"
+							class="list-group-item {% if m == 'lei' %}active{% endif %}">
+						<span class="badge">{{lei}}</span>
+						<i class="glyphicon glyphicon-ok"></i>Leído
+					</button>
+					<button type="submit" name="m" value="fav"
+							class="list-group-item {% if m == 'fav' %}active{% endif %}">
+						<span class="badge">{{fav}}</span>
+						<i class="glyphicon glyphicon-heart"></i>Favorito
+					</button>
+				</div>
+			</form>
+
+			<a href="/items/books/new" class="btn btn-primary btn-block">Añadir nuevo</a>
+
+		</div>
+
+		<div class="col-md-9">
+		
+			{% if books %}
+
+			{% for book in books %}
+			<div class="col-md-4">
+				<div class="panel panel-primary">
+					<div class="panel-heading">
+						<h3 class="panel-title">{{book}}</h3>
+					</div>
+					<div class="panel-body">
+						<a href="/items/books/{{book.id}}" class="btn btn-link">Ver</a>
+						<a href="/items/books/edit/{{book.id}}" class="btn btn-link">Editar</a>
+						<a href="/items/books/delete/{{book.id}}" class="btn btn-link">Eliminar</a>
+					</div>
+				</div>
 			</div>
+			{% endfor %}
+
+			{% else %}
+
+			<div class="alert alert-warning">
+				<span>No hay nada para mostrar</span>
+			</div>
+
+			{% endif %}
+
 		</div>
-	    {% endfor %}
-
-		{% else %}
-
-		<div class="alert alert-warning">
-			<span>No hay nada para mostrar</span>
-		</div>
-
-		{% endif %}
 
 	</div>
-
-	<hr/>
-	<a href="/items/books/new" class="btn btn-primary">Nuevo libro</a>
 
 </div>
 

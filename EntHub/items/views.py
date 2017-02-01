@@ -36,9 +36,31 @@ def catalogue(request):
 
 # Book
 
-class BookList(ListView):
-	model = models.Book
-	template_name = 'items/book_list.html'
+def book_list(request):
+
+	# Count by mark
+
+	pen = request.user.bookmark_set.filter(option='pen').count()
+	ley = request.user.bookmark_set.filter(option='ley').count()
+	pau = request.user.bookmark_set.filter(option='pau').count()
+	lei = request.user.bookmark_set.filter(option='lei').count()
+	fav = request.user.bookmark_set.filter(fav='True').count()
+
+	context = {'pen': pen, 'ley': ley, 'pau': pau, 'lei': lei, 'fav': fav}
+
+	# Filter by mark
+	m = request.POST.get('m')
+	if m:
+		if m != 'fav':
+			marks = request.user.bookmark_set.filter(option=m)
+		else:
+			marks = request.user.bookmark_set.filter(fav='True')
+		books = [mark.book for mark in marks]
+	else:
+		books = models.Book.objects.all()
+
+	context.update({'books': books, 'm': m})
+	return render(request, 'items/book_list.html', context)
 
 class BookDetail(DetailView):
 	model = models.Book

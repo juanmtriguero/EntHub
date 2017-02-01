@@ -49,6 +49,11 @@ body{
 	margin-bottom: 20px;
 }
 
+button.list-group-item .glyphicon{
+	font-size: 14px;
+	margin-right: 7px;
+}
+
 /* Mark button */
 
 .btn .glyphicon{

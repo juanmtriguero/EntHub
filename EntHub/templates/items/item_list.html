@@ -1,0 +1,95 @@
+{% extends 'base/base.html' %}
+
+{% block content %}
+
+<div class="container">
+
+	<h1>{{header}}</h1>
+	<hr/>
+
+	{% block tabs %}
+	{% endblock %}
+
+	<div class="row">
+
+		<div class="col-md-3">
+			
+			<form method="post">
+				{% csrf_token %}
+				<div class="list-group">
+					<button type="submit" class="list-group-item {% if not m %}active{% endif %}">
+						Todo
+					</button>
+					{% for mark, count in marks.items %}
+					<button type="submit" name="m" value="{{mark}}"
+							class="list-group-item {% if m == mark %}active{% endif %}">
+						<span class="badge">{{count}}</span>
+						{% if mark == "pen" %}
+							<i class="glyphicon glyphicon-time"></i>Pendiente
+						{% elif mark == "ley" %}
+							<i class="glyphicon glyphicon-play"></i>Leyendo
+						{% elif mark == "pau" %}
+							<i class="glyphicon glyphicon-pause"></i>Pausado
+						{% elif mark == "lei" %}
+							<i class="glyphicon glyphicon-ok"></i>Leído
+						{% elif mark == "jug" %}
+							<i class="glyphicon glyphicon-play"></i>Jugando
+						{% elif mark == "ter" %}
+							<i class="glyphicon glyphicon-ok"></i>Terminado
+						{% elif mark == "com" %}
+							<i class="glyphicon glyphicon-check"></i>Completado
+						{% elif mark == "sig" %}
+							<i class="glyphicon glyphicon-play"></i>Siguiendo
+						{% elif mark == "fin" %}
+							<i class="glyphicon glyphicon-ok"></i>Finalizado
+						{% elif mark == "vis" %}
+							<i class="glyphicon glyphicon-ok"></i>Visto
+						{% endif %}
+					</button>
+					{% endfor %}
+					<button type="submit" name="m" value="fav"
+							class="list-group-item {% if m == 'fav' %}active{% endif %}">
+						<span class="badge">{{fav}}</span>
+						<i class="glyphicon glyphicon-heart"></i>Favorito
+					</button>
+				</div>
+			</form>
+
+			<a href="/items/{{item_path}}/new" class="btn btn-primary btn-block">Añadir nuevo</a>
+
+		</div>
+
+		<div class="col-md-9">
+		
+			{% if items %}
+
+			{% for item in items %}
+			<div class="col-md-4">
+				<div class="panel panel-primary">
+					<div class="panel-heading">
+						<h3 class="panel-title">{{item}}</h3>
+					</div>
+					<div class="panel-body">
+						<a href="/items/{{item_path}}/{{item.id}}" class="btn btn-link">Ver</a>
+						<a href="/items/{{item_path}}/edit/{{item.id}}" class="btn btn-link">Editar</a>
+						<a href="/items/{{item_path}}/delete/{{item.id}}" class="btn btn-link">Eliminar</a>
+					</div>
+				</div>
+			</div>
+			{% endfor %}
+
+			{% else %}
+
+			<div class="alert alert-warning">
+				<span>No hay nada para mostrar</span>
+			</div>
+
+			{% endif %}
+
+		</div>
+
+	</div>
+
+</div>
+
+{% endblock %}

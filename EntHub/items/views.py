@@ -1,7 +1,7 @@
 #encoding:utf-8
 
 from django.shortcuts import render
-from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
+from django.views.generic import DetailView, CreateView, UpdateView, DeleteView
 from django.core.urlresolvers import reverse_lazy
 from items import models, forms
 
@@ -37,17 +37,6 @@ def catalogue(request):
 # Book
 
 def book_list(request):
-
-	# Count by mark
-
-	pen = request.user.bookmark_set.filter(option='pen').count()
-	ley = request.user.bookmark_set.filter(option='ley').count()
-	pau = request.user.bookmark_set.filter(option='pau').count()
-	lei = request.user.bookmark_set.filter(option='lei').count()
-	fav = request.user.bookmark_set.filter(fav='True').count()
-
-	context = {'pen': pen, 'ley': ley, 'pau': pau, 'lei': lei, 'fav': fav}
-
 	# Filter by mark
 	m = request.POST.get('m')
 	if m:
@@ -55,12 +44,21 @@ def book_list(request):
 			marks = request.user.bookmark_set.filter(option=m)
 		else:
 			marks = request.user.bookmark_set.filter(fav='True')
-		books = [mark.book for mark in marks]
+		items = [mark.book for mark in marks]
 	else:
-		books = models.Book.objects.all()
-
-	context.update({'books': books, 'm': m})
-	return render(request, 'items/book_list.html', context)
+		items = models.Book.objects.all()
+	# Count by mark
+	pen = request.user.bookmark_set.filter(option='pen').count()
+	ley = request.user.bookmark_set.filter(option='ley').count()
+	pau = request.user.bookmark_set.filter(option='pau').count()
+	lei = request.user.bookmark_set.filter(option='lei').count()
+	marks = {'pen': pen, 'ley': ley, 'pau': pau, 'lei': lei}
+	fav = request.user.bookmark_set.filter(fav='True').count()
+	header = 'Catálogo de libros'
+	item_path = 'books'
+	context = {'items': items, 'm': m, 'marks': marks, 'fav': fav,
+			'header': header, 'item_path': item_path}
+	return render(request, 'items/item_list.html', context)
 
 class BookDetail(DetailView):
 	model = models.Book
@@ -116,19 +114,29 @@ class BookDelete(DeleteView):
 		context['cancel_url'] = "/items/books/" + unicode(self.object.id)
 		return context
 
-# Films & TV
-
-class FilmTVList(ListView):
-	model = models.Movie
-	template_name = 'items/film_tv_list.html'
-	context_object_name = 'movie_list'
-
-	def get_context_data(self, **kwargs):
-		context = super(FilmTVList, self).get_context_data(**kwargs)
-		context['series_list'] = models.Series.objects.all()
-		return context
-
 # Movie
+
+def movie_list(request):
+	# Filter by mark
+	m = request.POST.get('m')
+	if m:
+		if m != 'fav':
+			marks = request.user.moviemark_set.filter(option=m)
+		else:
+			marks = request.user.moviemark_set.filter(fav='True')
+		items = [mark.movie for mark in marks]
+	else:
+		items = models.Movie.objects.all()
+	# Count by mark
+	pen = request.user.moviemark_set.filter(option='pen').count()
+	vis = request.user.moviemark_set.filter(option='vis').count()
+	marks = {'pen': pen, 'vis': vis}
+	fav = request.user.moviemark_set.filter(fav='True').count()
+	header = 'Catálogo de cine y TV'
+	item_path = 'movies'
+	context = {'items': items, 'm': m, 'marks': marks, 'fav': fav,
+			'header': header, 'item_path': item_path}
+	return render(request, 'items/movie_list.html', context)
 
 class MovieDetail(DetailView):
 	model = models.Movie
@@ -185,6 +193,30 @@ class MovieDelete(DeleteView):
 		return context
 
 # Series
+
+def series_list(request):
+	# Filter by mark
+	m = request.POST.get('m')
+	if m:
+		if m != 'fav':
+			marks = request.user.seriesmark_set.filter(option=m)
+		else:
+			marks = request.user.seriesmark_set.filter(fav='True')
+		items = [mark.series for mark in marks]
+	else:
+		items = models.Series.objects.all()
+	# Count by mark
+	pen = request.user.seriesmark_set.filter(option='pen').count()
+	sig = request.user.seriesmark_set.filter(option='sig').count()
+	pau = request.user.seriesmark_set.filter(option='pau').count()
+	fin = request.user.seriesmark_set.filter(option='fin').count()
+	marks = {'pen': pen, 'sig': sig, 'pau': pau, 'fin': fin}
+	fav = request.user.seriesmark_set.filter(fav='True').count()
+	header = 'Catálogo de cine y TV'
+	item_path = 'series'
+	context = {'items': items, 'm': m, 'marks': marks, 'fav': fav,
+			'header': header, 'item_path': item_path}
+	return render(request, 'items/series_list.html', context)
 
 class SeriesDetail(DetailView):
 	model = models.Series
@@ -285,19 +317,31 @@ class ChapterCreate(CreateView):
 		return reverse_lazy('items:series_detail', 
 			kwargs={'pk': self.kwargs['pk']})
 
-# Comic items
-
-class ComicItemList(ListView):
-	model = models.Comic
-	template_name = 'items/comic_item_list.html'
-	context_object_name = 'comic_list'
-
-	def get_context_data(self, **kwargs):
-		context = super(ComicItemList, self).get_context_data(**kwargs)
-		context['comic_series_list'] = models.ComicSeries.objects.all()
-		return context
-
 # Comic
+
+def comic_list(request):
+	# Filter by mark
+	m = request.POST.get('m')
+	if m:
+		if m != 'fav':
+			marks = request.user.comicmark_set.filter(option=m)
+		else:
+			marks = request.user.comicmark_set.filter(fav='True')
+		items = [mark.comic for mark in marks]
+	else:
+		items = models.Comic.objects.all()
+	# Count by mark
+	pen = request.user.comicmark_set.filter(option='pen').count()
+	ley = request.user.comicmark_set.filter(option='ley').count()
+	pau = request.user.comicmark_set.filter(option='pau').count()
+	lei = request.user.comicmark_set.filter(option='lei').count()
+	marks = {'pen': pen, 'ley': ley, 'pau': pau, 'lei': lei}
+	fav = request.user.comicmark_set.filter(fav='True').count()
+	header = 'Catálogo de cómics'
+	item_path = 'comics'
+	context = {'items': items, 'm': m, 'marks': marks, 'fav': fav,
+			'header': header, 'item_path': item_path}
+	return render(request, 'items/comic_list.html', context)
 
 class ComicDetail(DetailView):
 	model = models.Comic
@@ -354,6 +398,30 @@ class ComicDelete(DeleteView):
 		return context
 
 # ComicSeries
+
+def comic_series_list(request):
+	# Filter by mark
+	m = request.POST.get('m')
+	if m:
+		if m != 'fav':
+			marks = request.user.comicseriesmark_set.filter(option=m)
+		else:
+			marks = request.user.comicseriesmark_set.filter(fav='True')
+		items = [mark.comic for mark in marks]
+	else:
+		items = models.ComicSeries.objects.all()
+	# Count by mark
+	pen = request.user.comicseriesmark_set.filter(option='pen').count()
+	sig = request.user.comicseriesmark_set.filter(option='sig').count()
+	pau = request.user.comicseriesmark_set.filter(option='pau').count()
+	fin = request.user.comicseriesmark_set.filter(option='fin').count()
+	marks = {'pen': pen, 'sig': sig, 'pau': pau, 'fin': fin}
+	fav = request.user.comicseriesmark_set.filter(fav='True').count()
+	header = 'Catálogo de cómics'
+	item_path = 'comicseries'
+	context = {'items': items, 'm': m, 'marks': marks, 'fav': fav,
+			'header': header, 'item_path': item_path}
+	return render(request, 'items/comic_series_list.html', context)
 
 class ComicSeriesDetail(DetailView):
 	model = models.ComicSeries
@@ -430,9 +498,30 @@ class NumberCreate(CreateView):
 
 # Game
 
-class GameList(ListView):
-	model = models.Game
-	template_name = 'items/game_list.html'
+def game_list(request):
+	# Filter by mark
+	m = request.POST.get('m')
+	if m:
+		if m != 'fav':
+			marks = request.user.gamemark_set.filter(option=m)
+		else:
+			marks = request.user.gamemark_set.filter(fav='True')
+		items = [mark.game for mark in marks]
+	else:
+		items = models.Game.objects.all()
+	# Count by mark
+	pen = request.user.gamemark_set.filter(option='pen').count()
+	jug = request.user.gamemark_set.filter(option='jug').count()
+	pau = request.user.gamemark_set.filter(option='pau').count()
+	ter = request.user.gamemark_set.filter(option='ter').count()
+	com = request.user.gamemark_set.filter(option='com').count()
+	marks = {'pen': pen, 'jug': jug, 'pau': pau, 'ter': ter, 'com': com}
+	fav = request.user.gamemark_set.filter(fav='True').count()
+	header = 'Catálogo de videojuegos'
+	item_path = 'games'
+	context = {'items': items, 'm': m, 'marks': marks, 'fav': fav,
+			'header': header, 'item_path': item_path}
+	return render(request, 'items/item_list.html', context)
 
 class GameDetail(DetailView):
 	model = models.Game

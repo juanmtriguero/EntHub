@@ -28,7 +28,7 @@ body{
 	border-bottom: 0;
 }
 
-/* Item catalogue and Account list */
+/* Item and Account lists */
 
 .filter .form-group{
 	margin-left: 0;
@@ -52,6 +52,10 @@ body{
 button.list-group-item .glyphicon{
 	font-size: 14px;
 	margin-right: 7px;
+}
+
+.tabs{
+	margin-bottom: 20px;
 }
 
 /* Mark button */

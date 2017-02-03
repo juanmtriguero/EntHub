@@ -533,6 +533,15 @@ class GameDetail(DetailView):
 		context['item_name'] = 'Videojuego'
 		context['agents'] = group_agents(self.object.gameinvolvement_set.all())
 		context['mark_options'] = models.GameMark.OPTION_CHOICES
+		# DLCs
+		dlcs = {}
+		for dlc in self.object.dlc_set.all():
+			try:
+				option = self.request.user.dlcmark_set.get(dlc=dlc).option
+			except models.DLCMark.DoesNotExist:
+				option = None
+			dlcs.update({dlc: option})
+		context['dlcs'] = dlcs
 		return context
 
 class GameCreate(CreateView):

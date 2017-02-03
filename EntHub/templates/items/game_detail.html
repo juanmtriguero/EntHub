@@ -25,10 +25,27 @@
 <hr/>
 <h4 class="subitems-title">DLCs y expansiones</h4>
 
-{% if object.dlc_set.all %}
+{% if dlcs %}
 <div class="list-group">
-	{% for dlc in object.dlc_set.all %}
-	<a href="/items/dlcs/{{dlc.id}}" class="list-group-item">{{dlc}}</a>
+	{% for dlc, option in dlcs.items %}
+	<a href="/items/dlcs/{{dlc.id}}" class="list-group-item">
+		{{dlc}}
+		{% if option %}
+		<span class="pull-right">
+			{% if option == "pen" %}
+				<i class="glyphicon glyphicon-time"></i>
+			{% elif option == "pau" %}
+				<i class="glyphicon glyphicon-pause"></i>
+			{% elif option == "jug" %}
+				<i class="glyphicon glyphicon-play"></i>
+			{% elif option == "ter" %}
+				<i class="glyphicon glyphicon-ok"></i>
+			{% elif option == "com" %}
+				<i class="glyphicon glyphicon-check"></i>
+			{% endif %}
+		</span>
+		{% endif %}
+	</a>
 	{% endfor %}
 </div>
 {% else %}

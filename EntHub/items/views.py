@@ -1,7 +1,7 @@
 #encoding:utf-8
 
 from django.shortcuts import render
-from django.http import HttpResponseRedirect
+from django.http import HttpResponse
 from django.views.generic import DetailView, CreateView, UpdateView, DeleteView
 from django.core.urlresolvers import reverse_lazy
 from items import models, forms
@@ -130,10 +130,14 @@ def book_fav(request):
 		mark.user = user
 		mark.book_id = book_id
 	fav = request.POST.get('fav')
-	mark.fav = fav == "fav"
+	if fav == "unfav":
+		fav = "fav"
+		mark.fav = True
+	elif fav == "fav":
+		fav = "unfav"
+		mark.fav = False
 	mark.save()
-	return HttpResponseRedirect(reverse_lazy('items:book_detail', 
-			kwargs={'pk': book_id}))
+	return HttpResponse(fav)
 
 # Movie
 
@@ -228,10 +232,14 @@ def movie_fav(request):
 		mark.user = user
 		mark.movie_id = movie_id
 	fav = request.POST.get('fav')
-	mark.fav = fav == "fav"
+	if fav == "unfav":
+		fav = "fav"
+		mark.fav = True
+	elif fav == "fav":
+		fav = "unfav"
+		mark.fav = False
 	mark.save()
-	return HttpResponseRedirect(reverse_lazy('items:movie_detail', 
-			kwargs={'pk': movie_id}))
+	return HttpResponse(fav)
 
 # Series
 
@@ -344,6 +352,27 @@ class SeriesDelete(DeleteView):
 		context['cancel_url'] = "/items/series/" + unicode(self.object.id)
 		return context
 
+def series_fav(request):
+	user = request.user
+	series_id = request.POST['id']
+	try:
+		mark = user.seriesmark_set.get(series__id=series_id)
+	except models.SeriesMark.DoesNotExist:
+		mark = models.SeriesMark()
+		mark.user = user
+		mark.series_id = series_id
+	fav = request.POST.get('fav')
+	if fav == "unfav":
+		fav = "fav"
+		mark.fav = True
+	elif fav == "fav":
+		fav = "unfav"
+		mark.fav = False
+	mark.save()
+	return HttpResponse(fav)
+
+# Chapter
+
 class ChapterCreate(CreateView):
 	model = models.Chapter
 	form_class = forms.ChapterForm
@@ -362,21 +391,6 @@ class ChapterCreate(CreateView):
 	def get_success_url(self):
 		return reverse_lazy('items:series_detail', 
 			kwargs={'pk': self.kwargs['pk']})
-
-def series_fav(request):
-	user = request.user
-	series_id = request.POST['id']
-	try:
-		mark = user.seriesmark_set.get(series__id=series_id)
-	except models.SeriesMark.DoesNotExist:
-		mark = models.SeriesMark()
-		mark.user = user
-		mark.series_id = series_id
-	fav = request.POST.get('fav')
-	mark.fav = fav == "fav"
-	mark.save()
-	return HttpResponseRedirect(reverse_lazy('items:series_detail', 
-			kwargs={'pk': series_id}))
 
 # Comic
 
@@ -473,10 +487,14 @@ def comic_fav(request):
 		mark.user = user
 		mark.comic_id = comic_id
 	fav = request.POST.get('fav')
-	mark.fav = fav == "fav"
+	if fav == "unfav":
+		fav = "fav"
+		mark.fav = True
+	elif fav == "fav":
+		fav = "unfav"
+		mark.fav = False
 	mark.save()
-	return HttpResponseRedirect(reverse_lazy('items:comic_detail', 
-			kwargs={'pk': comic_id}))
+	return HttpResponse(fav)
 
 # ComicSeries
 
@@ -563,6 +581,27 @@ class ComicSeriesDelete(DeleteView):
 		context['cancel_url'] = "/items/comicseries/" + unicode(self.object.id)
 		return context
 
+def comic_series_fav(request):
+	user = request.user
+	comic_id = request.POST['id']
+	try:
+		mark = user.comicseriesmark_set.get(comic__id=comic_id)
+	except models.ComicSeriesMark.DoesNotExist:
+		mark = models.ComicSeriesMark()
+		mark.user = user
+		mark.comic_id = comic_id
+	fav = request.POST.get('fav')
+	if fav == "unfav":
+		fav = "fav"
+		mark.fav = True
+	elif fav == "fav":
+		fav = "unfav"
+		mark.fav = False
+	mark.save()
+	return HttpResponse(fav)
+
+# Number
+
 class NumberCreate(CreateView):
 	model = models.Number
 	form_class = forms.NumberForm
@@ -581,21 +620,6 @@ class NumberCreate(CreateView):
 	def get_success_url(self):
 		return reverse_lazy('items:comic_series_detail', 
 			kwargs={'pk': self.kwargs['pk']})
-
-def comic_series_fav(request):
-	user = request.user
-	comic_id = request.POST['id']
-	try:
-		mark = user.comicseriesmark_set.get(comic__id=comic_id)
-	except models.ComicSeriesMark.DoesNotExist:
-		mark = models.ComicSeriesMark()
-		mark.user = user
-		mark.comic_id = comic_id
-	fav = request.POST.get('fav')
-	mark.fav = fav == "fav"
-	mark.save()
-	return HttpResponseRedirect(reverse_lazy('items:comic_series_detail', 
-			kwargs={'pk': comic_id}))
 
 # Game
 
@@ -702,10 +726,14 @@ def game_fav(request):
 		mark.user = user
 		mark.game_id = game_id
 	fav = request.POST.get('fav')
-	mark.fav = fav == "fav"
+	if fav == "unfav":
+		fav = "fav"
+		mark.fav = True
+	elif fav == "fav":
+		fav = "unfav"
+		mark.fav = False
 	mark.save()
-	return HttpResponseRedirect(reverse_lazy('items:game_detail', 
-			kwargs={'pk': game_id}))
+	return HttpResponse(fav)
 
 # DLC
 
@@ -785,10 +813,14 @@ def dlc_fav(request):
 		mark.user = user
 		mark.dlc_id = dlc_id
 	fav = request.POST.get('fav')
-	mark.fav = fav == "fav"
+	if fav == "unfav":
+		fav = "fav"
+		mark.fav = True
+	elif fav == "fav":
+		fav = "unfav"
+		mark.fav = False
 	mark.save()
-	return HttpResponseRedirect(reverse_lazy('items:dlc_detail', 
-			kwargs={'pk': dlc_id}))
+	return HttpResponse(fav)
 
 # Return involvements gruped by agent
 def group_agents(involvements):

@@ -22,15 +22,17 @@
 					<li data-value="not"><a href="#" class="text-center">No marcar</a></li>
 				</ul>
 			</div>
-			<form action="/items/{% if object.game %}dlcs{% else %}{{item_path}}{% endif %}/fav/" method="post">
+			<form action="/items/{% if object.game %}dlcs{% else %}{{item_path}}{% endif %}/fav/" id="fav" method="post">
 				{% csrf_token %}
 				<input type="hidden" name="id" value="{{object.id}}">
 				{% if not fav %}
-				<button type="submit" name="fav" value="fav" class="btn btn-primary btn-block btn-fav">
+				<input type="hidden" name="fav" value="unfav">
+				<button type="submit" class="btn btn-primary btn-block btn-fav">
 					<span class="glyphicon glyphicon-heart"></span>Añadir a favoritos
 				</button>
 				{% else %}
-				<button type="submit" name="fav" value="unfav" class="btn btn-danger btn-block btn-fav">
+				<input type="hidden" name="fav" value="fav">
+				<button type="submit" class="btn btn-danger btn-block btn-fav">
 					<span class="glyphicon glyphicon-heart"></span>Quitar de favoritos
 				</button>
 				{% endif %}
@@ -100,10 +102,41 @@
 {% endblock %}
 
 {% block scripts %}
+
+{# Mark button #}
 <script type="text/javascript">
 	$('ul.dropdown-menu').on('click', 'li a', function(){
 		$(this).parents(".btn-group").find('.btn').html($(this).text()
 				+ '&nbsp;<span class="caret"></span>');
 	});
 </script>
+
+{# Fav button #}
+<script type="text/javascript">
+	var form = $('#fav');
+	form.submit(function() {
+		$.ajax({
+			type: form.attr('method'),
+			url: form.attr('action'),
+			data: form.serialize(),
+			success: function(response) {
+				button = $('button[type="submit"]');
+				fav = $('input[name="fav"]');
+				if (response == "fav") {
+					fav.val('fav');
+					button.html('<span class="glyphicon glyphicon-heart"></span>Quitar de favoritos');
+					button.addClass('btn-danger');
+					button.removeClass('btn-primary');
+				} else if (response == "unfav") {
+					fav.val('unfav');
+					button.html('<span class="glyphicon glyphicon-heart"></span>Añadir a favoritos');
+					button.addClass('btn-primary');
+					button.removeClass('btn-danger');
+				}
+			}
+		});
+		return false;
+	});
+</script>
+
 {% endblock %}

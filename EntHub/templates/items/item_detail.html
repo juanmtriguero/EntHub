@@ -22,15 +22,19 @@
 					<li data-value="not"><a href="#" class="text-center">No marcar</a></li>
 				</ul>
 			</div>
-			{% if True %}
-			<a href="#" class="btn btn-primary btn-block">
-				<span class="glyphicon glyphicon-heart"></span>&nbsp;&nbsp;Añadir a favoritos
-			</a>
-			{% else %}
-			<a href="#" class="btn btn-danger btn-block">
-				<span class="glyphicon glyphicon-heart"></span>&nbsp;&nbsp;Quitar de favoritos
-			</a>
-			{% endif %}
+			<form action="/items/{% if object.game %}dlcs{% else %}{{item_path}}{% endif %}/fav/" method="post">
+				{% csrf_token %}
+				<input type="hidden" name="id" value="{{object.id}}">
+				{% if not fav %}
+				<button type="submit" name="fav" value="fav" class="btn btn-primary btn-block btn-fav">
+					<span class="glyphicon glyphicon-heart"></span>Añadir a favoritos
+				</button>
+				{% else %}
+				<button type="submit" name="fav" value="unfav" class="btn btn-danger btn-block btn-fav">
+					<span class="glyphicon glyphicon-heart"></span>Quitar de favoritos
+				</button>
+				{% endif %}
+			</form>
 		</div>
 		
 		<div class="col-md-6">

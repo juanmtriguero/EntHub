@@ -18,6 +18,16 @@ body{
 	margin-bottom: 15px;
 }
 
+/* Item detail */
+
+.btn-fav{
+	margin-top: 5px;
+}
+
+.btn-fav .glyphicon{
+	margin-right: 7px;
+}
+
 /* Series items detail */
 
 .subitems-title{

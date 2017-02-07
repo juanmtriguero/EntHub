@@ -1,6 +1,7 @@
 #encoding:utf-8
 
 from django.shortcuts import render
+from django.http import HttpResponseRedirect
 from django.views.generic import DetailView, CreateView, UpdateView, DeleteView
 from django.core.urlresolvers import reverse_lazy
 from items import models, forms
@@ -70,6 +71,11 @@ class BookDetail(DetailView):
 		context['item_name'] = 'Libro'
 		context['agents'] = group_agents(self.object.bookinvolvement_set.all())
 		context['mark_options'] = models.BookMark.OPTION_CHOICES
+		try:
+			fav = self.request.user.bookmark_set.get(book=self.object).fav
+		except models.BookMark.DoesNotExist:
+			fav = False
+		context['fav'] = fav
 		return context
 
 class BookCreate(CreateView):
@@ -114,6 +120,21 @@ class BookDelete(DeleteView):
 		context['cancel_url'] = "/items/books/" + unicode(self.object.id)
 		return context
 
+def book_fav(request):
+	user = request.user
+	book_id = request.POST['id']
+	try:
+		mark = user.bookmark_set.get(book__id=book_id)
+	except models.BookMark.DoesNotExist:
+		mark = models.BookMark()
+		mark.user = user
+		mark.book_id = book_id
+	fav = request.POST.get('fav')
+	mark.fav = fav == "fav"
+	mark.save()
+	return HttpResponseRedirect(reverse_lazy('items:book_detail', 
+			kwargs={'pk': book_id}))
+
 # Movie
 
 def movie_list(request):
@@ -148,6 +169,11 @@ class MovieDetail(DetailView):
 		context['item_name'] = 'Cine'
 		context['agents'] = group_agents(self.object.movieinvolvement_set.all())
 		context['mark_options'] = models.MovieMark.OPTION_CHOICES
+		try:
+			fav = self.request.user.moviemark_set.get(movie=self.object).fav
+		except models.MovieMark.DoesNotExist:
+			fav = False
+		context['fav'] = fav
 		return context
 
 class MovieCreate(CreateView):
@@ -192,6 +218,21 @@ class MovieDelete(DeleteView):
 		context['cancel_url'] = "/items/movies/" + unicode(self.object.id)
 		return context
 
+def movie_fav(request):
+	user = request.user
+	movie_id = request.POST['id']
+	try:
+		mark = user.moviemark_set.get(movie__id=movie_id)
+	except models.MovieMark.DoesNotExist:
+		mark = models.MovieMark()
+		mark.user = user
+		mark.movie_id = movie_id
+	fav = request.POST.get('fav')
+	mark.fav = fav == "fav"
+	mark.save()
+	return HttpResponseRedirect(reverse_lazy('items:movie_detail', 
+			kwargs={'pk': movie_id}))
+
 # Series
 
 def series_list(request):
@@ -230,6 +271,11 @@ class SeriesDetail(DetailView):
 		context['label'] = self.get_label()
 		context['chapters'] = self.get_chapters()
 		context['mark_options'] = models.SeriesMark.OPTION_CHOICES
+		try:
+			fav = self.request.user.seriesmark_set.get(series=self.object).fav
+		except models.SeriesMark.DoesNotExist:
+			fav = False
+		context['fav'] = fav
 		return context
 	
 	# Set label color by status
@@ -317,6 +363,21 @@ class ChapterCreate(CreateView):
 		return reverse_lazy('items:series_detail', 
 			kwargs={'pk': self.kwargs['pk']})
 
+def series_fav(request):
+	user = request.user
+	series_id = request.POST['id']
+	try:
+		mark = user.seriesmark_set.get(series__id=series_id)
+	except models.SeriesMark.DoesNotExist:
+		mark = models.SeriesMark()
+		mark.user = user
+		mark.series_id = series_id
+	fav = request.POST.get('fav')
+	mark.fav = fav == "fav"
+	mark.save()
+	return HttpResponseRedirect(reverse_lazy('items:series_detail', 
+			kwargs={'pk': series_id}))
+
 # Comic
 
 def comic_list(request):
@@ -353,6 +414,11 @@ class ComicDetail(DetailView):
 		context['item_name'] = 'Cómic'
 		context['agents'] = group_agents(self.object.comicinvolvement_set.all())
 		context['mark_options'] = models.ComicMark.OPTION_CHOICES
+		try:
+			fav = self.request.user.comicmark_set.get(comic=self.object).fav
+		except models.ComicMark.DoesNotExist:
+			fav = False
+		context['fav'] = fav
 		return context
 
 class ComicCreate(CreateView):
@@ -397,6 +463,21 @@ class ComicDelete(DeleteView):
 		context['cancel_url'] = "/items/comics/" + unicode(self.object.id)
 		return context
 
+def comic_fav(request):
+	user = request.user
+	comic_id = request.POST['id']
+	try:
+		mark = user.comicmark_set.get(comic__id=comic_id)
+	except models.ComicMark.DoesNotExist:
+		mark = models.ComicMark()
+		mark.user = user
+		mark.comic_id = comic_id
+	fav = request.POST.get('fav')
+	mark.fav = fav == "fav"
+	mark.save()
+	return HttpResponseRedirect(reverse_lazy('items:comic_detail', 
+			kwargs={'pk': comic_id}))
+
 # ComicSeries
 
 def comic_series_list(request):
@@ -433,6 +514,11 @@ class ComicSeriesDetail(DetailView):
 		context['item_name'] = 'Serie de cómics'
 		context['agents'] = group_agents(self.object.comicseriesinvolvement_set.all())
 		context['mark_options'] = models.ComicSeriesMark.OPTION_CHOICES
+		try:
+			fav = self.request.user.comicseriesmark_set.get(comic=self.object).fav
+		except models.ComicSeriesMark.DoesNotExist:
+			fav = False
+		context['fav'] = fav
 		return context
 
 class ComicSeriesCreate(CreateView):
@@ -496,6 +582,21 @@ class NumberCreate(CreateView):
 		return reverse_lazy('items:comic_series_detail', 
 			kwargs={'pk': self.kwargs['pk']})
 
+def comic_series_fav(request):
+	user = request.user
+	comic_id = request.POST['id']
+	try:
+		mark = user.comicseriesmark_set.get(comic__id=comic_id)
+	except models.ComicSeriesMark.DoesNotExist:
+		mark = models.ComicSeriesMark()
+		mark.user = user
+		mark.comic_id = comic_id
+	fav = request.POST.get('fav')
+	mark.fav = fav == "fav"
+	mark.save()
+	return HttpResponseRedirect(reverse_lazy('items:comic_series_detail', 
+			kwargs={'pk': comic_id}))
+
 # Game
 
 def game_list(request):
@@ -533,6 +634,11 @@ class GameDetail(DetailView):
 		context['item_name'] = 'Videojuego'
 		context['agents'] = group_agents(self.object.gameinvolvement_set.all())
 		context['mark_options'] = models.GameMark.OPTION_CHOICES
+		try:
+			fav = self.request.user.gamemark_set.get(game=self.object).fav
+		except models.GameMark.DoesNotExist:
+			fav = False
+		context['fav'] = fav
 		# DLCs
 		dlcs = {}
 		for dlc in self.object.dlc_set.all():
@@ -586,6 +692,21 @@ class GameDelete(DeleteView):
 		context['cancel_url'] = "/items/games/" + unicode(self.object.id)
 		return context
 
+def game_fav(request):
+	user = request.user
+	game_id = request.POST['id']
+	try:
+		mark = user.gamemark_set.get(game__id=game_id)
+	except models.GameMark.DoesNotExist:
+		mark = models.GameMark()
+		mark.user = user
+		mark.game_id = game_id
+	fav = request.POST.get('fav')
+	mark.fav = fav == "fav"
+	mark.save()
+	return HttpResponseRedirect(reverse_lazy('items:game_detail', 
+			kwargs={'pk': game_id}))
+
 # DLC
 
 class DLCDetail(DetailView):
@@ -598,6 +719,11 @@ class DLCDetail(DetailView):
 		context['item_name'] = 'DLC'
 		context['agents'] = group_agents(self.object.dlcinvolvement_set.all())
 		context['mark_options'] = models.DLCMark.OPTION_CHOICES
+		try:
+			fav = self.request.user.dlcmark_set.get(dlc=self.object).fav
+		except models.DLCMark.DoesNotExist:
+			fav = False
+		context['fav'] = fav
 		return context
 
 class DLCCreate(CreateView):
@@ -648,6 +774,21 @@ class DLCDelete(DeleteView):
 	def get_success_url(self):
 		return reverse_lazy('items:game_detail', 
 			kwargs={'pk': self.object.game.id})
+
+def dlc_fav(request):
+	user = request.user
+	dlc_id = request.POST['id']
+	try:
+		mark = user.dlcmark_set.get(dlc__id=dlc_id)
+	except models.DLCMark.DoesNotExist:
+		mark = models.DLCMark()
+		mark.user = user
+		mark.dlc_id = dlc_id
+	fav = request.POST.get('fav')
+	mark.fav = fav == "fav"
+	mark.save()
+	return HttpResponseRedirect(reverse_lazy('items:dlc_detail', 
+			kwargs={'pk': dlc_id}))
 
 # Return involvements gruped by agent
 def group_agents(involvements):

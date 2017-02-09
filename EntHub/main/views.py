@@ -1,5 +1,7 @@
+#encoding:utf-8
+
 from django.shortcuts import render
-from django.http import HttpResponseRedirect
+from django.http import HttpResponse, HttpResponseRedirect
 from django.views.generic import CreateView, DetailView, UpdateView
 from django.core.urlresolvers import reverse_lazy
 from django.contrib.auth import authenticate, login
@@ -108,3 +110,13 @@ def user_deactivate(request):
 		else:
 			context = {'error': True}
 			return render(request, 'main/user_deactivate.html', context)
+
+def follow(request, account_id):
+	account = models.Account.objects.get(id=account_id)
+	request.user.account.following.add(account)
+	return HttpResponseRedirect(reverse_lazy('main:account_detail', kwargs={'pk': account_id}))
+
+def unfollow(request, account_id):
+	account = models.Account.objects.get(id=account_id)
+	request.user.account.following.remove(account)
+	return HttpResponseRedirect(reverse_lazy('main:account_detail', kwargs={'pk': account_id}))

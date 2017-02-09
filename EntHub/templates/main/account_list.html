@@ -62,9 +62,9 @@
 					{% if user.id == account.user.id %}
 					<a href="/accounts/edit" class="btn btn-default">Editar</a>
 					{% elif account in user.account.following.all %}
-					<a href="#" class="btn btn-danger">No seguir</a>
+					<a href="/accounts/unfollow/{{account.id}}" class="btn btn-danger">No seguir</a>
 					{% else %}
-					<a href="#" class="btn btn-primary">Seguir</a>
+					<a href="/accounts/follow/{{account.id}}" class="btn btn-primary">Seguir</a>
 					{% endif %}
 					<a href="/accounts/{{account.id}}" class="btn btn-link">Ver perfil</a>
 				</div>

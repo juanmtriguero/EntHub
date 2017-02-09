@@ -15,4 +15,6 @@ urlpatterns = [
     url(r'^accounts/password/', login_required(password_change), {'template_name': 'main/password_change.html',
     		'post_change_redirect': 'main:account_update'}, name='password_change'),
     url(r'^accounts/deactivate/', login_required(views.user_deactivate), name='user_deactivate'),
+    url(r'^accounts/follow/(?P<account_id>\d+)/', login_required(views.follow), name='follow'),
+    url(r'^accounts/unfollow/(?P<account_id>\d+)/', login_required(views.unfollow), name='unfollow'),
 ]

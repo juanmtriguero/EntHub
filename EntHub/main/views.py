@@ -112,11 +112,19 @@ def user_deactivate(request):
 			return render(request, 'main/user_deactivate.html', context)
 
 def follow(request, account_id):
+	my_account = request.user.account
 	account = models.Account.objects.get(id=account_id)
-	request.user.account.following.add(account)
-	return HttpResponse()
+	if my_account != my_account:
+		my_account.following.add(account)
+		return HttpResponse()
+	else:
+		return HttpResponse(status=403)
 
 def unfollow(request, account_id):
+	my_account = request.user.account
 	account = models.Account.objects.get(id=account_id)
-	request.user.account.following.remove(account)
-	return HttpResponse()
+	if my_account != my_account:
+		my_account.following.remove(account)
+		return HttpResponse()
+	else:
+		return HttpResponse(status=403)

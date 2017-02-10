@@ -42,9 +42,9 @@
 			{% if user.id == object.user.id %}
 			<a href="/accounts/edit" class="btn btn-default">Editar mi perfil</a>
 			{% elif object in user.account.following.all %}
-			<a href="/accounts/unfollow/{{account.id}}" class="btn btn-danger">Dejar de seguir</a>
+			<button id="follow" value="unfollow" class="btn btn-danger">Dejar de seguir</button>
 			{% else %}
-			<a href="/accounts/follow/{{account.id}}" class="btn btn-primary">Seguir usuario</a>
+			<button id="follow" value="follow" class="btn btn-primary">Seguir usuario</button>
 			{% endif %}
 			<a href="/accounts" class="btn btn-link">Volver</a>
 
@@ -55,5 +55,40 @@
 	</div>
 
 </div>
+
+{% endblock %}
+
+{% block scripts %}
+
+{# Follow/unfollow button #}
+<script type="text/javascript">
+	button = $('#follow');
+	button.click(function(event) {
+		if (button.attr('value') == 'follow') {
+			$.ajax({
+				type: 'GET',
+				url: '/accounts/follow/{{object.id}}',
+				success: function() {
+					button.html('Dejar de seguir');
+					button.attr('value', 'unfollow');
+					button.addClass('btn-danger');
+					button.removeClass('btn-primary');
+				}
+			});
+		} else if (button.attr('value') == 'unfollow') {
+			$.ajax({
+				type: 'GET',
+				url: '/accounts/unfollow/{{object.id}}',
+				success: function() {
+					button.html('Seguir usuario');
+					button.attr('value', 'follow');
+					button.addClass('btn-primary');
+					button.removeClass('btn-danger');
+				}
+			});
+		}
+		return false;
+	});
+</script>
 
 {% endblock %}

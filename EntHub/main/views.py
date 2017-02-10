@@ -114,9 +114,17 @@ def user_deactivate(request):
 def follow(request, account_id):
 	account = models.Account.objects.get(id=account_id)
 	request.user.account.following.add(account)
-	return HttpResponseRedirect(reverse_lazy('main:account_detail', kwargs={'pk': account_id}))
+	# TODO Añadir AJAX en comunidad
+	if request.is_ajax():
+		return HttpResponse()
+	else:
+		return HttpResponseRedirect(reverse_lazy('main:account_list'))
 
 def unfollow(request, account_id):
 	account = models.Account.objects.get(id=account_id)
 	request.user.account.following.remove(account)
-	return HttpResponseRedirect(reverse_lazy('main:account_detail', kwargs={'pk': account_id}))
+	# TODO Añadir AJAX en comunidad
+	if request.is_ajax():
+		return HttpResponse()
+	else:
+		return HttpResponseRedirect(reverse_lazy('main:account_list'))

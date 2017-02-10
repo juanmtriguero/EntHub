@@ -62,9 +62,9 @@
 					{% if user.id == account.user.id %}
 					<a href="/accounts/edit" class="btn btn-default">Editar</a>
 					{% elif account in user.account.following.all %}
-					<a href="/accounts/unfollow/{{account.id}}" class="btn btn-danger">No seguir</a>
+					<button id="{{account.id}}" value="unfollow" class="btn btn-danger" onclick="follow($(this));return false;">No seguir</button>
 					{% else %}
-					<a href="/accounts/follow/{{account.id}}" class="btn btn-primary">Seguir</a>
+					<button id="{{account.id}}" value="follow" class="btn btn-primary" onclick="follow($(this));return false;">Seguir</button>
 					{% endif %}
 					<a href="/accounts/{{account.id}}" class="btn btn-link">Ver perfil</a>
 				</div>
@@ -83,5 +83,41 @@
 	</div>
 
 </div>
+
+{% endblock %}
+
+{% block scripts %}
+
+{# Follow/unfollow buttons #}
+<script type="text/javascript">
+	function follow($this) {
+    	var id = $this.attr('id');
+		if ($this.attr('value') == 'follow') {
+			$.ajax({
+				type: 'GET',
+				url: '/accounts/follow/' + id,
+				success: function() {
+					$this.html('No seguir');
+					$this.attr('value', 'unfollow');
+					$this.addClass('btn-danger');
+					$this.removeClass('btn-primary');
+				}
+			});
+		} else if ($this.attr('value') == 'unfollow') {
+			$.ajax({
+				type: 'GET',
+				url: '/accounts/unfollow/' + id,
+				success: function() {
+					$this.html('Seguir');
+					$this.attr('value', 'follow');
+					$this.addClass('btn-primary');
+					$this.removeClass('btn-danger');
+				}
+			});
+		}
+		$this.blur();
+		return false;
+	}
+</script>
 
 {% endblock %}

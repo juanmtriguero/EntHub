@@ -114,7 +114,7 @@ def user_deactivate(request):
 def follow(request, account_id):
 	my_account = request.user.account
 	account = models.Account.objects.get(id=account_id)
-	if my_account != my_account:
+	if my_account != account:
 		my_account.following.add(account)
 		return HttpResponse()
 	else:
@@ -123,7 +123,7 @@ def follow(request, account_id):
 def unfollow(request, account_id):
 	my_account = request.user.account
 	account = models.Account.objects.get(id=account_id)
-	if my_account != my_account:
+	if my_account != account:
 		my_account.following.remove(account)
 		return HttpResponse()
 	else:

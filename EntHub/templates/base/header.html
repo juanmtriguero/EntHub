@@ -11,7 +11,7 @@
 				<li><a href="{% url 'items:game_list' %}">Videojuegos</a></li>
 				<li><a href="{% url 'items:comic_list' %}">Cómics</a></li>
 				<li class="dropdown">
-					<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Más&nbsp;<span class="caret"></span></a>
+					<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Más<span class="caret"></span></a>
 					<ul class="dropdown-menu">
 						<li><a href="#">Géneros</a></li>
 						<li><a href="#">Plataformas</a></li>
@@ -21,7 +21,7 @@
 			</ul>
 			<ul class="nav navbar-nav navbar-right">
 				<li class="dropdown active">
-					<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{{user.get_username}}&nbsp;<span class="caret"></span></a>
+					<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{{user.get_username}}<span class="caret"></span></a>
 					<ul class="dropdown-menu">
 						<li><a href="{% url 'main:account_detail' pk=user.account.id %}">Mi perfil</a></li>
 						<li><a href="{% url 'main:account_list' %}">Comunidad</a></li>

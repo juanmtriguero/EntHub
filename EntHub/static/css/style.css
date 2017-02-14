@@ -4,6 +4,10 @@ body{
 	padding-bottom: 50px !important;
 }
 
+.caret{
+	margin-left: 5px !important;
+}
+
 /* Book form */
 
 .error-message{

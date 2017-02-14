@@ -153,7 +153,7 @@ class IndividualMark(Mark):
 		('pau', 'Pausado'),
 		('lei', 'Leído'),
 	)
-	option = models.CharField(max_length=3, choices=OPTION_CHOICES)
+	option = models.CharField(max_length=3, choices=OPTION_CHOICES, blank=True)
 
 	class Meta:
 		abstract = True
@@ -173,7 +173,7 @@ class PlayableMark(Mark):
 		('ter', 'Terminado'),
 		('com', 'Completado'),
 	)
-	option = models.CharField(max_length=3, choices=OPTION_CHOICES)
+	option = models.CharField(max_length=3, choices=OPTION_CHOICES, blank=True)
 
 	class Meta:
 		abstract = True
@@ -206,7 +206,7 @@ class GroupMark(Mark):
 		('pau', 'Pausado'),
 		('fin', 'Finalizado'),
 	)
-	option = models.CharField(max_length=3, choices=OPTION_CHOICES)
+	option = models.CharField(max_length=3, choices=OPTION_CHOICES, blank=True)
 
 	class Meta:
 		abstract = True
@@ -231,7 +231,7 @@ class MovieMark(Mark):
 		('pen', 'Pendiente'),
 		('vis', 'Visto'),
 	)
-	option = models.CharField(max_length=3, choices=OPTION_CHOICES)
+	option = models.CharField(max_length=3, choices=OPTION_CHOICES, blank=True)
 
 	def __unicode__(self):
 		return unicode(self.user) + " ha marcado el " + unicode(self.movie.get_category_display())\

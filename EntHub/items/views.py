@@ -72,7 +72,9 @@ class BookDetail(DetailView):
 		context['agents'] = group_agents(self.object.bookinvolvement_set.all())
 		context['mark_options'] = models.BookMark.OPTION_CHOICES
 		try:
-			fav = self.request.user.bookmark_set.get(book=self.object).fav
+			mark = self.request.user.bookmark_set.get(book=self.object)
+			context['mark'] = mark.get_option_display()
+			fav = mark.fav
 		except models.BookMark.DoesNotExist:
 			fav = False
 		context['fav'] = fav
@@ -119,6 +121,23 @@ class BookDelete(DeleteView):
 		context['message'] = "el libro"
 		context['cancel_url'] = "/items/books/" + unicode(self.object.id)
 		return context
+
+def book_mark(request):
+	user = request.user
+	book_id = request.POST['id']
+	try:
+		mark = user.bookmark_set.get(book__id=book_id)
+	except models.BookMark.DoesNotExist:
+		mark = models.BookMark()
+		mark.user = user
+		mark.book_id = book_id
+	option = request.POST.get('option')
+	if option == "not":
+		mark.option = None
+	else:
+		mark.option = option
+	mark.save()
+	return HttpResponse()
 
 def book_fav(request):
 	user = request.user
@@ -174,7 +193,9 @@ class MovieDetail(DetailView):
 		context['agents'] = group_agents(self.object.movieinvolvement_set.all())
 		context['mark_options'] = models.MovieMark.OPTION_CHOICES
 		try:
-			fav = self.request.user.moviemark_set.get(movie=self.object).fav
+			mark = self.request.user.moviemark_set.get(movie=self.object)
+			context['mark'] = mark.get_option_display()
+			fav = mark.fav
 		except models.MovieMark.DoesNotExist:
 			fav = False
 		context['fav'] = fav
@@ -221,6 +242,23 @@ class MovieDelete(DeleteView):
 		context['message'] = "la película"
 		context['cancel_url'] = "/items/movies/" + unicode(self.object.id)
 		return context
+
+def movie_mark(request):
+	user = request.user
+	movie_id = request.POST['id']
+	try:
+		mark = user.moviemark_set.get(movie__id=movie_id)
+	except models.MovieMark.DoesNotExist:
+		mark = models.MovieMark()
+		mark.user = user
+		mark.movie_id = movie_id
+	option = request.POST.get('option')
+	if option == "not":
+		mark.option = None
+	else:
+		mark.option = option
+	mark.save()
+	return HttpResponse()
 
 def movie_fav(request):
 	user = request.user
@@ -280,7 +318,9 @@ class SeriesDetail(DetailView):
 		context['chapters'] = self.get_chapters()
 		context['mark_options'] = models.SeriesMark.OPTION_CHOICES
 		try:
-			fav = self.request.user.seriesmark_set.get(series=self.object).fav
+			mark = self.request.user.seriesmark_set.get(series=self.object)
+			context['mark'] = mark.get_option_display()
+			fav = mark.fav
 		except models.SeriesMark.DoesNotExist:
 			fav = False
 		context['fav'] = fav
@@ -351,6 +391,23 @@ class SeriesDelete(DeleteView):
 		context['message'] = "la serie"
 		context['cancel_url'] = "/items/series/" + unicode(self.object.id)
 		return context
+
+def series_mark(request):
+	user = request.user
+	series_id = request.POST['id']
+	try:
+		mark = user.seriesmark_set.get(series__id=series_id)
+	except models.SeriesMark.DoesNotExist:
+		mark = models.SeriesMark()
+		mark.user = user
+		mark.series_id = series_id
+	option = request.POST.get('option')
+	if option == "not":
+		mark.option = None
+	else:
+		mark.option = option
+	mark.save()
+	return HttpResponse()
 
 def series_fav(request):
 	user = request.user
@@ -429,7 +486,9 @@ class ComicDetail(DetailView):
 		context['agents'] = group_agents(self.object.comicinvolvement_set.all())
 		context['mark_options'] = models.ComicMark.OPTION_CHOICES
 		try:
-			fav = self.request.user.comicmark_set.get(comic=self.object).fav
+			mark = self.request.user.comicmark_set.get(comic=self.object)
+			context['mark'] = mark.get_option_display()
+			fav = mark.fav
 		except models.ComicMark.DoesNotExist:
 			fav = False
 		context['fav'] = fav
@@ -476,6 +535,23 @@ class ComicDelete(DeleteView):
 		context['message'] = "el cómic"
 		context['cancel_url'] = "/items/comics/" + unicode(self.object.id)
 		return context
+
+def comic_mark(request):
+	user = request.user
+	comic_id = request.POST['id']
+	try:
+		mark = user.comicmark_set.get(comic__id=comic_id)
+	except models.ComicMark.DoesNotExist:
+		mark = models.ComicMark()
+		mark.user = user
+		mark.comic_id = comic_id
+	option = request.POST.get('option')
+	if option == "not":
+		mark.option = None
+	else:
+		mark.option = option
+	mark.save()
+	return HttpResponse()
 
 def comic_fav(request):
 	user = request.user
@@ -533,7 +609,9 @@ class ComicSeriesDetail(DetailView):
 		context['agents'] = group_agents(self.object.comicseriesinvolvement_set.all())
 		context['mark_options'] = models.ComicSeriesMark.OPTION_CHOICES
 		try:
-			fav = self.request.user.comicseriesmark_set.get(comic=self.object).fav
+			mark = self.request.user.comicseriesmark_set.get(comic=self.object)
+			context['mark'] = mark.get_option_display()
+			fav = mark.fav
 		except models.ComicSeriesMark.DoesNotExist:
 			fav = False
 		context['fav'] = fav
@@ -580,6 +658,23 @@ class ComicSeriesDelete(DeleteView):
 		context['message'] = "la serie de cómics"
 		context['cancel_url'] = "/items/comicseries/" + unicode(self.object.id)
 		return context
+
+def comic_series_mark(request):
+	user = request.user
+	comic_id = request.POST['id']
+	try:
+		mark = user.comicseriesmark_set.get(comic__id=comic_id)
+	except models.ComicSeriesMark.DoesNotExist:
+		mark = models.ComicSeriesMark()
+		mark.user = user
+		mark.comic_id = comic_id
+	option = request.POST.get('option')
+	if option == "not":
+		mark.option = None
+	else:
+		mark.option = option
+	mark.save()
+	return HttpResponse()
 
 def comic_series_fav(request):
 	user = request.user
@@ -659,7 +754,9 @@ class GameDetail(DetailView):
 		context['agents'] = group_agents(self.object.gameinvolvement_set.all())
 		context['mark_options'] = models.GameMark.OPTION_CHOICES
 		try:
-			fav = self.request.user.gamemark_set.get(game=self.object).fav
+			mark = self.request.user.gamemark_set.get(game=self.object)
+			context['mark'] = mark.get_option_display()
+			fav = mark.fav
 		except models.GameMark.DoesNotExist:
 			fav = False
 		context['fav'] = fav
@@ -716,6 +813,23 @@ class GameDelete(DeleteView):
 		context['cancel_url'] = "/items/games/" + unicode(self.object.id)
 		return context
 
+def game_mark(request):
+	user = request.user
+	game_id = request.POST['id']
+	try:
+		mark = user.gamemark_set.get(game__id=game_id)
+	except models.GameMark.DoesNotExist:
+		mark = models.GameMark()
+		mark.user = user
+		mark.game_id = game_id
+	option = request.POST.get('option')
+	if option == "not":
+		mark.option = None
+	else:
+		mark.option = option
+	mark.save()
+	return HttpResponse()
+
 def game_fav(request):
 	user = request.user
 	game_id = request.POST['id']
@@ -748,7 +862,9 @@ class DLCDetail(DetailView):
 		context['agents'] = group_agents(self.object.dlcinvolvement_set.all())
 		context['mark_options'] = models.DLCMark.OPTION_CHOICES
 		try:
-			fav = self.request.user.dlcmark_set.get(dlc=self.object).fav
+			mark = self.request.user.dlcmark_set.get(dlc=self.object)
+			context['mark'] = mark.get_option_display()
+			fav = mark.fav
 		except models.DLCMark.DoesNotExist:
 			fav = False
 		context['fav'] = fav
@@ -802,6 +918,23 @@ class DLCDelete(DeleteView):
 	def get_success_url(self):
 		return reverse_lazy('items:game_detail', 
 			kwargs={'pk': self.object.game.id})
+
+def dlc_mark(request):
+	user = request.user
+	dlc_id = request.POST['id']
+	try:
+		mark = user.dlcmark_set.get(dlc__id=dlc_id)
+	except models.DLCMark.DoesNotExist:
+		mark = models.DLCMark()
+		mark.user = user
+		mark.dlc_id = dlc_id
+	option = request.POST.get('option')
+	if option == "not":
+		mark.option = None
+	else:
+		mark.option = option
+	mark.save()
+	return HttpResponse()
 
 def dlc_fav(request):
 	user = request.user

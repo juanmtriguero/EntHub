@@ -8,31 +8,38 @@
 		
 		<div class="col-md-3 text-center">
 			<img src="{{object.image}}" class="img-responsive">
-			{# TODO Añadir funcionalidad #}
 			<br/>
-			<div class="btn-group btn-block">
-				<a href="#" class="btn btn-default btn-block dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-					No marcar&nbsp;<span class="caret"></span>
-				</a>
-				<ul class="dropdown-menu btn-block">
-					{% for o, option in mark_options %}
-					<li data-value="{{o}}"><a href="#" class="text-center">{{option}}</a></li>
-					{% endfor %}
-					<li class="divider"></li>
-					<li data-value="not"><a href="#" class="text-center">No marcar</a></li>
-				</ul>
-			</div>
+			<form action="/items/{% if object.game %}dlcs{% else %}{{item_path}}{% endif %}/mark/" id="mark" method="post">
+				{% csrf_token %}
+				<input type="hidden" name="id" value="{{object.id}}">
+				<div class="btn-group btn-block">
+					<button id="mark-button" class="btn btn-default btn-block dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+						{% if mark %}{{mark}}{% else %}No marcar{% endif %}<span class="caret"></span>
+					</button>
+					<ul id="mark-dropdown" class="dropdown-menu btn-block">
+						{% for o, option in mark_options %}
+						<li data-value="{{o}}">
+							<a href="#" class="text-center">{{option}}</a>
+						</li>
+						{% endfor %}
+						<li class="divider"></li>
+						<li data-value="not">
+							<a href="#" class="text-center">No marcar</a>
+						</li>
+					</ul>
+				</div>
+			</form>
 			<form action="/items/{% if object.game %}dlcs{% else %}{{item_path}}{% endif %}/fav/" id="fav" method="post">
 				{% csrf_token %}
 				<input type="hidden" name="id" value="{{object.id}}">
 				{% if not fav %}
 				<input type="hidden" name="fav" value="unfav">
-				<button type="submit" class="btn btn-primary btn-block btn-fav">
+				<button id="fav-button" class="btn btn-primary btn-block btn-fav">
 					<span class="glyphicon glyphicon-heart"></span>Añadir a favoritos
 				</button>
 				{% else %}
 				<input type="hidden" name="fav" value="fav">
-				<button type="submit" class="btn btn-danger btn-block btn-fav">
+				<button id="fav-button" class="btn btn-danger btn-block btn-fav">
 					<span class="glyphicon glyphicon-heart"></span>Quitar de favoritos
 				</button>
 				{% endif %}
@@ -105,22 +112,35 @@
 
 {# Mark button #}
 <script type="text/javascript">
-	$('ul.dropdown-menu').on('click', 'li a', function(){
-		$(this).parents(".btn-group").find('.btn').html($(this).text()
-				+ '&nbsp;<span class="caret"></span>');
+	var markForm = $('#mark');
+	$('#mark-dropdown li a').on('click', function() {
+		link = $(this);
+		option = link.parent().data('value');
+		$.ajax({
+			type: markForm.attr('method'),
+			url: markForm.attr('action'),
+			data: markForm.serialize() + "&option=" + option,
+			success: function() {
+				button = $('#mark-button');
+				button.html(link.text() + '<span class="caret"></span>');
+				button.attr('aria-expanded', 'false');
+				button.parent().removeClass('open');
+			}
+		});
+		return false;
 	});
 </script>
 
 {# Fav button #}
 <script type="text/javascript">
-	var form = $('#fav');
-	form.submit(function() {
+	var favForm = $('#fav');
+	favForm.submit(function() {
 		$.ajax({
-			type: form.attr('method'),
-			url: form.attr('action'),
-			data: form.serialize(),
+			type: favForm.attr('method'),
+			url: favForm.attr('action'),
+			data: favForm.serialize(),
 			success: function(response) {
-				button = $('button[type="submit"]');
+				button = $('#fav-button');
 				fav = $('input[name="fav"]');
 				if (response == "fav") {
 					fav.val('fav');

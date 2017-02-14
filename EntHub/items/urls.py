@@ -8,6 +8,7 @@ urlpatterns = [
 	url(r'^books/new$', login_required(views.BookCreate.as_view()), name='book_create'),
 	url(r'^books/edit/(?P<pk>\d+)/', login_required(views.BookUpdate.as_view()), name='book_update'),
 	url(r'^books/delete/(?P<pk>\d+)/', login_required(views.BookDelete.as_view()), name='book_delete'),
+	url(r'^books/mark/', login_required(views.book_mark), name='book_mark'),
 	url(r'^books/fav/', login_required(views.book_fav), name='book_fav'),
 
 	url(r'^movies$', login_required(views.movie_list), name='movie_list'),
@@ -15,6 +16,7 @@ urlpatterns = [
 	url(r'^movies/new$', login_required(views.MovieCreate.as_view()), name='movie_create'),
 	url(r'^movies/edit/(?P<pk>\d+)/', login_required(views.MovieUpdate.as_view()), name='movie_update'),
 	url(r'^movies/delete/(?P<pk>\d+)/', login_required(views.MovieDelete.as_view()), name='movie_delete'),
+	url(r'^movies/mark/', login_required(views.movie_mark), name='movie_mark'),
 	url(r'^movies/fav/', login_required(views.movie_fav), name='movie_fav'),
 
 	url(r'^series$', login_required(views.series_list), name='series_list'),
@@ -22,6 +24,7 @@ urlpatterns = [
 	url(r'^series/new$', login_required(views.SeriesCreate.as_view()), name='series_create'),
 	url(r'^series/edit/(?P<pk>\d+)/', login_required(views.SeriesUpdate.as_view()), name='series_update'),
 	url(r'^series/delete/(?P<pk>\d+)/', login_required(views.SeriesDelete.as_view()), name='series_delete'),
+	url(r'^series/mark/', login_required(views.series_mark), name='series_mark'),
 	url(r'^series/fav/', login_required(views.series_fav), name='series_fav'),
 	url(r'^chapter/add/(?P<pk>\d+)/', login_required(views.ChapterCreate.as_view()), name='add_chapter'),
 
@@ -30,6 +33,7 @@ urlpatterns = [
 	url(r'^comics/new$', login_required(views.ComicCreate.as_view()), name='comic_create'),
 	url(r'^comics/edit/(?P<pk>\d+)/', login_required(views.ComicUpdate.as_view()), name='comic_update'),
 	url(r'^comics/delete/(?P<pk>\d+)/', login_required(views.ComicDelete.as_view()), name='comic_delete'),
+	url(r'^comics/mark/', login_required(views.comic_mark), name='comic_mark'),
 	url(r'^comics/fav/', login_required(views.comic_fav), name='comic_fav'),
 
 	url(r'^comicseries$', login_required(views.comic_series_list), name='comic_series_list'),
@@ -37,6 +41,7 @@ urlpatterns = [
 	url(r'^comicseries/new$', login_required(views.ComicSeriesCreate.as_view()), name='comic_series_create'),
 	url(r'^comicseries/edit/(?P<pk>\d+)/', login_required(views.ComicSeriesUpdate.as_view()), name='comic_series_update'),
 	url(r'^comicseries/delete/(?P<pk>\d+)/', login_required(views.ComicSeriesDelete.as_view()), name='comic_series_delete'),
+	url(r'^comicseries/mark/', login_required(views.comic_series_mark), name='comic_series_mark'),
 	url(r'^comicseries/fav/', login_required(views.comic_series_fav), name='comic_series_fav'),
 	url(r'^number/add/(?P<pk>\d+)/', login_required(views.NumberCreate.as_view()), name='add_number'),
 
@@ -45,12 +50,14 @@ urlpatterns = [
 	url(r'^games/new$', login_required(views.GameCreate.as_view()), name='game_create'),
 	url(r'^games/edit/(?P<pk>\d+)/', login_required(views.GameUpdate.as_view()), name='game_update'),
 	url(r'^games/delete/(?P<pk>\d+)/', login_required(views.GameDelete.as_view()), name='game_delete'),
+	url(r'^games/mark/', login_required(views.game_mark), name='game_mark'),
 	url(r'^games/fav/', login_required(views.game_fav), name='game_fav'),
 
 	url(r'^dlcs/(?P<pk>\d+)/', login_required(views.DLCDetail.as_view()), name='dlc_detail'),
 	url(r'^dlcs/new/(?P<pk>\d+)/', login_required(views.DLCCreate.as_view()), name='dlc_create'),
 	url(r'^dlcs/edit/(?P<pk>\d+)/', login_required(views.DLCUpdate.as_view()), name='dlc_update'),
 	url(r'^dlcs/delete/(?P<pk>\d+)/', login_required(views.DLCDelete.as_view()), name='dlc_delete'),
+	url(r'^dlcs/mark/', login_required(views.dlc_mark), name='dlc_mark'),
 	url(r'^dlcs/fav/', login_required(views.dlc_fav), name='dlc_fav'),
 
 	url(r'^$', login_required(views.catalogue), name='catalogue'),

@@ -254,7 +254,7 @@ def movie_mark(request):
 		mark.movie_id = movie_id
 	option = request.POST.get('option')
 	if option == "not":
-		mark.option = None
+		mark.option = ""
 	else:
 		mark.option = option
 	mark.save()
@@ -403,7 +403,7 @@ def series_mark(request):
 		mark.series_id = series_id
 	option = request.POST.get('option')
 	if option == "not":
-		mark.option = None
+		mark.option = ""
 	else:
 		mark.option = option
 	mark.save()
@@ -547,7 +547,7 @@ def comic_mark(request):
 		mark.comic_id = comic_id
 	option = request.POST.get('option')
 	if option == "not":
-		mark.option = None
+		mark.option = ""
 	else:
 		mark.option = option
 	mark.save()
@@ -670,7 +670,7 @@ def comic_series_mark(request):
 		mark.comic_id = comic_id
 	option = request.POST.get('option')
 	if option == "not":
-		mark.option = None
+		mark.option = ""
 	else:
 		mark.option = option
 	mark.save()
@@ -824,7 +824,7 @@ def game_mark(request):
 		mark.game_id = game_id
 	option = request.POST.get('option')
 	if option == "not":
-		mark.option = None
+		mark.option = ""
 	else:
 		mark.option = option
 	mark.save()
@@ -930,7 +930,7 @@ def dlc_mark(request):
 		mark.dlc_id = dlc_id
 	option = request.POST.get('option')
 	if option == "not":
-		mark.option = None
+		mark.option = ""
 	else:
 		mark.option = option
 	mark.save()

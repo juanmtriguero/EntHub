@@ -728,6 +728,18 @@ class NumberCreate(CreateView):
 		return reverse_lazy('items:comic_series_detail', 
 			kwargs={'pk': self.kwargs['pk']})
 
+def number_tic(request, number_id):
+	user = request.user
+	number = models.Number.objects.get(id=number_id)
+	number.tics.add(user)
+	return HttpResponse()
+
+def number_untic(request, number_id):
+	user = request.user
+	number = models.Number.objects.get(id=number_id)
+	number.tics.remove(user)
+	return HttpResponse()
+
 # Game
 
 def game_list(request):

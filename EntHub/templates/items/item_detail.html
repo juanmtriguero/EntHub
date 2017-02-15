@@ -203,16 +203,20 @@
 
 {# Tic button #}
 <script type="text/javascript">
-	function tic($this) {
+	function tic($this, subitem) {
     	var id = $this.attr('name');
     	var eye = $this.find('.glyphicon');
 		if ($this.attr('value') == 'tic') {
 			$.ajax({
 				type: 'GET',
-				url: '/items/chapter/tic/' + id,
+				url: '/items/' + subitem + '/tic/' + id,
 				success: function() {
 					$this.attr('value', 'untic');
-					$this.attr('title', 'Quitar visto');
+					if (subitem == 'chapter') {
+						$this.attr('title', 'Quitar visto');
+					} else {
+						$this.attr('title', 'Quitar leído');
+					}
 					$this.tooltip('fixTitle')
 					$this.tooltip('show');
 					eye.addClass('glyphicon-eye-close');
@@ -222,10 +226,14 @@
 		} else if ($this.attr('value') == 'untic') {
 			$.ajax({
 				type: 'GET',
-				url: '/items/chapter/untic/' + id,
+				url: '/items/' + subitem + '/untic/' + id,
 				success: function() {
 					$this.attr('value', 'tic');
-					$this.attr('title', 'Marcar visto');
+					if (subitem == 'chapter') {
+						$this.attr('title', 'Marcar visto');
+					} else {
+						$this.attr('title', 'Marcar leído');
+					}
 					$this.tooltip('fixTitle')
 					$this.tooltip('show');
 					eye.addClass('glyphicon-eye-open');

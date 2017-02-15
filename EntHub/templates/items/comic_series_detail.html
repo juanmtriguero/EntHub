@@ -13,6 +13,17 @@
 		<tr>
 			<td>{{number.number}}</td>
 			<td>{{number.name}}</td>
+			<td class="text-right">
+				{% if user in number.tics.all %}
+				<button name="{{number.id}}" value="untic" onclick="tic($(this),'number');return false;" class="btn" data-toggle="tooltip" title="Quitar leído">
+					<i class="glyphicon glyphicon-eye-close"></i>
+				</button>
+				{% else %}
+				<button name="{{number.id}}" value="tic" onclick="tic($(this),'number');return false;" class="btn" data-toggle="tooltip" title="Marcar leído">
+					<i class="glyphicon glyphicon-eye-open"></i>
+				</button>
+				{% endif %}
+			</td>
 		</tr>
 		{% endfor %}
 	</tbody>

@@ -38,6 +38,11 @@ body{
 	margin: 9px 5px;
 }
 
+#mark-dropdown li a .glyphicon{
+	float: left;
+	margin-top: 2px;
+}
+
 /* Series items detail */
 
 .subitems-title{

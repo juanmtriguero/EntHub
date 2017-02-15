@@ -28,8 +28,14 @@ body{
 	margin-top: 5px;
 }
 
-.btn-fav .glyphicon{
-	margin-right: 7px;
+.btn .glyphicon{
+	float: left;
+	margin: 2px 5px;
+}
+
+#mark-button .caret{
+	float: right;
+	margin: 9px 5px;
 }
 
 /* Series items detail */
@@ -70,10 +76,4 @@ button.list-group-item .glyphicon{
 
 .tabs{
 	margin-bottom: 20px;
-}
-
-/* Mark button */
-
-.btn .glyphicon{
-	font-size: 14px;
 }

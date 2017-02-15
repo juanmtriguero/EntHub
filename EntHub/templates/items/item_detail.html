@@ -14,17 +14,58 @@
 				<input type="hidden" name="id" value="{{object.id}}">
 				<div class="btn-group btn-block">
 					<button id="mark-button" class="btn btn-default btn-block dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-						{% if mark %}{{mark}}{% else %}No marcar{% endif %}<span class="caret"></span>
+						{% if mark %}
+							{% if mark == "pen" %}
+							<i class="glyphicon glyphicon-time"></i>Pendiente
+							{% elif mark == "ley" %}
+							<i class="glyphicon glyphicon-play"></i>Leyendo
+							{% elif mark == "pau" %}
+							<i class="glyphicon glyphicon-pause"></i>Pausado
+							{% elif mark == "lei" %}
+							<i class="glyphicon glyphicon-ok"></i>Leído
+							{% elif mark == "jug" %}
+							<i class="glyphicon glyphicon-play"></i>Jugando
+							{% elif mark == "ter" %}
+							<i class="glyphicon glyphicon-ok"></i>Terminado
+							{% elif mark == "com" %}
+							<i class="glyphicon glyphicon-check"></i>Completado
+							{% elif mark == "sig" %}
+							<i class="glyphicon glyphicon-play"></i>Siguiendo
+							{% elif mark == "fin" %}
+							<i class="glyphicon glyphicon-ok"></i>Finalizado
+							{% elif mark == "vis" %}
+							<i class="glyphicon glyphicon-ok"></i>Visto
+							{% endif %}
+						{% else %}
+						<i class="glyphicon glyphicon-remove-circle"></i>No marcar
+						{% endif %}
+						<span class="caret"></span>
 					</button>
 					<ul id="mark-dropdown" class="dropdown-menu btn-block">
 						{% for o, option in mark_options %}
 						<li data-value="{{o}}">
-							<a href="#" class="text-center">{{option}}</a>
+							<a href="#" class="text-center">
+								{% if o == "pen" %}
+								<i class="glyphicon glyphicon-time"></i>
+								{% elif o in "ley jug sig" %}
+								<i class="glyphicon glyphicon-play"></i>
+								{% elif o == "pau" %}
+								<i class="glyphicon glyphicon-pause"></i>
+								{% elif o in "lei ter fin vis" %}
+								<i class="glyphicon glyphicon-ok"></i>
+								{% elif o == "com" %}
+								<i class="glyphicon glyphicon-check"></i>
+								{% endif %}
+								{{option}}
+							</a>
 						</li>
 						{% endfor %}
 						<li class="divider"></li>
 						<li data-value="not">
-							<a href="#" class="text-center">No marcar</a>
+							<a href="#" class="text-center">
+								<i class="glyphicon glyphicon-remove-circle"></i>
+								No marcar
+							</a>
 						</li>
 					</ul>
 				</div>
@@ -122,7 +163,7 @@
 			data: markForm.serialize() + "&option=" + option,
 			success: function() {
 				button = $('#mark-button');
-				button.html(link.text() + '<span class="caret"></span>');
+				button.html(link.html() + '<span class="caret"></span>');
 				button.attr('aria-expanded', 'false');
 				button.parent().removeClass('open');
 			}

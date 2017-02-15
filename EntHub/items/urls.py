@@ -66,5 +66,5 @@ urlpatterns = [
 	url(r'^dlcs/mark/', login_required(views.dlc_mark), name='dlc_mark'),
 	url(r'^dlcs/fav/', login_required(views.dlc_fav), name='dlc_fav'),
 
-	url(r'^$', login_required(views.catalogue), name='catalogue'),
+	url(r'^search$', login_required(views.search), name='search'),
 ]

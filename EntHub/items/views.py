@@ -6,10 +6,10 @@ from django.views.generic import DetailView, CreateView, UpdateView, DeleteView
 from django.core.urlresolvers import reverse_lazy
 from items import models, forms
 
-# Items catalogue
+# Item search
 
-def catalogue(request):
-
+# TODO Mejorar vista
+def search(request):
 	# Filter by category
 	c = request.POST.get('c', 'books')
 	if c == "books":
@@ -26,14 +26,13 @@ def catalogue(request):
 		items = models.Game.objects.all()
 	else:
 		items = None
-
-	# Filter by search
+	# Filter by text
 	q = request.POST.get('q', '')
 	if q:
 		items = items.filter(title__icontains=q)
 
 	context = {'items': items, 'q': q, 'c': c}
-	return render(request, 'items/catalogue.html', context)
+	return render(request, 'items/search.html', context)
 
 # Book
 

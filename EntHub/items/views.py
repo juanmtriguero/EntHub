@@ -73,7 +73,7 @@ class BookDetail(DetailView):
 		context['mark_options'] = models.BookMark.OPTION_CHOICES
 		try:
 			mark = self.request.user.bookmark_set.get(book=self.object)
-			context['mark'] = mark.get_option_display()
+			context['mark'] = mark.option
 			fav = mark.fav
 		except models.BookMark.DoesNotExist:
 			fav = False
@@ -133,7 +133,7 @@ def book_mark(request):
 		mark.book_id = book_id
 	option = request.POST.get('option')
 	if option == "not":
-		mark.option = None
+		mark.option = ""
 	else:
 		mark.option = option
 	mark.save()
@@ -194,7 +194,7 @@ class MovieDetail(DetailView):
 		context['mark_options'] = models.MovieMark.OPTION_CHOICES
 		try:
 			mark = self.request.user.moviemark_set.get(movie=self.object)
-			context['mark'] = mark.get_option_display()
+			context['mark'] = mark.option
 			fav = mark.fav
 		except models.MovieMark.DoesNotExist:
 			fav = False
@@ -319,7 +319,7 @@ class SeriesDetail(DetailView):
 		context['mark_options'] = models.SeriesMark.OPTION_CHOICES
 		try:
 			mark = self.request.user.seriesmark_set.get(series=self.object)
-			context['mark'] = mark.get_option_display()
+			context['mark'] = mark.option
 			fav = mark.fav
 		except models.SeriesMark.DoesNotExist:
 			fav = False
@@ -487,7 +487,7 @@ class ComicDetail(DetailView):
 		context['mark_options'] = models.ComicMark.OPTION_CHOICES
 		try:
 			mark = self.request.user.comicmark_set.get(comic=self.object)
-			context['mark'] = mark.get_option_display()
+			context['mark'] = mark.option
 			fav = mark.fav
 		except models.ComicMark.DoesNotExist:
 			fav = False
@@ -610,7 +610,7 @@ class ComicSeriesDetail(DetailView):
 		context['mark_options'] = models.ComicSeriesMark.OPTION_CHOICES
 		try:
 			mark = self.request.user.comicseriesmark_set.get(comic=self.object)
-			context['mark'] = mark.get_option_display()
+			context['mark'] = mark.option
 			fav = mark.fav
 		except models.ComicSeriesMark.DoesNotExist:
 			fav = False
@@ -755,7 +755,7 @@ class GameDetail(DetailView):
 		context['mark_options'] = models.GameMark.OPTION_CHOICES
 		try:
 			mark = self.request.user.gamemark_set.get(game=self.object)
-			context['mark'] = mark.get_option_display()
+			context['mark'] = mark.option
 			fav = mark.fav
 		except models.GameMark.DoesNotExist:
 			fav = False
@@ -863,7 +863,7 @@ class DLCDetail(DetailView):
 		context['mark_options'] = models.DLCMark.OPTION_CHOICES
 		try:
 			mark = self.request.user.dlcmark_set.get(dlc=self.object)
-			context['mark'] = mark.get_option_display()
+			context['mark'] = mark.option
 			fav = mark.fav
 		except models.DLCMark.DoesNotExist:
 			fav = False

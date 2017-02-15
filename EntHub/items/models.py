@@ -114,8 +114,7 @@ class Series(Item):
 class Subitem(models.Model):
 	number = models.IntegerField()
 	name = models.CharField(max_length=100)
-	# TODO Tics in User (and optional)
-	# tics = models.ManyToManyField(User)
+	tics = models.ManyToManyField(User, blank=True)
 
 	class Meta:
 		abstract = True

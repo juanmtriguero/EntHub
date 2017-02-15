@@ -2,24 +2,15 @@
 
 {% block content %}
 
-<!-- TODO Contenido de prueba -->
-
 <div class="container">
 	<div class="row">
-		<div class="col-md-4">
-			<div class="panel panel-primary">
-				<div class="panel-heading">
-					<h3 class="panel-title">Videojuegos</h3>
-				</div>
-				<div class="panel-body">
-					<ul>
-						{% for game in games %}
-						<li>{{game.title}}</li>
-						{% endfor %}
-					</ul>
-				</div>
-			</div>
-			</div>
+		<div class="col-md-9 col-md-offset-3">
+			<h2>Videojuegos recientes</h2>
+			<hr/>
+			{% for item, option in games.items %}
+				{% include "items/item_preview.html" with path="games" label="Videojuego" %}
+			{% endfor %}
+		</div>
 	</div>
 </div>
 

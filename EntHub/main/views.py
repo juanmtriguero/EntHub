@@ -7,14 +7,19 @@ from django.core.urlresolvers import reverse_lazy
 from django.contrib.auth import authenticate, login
 from django.contrib.auth.models import User
 from django.contrib.auth.views import logout_then_login
-from items.models import Game
+from items.models import Game, GameMark
 from main import models, forms
 
 def index(request):
-    # TODO Contenido de prueba
-    games = Game.objects.all()
-    context = {'games': games}
-    return render(request, 'main/index.html', context)
+	games = {}
+	for game in Game.objects.all().order_by('id').reverse()[:4]:
+		try:
+			option = request.user.gamemark_set.get(game=game).option
+		except GameMark.DoesNotExist:
+			option = None
+		games.update({game: option})
+	context = {'games': games}
+	return render(request, 'main/index.html', context)
 
 class UserRegister(CreateView):
 	model = User

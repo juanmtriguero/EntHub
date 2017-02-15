@@ -201,4 +201,41 @@
 	});
 </script>
 
+{# Tic button #}
+<script type="text/javascript">
+	function tic($this) {
+    	var id = $this.attr('name');
+    	var eye = $this.find('.glyphicon');
+		if ($this.attr('value') == 'tic') {
+			$.ajax({
+				type: 'GET',
+				url: '/items/chapter/tic/' + id,
+				success: function() {
+					$this.attr('value', 'untic');
+					$this.attr('title', 'Quitar visto');
+					$this.tooltip('fixTitle')
+					$this.tooltip('show');
+					eye.addClass('glyphicon-eye-close');
+					eye.removeClass('glyphicon-eye-open');
+				}
+			});
+		} else if ($this.attr('value') == 'untic') {
+			$.ajax({
+				type: 'GET',
+				url: '/items/chapter/untic/' + id,
+				success: function() {
+					$this.attr('value', 'tic');
+					$this.attr('title', 'Marcar visto');
+					$this.tooltip('fixTitle')
+					$this.tooltip('show');
+					eye.addClass('glyphicon-eye-open');
+					eye.removeClass('glyphicon-eye-close');
+				}
+			});
+		}
+		$this.blur();
+		return false;
+	}
+</script>
+
 {% endblock %}

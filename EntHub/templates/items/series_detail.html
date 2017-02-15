@@ -37,8 +37,19 @@
 			<tbody>
 				{% for c in season_chapters|dictsort:"number" %}
 				<tr>
-					<td>{{c.number}}</td>
+					<td class="align-middle">{{c.number}}</td>
 					<td>{{c.name}}</td>
+					<td class="text-right">
+						{% if user in c.tics.all %}
+						<button name="{{c.id}}" value="untic" onclick="tic($(this));return false;" class="btn" data-toggle="tooltip" title="Quitar visto">
+							<i class="glyphicon glyphicon-eye-close"></i>
+						</button>
+						{% else %}
+						<button name="{{c.id}}" value="tic" onclick="tic($(this));return false;" class="btn" data-toggle="tooltip" title="Marcar visto">
+							<i class="glyphicon glyphicon-eye-open"></i>
+						</button>
+						{% endif %}
+					</td>
 				</tr>
 				{% endfor %}
 			</tbody>

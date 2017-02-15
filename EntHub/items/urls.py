@@ -26,7 +26,10 @@ urlpatterns = [
 	url(r'^series/delete/(?P<pk>\d+)/', login_required(views.SeriesDelete.as_view()), name='series_delete'),
 	url(r'^series/mark/', login_required(views.series_mark), name='series_mark'),
 	url(r'^series/fav/', login_required(views.series_fav), name='series_fav'),
+
 	url(r'^chapter/add/(?P<pk>\d+)/', login_required(views.ChapterCreate.as_view()), name='add_chapter'),
+	url(r'^chapter/tic/(?P<chapter_id>\d+)/', login_required(views.chapter_tic), name='chapter_tic'),
+	url(r'^chapter/untic/(?P<chapter_id>\d+)/', login_required(views.chapter_untic), name='chapter_untic'),
 
 	url(r'^comics$', login_required(views.comic_list), name='comic_list'),
 	url(r'^comics/(?P<pk>\d+)/', login_required(views.ComicDetail.as_view()), name='comic_detail'),

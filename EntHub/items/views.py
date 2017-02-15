@@ -449,6 +449,18 @@ class ChapterCreate(CreateView):
 		return reverse_lazy('items:series_detail', 
 			kwargs={'pk': self.kwargs['pk']})
 
+def chapter_tic(request, chapter_id):
+	user = request.user
+	chapter = models.Chapter.objects.get(id=chapter_id)
+	chapter.tics.add(user)
+	return HttpResponse()
+
+def chapter_untic(request, chapter_id):
+	user = request.user
+	chapter = models.Chapter.objects.get(id=chapter_id)
+	chapter.tics.remove(user)
+	return HttpResponse()
+
 # Comic
 
 def comic_list(request):

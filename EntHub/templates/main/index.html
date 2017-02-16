@@ -10,7 +10,7 @@
 			<div class="row">
 				{% for item, option in movies.items %}
 				<div class="col-md-3">
-					{% include "items/item_preview.html" with item_path="movies" label=item.get_category_display %}
+					{% include "items/item_preview.html" with item_path="movies" %}
 				</div>
 				{% endfor %}
 			</div>
@@ -19,7 +19,7 @@
 			<div class="row">
 				{% for item, option in series.items %}
 				<div class="col-md-3">
-					{% include "items/item_preview.html" with item_path="series" label=item.get_category_display %}
+					{% include "items/item_preview.html" with item_path="series" %}
 				</div>
 				{% endfor %}
 			</div>

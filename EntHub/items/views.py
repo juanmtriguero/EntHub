@@ -10,28 +10,67 @@ from items import models, forms
 
 # TODO Mejorar vista
 def search(request):
-	# Filter by category
+	items = {}
+	q = request.POST.get('q', '')
 	c = request.POST.get('c', 'books')
 	if c == "books":
-		items = models.Book.objects.all()
+		item_list = models.Book.objects.filter(title__icontains=q)
+		for item in item_list:
+			try:
+				option = request.user.bookmark_set.get(book=item).option
+			except models.BookMark.DoesNotExist:
+				option = None
+			items.update({item: option})
+		label = "Libro"
 	elif c == "movies":
-		items = models.Movie.objects.all()
+		item_list = models.Movie.objects.filter(title__icontains=q)
+		for item in item_list:
+			try:
+				option = request.user.moviemark_set.get(movie=item).option
+			except models.MovieMark.DoesNotExist:
+				option = None
+			items.update({item: option})
+		label = None
 	elif c == "series":
-		items = models.Series.objects.all()
+		item_list = models.Series.objects.filter(title__icontains=q)
+		for item in item_list:
+			try:
+				option = request.user.seriesmark_set.get(series=item).option
+			except models.SeriesMark.DoesNotExist:
+				option = None
+			items.update({item: option})
+		label = None
 	elif c == "comics":
-		items = models.Comic.objects.all()
+		item_list = models.Comic.objects.filter(title__icontains=q)
+		for item in item_list:
+			try:
+				option = request.user.comicmark_set.get(comic=item).option
+			except models.ComicMark.DoesNotExist:
+				option = None
+			items.update({item: option})
+		label = "Cómic"
 	elif c == "comicseries":
-		items = models.ComicSeries.objects.all()
+		item_list = models.ComicSeries.objects.filter(title__icontains=q)
+		for item in item_list:
+			try:
+				option = request.user.comicseriesmark_set.get(comic=item).option
+			except models.ComicSeriesMark.DoesNotExist:
+				option = None
+			items.update({item: option})
+		label = "Comicserie"
 	elif c == "games":
-		items = models.Game.objects.all()
+		item_list = models.Game.objects.filter(title__icontains=q)
+		for item in item_list:
+			try:
+				option = request.user.gamemark_set.get(game=item).option
+			except models.GameMark.DoesNotExist:
+				option = None
+			items.update({item: option})
+		label = "Videojuego"
 	else:
 		items = None
-	# Filter by text
-	q = request.POST.get('q', '')
-	if q:
-		items = items.filter(title__icontains=q)
-
-	context = {'items': items, 'q': q, 'c': c}
+		label = None
+	context = {'items': items, 'q': q, 'c': c, 'item_path': c, 'label': label}
 	return render(request, 'items/search.html', context)
 
 # Book

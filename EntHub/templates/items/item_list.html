@@ -63,20 +63,13 @@
 		
 			{% if items %}
 
-			{% for item in items %}
-			<div class="col-md-4">
-				<div class="panel panel-primary">
-					<div class="panel-heading">
-						<h3 class="panel-title">{{item}}</h3>
-					</div>
-					<div class="panel-body">
-						<a href="/items/{{item_path}}/{{item.id}}" class="btn btn-link">Ver</a>
-						<a href="/items/{{item_path}}/edit/{{item.id}}" class="btn btn-link">Editar</a>
-						<a href="/items/{{item_path}}/delete/{{item.id}}" class="btn btn-link">Eliminar</a>
-					</div>
+			<div class="row">
+				{% for item, option in items.items %}
+				<div class="col-md-3">
+					{% include "items/item_preview.html" %}
 				</div>
+				{% endfor %}
 			</div>
-			{% endfor %}
 
 			{% else %}
 

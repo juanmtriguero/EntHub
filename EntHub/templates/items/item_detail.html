@@ -14,6 +14,7 @@
 				<input type="hidden" name="id" value="{{object.id}}">
 				<div class="btn-group btn-block">
 					<button id="mark-button" class="btn btn-default btn-block dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+						<span class="caret"></span>
 						{% if mark %}
 							{% if mark == "pen" %}
 							<i class="glyphicon glyphicon-time"></i>Pendiente
@@ -39,7 +40,6 @@
 						{% else %}
 						<i class="glyphicon glyphicon-remove-circle"></i>No marcar
 						{% endif %}
-						<span class="caret"></span>
 					</button>
 					<ul id="mark-dropdown" class="dropdown-menu btn-block">
 						{% for o, option in mark_options %}
@@ -163,7 +163,7 @@
 			data: markForm.serialize() + "&option=" + option,
 			success: function() {
 				button = $('#mark-button');
-				button.html(link.html() + '<span class="caret"></span>');
+				button.html('<span class="caret"></span>' + link.html());
 				button.attr('aria-expanded', 'false');
 				button.parent().removeClass('open');
 			}

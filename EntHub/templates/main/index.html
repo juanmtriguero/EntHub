@@ -10,7 +10,7 @@
 			<div class="row">
 				{% for item, option in movies.items %}
 				<div class="col-md-3">
-					{% include "items/item_preview.html" with path="movies" label=item.get_category_display %}
+					{% include "items/item_preview.html" with item_path="movies" label=item.get_category_display %}
 				</div>
 				{% endfor %}
 			</div>
@@ -19,7 +19,7 @@
 			<div class="row">
 				{% for item, option in series.items %}
 				<div class="col-md-3">
-					{% include "items/item_preview.html" with path="series" label=item.get_category_display %}
+					{% include "items/item_preview.html" with item_path="series" label=item.get_category_display %}
 				</div>
 				{% endfor %}
 			</div>
@@ -28,7 +28,7 @@
 			<div class="row">
 				{% for item, option in books.items %}
 				<div class="col-md-3">
-					{% include "items/item_preview.html" with path="books" label="Libro" %}
+					{% include "items/item_preview.html" with item_path="books" label="Libro" %}
 				</div>
 				{% endfor %}
 			</div>
@@ -37,7 +37,7 @@
 			<div class="row">
 				{% for item, option in games.items %}
 				<div class="col-md-3">
-					{% include "items/item_preview.html" with path="games" label="Videojuego" %}
+					{% include "items/item_preview.html" with item_path="games" label="Videojuego" %}
 				</div>
 				{% endfor %}
 			</div>
@@ -46,12 +46,12 @@
 			<div class="row">
 				{% for item, option in comics.items %}
 				<div class="col-md-3">
-					{% include "items/item_preview.html" with path="comics" label="Cómic" %}
+					{% include "items/item_preview.html" with item_path="comics" label="Cómic" %}
 				</div>
 				{% endfor %}
 				{% for item, option in comic_series.items %}
 				<div class="col-md-3">
-					{% include "items/item_preview.html" with path="comicseries" label="Comicserie" %}
+					{% include "items/item_preview.html" with item_path="comicseries" label="Comicserie" %}
 				</div>
 				{% endfor %}
 			</div>

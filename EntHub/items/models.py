@@ -96,7 +96,7 @@ class Series(Item):
 	CATEGORY_CHOICES = (
 		('ser', 'Serie'),
 		('min', 'Miniserie'),
-		('pro', 'Programa de TV'),
+		('pro', 'Programa TV'),
 		('doc', 'Documental'),
 	)
 	category = models.CharField(max_length=3, choices=CATEGORY_CHOICES, default='ser')

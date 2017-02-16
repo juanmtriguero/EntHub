@@ -7,18 +7,55 @@ from django.core.urlresolvers import reverse_lazy
 from django.contrib.auth import authenticate, login
 from django.contrib.auth.models import User
 from django.contrib.auth.views import logout_then_login
-from items.models import Game, GameMark
-from main import models, forms
+from items import models
+from main import forms
+from main.models import Account
 
 def index(request):
-	games = {}
-	for game in Game.objects.all().order_by('id').reverse()[:4]:
+	movie_set = {}
+	for movie in models.Movie.objects.all().order_by('id').reverse()[:4]:
+		try:
+			option = request.user.moviemark_set.get(movie=movie).option
+		except models.MovieMark.DoesNotExist:
+			option = None
+		movie_set.update({movie: option})
+	series_set = {}
+	for series in models.Series.objects.all().order_by('id').reverse()[:4]:
+		try:
+			option = request.user.seriesmark_set.get(series=series).option
+		except models.SeriesMark.DoesNotExist:
+			option = None
+		series_set.update({series: option})
+	book_set = {}
+	for book in models.Book.objects.all().order_by('id').reverse()[:4]:
+		try:
+			option = request.user.bookmark_set.get(book=book).option
+		except models.BookMark.DoesNotExist:
+			option = None
+		book_set.update({book: option})
+	game_set = {}
+	for game in models.Game.objects.all().order_by('id').reverse()[:4]:
 		try:
 			option = request.user.gamemark_set.get(game=game).option
-		except GameMark.DoesNotExist:
+		except models.GameMark.DoesNotExist:
 			option = None
-		games.update({game: option})
-	context = {'games': games}
+		game_set.update({game: option})
+	comic_set = {}
+	for comic in models.Comic.objects.all().order_by('id').reverse()[:2]:
+		try:
+			option = request.user.comicmark_set.get(comic=comic).option
+		except models.ComicMark.DoesNotExist:
+			option = None
+		comic_set.update({comic: option})
+	comic_series_set = {}
+	for comic_series in models.ComicSeries.objects.all().order_by('id').reverse()[:2]:
+		try:
+			option = request.user.comicseriesmark_set.get(comic=comic_series).option
+		except models.ComicSeriesMark.DoesNotExist:
+			option = None
+		comic_series_set.update({comic_series: option})
+	context = {'movies': movie_set, 'series': series_set, 'books': book_set,
+			'games': game_set, 'comics': comic_set, 'comic_series': comic_series_set}
 	return render(request, 'main/index.html', context)
 
 class UserRegister(CreateView):
@@ -31,7 +68,7 @@ class UserRegister(CreateView):
 		self.object = self.get_object
 		form = self.form_class(request.POST)
 		if form.is_valid():
-			account = models.Account()
+			account = Account()
 			account.user = form.save()
 			account.save()
 			user = authenticate(username=form.cleaned_data['username'], \
@@ -47,7 +84,7 @@ def account_list(request):
 	s = request.POST.get('s', 'all')
 	acc = request.user.account
 	if s == "all":
-		accounts = models.Account.objects.all()
+		accounts = Account.objects.all()
 	elif s == "fers":
 		accounts = acc.followers.all()
 	elif s == "fing":
@@ -64,11 +101,11 @@ def account_list(request):
 	return render(request, 'main/account_list.html', context)
 
 class AccountDetail(DetailView):
-	model = models.Account
+	model = Account
 	template_name = 'main/account_detail.html'
 
 class AccountUpdate(UpdateView):
-	model = models.Account
+	model = Account
 	second_model = User
 	form_class = forms.AccountForm
 	second_form_class = forms.UserNameForm
@@ -118,7 +155,7 @@ def user_deactivate(request):
 
 def follow(request, account_id):
 	my_account = request.user.account
-	account = models.Account.objects.get(id=account_id)
+	account = Account.objects.get(id=account_id)
 	if my_account != account:
 		my_account.following.add(account)
 		return HttpResponse()
@@ -127,7 +164,7 @@ def follow(request, account_id):
 
 def unfollow(request, account_id):
 	my_account = request.user.account
-	account = models.Account.objects.get(id=account_id)
+	account = Account.objects.get(id=account_id)
 	if my_account != account:
 		my_account.following.remove(account)
 		return HttpResponse()

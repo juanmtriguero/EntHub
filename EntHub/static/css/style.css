@@ -93,3 +93,11 @@ button.list-group-item .glyphicon{
 	width: 100%;
 	height: 250px;
 }
+
+.title-preview{
+	height: 34px;
+	overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+}

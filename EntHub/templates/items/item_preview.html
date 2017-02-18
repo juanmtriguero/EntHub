@@ -4,7 +4,7 @@
 	</a>
 	<a href="/items/{{item_path}}/{{item.id}}" class="list-group-item">
 		<h5 class="list-group-item-heading title-preview">{{item.title}}</h5>
-		<span class="label label-{% if item.bookmark_set %}success{% elif item.moviemark_set %}primary{% elif item.seriesmark_set %}info{% elif item.comicmark_set or item.comicseriesmark_set %}warning{% elif item.gamemark_set %}danger{% else %}default{% endif %}">{% if label %}{{label}}{% else %}{{item.get_category_display}}{% endif %}</span>
+		<span class="label label-{% if item.bookmark_set %}success{% elif item.moviemark_set %}primary{% elif item.seriesmark_set %}info{% elif item.comicmark_set or item.comicseriesmark_set %}warning{% elif item.gamemark_set or item.dlcmark_set %}danger{% else %}default{% endif %}">{% if label %}{{label}}{% else %}{{item.get_category_display}}{% endif %}</span>
 		<span class="label label-default">{{item.year}}</span>
 		{% if option %}
 		<span class="pull-right">

@@ -88,7 +88,7 @@
 		</div>
 		
 		<div class="col-md-6">
-			<a href="/items/{{item_path}}" class="label label-primary">{{item_name}}</a>
+			<a href="/items/{{item_path}}" class="label label-{% if object.bookmark_set %}success{% elif object.moviemark_set %}primary{% elif object.seriesmark_set %}info{% elif object.comicmark_set or object.comicseriesmark_set %}warning{% elif object.gamemark_set or object.dlcmark_set %}danger{% else %}default{% endif %}">{{item_name}}</a>
 			<h1>{{object.title}}</h1>
 			<hr/>
 			<p><b>Año: </b>{{object.year}}</p>

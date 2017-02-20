@@ -1,0 +1,44 @@
+[
+{
+    "fields": {
+        "name": "Acci\u00f3n"
+    },
+    "model": "items.genre",
+    "pk": 1
+},
+{
+    "fields": {
+        "name": "Aventura"
+    },
+    "model": "items.genre",
+    "pk": 2
+},
+{
+    "fields": {
+        "name": "Deportes"
+    },
+    "model": "items.genre",
+    "pk": 3
+},
+{
+    "fields": {
+        "name": "Biograf\u00eda"
+    },
+    "model": "items.genre",
+    "pk": 4
+},
+{
+    "fields": {
+        "name": "Comedia"
+    },
+    "model": "items.genre",
+    "pk": 5
+},
+{
+    "fields": {
+        "name": "Misterio"
+    },
+    "model": "items.genre",
+    "pk": 6
+}
+]

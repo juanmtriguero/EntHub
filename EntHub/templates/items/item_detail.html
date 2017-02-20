@@ -101,7 +101,7 @@
 			<p>
 				<b>Géneros:</b>
 				{% for genre in object.genres.all %}
-				<a href="/items/genres/{{genre.id}}" class="label label-default">{{genre}}</a>
+				<span class="label label-default">{{genre}}</span>
 				{% endfor %}
 			</p>
 		</div>

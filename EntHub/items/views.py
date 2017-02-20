@@ -8,14 +8,17 @@ from items import models, forms
 
 # Item search
 
-# TODO genres
 def search(request):
 	items = {}
 	q = request.POST.get('q', '')
 	c = request.POST.get('c', 'all')
+	g = request.POST.getlist('genres')
+	g = [int(n) for n in g]
 	aux = c=="all"
 	if c == "books" or aux:
 		books = models.Book.objects.filter(title__icontains=q)
+		if g:
+			books = books.filter(genres__pk__in=g)
 		for item in books:
 			try:
 				option = request.user.bookmark_set.get(book=item).option
@@ -24,6 +27,8 @@ def search(request):
 			items.update({item: option})
 	if c == "movies" or aux:
 		movies = models.Movie.objects.filter(title__icontains=q)
+		if g:
+			movies = movies.filter(genres__pk__in=g)
 		for item in movies:
 			try:
 				option = request.user.moviemark_set.get(movie=item).option
@@ -32,6 +37,8 @@ def search(request):
 			items.update({item: option})
 	if c == "series" or aux:
 		series = models.Series.objects.filter(title__icontains=q)
+		if g:
+			series = series.filter(genres__pk__in=g)
 		for item in series:
 			try:
 				option = request.user.seriesmark_set.get(series=item).option
@@ -40,6 +47,8 @@ def search(request):
 			items.update({item: option})
 	if c == "comics" or aux:
 		comics = models.Comic.objects.filter(title__icontains=q)
+		if g:
+			comics = comics.filter(genres__pk__in=g)
 		for item in comics:
 			try:
 				option = request.user.comicmark_set.get(comic=item).option
@@ -47,6 +56,8 @@ def search(request):
 				option = None
 			items.update({item: option})
 		comicseries = models.ComicSeries.objects.filter(title__icontains=q)
+		if g:
+			comicseries = comicseries.filter(genres__pk__in=g)
 		for item in comicseries:
 			try:
 				option = request.user.comicseriesmark_set.get(comic=item).option
@@ -55,6 +66,8 @@ def search(request):
 			items.update({item: option})
 	if c == "games" or aux:
 		games = models.Game.objects.filter(title__icontains=q)
+		if g:
+			games = games.filter(genres__pk__in=g)
 		for item in games:
 			try:
 				option = request.user.gamemark_set.get(game=item).option
@@ -62,13 +75,16 @@ def search(request):
 				option = None
 			items.update({item: option})
 		dlcs = models.DLC.objects.filter(title__icontains=q)
+		if g:
+			dlcs = dlcs.filter(genres__pk__in=g)
 		for item in dlcs:
 			try:
 				option = request.user.dlcmark_set.get(dlc=item).option
 			except models.DLCMark.DoesNotExist:
 				option = None
 			items.update({item: option})
-	context = {'items': items, 'q': q, 'c': c}
+	genres = models.Genre.objects.all()
+	context = {'items': items, 'q': q, 'c': c, 'genres': genres, 'g': g}
 	return render(request, 'items/search.html', context)
 
 # Book

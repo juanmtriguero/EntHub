@@ -20,7 +20,7 @@
 				<form method="post" action="{% url 'items:search' %}" class="navbar-form navbar-left">
 					{% csrf_token %}
 					<div class="has-feedback has-feedback-left">
-						<input type="text" class="form-control" name="q" placeholder="Buscar">
+						<input type="text" class="form-control" name="q" placeholder="Buscar" value="{% if q %}{{q}}{% endif %}">
 						<i class="glyphicon glyphicon-search form-control-feedback"></i>
 					</div>
 				</form>

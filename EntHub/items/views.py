@@ -12,8 +12,9 @@ from items import models, forms
 def search(request):
 	items = {}
 	q = request.POST.get('q', '')
-	c = request.POST.get('c', 'books')
-	if c == "books":
+	c = request.POST.get('c', 'all')
+	aux = c=="all"
+	if c == "books" or aux:
 		item_list = models.Book.objects.filter(title__icontains=q)
 		for item in item_list:
 			try:
@@ -21,8 +22,7 @@ def search(request):
 			except models.BookMark.DoesNotExist:
 				option = None
 			items.update({item: option})
-		label = "Libro"
-	elif c == "movies":
+	if c == "movies" or aux:
 		item_list = models.Movie.objects.filter(title__icontains=q)
 		for item in item_list:
 			try:
@@ -30,8 +30,7 @@ def search(request):
 			except models.MovieMark.DoesNotExist:
 				option = None
 			items.update({item: option})
-		label = None
-	elif c == "series":
+	if c == "series" or aux:
 		item_list = models.Series.objects.filter(title__icontains=q)
 		for item in item_list:
 			try:
@@ -39,8 +38,7 @@ def search(request):
 			except models.SeriesMark.DoesNotExist:
 				option = None
 			items.update({item: option})
-		label = None
-	elif c == "comics":
+	if c == "comics" or aux:
 		item_list = models.Comic.objects.filter(title__icontains=q)
 		for item in item_list:
 			try:
@@ -48,8 +46,7 @@ def search(request):
 			except models.ComicMark.DoesNotExist:
 				option = None
 			items.update({item: option})
-		label = "Cómic"
-	elif c == "comicseries":
+	if c == "comicseries":
 		item_list = models.ComicSeries.objects.filter(title__icontains=q)
 		for item in item_list:
 			try:
@@ -57,8 +54,7 @@ def search(request):
 			except models.ComicSeriesMark.DoesNotExist:
 				option = None
 			items.update({item: option})
-		label = "Comicserie"
-	elif c == "games":
+	if c == "games" or aux:
 		item_list = models.Game.objects.filter(title__icontains=q)
 		for item in item_list:
 			try:
@@ -66,11 +62,7 @@ def search(request):
 			except models.GameMark.DoesNotExist:
 				option = None
 			items.update({item: option})
-		label = "Videojuego"
-	else:
-		items = None
-		label = None
-	context = {'items': items, 'q': q, 'c': c, 'item_path': c, 'label': label}
+	context = {'items': items, 'q': q, 'c': c}
 	return render(request, 'items/search.html', context)
 
 # Book

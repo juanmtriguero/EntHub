@@ -6,7 +6,7 @@
 	<div class="row">
 		<div class="col-md-3">
 			<div class="well filter">
-				<form method="post" class="form-horizontal">
+				<form method="post" class="form-horizontal" id="search">
 					{% csrf_token %}
 					<fieldset>
 						<legend>Búsqueda</legend>
@@ -15,57 +15,32 @@
 							<i class="glyphicon glyphicon-search form-control-feedback"></i>
 						</div>
 						<hr/>
-						<div class="form-group">
-							<label class="control-label">Categoría</label>
-							<div class="radio">
-								<label>
-									<input type="radio" name="c" value="books" {% if c == "books" %}checked{% endif %}>
-									Libros
-								</label>
-							</div>
-							<div class="radio">
-								<label>
-									<input type="radio" name="c" value="movies" {% if c == "movies" %}checked{% endif %}>
-									Películas
-								</label>
-							</div>
-							<div class="radio">
-								<label>
-									<input type="radio" name="c" value="series" {% if c == "series" %}checked{% endif %}>
-									Televisión
-								</label>
-							</div>
-							<div class="radio">
-								<label>
-									<input type="radio" name="c" value="comics" {% if c == "comics" %}checked{% endif %}>
-									Cómics
-								</label>
-							</div>
-							<div class="radio">
-								<label>
-									<input type="radio" name="c" value="comicseries" {% if c == "comicseries" %}checked{% endif %}>
-									Series de cómics
-								</label>
-							</div>
-							<div class="radio">
-								<label>
-									<input type="radio" name="c" value="games" {% if c == "games" %}checked{% endif %}>
-									Videojuegos
-								</label>
-							</div>
+						{# TODO genres #}
+						<!--<div class="form-group">
+							<label class="control-label">Género</label>
 						</div>
-						<hr/>
+						<hr/>-->
+						<input type="hidden" name="c" value="{{c}}" />
 						<button type="submit" class="btn btn-primary btn-block">Filtrar</button>
 					</fieldset>
 				</form>
 			</div>
 		</div>
 		<div class="col-md-9">
+			<div class="btn-group btn-group-justified tabs" id="c-tabs">
+				<a href="#" data-option="all" class="btn btn-{% if c == 'all' %}primary{% else %}default{% endif %}">Todo</a>
+				<a href="#" data-option="movies" class="btn btn-{% if c == 'movies' %}primary{% else %}default{% endif %}">Cine</a>
+				<a href="#" data-option="series" class="btn btn-{% if c == 'series' %}primary{% else %}default{% endif %}">Televisión</a>
+				<a href="#" data-option="books" class="btn btn-{% if c == 'books' %}primary{% else %}default{% endif %}">Libros</a>
+				<a href="#" data-option="games" class="btn btn-{% if c == 'games' %}primary{% else %}default{% endif %}">Videojuegos</a>
+				<a href="#" data-option="comics" class="btn btn-{% if c == 'comics' %}primary{% else %}default{% endif %}">Cómics</a>
+			</div>
 			{% if items %}
 			<div class="row">
 				{% for item, option in items.items %}
 				<div class="col-md-3">
-					{% include "items/item_preview.html" %}
+					{# TODO label and item_path #}
+					{% include "items/item_preview.html" with label="Item" item_path=c %}
 				</div>
 				{% endfor %}
 			</div>
@@ -79,3 +54,16 @@
 </div>
 
 {% endblock %}
+
+{% block scripts %}
+
+<script type="text/javascript">
+	$('#c-tabs a').on('click', function(event) {
+		event.preventDefault();
+		form = $('#search');
+		$('input[name="c"]').val($(this).data('option'));
+		form.submit();
+	});
+</script>
+
+{% endblock scripts %}

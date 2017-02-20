@@ -39,8 +39,25 @@
 			<div class="row">
 				{% for item, option in items.items %}
 				<div class="col-md-3">
-					{# TODO label and item_path #}
-					{% include "items/item_preview.html" with label="Item" item_path=c %}
+					{% if c in "all games comics" %}
+						{% if item.bookmark_set %}
+							{% include "items/item_preview.html" with item_path="books" %}
+						{% elif item.moviemark_set %}
+							{% include "items/item_preview.html" with item_path="movies" %}
+						{% elif item.seriesmark_set %}
+							{% include "items/item_preview.html" with item_path="series" %}
+						{% elif item.comicmark_set %}
+							{% include "items/item_preview.html" with item_path="comics" %}
+						{% elif item.comicseriesmark_set %}
+							{% include "items/item_preview.html" with item_path="comicseries" %}
+						{% elif item.gamemark_set %}
+							{% include "items/item_preview.html" with item_path="games" %}
+						{% elif item.dlcmark_set %}
+							{% include "items/item_preview.html" with item_path="dlcs" %}
+						{% endif %}
+					{% else %}
+						{% include "items/item_preview.html" with item_path=c %}
+					{% endif %}
 				</div>
 				{% endfor %}
 			</div>

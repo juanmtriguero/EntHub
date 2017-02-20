@@ -28,7 +28,7 @@
 			<div class="row">
 				{% for item, option in books.items %}
 				<div class="col-md-3">
-					{% include "items/item_preview.html" with item_path="books" label="Libro" %}
+					{% include "items/item_preview.html" with item_path="books" %}
 				</div>
 				{% endfor %}
 			</div>
@@ -37,7 +37,7 @@
 			<div class="row">
 				{% for item, option in games.items %}
 				<div class="col-md-3">
-					{% include "items/item_preview.html" with item_path="games" label="Videojuego" %}
+					{% include "items/item_preview.html" with item_path="games" %}
 				</div>
 				{% endfor %}
 			</div>
@@ -46,12 +46,12 @@
 			<div class="row">
 				{% for item, option in comics.items %}
 				<div class="col-md-3">
-					{% include "items/item_preview.html" with item_path="comics" label="Cómic" %}
+					{% include "items/item_preview.html" with item_path="comics" %}
 				</div>
 				{% endfor %}
 				{% for item, option in comic_series.items %}
 				<div class="col-md-3">
-					{% include "items/item_preview.html" with item_path="comicseries" label="Comicserie" %}
+					{% include "items/item_preview.html" with item_path="comicseries" %}
 				</div>
 				{% endfor %}
 			</div>

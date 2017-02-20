@@ -8,58 +8,64 @@ from items import models, forms
 
 # Item search
 
-# TODO Mejorar vista
+# TODO genres
 def search(request):
 	items = {}
 	q = request.POST.get('q', '')
 	c = request.POST.get('c', 'all')
 	aux = c=="all"
 	if c == "books" or aux:
-		item_list = models.Book.objects.filter(title__icontains=q)
-		for item in item_list:
+		books = models.Book.objects.filter(title__icontains=q)
+		for item in books:
 			try:
 				option = request.user.bookmark_set.get(book=item).option
 			except models.BookMark.DoesNotExist:
 				option = None
 			items.update({item: option})
 	if c == "movies" or aux:
-		item_list = models.Movie.objects.filter(title__icontains=q)
-		for item in item_list:
+		movies = models.Movie.objects.filter(title__icontains=q)
+		for item in movies:
 			try:
 				option = request.user.moviemark_set.get(movie=item).option
 			except models.MovieMark.DoesNotExist:
 				option = None
 			items.update({item: option})
 	if c == "series" or aux:
-		item_list = models.Series.objects.filter(title__icontains=q)
-		for item in item_list:
+		series = models.Series.objects.filter(title__icontains=q)
+		for item in series:
 			try:
 				option = request.user.seriesmark_set.get(series=item).option
 			except models.SeriesMark.DoesNotExist:
 				option = None
 			items.update({item: option})
 	if c == "comics" or aux:
-		item_list = models.Comic.objects.filter(title__icontains=q)
-		for item in item_list:
+		comics = models.Comic.objects.filter(title__icontains=q)
+		for item in comics:
 			try:
 				option = request.user.comicmark_set.get(comic=item).option
 			except models.ComicMark.DoesNotExist:
 				option = None
 			items.update({item: option})
-	if c == "comicseries":
-		item_list = models.ComicSeries.objects.filter(title__icontains=q)
-		for item in item_list:
+		comicseries = models.ComicSeries.objects.filter(title__icontains=q)
+		for item in comicseries:
 			try:
 				option = request.user.comicseriesmark_set.get(comic=item).option
 			except models.ComicSeriesMark.DoesNotExist:
 				option = None
 			items.update({item: option})
 	if c == "games" or aux:
-		item_list = models.Game.objects.filter(title__icontains=q)
-		for item in item_list:
+		games = models.Game.objects.filter(title__icontains=q)
+		for item in games:
 			try:
 				option = request.user.gamemark_set.get(game=item).option
 			except models.GameMark.DoesNotExist:
+				option = None
+			items.update({item: option})
+		dlcs = models.DLC.objects.filter(title__icontains=q)
+		for item in dlcs:
+			try:
+				option = request.user.dlcmark_set.get(dlc=item).option
+			except models.DLCMark.DoesNotExist:
 				option = None
 			items.update({item: option})
 	context = {'items': items, 'q': q, 'c': c}
@@ -94,9 +100,8 @@ def book_list(request):
 	fav = request.user.bookmark_set.filter(fav='True').count()
 	header = 'Catálogo de libros'
 	item_path = 'books'
-	label = 'Libro'
 	context = {'items': items, 'm': m, 'marks': marks, 'fav': fav,
-			'header': header, 'item_path': item_path, 'label': label}
+			'header': header, 'item_path': item_path}
 	return render(request, 'items/item_list.html', context)
 
 class BookDetail(DetailView):
@@ -542,9 +547,8 @@ def comic_list(request):
 	fav = request.user.comicmark_set.filter(fav='True').count()
 	header = 'Catálogo de cómics'
 	item_path = 'comics'
-	label = 'Cómic'
 	context = {'items': items, 'm': m, 'marks': marks, 'fav': fav,
-			'header': header, 'item_path': item_path, 'label': label}
+			'header': header, 'item_path': item_path}
 	return render(request, 'items/comic_list.html', context)
 
 class ComicDetail(DetailView):
@@ -673,9 +677,8 @@ def comic_series_list(request):
 	fav = request.user.comicseriesmark_set.filter(fav='True').count()
 	header = 'Catálogo de cómics'
 	item_path = 'comicseries'
-	label = 'Comicserie'
 	context = {'items': items, 'm': m, 'marks': marks, 'fav': fav,
-			'header': header, 'item_path': item_path, 'label': label}
+			'header': header, 'item_path': item_path}
 	return render(request, 'items/comic_series_list.html', context)
 
 class ComicSeriesDetail(DetailView):
@@ -838,9 +841,8 @@ def game_list(request):
 	fav = request.user.gamemark_set.filter(fav='True').count()
 	header = 'Catálogo de videojuegos'
 	item_path = 'games'
-	label = 'Videojuego'
 	context = {'items': items, 'm': m, 'marks': marks, 'fav': fav,
-			'header': header, 'item_path': item_path, 'label': label}
+			'header': header, 'item_path': item_path}
 	return render(request, 'items/item_list.html', context)
 
 class GameDetail(DetailView):

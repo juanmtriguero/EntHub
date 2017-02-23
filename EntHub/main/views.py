@@ -104,6 +104,17 @@ class AccountDetail(DetailView):
 	model = Account
 	template_name = 'main/account_detail.html'
 
+	def get_context_data(self, **kwargs):
+		context = super(AccountDetail, self).get_context_data(**kwargs)
+		user = self.object.user
+		context['series'] = [m.series for m in user.seriesmark_set.filter(option='sig')]
+		context['comicseries'] = [m.comic for m in user.comicseriesmark_set.filter(option='sig')]
+		context['books'] = [m.book for m in user.bookmark_set.filter(option='ley')]
+		context['comics'] = [m.comic for m in user.comicmark_set.filter(option='ley')]
+		context['games'] = [m.game for m in user.gamemark_set.filter(option='jug')]
+		context['dlcs'] = [m.dlc for m in user.dlcmark_set.filter(option='jug')]
+		return context
+
 class AccountUpdate(UpdateView):
 	model = Account
 	second_model = User

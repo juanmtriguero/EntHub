@@ -53,24 +53,95 @@
 			<div class="row">
 
 				<div class="col-md-6">
-					<!-- TODO -->
+					<h2>Siguiendo ahora</h2>
+					<hr/>
+					{% if series or comicseries %}
+					<div class="row">
+						{% for item in series %}
+						<div class="col-md-6">
+							{% include "items/item_preview.html" with option="sig" item_path="series" %}
+						</div>
+						{% endfor %}
+						{% for item in comicseries %}
+						<div class="col-md-6">
+							{% include "items/item_preview.html" with option="sig" item_path="comicseries" %}
+						</div>
+						{% endfor %}
+					</div>
+					{% else %}
+					<div class="alert alert-warning">
+						<span>No hay nada para mostrar</span>
+					</div>
+					{% endif %}
+					<h2>Leyendo ahora</h2>
+					<hr/>
+					{% if books or comics %}
+					<div class="row">
+						{% for item in books %}
+						<div class="col-md-6">
+							{% include "items/item_preview.html" with option="ley" item_path="books" %}
+						</div>
+						{% endfor %}
+						{% for item in comics %}
+						<div class="col-md-6">
+							{% include "items/item_preview.html" with option="ley" item_path="comics" %}
+						</div>
+						{% endfor %}
+					</div>
+					{% else %}
+					<div class="alert alert-warning">
+						<span>No hay nada para mostrar</span>
+					</div>
+					{% endif %}
+					<h2>Jugando ahora</h2>
+					<hr/>
+					{% if games or dlcs %}
+					<div class="row">
+						{% for item in games %}
+						<div class="col-md-6">
+							{% include "items/item_preview.html" with option="jug" item_path="games" %}
+						</div>
+						{% endfor %}
+						{% for item in dlcs %}
+						<div class="col-md-6">
+							{% include "items/item_preview.html" with option="jug" item_path="dlcs" %}
+						</div>
+						{% endfor %}
+					</div>
+					{% else %}
+					<div class="alert alert-warning">
+						<span>No hay nada para mostrar</span>
+					</div>
+					{% endif %}
 				</div>
 
 				<div class="col-md-6">
 					<h2>Seguidores</h2>
 					<hr/>
+					{% if object.followers.all %}
 					{% for account in object.followers.all %}
 					<div class="account-block">
 						{% include "main/account_block.html" %}
 					</div>
 					{% endfor %}
+					{% else %}
+					<div class="alert alert-warning">
+						<span><b>{{object.user.username}}</b> no tiene seguidores</span>
+					</div>
+					{% endif %}
 					<h2>Siguiendo</h2>
 					<hr/>
+					{% if object.following.all %}
 					{% for account in object.following.all %}
 					<div class="account-block">
 						{% include "main/account_block.html" %}
 					</div>
 					{% endfor %}
+					{% else %}
+					<div class="alert alert-warning">
+						<span><b>{{object.user.username}}</b> no está siguiendo a nadie</span>
+					</div>
+					{% endif %}
 				</div>
 
 			</div>

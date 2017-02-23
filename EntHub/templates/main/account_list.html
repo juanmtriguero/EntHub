@@ -4,7 +4,10 @@
 
 <div class="container">
 
-	<div class="col-md-3 well filter">
+	<div class="row">
+
+	<div class="col-md-3">
+	<div class="well filter">
 		<form method="post" class="form-horizontal">
 			{% csrf_token %}
 			<fieldset>
@@ -44,33 +47,19 @@
 			</fieldset>
 		</form>
 	</div>
+	</div>
 		
 	<div class="col-md-9">
 		
 		{% if accounts %}
 
+		<div class="row">
 		{% for account in accounts %}
 		<div class="col-md-6 account-block">
-			<div class="row">
-				<div class="col-md-5">
-					<a href="/accounts/{{account.id}}">
-						<img src="{{account.avatar}}" class="img-circle img-responsive" />
-					</a>
-				</div>
-				<div class="col-md-7">
-					<h3>{{account.user.username}}</h3>
-					{% if user.id == account.user.id %}
-					<a href="/accounts/edit" class="btn btn-default">Editar</a>
-					{% elif account in user.account.following.all %}
-					<button id="{{account.id}}" value="unfollow" class="btn btn-danger" onclick="follow($(this));return false;">No seguir</button>
-					{% else %}
-					<button id="{{account.id}}" value="follow" class="btn btn-primary" onclick="follow($(this));return false;">Seguir</button>
-					{% endif %}
-					<a href="/accounts/{{account.id}}" class="btn btn-link">Ver perfil</a>
-				</div>
-			</div>
+			{% include "main/account_block.html" %}
 		</div>
 		{% endfor %}
+		</div>
 
 		{% else %}
 
@@ -79,6 +68,8 @@
 		</div>
 			
 		{% endif %}
+
+	</div>
 
 	</div>
 

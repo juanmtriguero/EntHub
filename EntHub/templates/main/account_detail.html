@@ -17,6 +17,13 @@
 			{% endif %}
 			
 			<p>{{object.text}}</p>
+
+			{% if object in user.account.followers.all %}
+			<p><span class="label label-success">
+				<span class="glyphicon glyphicon-ok"></span>
+				&nbsp;Te sigue
+			</span></p>
+			{% endif %}
 			
 			{% if object.birth %}
 			<p><span class="label label-default">
@@ -29,14 +36,6 @@
 				<span class="glyphicon glyphicon-time"></span>
 				&nbsp;Se unió el {{object.user.date_joined.date}}
 			</span></p>
-
-			{# TODO te_sigue #}
-			{% if te_sigue %}
-			<p><span class="label label-primary">
-				<span class="glyphicon glyphicon-ok"></span>
-				&nbsp;Te sigue
-			</span></p>
-			{% endif %}
 			
 			<hr/>
 			{% if user.id == object.user.id %}

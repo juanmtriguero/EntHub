@@ -70,10 +70,6 @@ body{
 	padding-right: 12px;
 }
 
-.account-block{
-	margin-bottom: 20px;
-}
-
 button.list-group-item .glyphicon{
 	font-size: 14px;
 	margin-right: 7px;
@@ -81,6 +77,17 @@ button.list-group-item .glyphicon{
 
 .tabs{
 	margin-bottom: 20px;
+}
+
+/* Account block */
+
+.account-block{
+	margin-bottom: 20px;
+}
+
+.account-block .label-success{
+	position: relative;
+	top: 5px;
 }
 
 /* Item preview */

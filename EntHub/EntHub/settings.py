@@ -118,8 +118,8 @@ LOGIN_REDIRECT_URL = reverse_lazy('main:index')
 EMAIL_USE_TLS = True
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 25
-EMAIL_HOST_USER = passwords.EMAIL_HOST_USER
-EMAIL_HOST_PASSWORD = passwords.EMAIL_HOST_PASSWORD
+EMAIL_HOST_USER = os.environ['ENTHUB_EMAIL_HOST_USER']
+EMAIL_HOST_PASSWORD = os.environ['ENTHUB_EMAIL_HOST_PASSWORD']
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 
 

@@ -1,14 +1,17 @@
 # EntHub
 
-EntHub es la abreviatura de "Entertainment Hub" (centro de entretinimiento). Es una red social de ocio desarollada en Django para apuntar, comentar y compartir con amigos películas, series, juegos, libros, etc.
+EntHub es la abreviatura de "Entertainment Hub" (centro de entretinimiento). Es una red social de ocio desarollada en Django para marcar, comentar y compartir con amigos películas, series, juegos, libros, etc.
 
-**NOTA: Actualmente se encuentra en desarrollo**
+Este proyecto utiliza [Travis CI](https://travis-ci.org/) para la **integración continua**.
+
+> Actualmente se encuentra en desarrollo
 
 ## Contraseñas
 
-Durante el desarrollo, las contraseñas se almacenan en un archivo `passwords.py` que no está en el control de versiones y es ignorado por `.gitignore`. Al descargar el código, hay que crear dicho archivo en el directorio raíz del proyecto (el mismo en el que se encuentra el archivo `settings.py`). El archivo debe ser rellenado de la siguiente forma:
+Las contraseñas, por seguridad, no están incluidas en el control de versiones. En vez de eso, están almacenadas en variables de entorno que deben ser creadas al inicializar el proyecto. Para crear dichas variables, hay que ejecutar los siguientes comandos:
 
 ```
-EMAIL_HOST_USER = 'your_email_user'
-EMAIL_HOST_PASSWORD = 'your_password'
+// Email host
+$ export ENTHUB_EMAIL_HOST_USER=your_email_user
+$ export ENTHUB_EMAIL_HOST_PASSWORD=your_email_password
 ```

@@ -1,0 +1,4309 @@
+[
+{
+    "fields": {
+        "model": "logentry",
+        "app_label": "admin"
+    },
+    "model": "contenttypes.contenttype",
+    "pk": 1
+},
+{
+    "fields": {
+        "model": "permission",
+        "app_label": "auth"
+    },
+    "model": "contenttypes.contenttype",
+    "pk": 2
+},
+{
+    "fields": {
+        "model": "group",
+        "app_label": "auth"
+    },
+    "model": "contenttypes.contenttype",
+    "pk": 3
+},
+{
+    "fields": {
+        "model": "user",
+        "app_label": "auth"
+    },
+    "model": "contenttypes.contenttype",
+    "pk": 4
+},
+{
+    "fields": {
+        "model": "contenttype",
+        "app_label": "contenttypes"
+    },
+    "model": "contenttypes.contenttype",
+    "pk": 5
+},
+{
+    "fields": {
+        "model": "session",
+        "app_label": "sessions"
+    },
+    "model": "contenttypes.contenttype",
+    "pk": 6
+},
+{
+    "fields": {
+        "model": "genre",
+        "app_label": "items"
+    },
+    "model": "contenttypes.contenttype",
+    "pk": 7
+},
+{
+    "fields": {
+        "model": "agent",
+        "app_label": "items"
+    },
+    "model": "contenttypes.contenttype",
+    "pk": 8
+},
+{
+    "fields": {
+        "model": "account",
+        "app_label": "main"
+    },
+    "model": "contenttypes.contenttype",
+    "pk": 9
+},
+{
+    "fields": {
+        "model": "platform",
+        "app_label": "items"
+    },
+    "model": "contenttypes.contenttype",
+    "pk": 10
+},
+{
+    "fields": {
+        "model": "list",
+        "app_label": "items"
+    },
+    "model": "contenttypes.contenttype",
+    "pk": 11
+},
+{
+    "fields": {
+        "model": "book",
+        "app_label": "items"
+    },
+    "model": "contenttypes.contenttype",
+    "pk": 12
+},
+{
+    "fields": {
+        "model": "bookmark",
+        "app_label": "items"
+    },
+    "model": "contenttypes.contenttype",
+    "pk": 13
+},
+{
+    "fields": {
+        "model": "bookinvolvement",
+        "app_label": "items"
+    },
+    "model": "contenttypes.contenttype",
+    "pk": 14
+},
+{
+    "fields": {
+        "model": "game",
+        "app_label": "items"
+    },
+    "model": "contenttypes.contenttype",
+    "pk": 15
+},
+{
+    "fields": {
+        "model": "dlc",
+        "app_label": "items"
+    },
+    "model": "contenttypes.contenttype",
+    "pk": 16
+},
+{
+    "fields": {
+        "model": "gamemark",
+        "app_label": "items"
+    },
+    "model": "contenttypes.contenttype",
+    "pk": 17
+},
+{
+    "fields": {
+        "model": "dlcmark",
+        "app_label": "items"
+    },
+    "model": "contenttypes.contenttype",
+    "pk": 18
+},
+{
+    "fields": {
+        "model": "gameinvolvement",
+        "app_label": "items"
+    },
+    "model": "contenttypes.contenttype",
+    "pk": 19
+},
+{
+    "fields": {
+        "model": "dlcinvolvement",
+        "app_label": "items"
+    },
+    "model": "contenttypes.contenttype",
+    "pk": 20
+},
+{
+    "fields": {
+        "model": "comic",
+        "app_label": "items"
+    },
+    "model": "contenttypes.contenttype",
+    "pk": 22
+},
+{
+    "fields": {
+        "model": "number",
+        "app_label": "items"
+    },
+    "model": "contenttypes.contenttype",
+    "pk": 23
+},
+{
+    "fields": {
+        "model": "comicmark",
+        "app_label": "items"
+    },
+    "model": "contenttypes.contenttype",
+    "pk": 25
+},
+{
+    "fields": {
+        "model": "comicinvolvement",
+        "app_label": "items"
+    },
+    "model": "contenttypes.contenttype",
+    "pk": 27
+},
+{
+    "fields": {
+        "model": "movie",
+        "app_label": "items"
+    },
+    "model": "contenttypes.contenttype",
+    "pk": 28
+},
+{
+    "fields": {
+        "model": "series",
+        "app_label": "items"
+    },
+    "model": "contenttypes.contenttype",
+    "pk": 29
+},
+{
+    "fields": {
+        "model": "chapter",
+        "app_label": "items"
+    },
+    "model": "contenttypes.contenttype",
+    "pk": 30
+},
+{
+    "fields": {
+        "model": "seriesmark",
+        "app_label": "items"
+    },
+    "model": "contenttypes.contenttype",
+    "pk": 31
+},
+{
+    "fields": {
+        "model": "moviemark",
+        "app_label": "items"
+    },
+    "model": "contenttypes.contenttype",
+    "pk": 32
+},
+{
+    "fields": {
+        "model": "movieinvolvement",
+        "app_label": "items"
+    },
+    "model": "contenttypes.contenttype",
+    "pk": 33
+},
+{
+    "fields": {
+        "model": "seriesinvolvement",
+        "app_label": "items"
+    },
+    "model": "contenttypes.contenttype",
+    "pk": 34
+},
+{
+    "fields": {
+        "model": "comicseries",
+        "app_label": "items"
+    },
+    "model": "contenttypes.contenttype",
+    "pk": 35
+},
+{
+    "fields": {
+        "model": "comicseriesmark",
+        "app_label": "items"
+    },
+    "model": "contenttypes.contenttype",
+    "pk": 36
+},
+{
+    "fields": {
+        "model": "comicseriesinvolvement",
+        "app_label": "items"
+    },
+    "model": "contenttypes.contenttype",
+    "pk": 37
+},
+{
+    "fields": {
+        "expire_date": "2016-12-17T01:31:20.918Z",
+        "session_data": "Y2YxY2JlMDBhNzkyOTUwMDhlMzE2ZDdhYWY5MzJiZWE0MGFhNjI4YTp7Il9hdXRoX3VzZXJfaGFzaCI6IjBmMzIzZGNjOGI5MmIxYTEyZGIxMDdhNjljYzg3OTdjMWYxNTgxOTkiLCJfYXV0aF91c2VyX2JhY2tlbmQiOiJkamFuZ28uY29udHJpYi5hdXRoLmJhY2tlbmRzLk1vZGVsQmFja2VuZCIsIl9hdXRoX3VzZXJfaWQiOiIxIn0="
+    },
+    "model": "sessions.session",
+    "pk": "ee8hxb9n4eevfsy78ki2cracutby7i44"
+},
+{
+    "fields": {
+        "expire_date": "2017-03-09T09:01:02.791Z",
+        "session_data": "YjRiYzY5YjFhM2MxNzY5NjcwZTNlYTBmMGViNDMxODYyYTNmYjlmMzp7Il9hdXRoX3VzZXJfaGFzaCI6IjY2ZDkyNDUzOWQzNTJjNDAzZGU2NDk0ODk1Y2Q4YjI2Yzc5OTU2N2EiLCJfYXV0aF91c2VyX2JhY2tlbmQiOiJkamFuZ28uY29udHJpYi5hdXRoLmJhY2tlbmRzLk1vZGVsQmFja2VuZCIsIl9hdXRoX3VzZXJfaWQiOiIxIn0="
+    },
+    "model": "sessions.session",
+    "pk": "g9uq61hujepp0tainn81a1g3gza9wmnp"
+},
+{
+    "fields": {
+        "expire_date": "2017-02-13T14:15:04.836Z",
+        "session_data": "YjRiYzY5YjFhM2MxNzY5NjcwZTNlYTBmMGViNDMxODYyYTNmYjlmMzp7Il9hdXRoX3VzZXJfaGFzaCI6IjY2ZDkyNDUzOWQzNTJjNDAzZGU2NDk0ODk1Y2Q4YjI2Yzc5OTU2N2EiLCJfYXV0aF91c2VyX2JhY2tlbmQiOiJkamFuZ28uY29udHJpYi5hdXRoLmJhY2tlbmRzLk1vZGVsQmFja2VuZCIsIl9hdXRoX3VzZXJfaWQiOiIxIn0="
+    },
+    "model": "sessions.session",
+    "pk": "jlx9p3czlq1szqnpen5f17c77avgnqyc"
+},
+{
+    "fields": {
+        "expire_date": "2017-03-02T12:55:24.995Z",
+        "session_data": "YjRiYzY5YjFhM2MxNzY5NjcwZTNlYTBmMGViNDMxODYyYTNmYjlmMzp7Il9hdXRoX3VzZXJfaGFzaCI6IjY2ZDkyNDUzOWQzNTJjNDAzZGU2NDk0ODk1Y2Q4YjI2Yzc5OTU2N2EiLCJfYXV0aF91c2VyX2JhY2tlbmQiOiJkamFuZ28uY29udHJpYi5hdXRoLmJhY2tlbmRzLk1vZGVsQmFja2VuZCIsIl9hdXRoX3VzZXJfaWQiOiIxIn0="
+    },
+    "model": "sessions.session",
+    "pk": "k8z35kilx2hpgytelbghc1onq0fo6ak2"
+},
+{
+    "fields": {
+        "expire_date": "2016-12-06T17:32:11.474Z",
+        "session_data": "Y2YxY2JlMDBhNzkyOTUwMDhlMzE2ZDdhYWY5MzJiZWE0MGFhNjI4YTp7Il9hdXRoX3VzZXJfaGFzaCI6IjBmMzIzZGNjOGI5MmIxYTEyZGIxMDdhNjljYzg3OTdjMWYxNTgxOTkiLCJfYXV0aF91c2VyX2JhY2tlbmQiOiJkamFuZ28uY29udHJpYi5hdXRoLmJhY2tlbmRzLk1vZGVsQmFja2VuZCIsIl9hdXRoX3VzZXJfaWQiOiIxIn0="
+    },
+    "model": "sessions.session",
+    "pk": "t1eshs9tv22308gcehw05rf0ea889p71"
+},
+{
+    "fields": {
+        "expire_date": "2016-11-02T21:25:19.053Z",
+        "session_data": "YWE5ZGMyY2RkOGEyZjhhMDg1NTUzNzk0NWFkNjk0YWFmYzNhZGNhNTp7Il9hdXRoX3VzZXJfaGFzaCI6Ijk1ODMyMWQ4MjM5NjVlOTIwYWVmYjljNjE3Mzg0N2U4YjU0ZWEwMTciLCJfYXV0aF91c2VyX2JhY2tlbmQiOiJkamFuZ28uY29udHJpYi5hdXRoLmJhY2tlbmRzLk1vZGVsQmFja2VuZCIsIl9hdXRoX3VzZXJfaWQiOiIxIn0="
+    },
+    "model": "sessions.session",
+    "pk": "xaclsuq9uviyylnny3ud5md8ftuufexw"
+},
+{
+    "fields": {
+        "name": "Acci\u00f3n"
+    },
+    "model": "items.genre",
+    "pk": 1
+},
+{
+    "fields": {
+        "name": "Aventura"
+    },
+    "model": "items.genre",
+    "pk": 2
+},
+{
+    "fields": {
+        "name": "Deportes"
+    },
+    "model": "items.genre",
+    "pk": 3
+},
+{
+    "fields": {
+        "name": "Biograf\u00eda"
+    },
+    "model": "items.genre",
+    "pk": 4
+},
+{
+    "fields": {
+        "name": "Comedia"
+    },
+    "model": "items.genre",
+    "pk": 5
+},
+{
+    "fields": {
+        "name": "Misterio"
+    },
+    "model": "items.genre",
+    "pk": 6
+},
+{
+    "fields": {
+        "bio": "William Bradley Pitt (Shawnee, Oklahoma; 18 de diciembre de 1963) es un actor y productor de cine estadounidense. Adem\u00e1s de por su trabajo interpretativo, por el que ha sido nominado en tres ocasiones a los Premios \u00d3scar y en cuatro a los Premios Globo de Oro, su significativa presencia medi\u00e1tica se debe tambi\u00e9n a su consideraci\u00f3n como uno de los hombres m\u00e1s atractivos del mundo.",
+        "image": "http://img.wennermedia.com/article-leads-vertical-300/1250530894_brad_pitt_290x402.jpg",
+        "name": "Brad Pitt"
+    },
+    "model": "items.agent",
+    "pk": 1
+},
+{
+    "fields": {
+        "bio": "Ubisoft es una compa\u00f1\u00eda francesa que desarrolla y distribuye videojuegos.",
+        "image": "",
+        "name": "Ubisoft"
+    },
+    "model": "items.agent",
+    "pk": 2
+},
+{
+    "fields": {
+        "bio": "Ariel fue fundada en 1942 y pronto se convirti\u00f3 en una de las editoriales de referencia en el campo del ensayo, la edici\u00f3n acad\u00e9mica y la divulgaci\u00f3n. Cuatro d\u00e9cadas despu\u00e9s de su creaci\u00f3n se incorpor\u00f3 al Grupo Planeta.\r\n\r\nEn Ariel encuentran su espacio todas las disciplinas del pensamiento: arte, historia, ciencia y ciencias humanas y sociales, entre otras. Por su prestigio y adaptaci\u00f3n a la actualidad del mundo editorial y cultural act\u00faa como v\u00ednculo entre ensayistas, divulgadores y todos aquellos lectores que desean disfrutar del placer de los libros.",
+        "image": "http://www.planetadelibros.com/img/sellos/logo_ARIEL.png",
+        "name": "Ariel"
+    },
+    "model": "items.agent",
+    "pk": 3
+},
+{
+    "fields": {
+        "bio": "Robert Kurson salt\u00f3 a la fama en Estados Unidos en 2004 gracias a su libro Tras la sombra de un submarino (RBA), un gran \u00e9xito internacional que narraba el hallazgo de un submarino alem\u00e1n en la costa de Nueva Jersey.\r\n\r\nAunque curs\u00f3 los estudios de derecho en Harvard y en sus primeros a\u00f1os trabaj\u00f3 en un despacho de abogados, pronto se decant\u00f3 por la labor de escritura, primero como periodista deportivo y despu\u00e9s como articulista para revistas como Esquire o Rolling Stone.",
+        "image": "http://www.robertkurson.com/wp-content/themes/the-bootstrap/img/biophoto.png",
+        "name": "Robert Kurson"
+    },
+    "model": "items.agent",
+    "pk": 4
+},
+{
+    "fields": {
+        "bio": "Comenz\u00f3 su carrera profesional como escritor publicitario, pero lo dej\u00f3 para continuar con carpinter\u00eda y construir muebles. Cuando su mujer dej\u00f3 el trabajo como profesora, se movieron a la zona de las monta\u00f1as de Catskill. Esta estancia ser\u00e1 decisiva para su futuro, ya que comenzar\u00e1 a leer diversas novelas, sobre todo de misterio. Descubri\u00f3 los cl\u00e1sicos libros de Conan Doyle o Ross Macdonald, pero lo que m\u00e1s le fascin\u00f3 fue la construcci\u00f3n mec\u00e1nica que ten\u00edan. Hasta que su mujer le propuso escribir su propia novela de misterio, el resultado, despu\u00e9s de dos a\u00f1os, fue S\u00e9 lo que est\u00e1s pensando. Posteriormente, se ver\u00e1n una serie de subsecuentes \u00e9xitos, al igual que cr\u00edticas. Su agente publicitario le pide que redacte m\u00e1s novelas con los mismos personajes principales. El resultado fue No abras los ojos, la que se convirti\u00f3 en otro bestseller internacional, traducida a m\u00e1s de 20 idiomas. La tercera novela ser\u00e1 Deja en paz al diablo, publicada en 2012, la cuarta, No conf\u00edes en Peter Pan.",
+        "image": "http://1.bp.blogspot.com/-7nmhO8BqFx8/UBQw1prh4sI/AAAAAAAAGSs/Lhz04_xYpaY/s1600/John-Verdon.jpg",
+        "name": "John Verdon"
+    },
+    "model": "items.agent",
+    "pk": 5
+},
+{
+    "fields": {
+        "bio": "Jeremy Charles Robert Clarkson (Doncaster, Yorkshire del Sur, 11 de abril de 1960) es un automovilista y periodista especializado en automovilismo ingl\u00e9s. Es principalmente conocido por su participaci\u00f3n en el programa de la BBC 2 Top Gear junto con los copresentadores Richard Hammond (H\u00e1mster), y James May (Captain Slow). Tambi\u00e9n escribe columnas semanales en The Times. Sus opiniones tienden a crear pol\u00e9mica y controversia. En marzo de 2015 fue despedido de Top Gear por agredir a un productor del programa.",
+        "image": "https://static.independent.co.uk/s3fs-public/thumbnails/image/2014/05/07/09/jeremy-clarkson-v2.jpg",
+        "name": "Jeremy Clarkson"
+    },
+    "model": "items.agent",
+    "pk": 6
+},
+{
+    "fields": {
+        "bio": "Benedict Timothy Carlton Cumberbatch (Hammersmith, Londres; 19 de julio de 1976) es un galardonado actor brit\u00e1nico de televisi\u00f3n, teatro, cine y voz.1 Accedi\u00f3 a la fama con su interpretaci\u00f3n de Stephen Hawking en la pel\u00edcula televisiva Hawking (2004); posteriormente, interpret\u00f3 el personaje de William Pitt en la pel\u00edcula hist\u00f3rica Amazing Grace (2006), as\u00ed como del rol del c\u00e9lebre detective Sherlock Holmes en una adaptaci\u00f3n moderna del personaje de Sir Arthur Conan Doyle en la serie Sherlock (2010\u2013presente); ambas producciones de la BBC e interpreta a Doctor Strange en el Universo cinematogr\u00e1fico de Marvel.",
+        "image": "http://www.benedictcumberbatch.co.uk/wordpress/wp-content/uploads/2012/11/ak1.jpg",
+        "name": "Benedict Cumberbatch"
+    },
+    "model": "items.agent",
+    "pk": 7
+},
+{
+    "fields": {
+        "bio": "Martin John C. Freeman (n. Aldershot, Hampshire; 8 de septiembre de 1971) es un actor brit\u00e1nico conocido por su papel en la pel\u00edcula Gu\u00eda del autoestopista gal\u00e1ctico (2005) y las series The Office (2001-2003), Sherlock (2010-presente) y Fargo (2014). El 14 de diciembre de 2012 se estren\u00f3 El hobbit: un viaje inesperado, pel\u00edcula en la cual interpreta al famoso hobbit Bilbo Bols\u00f3n, papel que repite en 2013 y 2014 en sus secuelas.",
+        "image": "http://akns-images.eonline.com/eol_images/Entire_Site/2013112/rs_634x1024-131202201142-634.Martin-Freeman-The-Hobbit.ms.120213.jpg",
+        "name": "Martin Freeman"
+    },
+    "model": "items.agent",
+    "pk": 8
+},
+{
+    "fields": {
+        "bio": "Georges Prosper Remi (Etterbeek, 22 de mayo de 1907 - Woluwe-Saint-Lambert, 3 de marzo de 1983) fue un historietista belga, m\u00e1s conocido por el seud\u00f3nimo art\u00edstico de Herg\u00e9, por ser \u00e9sa la pronunciaci\u00f3n de sus iniciales invertidas (R.G.) en franc\u00e9s.\r\n\r\nHerg\u00e9 fue el creador de Las aventuras de Tint\u00edn en 1929, que a d\u00eda de hoy siguen ejerciendo una importante influencia en el mundo de la historieta, particularmente en Europa. Adem\u00e1s de esta serie, Herg\u00e9 cre\u00f3 otras con diferentes personajes, entre las que cabe se\u00f1alar Las aventuras de Jo, Zette y Jocko y Quique y Flupi.",
+        "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a5/Galerie_de_Traitres_-_Herg%C3%A92.JPG/220px-Galerie_de_Traitres_-_Herg%C3%A92.JPG",
+        "name": "Herg\u00e9"
+    },
+    "model": "items.agent",
+    "pk": 9
+},
+{
+    "fields": {
+        "image": "",
+        "short": "PS3",
+        "name": "PlayStation 3"
+    },
+    "model": "items.platform",
+    "pk": 1
+},
+{
+    "fields": {
+        "image": "",
+        "short": "PS4",
+        "name": "PlayStation 4"
+    },
+    "model": "items.platform",
+    "pk": 2
+},
+{
+    "fields": {
+        "image": "",
+        "short": "WiiU",
+        "name": "Wii U"
+    },
+    "model": "items.platform",
+    "pk": 3
+},
+{
+    "fields": {
+        "image": "",
+        "short": "PC",
+        "name": "Personal computer"
+    },
+    "model": "items.platform",
+    "pk": 4
+},
+{
+    "fields": {
+        "image": "",
+        "short": "X360",
+        "name": "Xbox 360"
+    },
+    "model": "items.platform",
+    "pk": 5
+},
+{
+    "fields": {
+        "image": "",
+        "short": "XONE",
+        "name": "Xbox ONE"
+    },
+    "model": "items.platform",
+    "pk": 6
+},
+{
+    "fields": {
+        "count": 2,
+        "rating": 3.5,
+        "genres": [
+            2,
+            4
+        ],
+        "description": "La fascinante historia de dos cazadores de tesoros a la b\u00fasqueda del m\u00e1s legendario de los barcos piratas en la costa del Caribe.\r\n\r\nLa historia de dos hombres que en el a\u00f1o 2009 se lanzaron a surcar los mares en busca de un barco pirata legendario, el Golden Fleece, dispuestos a arriesgarlo todo --tiempo, dinero y vida sentimental--, a sortear todo tipo de dificultades y a enfrentarse a rivales en duelos dignos de la \u00e9poca de los corsarios. Dos cazadores de tesoros empecinados en encontrar en las profundidades del Mar Caribe un nav\u00edo capitaneado por el m\u00edtico Joseph Bannister, famoso en su \u00e9poca por haber derrotado a la mism\u00edsima Royal Navy, y emblema de la que fue la Edad Dorada de la pirater\u00eda en el siglo xvii.\r\n\r\nEsta es la historia de esa haza\u00f1a no exenta de locura y heroicidad, con dos personajes quijotescos que se acaban convirtiendo en versiones modernas de los piratas que tanto les han obsesionado y en la que se da cuenta tambi\u00e9n de la vida del corsario Joseph Bannister y de su buque, en un momento y un lugar en el que la pirater\u00eda era un lucrativo negocio alrededor del cual funcionaba toda la vida econ\u00f3mica y social del momento.\r\n\r\nFascinante y adictiva, una original combinaci\u00f3n de personajes en la l\u00ednea de Ocean\u00b4s Eleven, el reportaje period\u00edstico y las novelas marinas de Patrick O\u2019Brian. Un libro que sumerge al lector en las c\u00e1lidas aguas caribe\u00f1as y lo traslada a los tiempos turbulentos de la pirater\u00eda, relatando esos cuatro a\u00f1os consagrados a una haza\u00f1a s\u00f3lo comparable a lo que supuso hallar los restos del Titanic o alcanzar la cima del Everest por primera vez.",
+        "title": "Cazadores de piratas",
+        "image": "http://image5.casadellibro.com/a/l/t0/95/9788434423695.jpg",
+        "lists": [],
+        "year": 2016
+    },
+    "model": "items.book",
+    "pk": 1
+},
+{
+    "fields": {
+        "count": 0,
+        "rating": 0.0,
+        "genres": [
+            2
+        ],
+        "description": "Un incre\u00edble viaje en la historia hasta la Antigua Roma.",
+        "title": "Una historia en la historia",
+        "image": "http://static.fnac-static.com/multimedia/ES/images_produits/ES/ZoomPE/7/2/1/9788421663127.jpg",
+        "lists": [],
+        "year": 1988
+    },
+    "model": "items.book",
+    "pk": 2
+},
+{
+    "fields": {
+        "count": 0,
+        "rating": 0.0,
+        "genres": [
+            2
+        ],
+        "description": "Un hobbit de la Comarca, Bilbo Bols\u00f3n, recibe la visita del viejo mago Gandalf el Gris y un ruidoso pero entra\u00f1able grupo de enanos. De repente, se ver\u00e1 envuelto en un viaje inesperado que le har\u00e1 viajar por toda la Tierra Media para recuperar un tesoro robado por un temible drag\u00f3n.",
+        "title": "El Hobbit",
+        "image": "https://imagessl3.casadellibro.com/a/l/t0/03/9788445073803.jpg",
+        "lists": [],
+        "year": 1936
+    },
+    "model": "items.book",
+    "pk": 5
+},
+{
+    "fields": {
+        "count": 0,
+        "rating": 0.0,
+        "genres": [
+            1
+        ],
+        "description": "El asesinato de un rico empresario ocurrido tiempo atr\u00e1s es el punto de partida de una compleja red de mentiras que David Gurney deber\u00e1 desentra\u00f1ar. Y la identidad del asesino resulta ser la m\u00e1s grande de todas las sorpresas.",
+        "title": "No conf\u00edes en Peter Pan",
+        "image": "http://3.bp.blogspot.com/-mje0PEYIBNw/Uvzy44gUgrI/AAAAAAAACes/7qvkJ2E6SaQ/s1600/no+confies.jpg",
+        "lists": [],
+        "year": 2013
+    },
+    "model": "items.book",
+    "pk": 6
+},
+{
+    "fields": {
+        "count": 0,
+        "rating": 0.0,
+        "genres": [
+            2
+        ],
+        "description": "El Se\u00f1or de los Anillos (t\u00edtulo original en ingl\u00e9s: The Lord of the Rings) es una novela de fantas\u00eda \u00e9pica escrita por el fil\u00f3logo y escritor brit\u00e1nico J. R. R. Tolkien.\r\n\r\nSu historia se desarrolla en la Tercera Edad del Sol de la Tierra Media, un lugar ficticio poblado por hombres y otras razas antropomorfas como los hobbits, los elfos o los enanos, as\u00ed como por muchas otras criaturas reales y fant\u00e1sticas. La novela narra el viaje del protagonista principal, el hobbit Frodo Bols\u00f3n, para destruir el Anillo \u00danico y la consiguiente guerra que provocar\u00e1 el enemigo para recuperarlo, ya que es la principal fuente de poder de su creador, el Se\u00f1or oscuro Sauron.",
+        "title": "El Se\u00f1or de los Anillos",
+        "image": "http://www.quelibroleo.com/images/libros/libro_1322009207.jpg",
+        "lists": [],
+        "year": 1954
+    },
+    "model": "items.book",
+    "pk": 7
+},
+{
+    "fields": {
+        "count": 0,
+        "rating": 0.0,
+        "genres": [
+            1,
+            2
+        ],
+        "description": "Controla a Edward Kenway, un asesino pirata, y vence a los templarios en el Caribe.",
+        "title": "Assassin's Creed IV: Black Flag",
+        "image": "http://img1.meristation.com/files/imagenes/general/assassins-creed-iv-black-flag-sml.jpg",
+        "lists": [],
+        "platforms": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6
+        ],
+        "year": 2013
+    },
+    "model": "items.game",
+    "pk": 1
+},
+{
+    "fields": {
+        "count": 0,
+        "rating": 0.0,
+        "genres": [
+            1,
+            2
+        ],
+        "description": "Uncharted: El tesoro de Drake, titulado originalmente Uncharted: Drake's Fortune, es un videojuego de acci\u00f3n-aventura, desarrollado por Naughty Dog, y publicado por Sony Computer Entertainment para la consola PlayStation 3. Una demo para el juego fue lanzada el 8 de noviembre de 2007, en PlayStation Network. Aunque en EE.UU. se fij\u00f3 fecha para el 19 de noviembre, fue lanzado el d\u00eda 16 en unas \u00e1reas seleccionadas.\r\n\r\nEs el inicio de una impresionante saga exclusiva para PS3 que ha vendido millones de unidades desde su lanzamiento en todo el mundo. El estudio Naughty Dog ha vuelto a conseguir sacarse otro conejo de la chistera para esta generaci\u00f3n de consolas con este nuevo y fresco t\u00edtulo que ha arrasado en esta plataforma virtual debido a su incre\u00edble historia y detallad\u00edsimos gr\u00e1ficos, siendo as\u00ed todo un logro satisfactorio para los desarrolladores de la compa\u00f1\u00eda, dando a conocer que su esfuerzo y trabajo logr\u00f3 un buen fin.",
+        "title": "Uncharted: El tesoro de Drake",
+        "image": "http://uvejuegos.com/img/caratulas/21075/Uncharted_DF_pal_.jpg",
+        "lists": [],
+        "platforms": [
+            1,
+            2
+        ],
+        "year": 2007
+    },
+    "model": "items.game",
+    "pk": 2
+},
+{
+    "fields": {
+        "count": 0,
+        "rating": 0.0,
+        "genres": [
+            1,
+            2
+        ],
+        "description": "Lib\u00e9rate de tus cadenas y gu\u00eda a tus compa\u00f1eros hasta la libertad.",
+        "title": "Grito de Libertad",
+        "image": "http://www.3djuegos.com/juegos/10406/assassins_creed_4_black_flag__grito_de_libertad/fotos/ficha/assassins_creed_4_black_flag__grito_de_libertad-2430448.jpg",
+        "lists": [],
+        "platforms": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6
+        ],
+        "game": 1,
+        "year": 2014
+    },
+    "model": "items.dlc",
+    "pk": 1
+},
+{
+    "fields": {
+        "count": 0,
+        "rating": 0.0,
+        "genres": [
+            1,
+            2
+        ],
+        "description": "Misiones secundarias de b\u00fasqueda de cofres con contenido adicional.",
+        "title": "Piratas Ilustres",
+        "image": "http://im.ziffdavisinternational.com/ign_es/screenshot/l/llega-el-illustrious-pirates-pack-a-assassins-cree/llega-el-illustrious-pirates-pack-a-assassins-cree_cz7v.jpg",
+        "lists": [],
+        "platforms": [],
+        "game": 1,
+        "year": 2013
+    },
+    "model": "items.dlc",
+    "pk": 3
+},
+{
+    "fields": {
+        "count": 0,
+        "rating": 0.0,
+        "genres": [
+            1,
+            2
+        ],
+        "description": "Un fetiche arumbaya ha sido robado del Museo etnogr\u00e1fico y Tint\u00edn inicia su b\u00fasqueda. Siguiendo las pistas, descubre que dos hombres llamados Ram\u00f3n Bada y Alonso P\u00e9rez se interesan tambi\u00e9n por el mismo fetiche. Estos hombres se dirigen hacia San Theodoros, una rep\u00fablica de Sudam\u00e9rica. Tint\u00edn les sigue y se encuentra en el centro de una revoluci\u00f3n. Por una serie de casualidades termina convertido en ayudante de campo del General Alc\u00e1zar. Estalla la guerra entre San Teodoro y su vecino, Nuevo Rico. Tint\u00edn, perseguido por todos, huye hasta territorio de los arumbayas. Ah\u00ed descubre por fin el secreto del \u00eddolo: contiene un peque\u00f1o diamante. Finalmente, el fetiche es recuperado en Europa y devuelto al museo.",
+        "title": "Tint\u00edn - La oreja rota",
+        "image": "http://www.editorialjuventud.es/img/0274.jpg",
+        "lists": [],
+        "year": 1937
+    },
+    "model": "items.comic",
+    "pk": 1
+},
+{
+    "fields": {
+        "count": 0,
+        "rating": 0.0,
+        "genres": [
+            1,
+            6
+        ],
+        "description": "Batman: The Dark Knight Returns es una miniserie de historietas estadounidense de cuatro n\u00fameros de Batman, publicada entre febrero y junio de 1986 por DC Comics. Fue escrita e ilustrada por Frank Miller, entintada por Klaus Janson y coloreada por Lynn Varley. La historieta es considerada la m\u00e1s importante de Batman publicada en los \u00faltimos a\u00f1os. La trama, que transcurre durante una ucr\u00f3nica d\u00e9cada de 1980, narra la vuelta de un Batman quincuagenario a la actividad \u00abpara una \u00faltima limpieza de su amada ciudad de Gotham, convirti\u00e9ndose definitivamente en leyenda\u00bb.\r\n\r\nLa obra encumbr\u00f3 a Miller como estrella del c\u00f3mic en los Estados Unidos y supuso una revoluci\u00f3n en el subg\u00e9nero de los superh\u00e9roes junto con Watchmen, de Alan Moore, convirti\u00e9ndose en s\u00edmbolo de una era de superh\u00e9roes m\u00e1s violentos y moralmente complejos. Ambas fueron el origen de una de las dos v\u00edas de la novela gr\u00e1fica contempor\u00e1nea, la superheroica y comercial, frente a la independiente y autobiogr\u00e1fica, representada por Maus: Relato de un superviviente.\r\n\r\nA\u00f1os despu\u00e9s Miller realiz\u00f3 una secuela, Batman: The Dark Knight Strikes Again (El se\u00f1or de la noche contraataca, 2002), que no tuvo el \u00e9xito ni la repercusi\u00f3n del original.",
+        "title": "Batman: The Dark Knight Returns",
+        "image": "http://www.nidodehistorietas.com/comics/batman-the-dark-returns-el-regreso-del-caballero-de-la-noche.jpg",
+        "lists": [],
+        "year": 1986
+    },
+    "model": "items.comicseries",
+    "pk": 1
+},
+{
+    "fields": {
+        "count": 0,
+        "rating": 0.0,
+        "genres": [
+            1
+        ],
+        "description": "En el primer arco de la historia, \"Enemigos p\u00fablicos\" (n\u00fameros 1-6, ilustrados por Ed McGuinness), el entonces Presidente de los Estados Unidos Lex Luthor declara a Superman y Batman enemigos de estado, mientras muestra que un asteroide de kriptonita se dirige hacia la Tierra conectado a un plan maligno de Superman. Luthor ofrece una recompensa de mil millones de d\u00f3lares, que anima a supervillanos y superh\u00e9roes para atacar a los dos h\u00e9roes. Superman casi mata al Presidente Luthor en la Oficina Oval, mientras Batman se mantiene al margen. En el \u00faltimo momento, Superman cambia de idea. Batman y Superman buscan al nuevo Toyman, Hiro Okamura, que construye una nave espacial con suficiente potencia de fuego como para destruir al asteroide. Cuando el plan de Luthor est\u00e1 en peligro, \u00e9ste se inyecta una mezcla de Venom y kryptonita sint\u00e9tica, se pone un traje de batalla del planeta Apokolips, y se enfrenta a Batman y Superman. Luthor es derrotado y parece morir en la lucha, aunque luego se muestra que ha sobrevivido. En el curso de la pelea, Luthor se muestra al mundo como un villano, por primera vez en la continuidad Post-crisis. Perdida la presidencia, Luthor es sucedido en el cargo por Pete Ross.",
+        "title": "Superman/Batman",
+        "image": "http://www.elmultiverso52.com/wp-content/uploads/2016/03/SupermanBatmanvol1-SupermanBatmanPublicEnemies.jpg",
+        "lists": [],
+        "year": 2003
+    },
+    "model": "items.comicseries",
+    "pk": 2
+},
+{
+    "fields": {
+        "count": 0,
+        "rating": 0.0,
+        "genres": [
+            3,
+            4
+        ],
+        "description": "Moneyball (2011) es una pel\u00edcula dirigida por Bennett Miller y protagonizada por Brad Pitt, Jonah Hill y Philip Seymour Hoffman. Basada en la historia real de Billy Beane, gerente general del equipo Atl\u00e9ticos de Oakland, la pel\u00edcula es una adaptaci\u00f3n de la novela Moneyball: the art of winning an unfair game (2003). Columbia Pictures adquiri\u00f3 los derechos en 2004 y, tras siete a\u00f1os de desarrollo, se present\u00f3 en el Festival Internacional de Cine de Toronto en 2011. Fue estrenada en cines el 23 de septiembre.",
+        "title": "Moneyball: rompiendo las reglas",
+        "image": "http://www.impawards.com/2011/posters/moneyball_ver2.jpg",
+        "lists": [],
+        "year": 2011,
+        "duration": 133,
+        "category": "pel"
+    },
+    "model": "items.movie",
+    "pk": 1
+},
+{
+    "fields": {
+        "count": 0,
+        "rating": 0.0,
+        "genres": [
+            2,
+            5
+        ],
+        "description": "The Secret Life of Walter Mitty (La vida secreta de Walter Mitty en Espa\u00f1a, La incre\u00edble vida de Walter Mitty en Hispanoam\u00e9rica) es la segunda adaptaci\u00f3n cinematogr\u00e1fica del cuento The Secret Life of Walter Mitty publicado en 1939.\r\n\r\nFue dirigida y protagonizada por Ben Stiller como Walter Mitty, y Kristen Wiig. Se estren\u00f3 en el Festival de Cine de Nueva York el 5 de octubre de 2013, despu\u00e9s se estren\u00f3 en los Estados Unidos y en Espa\u00f1a el 25 de diciembre de 2013, y en Chile el 23 de enero de 2014. Recibi\u00f3 cr\u00edticas mixtas de los cr\u00edticos. Fue filmada en Los \u00c1ngeles, Nueva York, Islandia y Groenlandia.",
+        "title": "La vida secreta de Walter Mitty",
+        "image": "http://es.web.img3.acsta.net/pictures/210/591/21059131_20131119154913018.jpg",
+        "lists": [],
+        "year": 2014,
+        "duration": 114,
+        "category": "pel"
+    },
+    "model": "items.movie",
+    "pk": 2
+},
+{
+    "fields": {
+        "count": 0,
+        "rating": 0.0,
+        "genres": [
+            5
+        ],
+        "description": "El periodista Bob Wilton (Ewan McGregor) est\u00e1 detr\u00e1s de su pr\u00f3xima gran historia, cuando se cruza con Lyn Cassady (George Clooney), un personaje misterioso que proclama ser parte de una unidad experimental secreta del Ej\u00e9rcito de los Estados Unidos. Seg\u00fan Cassady, este Ej\u00e9rcito de la Nueva Tierra est\u00e1 cambiando las t\u00e1cticas de combate. Se trata de una legi\u00f3n de \u2018Guerreros Monje\u2019 que posee una serie de poderes sin parang\u00f3n, tales como leer la mente del enemigo, atravesar paredes o incluso matar una cabra con tan s\u00f3lo mirarla fijamente. El fundador del programa, Bill Django (Jeff Bridges), ex-combatiente de Vietnam y estudioso de la Nueva era ha desaparecido, y la misi\u00f3n de Cassady es encontrarle.\r\n\r\nIntrigado por las incre\u00edbles historias que narra este reci\u00e9n conocido, Bob decide impulsivamente seguirle. Cuando la pareja da con la pista de Django, se topan con un campamento de entrenamiento clandestino dirigido por un renegado vidente y ex-miembro del Ej\u00e9rcito de la Nueva Tierra, Larry Hooper, (Kevin Spacey). El reportero se ve atrapado en una rencilla entre el Ej\u00e9rcito de Django y la milicia personal de super soldados de Hooper. Para sobrevivir a esta salvaje aventura, Bob tendr\u00e1 que burlar a un enemigo que jam\u00e1s crey\u00f3 que pudiera existir.",
+        "title": "Los hombres que miraban fijamente a las cabras",
+        "image": "http://i1007.photobucket.com/albums/af196/Diego20E/1znsm8n.jpg",
+        "lists": [],
+        "year": 2009,
+        "duration": 95,
+        "category": "pel"
+    },
+    "model": "items.movie",
+    "pk": 4
+},
+{
+    "fields": {
+        "count": 0,
+        "rating": 0.0,
+        "genres": [
+            5
+        ],
+        "description": "Borat: Cultural Learnings of America for Make Benefit Glorious Nation of Kazakhstan (titulada Borat: lecciones culturales de Estados Unidos para beneficio de la gloriosa naci\u00f3n de Kazajist\u00e1n en espa\u00f1ol), mejor conocida como Borat, es un falso documental de Sacha Baron Cohen de 2006 dirigido por Larry Charles. El t\u00edtulo est\u00e1 humor\u00edsticamente mal redactado en ingl\u00e9s y traducido en el DVD como Borat: Aprendizajes Culturales de Estados Unidos para Beneficio de la Gloriosa Naci\u00f3n de Kazajist\u00e1n, refiri\u00e9ndose a Estados Unidos como Am\u00e9rica. El personaje de Borat ya hab\u00eda sido empleado en Ali G anda suelto, la anterior cinta de Baron Cohen.",
+        "title": "Borat: lecciones culturales de Estados Unidos para beneficio de la gloriosa naci\u00f3n de Kazajist\u00e1n",
+        "image": "http://es.web.img2.acsta.net/medias/nmedia/18/89/72/83/20064056.jpg",
+        "lists": [],
+        "year": 2006,
+        "duration": 84,
+        "category": "pel"
+    },
+    "model": "items.movie",
+    "pk": 5
+},
+{
+    "fields": {
+        "count": 0,
+        "rating": 0.0,
+        "genres": [
+            3,
+            4
+        ],
+        "description": "Senna es un documental ingl\u00e9s lanzado en 2010, que aborda la vida \u00edntima y profesional del c\u00e9lebre piloto brasile\u00f1o de F\u00f3rmula 1, Ayrton Senna. Fue dirigida por Asif Kapadia, producida en conjunto por ESPN films y Working title films, y distribuida por Universal Pictures. Tras su lanzamiento recibi\u00f3 excelentes comentarios por parte de la cr\u00edtica especializada.\r\n\r\nEl film est\u00e1 basado tanto en archivos familiares del fallecido piloto, como tambi\u00e9n material audiovisual de televisi\u00f3n, brasile\u00f1a y mundial de la \u00e9poca. Se muestra a Ayrton Senna muy religioso, preocupado por sus compa\u00f1eros de trabajo, perfeccionista hasta el m\u00ednimo detalle, obsesionado con el triunfo, \u00eddolo de millones alrededor del mundo e idolatrado en su pa\u00eds natal.",
+        "title": "Senna",
+        "image": "http://i2.esmas.com/galerias/fotos/2012/1/_brit5-39c1d3ee-928f-102f-b536-0019b9d5c8df.jpg",
+        "lists": [],
+        "year": 2010,
+        "duration": 106,
+        "category": "doc"
+    },
+    "model": "items.movie",
+    "pk": 6
+},
+{
+    "fields": {
+        "count": 0,
+        "rating": 0.0,
+        "genres": [
+            6
+        ],
+        "description": "Ubicada en el Londres del siglo XXI, la serie sigue los pasos del exc\u00e9ntrico detective Sherlock Holmes junto a su compa\u00f1ero el doctor John H. Watson, en su b\u00fasqueda por resolver los brutales cr\u00edmenes que se van desarrollando. Sus insuperables habilidades de deducci\u00f3n y su arrogante distanciamiento emocional le convierten en el perfecto detective, pero pronto descubrir\u00e1 que hay alguien m\u00e1s que le sigue los pasos, el misterioso James Moriarty.",
+        "title": "Sherlock",
+        "image": "https://s-media-cache-ak0.pinimg.com/564x/60/3c/65/603c652261b739c30b1d6ffbf8945c54.jpg",
+        "lists": [],
+        "status": "esp",
+        "year": 2010,
+        "category": "ser"
+    },
+    "model": "items.series",
+    "pk": 1
+},
+{
+    "fields": {
+        "count": 0,
+        "rating": 0.0,
+        "genres": [
+            5
+        ],
+        "description": "Top Gear es un programa de la televisi\u00f3n brit\u00e1nica sobre veh\u00edculos de motor, principalmente coches, y es el programa de coches m\u00e1s visto del mundo. Comenz\u00f3 en 1977 como un programa de coches convencional. Con el tiempo, y sobre todo desde un relanzamiento en 2002, ha desarrollado un estilo peculiar, humor\u00edstico y a veces controvertido. El espect\u00e1culo se presenta actualmente por Chris Evans y Matt LeBlanc, despu\u00e9s de que el ex presentador Jeremy Clarkson tuviera una peque\u00f1a discusi\u00f3n con el productor de Top Gear (el 18 de Noviembre se estrena la nueva serie de los antiguos presentadores de Top Gear: The Grand Tour). Ha ofrecido al menos tres pilotos de pruebas diferentes conocidos como The Stig. Se estima que el programa tiene alrededor de 350 millones de espectadores por semana en m\u00e1s 170 pa\u00edses diferentes.",
+        "title": "Top Gear",
+        "image": "http://cdn.cineworm.com/posters/74608-7.jpg",
+        "lists": [],
+        "status": "emi",
+        "year": 2002,
+        "category": "pro"
+    },
+    "model": "items.series",
+    "pk": 2
+},
+{
+    "fields": {
+        "count": 0,
+        "rating": 0.0,
+        "genres": [
+            1,
+            4
+        ],
+        "description": "The Pacific es una miniserie de televisi\u00f3n ambientada en la Segunda Guerra Mundial, producida por HBO, que se estren\u00f3 en marzo de 2010. La serie se centra en la intervenci\u00f3n militar estadounidense en el Teatro del Pac\u00edfico. Es un proyecto \u00edntimamente ligado y sucesor de Band of Brothers, que se centraba en el continente europeo.\r\n\r\nThe Pacific se basa en las memorias de dos marines, Helmet for My Pillow de Robert Leckie y With the Old Breed de Eugene Sledge. La miniserie narra la historia de ambos autores y la del marine John Basilone en las batallas contra el Imperio del Jap\u00f3n.",
+        "title": "The Pacific",
+        "image": "http://www.vipmoviewatch.com/images/joomlart/movies/pacific.jpg",
+        "lists": [],
+        "status": "fin",
+        "year": 2010,
+        "category": "min"
+    },
+    "model": "items.series",
+    "pk": 3
+},
+{
+    "fields": {
+        "book": 1,
+        "role": "edi",
+        "agent": 3
+    },
+    "model": "items.bookinvolvement",
+    "pk": 1
+},
+{
+    "fields": {
+        "book": 1,
+        "role": "esc",
+        "agent": 4
+    },
+    "model": "items.bookinvolvement",
+    "pk": 2
+},
+{
+    "fields": {
+        "book": 6,
+        "role": "esc",
+        "agent": 5
+    },
+    "model": "items.bookinvolvement",
+    "pk": 3
+},
+{
+    "fields": {
+        "game": 1,
+        "role": "des",
+        "agent": 2
+    },
+    "model": "items.gameinvolvement",
+    "pk": 1
+},
+{
+    "fields": {
+        "game": 1,
+        "role": "dis",
+        "agent": 2
+    },
+    "model": "items.gameinvolvement",
+    "pk": 2
+},
+{
+    "fields": {
+        "dlc": 1,
+        "role": "des",
+        "agent": 2
+    },
+    "model": "items.dlcinvolvement",
+    "pk": 2
+},
+{
+    "fields": {
+        "dlc": 1,
+        "role": "dis",
+        "agent": 2
+    },
+    "model": "items.dlcinvolvement",
+    "pk": 4
+},
+{
+    "fields": {
+        "comic": 1,
+        "role": "gui",
+        "agent": 9
+    },
+    "model": "items.comicinvolvement",
+    "pk": 4
+},
+{
+    "fields": {
+        "comic": 1,
+        "role": "dib",
+        "agent": 9
+    },
+    "model": "items.comicinvolvement",
+    "pk": 5
+},
+{
+    "fields": {
+        "movie": 1,
+        "role": "act",
+        "agent": 1
+    },
+    "model": "items.movieinvolvement",
+    "pk": 2
+},
+{
+    "fields": {
+        "series": 2,
+        "role": "pre",
+        "agent": 6
+    },
+    "model": "items.seriesinvolvement",
+    "pk": 1
+},
+{
+    "fields": {
+        "series": 1,
+        "role": "act",
+        "agent": 7
+    },
+    "model": "items.seriesinvolvement",
+    "pk": 2
+},
+{
+    "fields": {
+        "series": 1,
+        "role": "act",
+        "agent": 8
+    },
+    "model": "items.seriesinvolvement",
+    "pk": 3
+},
+{
+    "fields": {
+        "codename": "add_logentry",
+        "name": "Can add log entry",
+        "content_type": 1
+    },
+    "model": "auth.permission",
+    "pk": 1
+},
+{
+    "fields": {
+        "codename": "change_logentry",
+        "name": "Can change log entry",
+        "content_type": 1
+    },
+    "model": "auth.permission",
+    "pk": 2
+},
+{
+    "fields": {
+        "codename": "delete_logentry",
+        "name": "Can delete log entry",
+        "content_type": 1
+    },
+    "model": "auth.permission",
+    "pk": 3
+},
+{
+    "fields": {
+        "codename": "add_permission",
+        "name": "Can add permission",
+        "content_type": 2
+    },
+    "model": "auth.permission",
+    "pk": 4
+},
+{
+    "fields": {
+        "codename": "change_permission",
+        "name": "Can change permission",
+        "content_type": 2
+    },
+    "model": "auth.permission",
+    "pk": 5
+},
+{
+    "fields": {
+        "codename": "delete_permission",
+        "name": "Can delete permission",
+        "content_type": 2
+    },
+    "model": "auth.permission",
+    "pk": 6
+},
+{
+    "fields": {
+        "codename": "add_group",
+        "name": "Can add group",
+        "content_type": 3
+    },
+    "model": "auth.permission",
+    "pk": 7
+},
+{
+    "fields": {
+        "codename": "change_group",
+        "name": "Can change group",
+        "content_type": 3
+    },
+    "model": "auth.permission",
+    "pk": 8
+},
+{
+    "fields": {
+        "codename": "delete_group",
+        "name": "Can delete group",
+        "content_type": 3
+    },
+    "model": "auth.permission",
+    "pk": 9
+},
+{
+    "fields": {
+        "codename": "add_user",
+        "name": "Can add user",
+        "content_type": 4
+    },
+    "model": "auth.permission",
+    "pk": 10
+},
+{
+    "fields": {
+        "codename": "change_user",
+        "name": "Can change user",
+        "content_type": 4
+    },
+    "model": "auth.permission",
+    "pk": 11
+},
+{
+    "fields": {
+        "codename": "delete_user",
+        "name": "Can delete user",
+        "content_type": 4
+    },
+    "model": "auth.permission",
+    "pk": 12
+},
+{
+    "fields": {
+        "codename": "add_contenttype",
+        "name": "Can add content type",
+        "content_type": 5
+    },
+    "model": "auth.permission",
+    "pk": 13
+},
+{
+    "fields": {
+        "codename": "change_contenttype",
+        "name": "Can change content type",
+        "content_type": 5
+    },
+    "model": "auth.permission",
+    "pk": 14
+},
+{
+    "fields": {
+        "codename": "delete_contenttype",
+        "name": "Can delete content type",
+        "content_type": 5
+    },
+    "model": "auth.permission",
+    "pk": 15
+},
+{
+    "fields": {
+        "codename": "add_session",
+        "name": "Can add session",
+        "content_type": 6
+    },
+    "model": "auth.permission",
+    "pk": 16
+},
+{
+    "fields": {
+        "codename": "change_session",
+        "name": "Can change session",
+        "content_type": 6
+    },
+    "model": "auth.permission",
+    "pk": 17
+},
+{
+    "fields": {
+        "codename": "delete_session",
+        "name": "Can delete session",
+        "content_type": 6
+    },
+    "model": "auth.permission",
+    "pk": 18
+},
+{
+    "fields": {
+        "codename": "add_genre",
+        "name": "Can add genre",
+        "content_type": 7
+    },
+    "model": "auth.permission",
+    "pk": 19
+},
+{
+    "fields": {
+        "codename": "change_genre",
+        "name": "Can change genre",
+        "content_type": 7
+    },
+    "model": "auth.permission",
+    "pk": 20
+},
+{
+    "fields": {
+        "codename": "delete_genre",
+        "name": "Can delete genre",
+        "content_type": 7
+    },
+    "model": "auth.permission",
+    "pk": 21
+},
+{
+    "fields": {
+        "codename": "add_agent",
+        "name": "Can add agent",
+        "content_type": 8
+    },
+    "model": "auth.permission",
+    "pk": 22
+},
+{
+    "fields": {
+        "codename": "change_agent",
+        "name": "Can change agent",
+        "content_type": 8
+    },
+    "model": "auth.permission",
+    "pk": 23
+},
+{
+    "fields": {
+        "codename": "delete_agent",
+        "name": "Can delete agent",
+        "content_type": 8
+    },
+    "model": "auth.permission",
+    "pk": 24
+},
+{
+    "fields": {
+        "codename": "add_account",
+        "name": "Can add account",
+        "content_type": 9
+    },
+    "model": "auth.permission",
+    "pk": 25
+},
+{
+    "fields": {
+        "codename": "change_account",
+        "name": "Can change account",
+        "content_type": 9
+    },
+    "model": "auth.permission",
+    "pk": 26
+},
+{
+    "fields": {
+        "codename": "delete_account",
+        "name": "Can delete account",
+        "content_type": 9
+    },
+    "model": "auth.permission",
+    "pk": 27
+},
+{
+    "fields": {
+        "codename": "add_platform",
+        "name": "Can add platform",
+        "content_type": 10
+    },
+    "model": "auth.permission",
+    "pk": 28
+},
+{
+    "fields": {
+        "codename": "change_platform",
+        "name": "Can change platform",
+        "content_type": 10
+    },
+    "model": "auth.permission",
+    "pk": 29
+},
+{
+    "fields": {
+        "codename": "delete_platform",
+        "name": "Can delete platform",
+        "content_type": 10
+    },
+    "model": "auth.permission",
+    "pk": 30
+},
+{
+    "fields": {
+        "codename": "add_list",
+        "name": "Can add list",
+        "content_type": 11
+    },
+    "model": "auth.permission",
+    "pk": 31
+},
+{
+    "fields": {
+        "codename": "change_list",
+        "name": "Can change list",
+        "content_type": 11
+    },
+    "model": "auth.permission",
+    "pk": 32
+},
+{
+    "fields": {
+        "codename": "delete_list",
+        "name": "Can delete list",
+        "content_type": 11
+    },
+    "model": "auth.permission",
+    "pk": 33
+},
+{
+    "fields": {
+        "codename": "add_book",
+        "name": "Can add book",
+        "content_type": 12
+    },
+    "model": "auth.permission",
+    "pk": 34
+},
+{
+    "fields": {
+        "codename": "change_book",
+        "name": "Can change book",
+        "content_type": 12
+    },
+    "model": "auth.permission",
+    "pk": 35
+},
+{
+    "fields": {
+        "codename": "delete_book",
+        "name": "Can delete book",
+        "content_type": 12
+    },
+    "model": "auth.permission",
+    "pk": 36
+},
+{
+    "fields": {
+        "codename": "add_bookmark",
+        "name": "Can add book mark",
+        "content_type": 13
+    },
+    "model": "auth.permission",
+    "pk": 37
+},
+{
+    "fields": {
+        "codename": "change_bookmark",
+        "name": "Can change book mark",
+        "content_type": 13
+    },
+    "model": "auth.permission",
+    "pk": 38
+},
+{
+    "fields": {
+        "codename": "delete_bookmark",
+        "name": "Can delete book mark",
+        "content_type": 13
+    },
+    "model": "auth.permission",
+    "pk": 39
+},
+{
+    "fields": {
+        "codename": "add_bookinvolvement",
+        "name": "Can add book involvement",
+        "content_type": 14
+    },
+    "model": "auth.permission",
+    "pk": 40
+},
+{
+    "fields": {
+        "codename": "change_bookinvolvement",
+        "name": "Can change book involvement",
+        "content_type": 14
+    },
+    "model": "auth.permission",
+    "pk": 41
+},
+{
+    "fields": {
+        "codename": "delete_bookinvolvement",
+        "name": "Can delete book involvement",
+        "content_type": 14
+    },
+    "model": "auth.permission",
+    "pk": 42
+},
+{
+    "fields": {
+        "codename": "add_game",
+        "name": "Can add game",
+        "content_type": 15
+    },
+    "model": "auth.permission",
+    "pk": 43
+},
+{
+    "fields": {
+        "codename": "change_game",
+        "name": "Can change game",
+        "content_type": 15
+    },
+    "model": "auth.permission",
+    "pk": 44
+},
+{
+    "fields": {
+        "codename": "delete_game",
+        "name": "Can delete game",
+        "content_type": 15
+    },
+    "model": "auth.permission",
+    "pk": 45
+},
+{
+    "fields": {
+        "codename": "add_dlc",
+        "name": "Can add dlc",
+        "content_type": 16
+    },
+    "model": "auth.permission",
+    "pk": 46
+},
+{
+    "fields": {
+        "codename": "change_dlc",
+        "name": "Can change dlc",
+        "content_type": 16
+    },
+    "model": "auth.permission",
+    "pk": 47
+},
+{
+    "fields": {
+        "codename": "delete_dlc",
+        "name": "Can delete dlc",
+        "content_type": 16
+    },
+    "model": "auth.permission",
+    "pk": 48
+},
+{
+    "fields": {
+        "codename": "add_gamemark",
+        "name": "Can add game mark",
+        "content_type": 17
+    },
+    "model": "auth.permission",
+    "pk": 49
+},
+{
+    "fields": {
+        "codename": "change_gamemark",
+        "name": "Can change game mark",
+        "content_type": 17
+    },
+    "model": "auth.permission",
+    "pk": 50
+},
+{
+    "fields": {
+        "codename": "delete_gamemark",
+        "name": "Can delete game mark",
+        "content_type": 17
+    },
+    "model": "auth.permission",
+    "pk": 51
+},
+{
+    "fields": {
+        "codename": "add_dlcmark",
+        "name": "Can add dlc mark",
+        "content_type": 18
+    },
+    "model": "auth.permission",
+    "pk": 52
+},
+{
+    "fields": {
+        "codename": "change_dlcmark",
+        "name": "Can change dlc mark",
+        "content_type": 18
+    },
+    "model": "auth.permission",
+    "pk": 53
+},
+{
+    "fields": {
+        "codename": "delete_dlcmark",
+        "name": "Can delete dlc mark",
+        "content_type": 18
+    },
+    "model": "auth.permission",
+    "pk": 54
+},
+{
+    "fields": {
+        "codename": "add_gameinvolvement",
+        "name": "Can add game involvement",
+        "content_type": 19
+    },
+    "model": "auth.permission",
+    "pk": 55
+},
+{
+    "fields": {
+        "codename": "change_gameinvolvement",
+        "name": "Can change game involvement",
+        "content_type": 19
+    },
+    "model": "auth.permission",
+    "pk": 56
+},
+{
+    "fields": {
+        "codename": "delete_gameinvolvement",
+        "name": "Can delete game involvement",
+        "content_type": 19
+    },
+    "model": "auth.permission",
+    "pk": 57
+},
+{
+    "fields": {
+        "codename": "add_dlcinvolvement",
+        "name": "Can add dlc involvement",
+        "content_type": 20
+    },
+    "model": "auth.permission",
+    "pk": 58
+},
+{
+    "fields": {
+        "codename": "change_dlcinvolvement",
+        "name": "Can change dlc involvement",
+        "content_type": 20
+    },
+    "model": "auth.permission",
+    "pk": 59
+},
+{
+    "fields": {
+        "codename": "delete_dlcinvolvement",
+        "name": "Can delete dlc involvement",
+        "content_type": 20
+    },
+    "model": "auth.permission",
+    "pk": 60
+},
+{
+    "fields": {
+        "codename": "add_comic",
+        "name": "Can add comic",
+        "content_type": 22
+    },
+    "model": "auth.permission",
+    "pk": 64
+},
+{
+    "fields": {
+        "codename": "change_comic",
+        "name": "Can change comic",
+        "content_type": 22
+    },
+    "model": "auth.permission",
+    "pk": 65
+},
+{
+    "fields": {
+        "codename": "delete_comic",
+        "name": "Can delete comic",
+        "content_type": 22
+    },
+    "model": "auth.permission",
+    "pk": 66
+},
+{
+    "fields": {
+        "codename": "add_number",
+        "name": "Can add number",
+        "content_type": 23
+    },
+    "model": "auth.permission",
+    "pk": 67
+},
+{
+    "fields": {
+        "codename": "change_number",
+        "name": "Can change number",
+        "content_type": 23
+    },
+    "model": "auth.permission",
+    "pk": 68
+},
+{
+    "fields": {
+        "codename": "delete_number",
+        "name": "Can delete number",
+        "content_type": 23
+    },
+    "model": "auth.permission",
+    "pk": 69
+},
+{
+    "fields": {
+        "codename": "add_comicmark",
+        "name": "Can add comic mark",
+        "content_type": 25
+    },
+    "model": "auth.permission",
+    "pk": 73
+},
+{
+    "fields": {
+        "codename": "change_comicmark",
+        "name": "Can change comic mark",
+        "content_type": 25
+    },
+    "model": "auth.permission",
+    "pk": 74
+},
+{
+    "fields": {
+        "codename": "delete_comicmark",
+        "name": "Can delete comic mark",
+        "content_type": 25
+    },
+    "model": "auth.permission",
+    "pk": 75
+},
+{
+    "fields": {
+        "codename": "add_comicinvolvement",
+        "name": "Can add comic involvement",
+        "content_type": 27
+    },
+    "model": "auth.permission",
+    "pk": 79
+},
+{
+    "fields": {
+        "codename": "change_comicinvolvement",
+        "name": "Can change comic involvement",
+        "content_type": 27
+    },
+    "model": "auth.permission",
+    "pk": 80
+},
+{
+    "fields": {
+        "codename": "delete_comicinvolvement",
+        "name": "Can delete comic involvement",
+        "content_type": 27
+    },
+    "model": "auth.permission",
+    "pk": 81
+},
+{
+    "fields": {
+        "codename": "add_movie",
+        "name": "Can add movie",
+        "content_type": 28
+    },
+    "model": "auth.permission",
+    "pk": 82
+},
+{
+    "fields": {
+        "codename": "change_movie",
+        "name": "Can change movie",
+        "content_type": 28
+    },
+    "model": "auth.permission",
+    "pk": 83
+},
+{
+    "fields": {
+        "codename": "delete_movie",
+        "name": "Can delete movie",
+        "content_type": 28
+    },
+    "model": "auth.permission",
+    "pk": 84
+},
+{
+    "fields": {
+        "codename": "add_series",
+        "name": "Can add series",
+        "content_type": 29
+    },
+    "model": "auth.permission",
+    "pk": 85
+},
+{
+    "fields": {
+        "codename": "change_series",
+        "name": "Can change series",
+        "content_type": 29
+    },
+    "model": "auth.permission",
+    "pk": 86
+},
+{
+    "fields": {
+        "codename": "delete_series",
+        "name": "Can delete series",
+        "content_type": 29
+    },
+    "model": "auth.permission",
+    "pk": 87
+},
+{
+    "fields": {
+        "codename": "add_chapter",
+        "name": "Can add chapter",
+        "content_type": 30
+    },
+    "model": "auth.permission",
+    "pk": 88
+},
+{
+    "fields": {
+        "codename": "change_chapter",
+        "name": "Can change chapter",
+        "content_type": 30
+    },
+    "model": "auth.permission",
+    "pk": 89
+},
+{
+    "fields": {
+        "codename": "delete_chapter",
+        "name": "Can delete chapter",
+        "content_type": 30
+    },
+    "model": "auth.permission",
+    "pk": 90
+},
+{
+    "fields": {
+        "codename": "add_seriesmark",
+        "name": "Can add series mark",
+        "content_type": 31
+    },
+    "model": "auth.permission",
+    "pk": 91
+},
+{
+    "fields": {
+        "codename": "change_seriesmark",
+        "name": "Can change series mark",
+        "content_type": 31
+    },
+    "model": "auth.permission",
+    "pk": 92
+},
+{
+    "fields": {
+        "codename": "delete_seriesmark",
+        "name": "Can delete series mark",
+        "content_type": 31
+    },
+    "model": "auth.permission",
+    "pk": 93
+},
+{
+    "fields": {
+        "codename": "add_moviemark",
+        "name": "Can add movie mark",
+        "content_type": 32
+    },
+    "model": "auth.permission",
+    "pk": 94
+},
+{
+    "fields": {
+        "codename": "change_moviemark",
+        "name": "Can change movie mark",
+        "content_type": 32
+    },
+    "model": "auth.permission",
+    "pk": 95
+},
+{
+    "fields": {
+        "codename": "delete_moviemark",
+        "name": "Can delete movie mark",
+        "content_type": 32
+    },
+    "model": "auth.permission",
+    "pk": 96
+},
+{
+    "fields": {
+        "codename": "add_movieinvolvement",
+        "name": "Can add movie involvement",
+        "content_type": 33
+    },
+    "model": "auth.permission",
+    "pk": 97
+},
+{
+    "fields": {
+        "codename": "change_movieinvolvement",
+        "name": "Can change movie involvement",
+        "content_type": 33
+    },
+    "model": "auth.permission",
+    "pk": 98
+},
+{
+    "fields": {
+        "codename": "delete_movieinvolvement",
+        "name": "Can delete movie involvement",
+        "content_type": 33
+    },
+    "model": "auth.permission",
+    "pk": 99
+},
+{
+    "fields": {
+        "codename": "add_seriesinvolvement",
+        "name": "Can add series involvement",
+        "content_type": 34
+    },
+    "model": "auth.permission",
+    "pk": 100
+},
+{
+    "fields": {
+        "codename": "change_seriesinvolvement",
+        "name": "Can change series involvement",
+        "content_type": 34
+    },
+    "model": "auth.permission",
+    "pk": 101
+},
+{
+    "fields": {
+        "codename": "delete_seriesinvolvement",
+        "name": "Can delete series involvement",
+        "content_type": 34
+    },
+    "model": "auth.permission",
+    "pk": 102
+},
+{
+    "fields": {
+        "codename": "add_comicseries",
+        "name": "Can add comic series",
+        "content_type": 35
+    },
+    "model": "auth.permission",
+    "pk": 103
+},
+{
+    "fields": {
+        "codename": "change_comicseries",
+        "name": "Can change comic series",
+        "content_type": 35
+    },
+    "model": "auth.permission",
+    "pk": 104
+},
+{
+    "fields": {
+        "codename": "delete_comicseries",
+        "name": "Can delete comic series",
+        "content_type": 35
+    },
+    "model": "auth.permission",
+    "pk": 105
+},
+{
+    "fields": {
+        "codename": "add_comicseriesmark",
+        "name": "Can add comic series mark",
+        "content_type": 36
+    },
+    "model": "auth.permission",
+    "pk": 106
+},
+{
+    "fields": {
+        "codename": "change_comicseriesmark",
+        "name": "Can change comic series mark",
+        "content_type": 36
+    },
+    "model": "auth.permission",
+    "pk": 107
+},
+{
+    "fields": {
+        "codename": "delete_comicseriesmark",
+        "name": "Can delete comic series mark",
+        "content_type": 36
+    },
+    "model": "auth.permission",
+    "pk": 108
+},
+{
+    "fields": {
+        "codename": "add_comicseriesinvolvement",
+        "name": "Can add comic series involvement",
+        "content_type": 37
+    },
+    "model": "auth.permission",
+    "pk": 109
+},
+{
+    "fields": {
+        "codename": "change_comicseriesinvolvement",
+        "name": "Can change comic series involvement",
+        "content_type": 37
+    },
+    "model": "auth.permission",
+    "pk": 110
+},
+{
+    "fields": {
+        "codename": "delete_comicseriesinvolvement",
+        "name": "Can delete comic series involvement",
+        "content_type": 37
+    },
+    "model": "auth.permission",
+    "pk": 111
+},
+{
+    "fields": {
+        "username": "juanmtriguero",
+        "first_name": "Juan Manuel",
+        "last_name": "Triguero Pi\u00f1ero",
+        "is_active": true,
+        "is_superuser": true,
+        "is_staff": true,
+        "last_login": "2017-02-23T09:01:02.679Z",
+        "groups": [],
+        "user_permissions": [],
+        "password": "pbkdf2_sha256$20000$uvz1Shk43dMc$dL892EK9kM/4BiYNcayS5aM3BaBHgRQGVpHiSr90Wlg=",
+        "email": "juantriguero@live.com",
+        "date_joined": "2016-10-19T20:50:32Z"
+    },
+    "model": "auth.user",
+    "pk": 1
+},
+{
+    "fields": {
+        "username": "lorenzo",
+        "first_name": "loren",
+        "last_name": "triguero",
+        "is_active": true,
+        "is_superuser": false,
+        "is_staff": false,
+        "last_login": "2017-01-17T13:47:46.226Z",
+        "groups": [],
+        "user_permissions": [],
+        "password": "pbkdf2_sha256$20000$GQMTtn0WVzvV$SiOXM0SQQtaKLfUjLUlZexyTYmNnjQoq8Rt80DD5gwo=",
+        "email": "loren@email.com",
+        "date_joined": "2016-11-16T12:54:04.198Z"
+    },
+    "model": "auth.user",
+    "pk": 3
+},
+{
+    "fields": {
+        "username": "juanan",
+        "first_name": "",
+        "last_name": "",
+        "is_active": true,
+        "is_superuser": false,
+        "is_staff": false,
+        "last_login": null,
+        "groups": [],
+        "user_permissions": [],
+        "password": "pbkdf2_sha256$20000$enwhG0zRWcgp$1pnXH7xDFrlwRphksceKxzyCpZEJ093DrI3YtyyiRMQ=",
+        "email": "",
+        "date_joined": "2016-11-16T13:45:20Z"
+    },
+    "model": "auth.user",
+    "pk": 5
+},
+{
+    "fields": {
+        "username": "usuario",
+        "first_name": "",
+        "last_name": "",
+        "is_active": true,
+        "is_superuser": false,
+        "is_staff": false,
+        "last_login": "2017-01-30T13:30:51Z",
+        "groups": [],
+        "user_permissions": [],
+        "password": "pbkdf2_sha256$20000$KJLnJpXJykVl$Mj+O1WbN2kweg8SV9yVKNsIPkhVZ/0KQsNhPkPHLNpg=",
+        "email": "",
+        "date_joined": "2016-11-16T13:50:50Z"
+    },
+    "model": "auth.user",
+    "pk": 6
+},
+{
+    "fields": {
+        "username": "usuario24",
+        "first_name": "",
+        "last_name": "",
+        "is_active": true,
+        "is_superuser": false,
+        "is_staff": false,
+        "last_login": "2017-01-30T13:49:26Z",
+        "groups": [],
+        "user_permissions": [],
+        "password": "pbkdf2_sha256$20000$QRei5SvAHdA9$im1eEilvKziWnCnXSTLGUWexkButVgj9uMrCaBxTXEA=",
+        "email": "",
+        "date_joined": "2016-11-16T13:52:02Z"
+    },
+    "model": "auth.user",
+    "pk": 7
+},
+{
+    "fields": {
+        "username": "12345",
+        "first_name": "",
+        "last_name": "",
+        "is_active": true,
+        "is_superuser": false,
+        "is_staff": false,
+        "last_login": "2017-01-19T10:53:20.492Z",
+        "groups": [],
+        "user_permissions": [],
+        "password": "pbkdf2_sha256$20000$RfifWRRlYi1o$iPFOKH302B1GCl3O3kKJ2wouvrs8AqFH0EXKsxlkbFw=",
+        "email": "",
+        "date_joined": "2016-11-16T13:57:43.076Z"
+    },
+    "model": "auth.user",
+    "pk": 8
+},
+{
+    "fields": {
+        "username": "123456",
+        "first_name": "",
+        "last_name": "",
+        "is_active": true,
+        "is_superuser": false,
+        "is_staff": false,
+        "last_login": "2016-11-16T14:00:40.450Z",
+        "groups": [],
+        "user_permissions": [],
+        "password": "pbkdf2_sha256$20000$XOHVXnVtxrC1$KWYHs4v+a9b+LHM4YziBpHEf4xH9jUh1WvIllRqOHns=",
+        "email": "",
+        "date_joined": "2016-11-16T14:00:40.068Z"
+    },
+    "model": "auth.user",
+    "pk": 9
+},
+{
+    "fields": {
+        "username": "josue1",
+        "first_name": "",
+        "last_name": "",
+        "is_active": true,
+        "is_superuser": false,
+        "is_staff": false,
+        "last_login": "2016-11-16T14:14:57.984Z",
+        "groups": [],
+        "user_permissions": [],
+        "password": "pbkdf2_sha256$20000$XH7oZLL2T8uf$O2ASDR45TrvxLOGnFCQLQyZfOGA06urM8+t2jAUUlBY=",
+        "email": "",
+        "date_joined": "2016-11-16T14:13:10.036Z"
+    },
+    "model": "auth.user",
+    "pk": 13
+},
+{
+    "fields": {
+        "username": "elisita",
+        "first_name": "",
+        "last_name": "",
+        "is_active": true,
+        "is_superuser": false,
+        "is_staff": false,
+        "last_login": "2017-01-19T10:52:37.940Z",
+        "groups": [],
+        "user_permissions": [],
+        "password": "pbkdf2_sha256$20000$ImQtvb5LiDDZ$d4xMyGEKSKtLkQ2vrW4eBG1/E1T+WIcr/sDVHuMYLHo=",
+        "email": "",
+        "date_joined": "2016-11-17T10:54:37.003Z"
+    },
+    "model": "auth.user",
+    "pk": 14
+},
+{
+    "fields": {
+        "username": "",
+        "first_name": "Juan Manuel",
+        "last_name": "Triguero",
+        "is_active": true,
+        "is_superuser": false,
+        "is_staff": false,
+        "last_login": null,
+        "groups": [],
+        "user_permissions": [],
+        "password": "",
+        "email": "",
+        "date_joined": "2017-01-19T14:22:33.151Z"
+    },
+    "model": "auth.user",
+    "pk": 15
+},
+{
+    "fields": {
+        "following": [
+            5,
+            4,
+            13
+        ],
+        "text": "Soy un pug :v",
+        "user": 1,
+        "birth": "1994-11-25",
+        "avatar": "http://www.animalesenlaweb.com/wp-content/uploads/2016/02/Informaci%C3%B3n-sobre-el-carlino-1.jpg"
+    },
+    "model": "main.account",
+    "pk": 1
+},
+{
+    "fields": {
+        "following": [],
+        "text": "Soi er shu_loren",
+        "user": 3,
+        "birth": "1999-04-17",
+        "avatar": "https://cdn.pixabay.com/photo/2016/08/08/09/17/avatar-1577909_960_720.png"
+    },
+    "model": "main.account",
+    "pk": 2
+},
+{
+    "fields": {
+        "following": [
+            7,
+            2,
+            13
+        ],
+        "text": "",
+        "user": 5,
+        "birth": "2004-04-14",
+        "avatar": "https://cdn.pixabay.com/photo/2016/08/08/09/17/avatar-1577909_960_720.png"
+    },
+    "model": "main.account",
+    "pk": 4
+},
+{
+    "fields": {
+        "following": [],
+        "text": "",
+        "user": 6,
+        "birth": null,
+        "avatar": "https://cdn.pixabay.com/photo/2016/08/08/09/17/avatar-1577909_960_720.png"
+    },
+    "model": "main.account",
+    "pk": 5
+},
+{
+    "fields": {
+        "following": [
+            1
+        ],
+        "text": "",
+        "user": 7,
+        "birth": "2001-01-01",
+        "avatar": "https://cdn.pixabay.com/photo/2016/08/08/09/17/avatar-1577909_960_720.png"
+    },
+    "model": "main.account",
+    "pk": 6
+},
+{
+    "fields": {
+        "following": [],
+        "text": "",
+        "user": 8,
+        "birth": "2005-02-01",
+        "avatar": "https://cdn.pixabay.com/photo/2016/08/08/09/17/avatar-1577909_960_720.png"
+    },
+    "model": "main.account",
+    "pk": 7
+},
+{
+    "fields": {
+        "following": [],
+        "text": "",
+        "user": 9,
+        "birth": "1456-03-12",
+        "avatar": "https://cdn.pixabay.com/photo/2016/08/08/09/17/avatar-1577909_960_720.png"
+    },
+    "model": "main.account",
+    "pk": 8
+},
+{
+    "fields": {
+        "following": [],
+        "text": "",
+        "user": 13,
+        "birth": null,
+        "avatar": "https://cdn.pixabay.com/photo/2016/08/08/09/17/avatar-1577909_960_720.png"
+    },
+    "model": "main.account",
+    "pk": 12
+},
+{
+    "fields": {
+        "following": [
+            1
+        ],
+        "text": "",
+        "user": 14,
+        "birth": null,
+        "avatar": "http://2.bp.blogspot.com/-kQdWK77TQag/T7_PPvAXjlI/AAAAAAAAAOU/XmvnIOZsgM8/s1600/sweetie+belle.png"
+    },
+    "model": "main.account",
+    "pk": 13
+},
+{
+    "fields": {
+        "comic": 1,
+        "tics": [
+            1
+        ],
+        "number": 1,
+        "name": "El Regreso del Caballero Oscuro"
+    },
+    "model": "items.number",
+    "pk": 1
+},
+{
+    "fields": {
+        "comic": 1,
+        "tics": [],
+        "number": 2,
+        "name": "El Triunfo del Se\u00f1or de la Noche"
+    },
+    "model": "items.number",
+    "pk": 2
+},
+{
+    "fields": {
+        "comic": 1,
+        "tics": [],
+        "number": 3,
+        "name": "A la Caza del Se\u00f1or de la Noche"
+    },
+    "model": "items.number",
+    "pk": 3
+},
+{
+    "fields": {
+        "comic": 1,
+        "tics": [],
+        "number": 4,
+        "name": "La Ca\u00edda del Se\u00f1or de la Noche"
+    },
+    "model": "items.number",
+    "pk": 4
+},
+{
+    "fields": {
+        "series": 1,
+        "season": 1,
+        "tics": [
+            1
+        ],
+        "number": 1,
+        "name": "Estudio en rosa"
+    },
+    "model": "items.chapter",
+    "pk": 1
+},
+{
+    "fields": {
+        "series": 1,
+        "season": 1,
+        "tics": [
+            1
+        ],
+        "number": 2,
+        "name": "El banquero ciego"
+    },
+    "model": "items.chapter",
+    "pk": 2
+},
+{
+    "fields": {
+        "series": 1,
+        "season": 1,
+        "tics": [
+            1
+        ],
+        "number": 3,
+        "name": "El gran juego"
+    },
+    "model": "items.chapter",
+    "pk": 3
+},
+{
+    "fields": {
+        "series": 1,
+        "season": 2,
+        "tics": [],
+        "number": 1,
+        "name": "Esc\u00e1ndalo en Belgravia"
+    },
+    "model": "items.chapter",
+    "pk": 4
+},
+{
+    "fields": {
+        "series": 1,
+        "season": 2,
+        "tics": [
+            1
+        ],
+        "number": 2,
+        "name": "Los perros de Baskerville"
+    },
+    "model": "items.chapter",
+    "pk": 5
+},
+{
+    "fields": {
+        "series": 1,
+        "season": 2,
+        "tics": [],
+        "number": 3,
+        "name": "La ca\u00edda de Reichenbach"
+    },
+    "model": "items.chapter",
+    "pk": 6
+},
+{
+    "fields": {
+        "series": 1,
+        "season": 3,
+        "tics": [
+            1
+        ],
+        "number": 1,
+        "name": "La carroza f\u00fanebre vac\u00eda"
+    },
+    "model": "items.chapter",
+    "pk": 7
+},
+{
+    "fields": {
+        "series": 1,
+        "season": 3,
+        "tics": [
+            1
+        ],
+        "number": 2,
+        "name": "S\u00edntomas de ser tres"
+    },
+    "model": "items.chapter",
+    "pk": 8
+},
+{
+    "fields": {
+        "series": 1,
+        "season": 3,
+        "tics": [],
+        "number": 3,
+        "name": "Su \u00faltimo juramento"
+    },
+    "model": "items.chapter",
+    "pk": 9
+},
+{
+    "fields": {
+        "series": 1,
+        "season": 0,
+        "tics": [],
+        "number": 2,
+        "name": "La novia abominable"
+    },
+    "model": "items.chapter",
+    "pk": 10
+},
+{
+    "fields": {
+        "series": 1,
+        "season": 0,
+        "tics": [],
+        "number": 1,
+        "name": "Muchas felicidades"
+    },
+    "model": "items.chapter",
+    "pk": 11
+},
+{
+    "fields": {
+        "series": 3,
+        "season": 1,
+        "tics": [],
+        "number": 1,
+        "name": "Guadalcanal / Leckie"
+    },
+    "model": "items.chapter",
+    "pk": 12
+},
+{
+    "fields": {
+        "series": 3,
+        "season": 1,
+        "tics": [],
+        "number": 2,
+        "name": "Guadalcanal / Basilone"
+    },
+    "model": "items.chapter",
+    "pk": 16
+},
+{
+    "fields": {
+        "series": 3,
+        "season": 1,
+        "tics": [
+            1
+        ],
+        "number": 3,
+        "name": "Melbourne"
+    },
+    "model": "items.chapter",
+    "pk": 17
+},
+{
+    "fields": {
+        "series": 3,
+        "season": 1,
+        "tics": [
+            1
+        ],
+        "number": 4,
+        "name": "Gloucester / Pavuvu / Banika"
+    },
+    "model": "items.chapter",
+    "pk": 18
+},
+{
+    "fields": {
+        "series": 3,
+        "season": 1,
+        "tics": [],
+        "number": 5,
+        "name": "Desembarco en Peleliu"
+    },
+    "model": "items.chapter",
+    "pk": 19
+},
+{
+    "fields": {
+        "series": 3,
+        "season": 1,
+        "tics": [
+            1
+        ],
+        "number": 6,
+        "name": "El aer\u00f3dromo de Peleliu"
+    },
+    "model": "items.chapter",
+    "pk": 20
+},
+{
+    "fields": {
+        "series": 3,
+        "season": 1,
+        "tics": [],
+        "number": 7,
+        "name": "Las colinas de Peleliu"
+    },
+    "model": "items.chapter",
+    "pk": 21
+},
+{
+    "fields": {
+        "series": 3,
+        "season": 1,
+        "tics": [],
+        "number": 8,
+        "name": "Iwo Jima"
+    },
+    "model": "items.chapter",
+    "pk": 22
+},
+{
+    "fields": {
+        "series": 3,
+        "season": 1,
+        "tics": [],
+        "number": 9,
+        "name": "Okinawa"
+    },
+    "model": "items.chapter",
+    "pk": 23
+},
+{
+    "fields": {
+        "series": 3,
+        "season": 1,
+        "tics": [],
+        "number": 10,
+        "name": "Casa"
+    },
+    "model": "items.chapter",
+    "pk": 24
+},
+{
+    "fields": {
+        "rating": null,
+        "book": 1,
+        "fav": true,
+        "user": 1,
+        "option": "pen"
+    },
+    "model": "items.bookmark",
+    "pk": 3
+},
+{
+    "fields": {
+        "rating": null,
+        "book": 5,
+        "fav": false,
+        "user": 1,
+        "option": "ley"
+    },
+    "model": "items.bookmark",
+    "pk": 4
+},
+{
+    "fields": {
+        "rating": null,
+        "book": 6,
+        "fav": false,
+        "user": 1,
+        "option": "lei"
+    },
+    "model": "items.bookmark",
+    "pk": 5
+},
+{
+    "fields": {
+        "rating": null,
+        "book": 7,
+        "fav": false,
+        "user": 1,
+        "option": "ley"
+    },
+    "model": "items.bookmark",
+    "pk": 6
+},
+{
+    "fields": {
+        "rating": null,
+        "game": 2,
+        "fav": false,
+        "user": 1,
+        "option": "pen"
+    },
+    "model": "items.gamemark",
+    "pk": 2
+},
+{
+    "fields": {
+        "rating": null,
+        "game": 1,
+        "fav": true,
+        "user": 1,
+        "option": "jug"
+    },
+    "model": "items.gamemark",
+    "pk": 3
+},
+{
+    "fields": {
+        "dlc": 1,
+        "rating": null,
+        "fav": false,
+        "user": 1,
+        "option": "com"
+    },
+    "model": "items.dlcmark",
+    "pk": 2
+},
+{
+    "fields": {
+        "dlc": 3,
+        "rating": null,
+        "fav": true,
+        "user": 1,
+        "option": "jug"
+    },
+    "model": "items.dlcmark",
+    "pk": 3
+},
+{
+    "fields": {
+        "rating": null,
+        "comic": 1,
+        "fav": true,
+        "user": 1,
+        "option": "ley"
+    },
+    "model": "items.comicmark",
+    "pk": 2
+},
+{
+    "fields": {
+        "rating": null,
+        "comic": 2,
+        "fav": true,
+        "user": 1,
+        "option": "pau"
+    },
+    "model": "items.comicseriesmark",
+    "pk": 1
+},
+{
+    "fields": {
+        "rating": null,
+        "comic": 1,
+        "fav": false,
+        "user": 1,
+        "option": "sig"
+    },
+    "model": "items.comicseriesmark",
+    "pk": 2
+},
+{
+    "fields": {
+        "series": 2,
+        "rating": null,
+        "fav": true,
+        "user": 1,
+        "option": "fin"
+    },
+    "model": "items.seriesmark",
+    "pk": 1
+},
+{
+    "fields": {
+        "series": 1,
+        "rating": null,
+        "fav": true,
+        "user": 1,
+        "option": "sig"
+    },
+    "model": "items.seriesmark",
+    "pk": 2
+},
+{
+    "fields": {
+        "series": 3,
+        "rating": null,
+        "fav": false,
+        "user": 1,
+        "option": ""
+    },
+    "model": "items.seriesmark",
+    "pk": 3
+},
+{
+    "fields": {
+        "rating": null,
+        "fav": true,
+        "user": 1,
+        "option": "vis",
+        "movie": 2
+    },
+    "model": "items.moviemark",
+    "pk": 1
+},
+{
+    "fields": {
+        "rating": null,
+        "fav": true,
+        "user": 1,
+        "option": "pen",
+        "movie": 5
+    },
+    "model": "items.moviemark",
+    "pk": 3
+},
+{
+    "fields": {
+        "rating": null,
+        "fav": true,
+        "user": 1,
+        "option": "",
+        "movie": 4
+    },
+    "model": "items.moviemark",
+    "pk": 4
+},
+{
+    "fields": {
+        "rating": null,
+        "fav": true,
+        "user": 1,
+        "option": "vis",
+        "movie": 1
+    },
+    "model": "items.moviemark",
+    "pk": 5
+},
+{
+    "fields": {
+        "action_flag": 1,
+        "action_time": "2016-11-02T12:52:55.654Z",
+        "object_repr": "Brad Pitt",
+        "object_id": "1",
+        "change_message": "",
+        "user": 1,
+        "content_type": 8
+    },
+    "model": "admin.logentry",
+    "pk": 1
+},
+{
+    "fields": {
+        "action_flag": 1,
+        "action_time": "2016-11-08T14:12:00.752Z",
+        "object_repr": "Acci\u00f3n",
+        "object_id": "1",
+        "change_message": "",
+        "user": 1,
+        "content_type": 7
+    },
+    "model": "admin.logentry",
+    "pk": 2
+},
+{
+    "fields": {
+        "action_flag": 1,
+        "action_time": "2016-11-08T14:12:05.657Z",
+        "object_repr": "Aventura",
+        "object_id": "2",
+        "change_message": "",
+        "user": 1,
+        "content_type": 7
+    },
+    "model": "admin.logentry",
+    "pk": 3
+},
+{
+    "fields": {
+        "action_flag": 1,
+        "action_time": "2016-11-08T14:12:27.721Z",
+        "object_repr": "PlayStation 3",
+        "object_id": "1",
+        "change_message": "",
+        "user": 1,
+        "content_type": 10
+    },
+    "model": "admin.logentry",
+    "pk": 4
+},
+{
+    "fields": {
+        "action_flag": 1,
+        "action_time": "2016-11-08T14:12:40.596Z",
+        "object_repr": "PlayStation 4",
+        "object_id": "2",
+        "change_message": "",
+        "user": 1,
+        "content_type": 10
+    },
+    "model": "admin.logentry",
+    "pk": 5
+},
+{
+    "fields": {
+        "action_flag": 1,
+        "action_time": "2016-11-08T14:12:52.687Z",
+        "object_repr": "Wii U",
+        "object_id": "3",
+        "change_message": "",
+        "user": 1,
+        "content_type": 10
+    },
+    "model": "admin.logentry",
+    "pk": 6
+},
+{
+    "fields": {
+        "action_flag": 1,
+        "action_time": "2016-11-08T14:13:09.250Z",
+        "object_repr": "Personal computer",
+        "object_id": "4",
+        "change_message": "",
+        "user": 1,
+        "content_type": 10
+    },
+    "model": "admin.logentry",
+    "pk": 7
+},
+{
+    "fields": {
+        "action_flag": 1,
+        "action_time": "2016-11-08T14:13:18.494Z",
+        "object_repr": "Xbox 360",
+        "object_id": "5",
+        "change_message": "",
+        "user": 1,
+        "content_type": 10
+    },
+    "model": "admin.logentry",
+    "pk": 8
+},
+{
+    "fields": {
+        "action_flag": 1,
+        "action_time": "2016-11-08T14:13:27.244Z",
+        "object_repr": "Xbox ONE",
+        "object_id": "6",
+        "change_message": "",
+        "user": 1,
+        "content_type": 10
+    },
+    "model": "admin.logentry",
+    "pk": 9
+},
+{
+    "fields": {
+        "action_flag": 1,
+        "action_time": "2016-11-08T14:14:22.603Z",
+        "object_repr": "Assassin's Creed IV: Black Flag (2013)",
+        "object_id": "1",
+        "change_message": "",
+        "user": 1,
+        "content_type": 15
+    },
+    "model": "admin.logentry",
+    "pk": 10
+},
+{
+    "fields": {
+        "action_flag": 1,
+        "action_time": "2016-11-08T14:14:24.852Z",
+        "object_repr": "Grito de Libertad (2014)",
+        "object_id": "1",
+        "change_message": "",
+        "user": 1,
+        "content_type": 16
+    },
+    "model": "admin.logentry",
+    "pk": 11
+},
+{
+    "fields": {
+        "action_flag": 1,
+        "action_time": "2016-11-08T15:19:31.516Z",
+        "object_repr": "Ubisoft",
+        "object_id": "2",
+        "change_message": "",
+        "user": 1,
+        "content_type": 8
+    },
+    "model": "admin.logentry",
+    "pk": 12
+},
+{
+    "fields": {
+        "action_flag": 1,
+        "action_time": "2016-11-08T15:20:20.400Z",
+        "object_repr": "Ubisoft aparece en el DLC Grito de Libertad (2014) como desarrollador",
+        "object_id": "2",
+        "change_message": "",
+        "user": 1,
+        "content_type": 20
+    },
+    "model": "admin.logentry",
+    "pk": 13
+},
+{
+    "fields": {
+        "action_flag": 1,
+        "action_time": "2016-11-08T15:20:35.898Z",
+        "object_repr": "Ubisoft aparece en el DLC Grito de Libertad (2014) como desarrollador",
+        "object_id": "3",
+        "change_message": "",
+        "user": 1,
+        "content_type": 20
+    },
+    "model": "admin.logentry",
+    "pk": 14
+},
+{
+    "fields": {
+        "action_flag": 3,
+        "action_time": "2016-11-08T15:20:58.139Z",
+        "object_repr": "Ubisoft aparece en el DLC Grito de Libertad (2014) como desarrollador",
+        "object_id": "3",
+        "change_message": "",
+        "user": 1,
+        "content_type": 20
+    },
+    "model": "admin.logentry",
+    "pk": 15
+},
+{
+    "fields": {
+        "action_flag": 1,
+        "action_time": "2016-11-08T15:21:05.761Z",
+        "object_repr": "Ubisoft aparece en el DLC Grito de Libertad (2014) como distribuidor",
+        "object_id": "4",
+        "change_message": "",
+        "user": 1,
+        "content_type": 20
+    },
+    "model": "admin.logentry",
+    "pk": 16
+},
+{
+    "fields": {
+        "action_flag": 1,
+        "action_time": "2016-11-08T15:21:30.160Z",
+        "object_repr": "Ubisoft aparece en el juego Assassin's Creed IV: Black Flag (2013) como desarrollador",
+        "object_id": "1",
+        "change_message": "",
+        "user": 1,
+        "content_type": 19
+    },
+    "model": "admin.logentry",
+    "pk": 17
+},
+{
+    "fields": {
+        "action_flag": 1,
+        "action_time": "2016-11-08T15:21:37.387Z",
+        "object_repr": "Ubisoft aparece en el juego Assassin's Creed IV: Black Flag (2013) como distribuidor",
+        "object_id": "2",
+        "change_message": "",
+        "user": 1,
+        "content_type": 19
+    },
+    "model": "admin.logentry",
+    "pk": 18
+},
+{
+    "fields": {
+        "action_flag": 1,
+        "action_time": "2016-11-08T15:55:04.183Z",
+        "object_repr": "juanmtriguero",
+        "object_id": "1",
+        "change_message": "",
+        "user": 1,
+        "content_type": 9
+    },
+    "model": "admin.logentry",
+    "pk": 19
+},
+{
+    "fields": {
+        "action_flag": 1,
+        "action_time": "2016-11-08T15:57:06.341Z",
+        "object_repr": "juanmtriguero ha marcado el juego Assassin's Creed IV: Black Flag (2013) como terminado",
+        "object_id": "1",
+        "change_message": "",
+        "user": 1,
+        "content_type": 17
+    },
+    "model": "admin.logentry",
+    "pk": 20
+},
+{
+    "fields": {
+        "action_flag": 2,
+        "action_time": "2016-11-08T16:03:29.807Z",
+        "object_repr": "juanmtriguero ha marcado el juego Assassin's Creed IV: Black Flag (2013) como terminado",
+        "object_id": "1",
+        "change_message": "Modificado/a rating.",
+        "user": 1,
+        "content_type": 17
+    },
+    "model": "admin.logentry",
+    "pk": 21
+},
+{
+    "fields": {
+        "action_flag": 2,
+        "action_time": "2016-11-08T16:03:48.503Z",
+        "object_repr": "juanmtriguero ha marcado el juego Assassin's Creed IV: Black Flag (2013) como terminado",
+        "object_id": "1",
+        "change_message": "Modificado/a rating.",
+        "user": 1,
+        "content_type": 17
+    },
+    "model": "admin.logentry",
+    "pk": 22
+},
+{
+    "fields": {
+        "action_flag": 2,
+        "action_time": "2016-11-08T16:03:55.059Z",
+        "object_repr": "juanmtriguero ha marcado el juego Assassin's Creed IV: Black Flag (2013) como terminado",
+        "object_id": "1",
+        "change_message": "Modificado/a rating.",
+        "user": 1,
+        "content_type": 17
+    },
+    "model": "admin.logentry",
+    "pk": 23
+},
+{
+    "fields": {
+        "action_flag": 1,
+        "action_time": "2016-11-08T16:04:17.446Z",
+        "object_repr": "juanmtriguero ha marcado el DLC Grito de Libertad (2014) como completado",
+        "object_id": "1",
+        "change_message": "",
+        "user": 1,
+        "content_type": 18
+    },
+    "model": "admin.logentry",
+    "pk": 24
+},
+{
+    "fields": {
+        "action_flag": 2,
+        "action_time": "2016-11-08T16:04:21.737Z",
+        "object_repr": "juanmtriguero ha marcado el DLC Grito de Libertad (2014) como completado",
+        "object_id": "1",
+        "change_message": "No ha cambiado ning\u00fan campo.",
+        "user": 1,
+        "content_type": 18
+    },
+    "model": "admin.logentry",
+    "pk": 25
+},
+{
+    "fields": {
+        "action_flag": 2,
+        "action_time": "2016-11-08T16:04:32.541Z",
+        "object_repr": "Assassin's Creed IV: Black Flag (2013)",
+        "object_id": "1",
+        "change_message": "No ha cambiado ning\u00fan campo.",
+        "user": 1,
+        "content_type": 15
+    },
+    "model": "admin.logentry",
+    "pk": 26
+},
+{
+    "fields": {
+        "action_flag": 1,
+        "action_time": "2016-11-14T20:44:03.553Z",
+        "object_repr": "Cazadores de piratas (2016)",
+        "object_id": "1",
+        "change_message": "",
+        "user": 1,
+        "content_type": 12
+    },
+    "model": "admin.logentry",
+    "pk": 27
+},
+{
+    "fields": {
+        "action_flag": 2,
+        "action_time": "2016-11-16T12:55:40.054Z",
+        "object_repr": "juanmtriguero",
+        "object_id": "1",
+        "change_message": "No ha cambiado ning\u00fan campo.",
+        "user": 1,
+        "content_type": 9
+    },
+    "model": "admin.logentry",
+    "pk": 28
+},
+{
+    "fields": {
+        "action_flag": 3,
+        "action_time": "2016-11-16T14:16:45.641Z",
+        "object_repr": "cuentachuli",
+        "object_id": "10",
+        "change_message": "",
+        "user": 1,
+        "content_type": 4
+    },
+    "model": "admin.logentry",
+    "pk": 29
+},
+{
+    "fields": {
+        "action_flag": 3,
+        "action_time": "2016-11-16T14:16:45.658Z",
+        "object_repr": "josemari",
+        "object_id": "11",
+        "change_message": "",
+        "user": 1,
+        "content_type": 4
+    },
+    "model": "admin.logentry",
+    "pk": 30
+},
+{
+    "fields": {
+        "action_flag": 3,
+        "action_time": "2016-11-16T14:16:45.669Z",
+        "object_repr": "josue",
+        "object_id": "12",
+        "change_message": "",
+        "user": 1,
+        "content_type": 4
+    },
+    "model": "admin.logentry",
+    "pk": 31
+},
+{
+    "fields": {
+        "action_flag": 3,
+        "action_time": "2016-11-16T14:16:45.680Z",
+        "object_repr": "pepepe",
+        "object_id": "4",
+        "change_message": "",
+        "user": 1,
+        "content_type": 4
+    },
+    "model": "admin.logentry",
+    "pk": 32
+},
+{
+    "fields": {
+        "action_flag": 3,
+        "action_time": "2016-11-16T14:16:45.691Z",
+        "object_repr": "pepesas",
+        "object_id": "2",
+        "change_message": "",
+        "user": 1,
+        "content_type": 4
+    },
+    "model": "admin.logentry",
+    "pk": 33
+},
+{
+    "fields": {
+        "action_flag": 1,
+        "action_time": "2016-11-21T12:49:01.972Z",
+        "object_repr": "juanmtriguero ha marcado el libro Cazadores de piratas (2016) como pendiente",
+        "object_id": "1",
+        "change_message": "",
+        "user": 1,
+        "content_type": 13
+    },
+    "model": "admin.logentry",
+    "pk": 34
+},
+{
+    "fields": {
+        "action_flag": 2,
+        "action_time": "2016-11-21T12:49:41.554Z",
+        "object_repr": "Cazadores de piratas (2016)",
+        "object_id": "1",
+        "change_message": "Modificado/a rating y count.",
+        "user": 1,
+        "content_type": 12
+    },
+    "model": "admin.logentry",
+    "pk": 35
+},
+{
+    "fields": {
+        "action_flag": 1,
+        "action_time": "2016-11-21T12:49:58.828Z",
+        "object_repr": "usuario24 ha marcado el libro Cazadores de piratas (2016) como le\u00eddo",
+        "object_id": "2",
+        "change_message": "",
+        "user": 1,
+        "content_type": 13
+    },
+    "model": "admin.logentry",
+    "pk": 36
+},
+{
+    "fields": {
+        "action_flag": 2,
+        "action_time": "2016-11-21T12:50:17.479Z",
+        "object_repr": "Cazadores de piratas (2016)",
+        "object_id": "1",
+        "change_message": "Modificado/a rating y count.",
+        "user": 1,
+        "content_type": 12
+    },
+    "model": "admin.logentry",
+    "pk": 37
+},
+{
+    "fields": {
+        "action_flag": 1,
+        "action_time": "2016-11-21T14:15:12.516Z",
+        "object_repr": "Ariel",
+        "object_id": "3",
+        "change_message": "",
+        "user": 1,
+        "content_type": 8
+    },
+    "model": "admin.logentry",
+    "pk": 38
+},
+{
+    "fields": {
+        "action_flag": 1,
+        "action_time": "2016-11-21T14:16:45.134Z",
+        "object_repr": "Robert Kurson",
+        "object_id": "4",
+        "change_message": "",
+        "user": 1,
+        "content_type": 8
+    },
+    "model": "admin.logentry",
+    "pk": 39
+},
+{
+    "fields": {
+        "action_flag": 1,
+        "action_time": "2016-11-21T14:16:59.416Z",
+        "object_repr": "Ariel aparece en el libro Cazadores de piratas (2016) como editorial",
+        "object_id": "1",
+        "change_message": "",
+        "user": 1,
+        "content_type": 14
+    },
+    "model": "admin.logentry",
+    "pk": 40
+},
+{
+    "fields": {
+        "action_flag": 1,
+        "action_time": "2016-11-21T14:17:11.093Z",
+        "object_repr": "Robert Kurson aparece en el libro Cazadores de piratas (2016) como escritor",
+        "object_id": "2",
+        "change_message": "",
+        "user": 1,
+        "content_type": 14
+    },
+    "model": "admin.logentry",
+    "pk": 41
+},
+{
+    "fields": {
+        "action_flag": 1,
+        "action_time": "2016-11-22T12:29:10.913Z",
+        "object_repr": "John Verdon",
+        "object_id": "5",
+        "change_message": "",
+        "user": 1,
+        "content_type": 8
+    },
+    "model": "admin.logentry",
+    "pk": 42
+},
+{
+    "fields": {
+        "action_flag": 1,
+        "action_time": "2016-11-22T12:29:19.226Z",
+        "object_repr": "John Verdon aparece en el libro David Gurney: No conf\u00edes en Peter Pan (2013) como escritor",
+        "object_id": "3",
+        "change_message": "",
+        "user": 1,
+        "content_type": 14
+    },
+    "model": "admin.logentry",
+    "pk": 43
+},
+{
+    "fields": {
+        "action_flag": 1,
+        "action_time": "2016-11-22T13:15:05.213Z",
+        "object_repr": "Deportes",
+        "object_id": "3",
+        "change_message": "",
+        "user": 1,
+        "content_type": 7
+    },
+    "model": "admin.logentry",
+    "pk": 44
+},
+{
+    "fields": {
+        "action_flag": 1,
+        "action_time": "2016-11-22T13:15:16.972Z",
+        "object_repr": "Biograf\u00eda",
+        "object_id": "4",
+        "change_message": "",
+        "user": 1,
+        "content_type": 7
+    },
+    "model": "admin.logentry",
+    "pk": 45
+},
+{
+    "fields": {
+        "action_flag": 1,
+        "action_time": "2016-11-22T13:15:32.421Z",
+        "object_repr": "Moneyball: rompiendo las reglas (2011)",
+        "object_id": "1",
+        "change_message": "",
+        "user": 1,
+        "content_type": 28
+    },
+    "model": "admin.logentry",
+    "pk": 46
+},
+{
+    "fields": {
+        "action_flag": 2,
+        "action_time": "2016-11-22T13:40:18.092Z",
+        "object_repr": "Moneyball: rompiendo las reglas (2011)",
+        "object_id": "1",
+        "change_message": "No ha cambiado ning\u00fan campo.",
+        "user": 1,
+        "content_type": 28
+    },
+    "model": "admin.logentry",
+    "pk": 47
+},
+{
+    "fields": {
+        "action_flag": 1,
+        "action_time": "2016-11-22T13:42:07.574Z",
+        "object_repr": "Brad Pitt aparece en el pel Moneyball: rompiendo las reglas (2011) como actor",
+        "object_id": "2",
+        "change_message": "",
+        "user": 1,
+        "content_type": 33
+    },
+    "model": "admin.logentry",
+    "pk": 48
+},
+{
+    "fields": {
+        "action_flag": 2,
+        "action_time": "2016-11-22T13:53:41.337Z",
+        "object_repr": "Moneyball: rompiendo las reglas (2011)",
+        "object_id": "1",
+        "change_message": "No ha cambiado ning\u00fan campo.",
+        "user": 1,
+        "content_type": 28
+    },
+    "model": "admin.logentry",
+    "pk": 49
+},
+{
+    "fields": {
+        "action_flag": 2,
+        "action_time": "2016-11-22T13:55:11.875Z",
+        "object_repr": "Moneyball: rompiendo las reglas (2011)",
+        "object_id": "1",
+        "change_message": "Modificado/a image.",
+        "user": 1,
+        "content_type": 28
+    },
+    "model": "admin.logentry",
+    "pk": 50
+},
+{
+    "fields": {
+        "action_flag": 1,
+        "action_time": "2016-11-22T15:36:20.602Z",
+        "object_repr": "La vida secreta de Walter Mitty (2014)",
+        "object_id": "2",
+        "change_message": "",
+        "user": 1,
+        "content_type": 28
+    },
+    "model": "admin.logentry",
+    "pk": 51
+},
+{
+    "fields": {
+        "action_flag": 1,
+        "action_time": "2016-11-22T17:45:27.363Z",
+        "object_repr": "Comedia",
+        "object_id": "5",
+        "change_message": "",
+        "user": 1,
+        "content_type": 7
+    },
+    "model": "admin.logentry",
+    "pk": 52
+},
+{
+    "fields": {
+        "action_flag": 1,
+        "action_time": "2016-11-22T17:55:58.811Z",
+        "object_repr": "Misterio",
+        "object_id": "6",
+        "change_message": "",
+        "user": 1,
+        "content_type": 7
+    },
+    "model": "admin.logentry",
+    "pk": 53
+},
+{
+    "fields": {
+        "action_flag": 1,
+        "action_time": "2016-11-22T17:56:09.236Z",
+        "object_repr": "Sherlock (2010)",
+        "object_id": "1",
+        "change_message": "",
+        "user": 1,
+        "content_type": 29
+    },
+    "model": "admin.logentry",
+    "pk": 54
+},
+{
+    "fields": {
+        "action_flag": 1,
+        "action_time": "2016-11-22T17:59:58.745Z",
+        "object_repr": "1 - Estudio en rosa",
+        "object_id": "1",
+        "change_message": "",
+        "user": 1,
+        "content_type": 30
+    },
+    "model": "admin.logentry",
+    "pk": 55
+},
+{
+    "fields": {
+        "action_flag": 2,
+        "action_time": "2016-11-22T18:00:03.674Z",
+        "object_repr": "1 - Estudio en rosa",
+        "object_id": "1",
+        "change_message": "No ha cambiado ning\u00fan campo.",
+        "user": 1,
+        "content_type": 30
+    },
+    "model": "admin.logentry",
+    "pk": 56
+},
+{
+    "fields": {
+        "action_flag": 1,
+        "action_time": "2016-11-22T18:00:18.785Z",
+        "object_repr": "2 - El banquero ciego",
+        "object_id": "2",
+        "change_message": "",
+        "user": 1,
+        "content_type": 30
+    },
+    "model": "admin.logentry",
+    "pk": 57
+},
+{
+    "fields": {
+        "action_flag": 1,
+        "action_time": "2016-11-22T18:00:37.970Z",
+        "object_repr": "3 - El gran juego",
+        "object_id": "3",
+        "change_message": "",
+        "user": 1,
+        "content_type": 30
+    },
+    "model": "admin.logentry",
+    "pk": 58
+},
+{
+    "fields": {
+        "action_flag": 1,
+        "action_time": "2016-11-22T18:01:14.976Z",
+        "object_repr": "1 - Esc\u00e1ndalo en Belgravia",
+        "object_id": "4",
+        "change_message": "",
+        "user": 1,
+        "content_type": 30
+    },
+    "model": "admin.logentry",
+    "pk": 59
+},
+{
+    "fields": {
+        "action_flag": 1,
+        "action_time": "2016-11-22T18:01:27.991Z",
+        "object_repr": "2 - Los perros de Baskerville",
+        "object_id": "5",
+        "change_message": "",
+        "user": 1,
+        "content_type": 30
+    },
+    "model": "admin.logentry",
+    "pk": 60
+},
+{
+    "fields": {
+        "action_flag": 1,
+        "action_time": "2016-11-22T18:01:42.063Z",
+        "object_repr": "3 - La ca\u00edda de Reichenbach",
+        "object_id": "6",
+        "change_message": "",
+        "user": 1,
+        "content_type": 30
+    },
+    "model": "admin.logentry",
+    "pk": 61
+},
+{
+    "fields": {
+        "action_flag": 1,
+        "action_time": "2016-11-22T18:02:09.600Z",
+        "object_repr": "1 - La carroza f\u00fanebre vac\u00eda",
+        "object_id": "7",
+        "change_message": "",
+        "user": 1,
+        "content_type": 30
+    },
+    "model": "admin.logentry",
+    "pk": 62
+},
+{
+    "fields": {
+        "action_flag": 1,
+        "action_time": "2016-11-22T18:02:23.332Z",
+        "object_repr": "2 - S\u00edntomas de ser tres",
+        "object_id": "8",
+        "change_message": "",
+        "user": 1,
+        "content_type": 30
+    },
+    "model": "admin.logentry",
+    "pk": 63
+},
+{
+    "fields": {
+        "action_flag": 1,
+        "action_time": "2016-11-22T18:02:37.264Z",
+        "object_repr": "3 - Su \u00faltimo juramento",
+        "object_id": "9",
+        "change_message": "",
+        "user": 1,
+        "content_type": 30
+    },
+    "model": "admin.logentry",
+    "pk": 64
+},
+{
+    "fields": {
+        "action_flag": 1,
+        "action_time": "2016-11-22T18:03:25.552Z",
+        "object_repr": "2 - La novia abominable",
+        "object_id": "10",
+        "change_message": "",
+        "user": 1,
+        "content_type": 30
+    },
+    "model": "admin.logentry",
+    "pk": 65
+},
+{
+    "fields": {
+        "action_flag": 1,
+        "action_time": "2016-11-22T18:03:47.740Z",
+        "object_repr": "1 - Muchas felicidades",
+        "object_id": "11",
+        "change_message": "",
+        "user": 1,
+        "content_type": 30
+    },
+    "model": "admin.logentry",
+    "pk": 66
+},
+{
+    "fields": {
+        "action_flag": 2,
+        "action_time": "2016-11-22T18:18:24.603Z",
+        "object_repr": "Sherlock (2010)",
+        "object_id": "1",
+        "change_message": "Modificado/a image.",
+        "user": 1,
+        "content_type": 29
+    },
+    "model": "admin.logentry",
+    "pk": 67
+},
+{
+    "fields": {
+        "action_flag": 2,
+        "action_time": "2016-11-22T18:28:19.936Z",
+        "object_repr": "Sherlock (2010)",
+        "object_id": "1",
+        "change_message": "Modificado/a status.",
+        "user": 1,
+        "content_type": 29
+    },
+    "model": "admin.logentry",
+    "pk": 68
+},
+{
+    "fields": {
+        "action_flag": 2,
+        "action_time": "2016-11-22T18:28:35.222Z",
+        "object_repr": "Sherlock (2010)",
+        "object_id": "1",
+        "change_message": "Modificado/a status.",
+        "user": 1,
+        "content_type": 29
+    },
+    "model": "admin.logentry",
+    "pk": 69
+},
+{
+    "fields": {
+        "action_flag": 2,
+        "action_time": "2016-11-22T18:28:46.260Z",
+        "object_repr": "Sherlock (2010)",
+        "object_id": "1",
+        "change_message": "Modificado/a status.",
+        "user": 1,
+        "content_type": 29
+    },
+    "model": "admin.logentry",
+    "pk": 70
+},
+{
+    "fields": {
+        "action_flag": 2,
+        "action_time": "2016-11-22T18:28:55.169Z",
+        "object_repr": "Sherlock (2010)",
+        "object_id": "1",
+        "change_message": "Modificado/a status.",
+        "user": 1,
+        "content_type": 29
+    },
+    "model": "admin.logentry",
+    "pk": 71
+},
+{
+    "fields": {
+        "action_flag": 1,
+        "action_time": "2016-11-22T23:48:36.757Z",
+        "object_repr": "Top Gear (2002)",
+        "object_id": "2",
+        "change_message": "",
+        "user": 1,
+        "content_type": 29
+    },
+    "model": "admin.logentry",
+    "pk": 72
+},
+{
+    "fields": {
+        "action_flag": 2,
+        "action_time": "2016-11-22T23:48:44.525Z",
+        "object_repr": "Sherlock (2010)",
+        "object_id": "1",
+        "change_message": "Modificado/a status.",
+        "user": 1,
+        "content_type": 29
+    },
+    "model": "admin.logentry",
+    "pk": 73
+},
+{
+    "fields": {
+        "action_flag": 1,
+        "action_time": "2016-11-22T23:52:36.928Z",
+        "object_repr": "Jeremy Clarkson",
+        "object_id": "6",
+        "change_message": "",
+        "user": 1,
+        "content_type": 8
+    },
+    "model": "admin.logentry",
+    "pk": 74
+},
+{
+    "fields": {
+        "action_flag": 1,
+        "action_time": "2016-11-22T23:52:59.774Z",
+        "object_repr": "Jeremy Clarkson aparece en el pro Top Gear (2002) como Presentador",
+        "object_id": "1",
+        "change_message": "",
+        "user": 1,
+        "content_type": 34
+    },
+    "model": "admin.logentry",
+    "pk": 75
+},
+{
+    "fields": {
+        "action_flag": 1,
+        "action_time": "2016-11-23T18:44:30.587Z",
+        "object_repr": "Benedict Cumberbatch",
+        "object_id": "7",
+        "change_message": "",
+        "user": 1,
+        "content_type": 8
+    },
+    "model": "admin.logentry",
+    "pk": 76
+},
+{
+    "fields": {
+        "action_flag": 1,
+        "action_time": "2016-11-23T18:45:19.545Z",
+        "object_repr": "Martin Freeman",
+        "object_id": "8",
+        "change_message": "",
+        "user": 1,
+        "content_type": 8
+    },
+    "model": "admin.logentry",
+    "pk": 77
+},
+{
+    "fields": {
+        "action_flag": 1,
+        "action_time": "2016-11-23T18:45:33.755Z",
+        "object_repr": "Benedict Cumberbatch aparece en Serie Sherlock (2010) como Actor",
+        "object_id": "2",
+        "change_message": "",
+        "user": 1,
+        "content_type": 34
+    },
+    "model": "admin.logentry",
+    "pk": 78
+},
+{
+    "fields": {
+        "action_flag": 1,
+        "action_time": "2016-11-23T18:45:43.075Z",
+        "object_repr": "Martin Freeman aparece en Serie Sherlock (2010) como Actor",
+        "object_id": "3",
+        "change_message": "",
+        "user": 1,
+        "content_type": 34
+    },
+    "model": "admin.logentry",
+    "pk": 79
+},
+{
+    "fields": {
+        "action_flag": 1,
+        "action_time": "2016-11-25T11:05:47.158Z",
+        "object_repr": "Batman: The Dark Knight Returns (1986) - 1: El Regreso del Caballero Oscuro",
+        "object_id": "1",
+        "change_message": "",
+        "user": 1,
+        "content_type": 23
+    },
+    "model": "admin.logentry",
+    "pk": 80
+},
+{
+    "fields": {
+        "action_flag": 1,
+        "action_time": "2016-11-28T13:01:15.663Z",
+        "object_repr": "Herg\u00e9",
+        "object_id": "9",
+        "change_message": "",
+        "user": 1,
+        "content_type": 8
+    },
+    "model": "admin.logentry",
+    "pk": 81
+},
+{
+    "fields": {
+        "action_flag": 2,
+        "action_time": "2016-11-28T13:05:15.600Z",
+        "object_repr": "usuario24 ha marcado el libro Cazadores de piratas (2016) como Le\u00eddo",
+        "object_id": "2",
+        "change_message": "No ha cambiado ning\u00fan campo.",
+        "user": 1,
+        "content_type": 13
+    },
+    "model": "admin.logentry",
+    "pk": 82
+},
+{
+    "fields": {
+        "action_flag": 1,
+        "action_time": "2016-11-28T13:08:32.374Z",
+        "object_repr": "Herg\u00e9 aparece en el c\u00f3mic Tint\u00edn - La oreja rota (1937) como Guionista",
+        "object_id": "4",
+        "change_message": "",
+        "user": 1,
+        "content_type": 27
+    },
+    "model": "admin.logentry",
+    "pk": 83
+},
+{
+    "fields": {
+        "action_flag": 1,
+        "action_time": "2016-11-28T13:09:12.530Z",
+        "object_repr": "Herg\u00e9 aparece en el c\u00f3mic Tint\u00edn - La oreja rota (1937) como Dibujante",
+        "object_id": "5",
+        "change_message": "",
+        "user": 1,
+        "content_type": 27
+    },
+    "model": "admin.logentry",
+    "pk": 84
+},
+{
+    "fields": {
+        "action_flag": 2,
+        "action_time": "2017-01-17T12:24:31.116Z",
+        "object_repr": "juanmtriguero",
+        "object_id": "1",
+        "change_message": "Modificado/a avatar.",
+        "user": 1,
+        "content_type": 9
+    },
+    "model": "admin.logentry",
+    "pk": 85
+},
+{
+    "fields": {
+        "action_flag": 2,
+        "action_time": "2017-01-17T12:42:36.173Z",
+        "object_repr": "juanmtriguero",
+        "object_id": "1",
+        "change_message": "Modificado/a first_name y last_name.",
+        "user": 1,
+        "content_type": 4
+    },
+    "model": "admin.logentry",
+    "pk": 86
+},
+{
+    "fields": {
+        "action_flag": 2,
+        "action_time": "2017-01-17T13:18:35.801Z",
+        "object_repr": "juanmtriguero",
+        "object_id": "1",
+        "change_message": "Modificado/a text.",
+        "user": 1,
+        "content_type": 9
+    },
+    "model": "admin.logentry",
+    "pk": 87
+},
+{
+    "fields": {
+        "action_flag": 2,
+        "action_time": "2017-01-17T13:24:46.323Z",
+        "object_repr": "usuario",
+        "object_id": "5",
+        "change_message": "Modificado/a birth.",
+        "user": 1,
+        "content_type": 9
+    },
+    "model": "admin.logentry",
+    "pk": 88
+},
+{
+    "fields": {
+        "action_flag": 2,
+        "action_time": "2017-01-17T13:27:47.892Z",
+        "object_repr": "juanmtriguero",
+        "object_id": "1",
+        "change_message": "Modificado/a text.",
+        "user": 1,
+        "content_type": 9
+    },
+    "model": "admin.logentry",
+    "pk": 89
+},
+{
+    "fields": {
+        "action_flag": 2,
+        "action_time": "2017-01-17T13:28:52.018Z",
+        "object_repr": "juanmtriguero",
+        "object_id": "1",
+        "change_message": "Modificado/a text.",
+        "user": 1,
+        "content_type": 9
+    },
+    "model": "admin.logentry",
+    "pk": 90
+},
+{
+    "fields": {
+        "action_flag": 2,
+        "action_time": "2017-01-17T13:29:27.812Z",
+        "object_repr": "juanmtriguero",
+        "object_id": "1",
+        "change_message": "Modificado/a text.",
+        "user": 1,
+        "content_type": 9
+    },
+    "model": "admin.logentry",
+    "pk": 91
+},
+{
+    "fields": {
+        "action_flag": 2,
+        "action_time": "2017-01-17T18:25:33.554Z",
+        "object_repr": "juanan",
+        "object_id": "4",
+        "change_message": "Modificado/a avatar.",
+        "user": 1,
+        "content_type": 9
+    },
+    "model": "admin.logentry",
+    "pk": 92
+},
+{
+    "fields": {
+        "action_flag": 2,
+        "action_time": "2017-01-17T18:25:37.506Z",
+        "object_repr": "usuario",
+        "object_id": "5",
+        "change_message": "Modificado/a avatar.",
+        "user": 1,
+        "content_type": 9
+    },
+    "model": "admin.logentry",
+    "pk": 93
+},
+{
+    "fields": {
+        "action_flag": 2,
+        "action_time": "2017-01-17T18:25:40.982Z",
+        "object_repr": "usuario24",
+        "object_id": "6",
+        "change_message": "Modificado/a avatar.",
+        "user": 1,
+        "content_type": 9
+    },
+    "model": "admin.logentry",
+    "pk": 94
+},
+{
+    "fields": {
+        "action_flag": 2,
+        "action_time": "2017-01-17T18:25:44.810Z",
+        "object_repr": "12345",
+        "object_id": "7",
+        "change_message": "Modificado/a avatar.",
+        "user": 1,
+        "content_type": 9
+    },
+    "model": "admin.logentry",
+    "pk": 95
+},
+{
+    "fields": {
+        "action_flag": 2,
+        "action_time": "2017-01-17T18:25:48.537Z",
+        "object_repr": "123456",
+        "object_id": "8",
+        "change_message": "Modificado/a avatar.",
+        "user": 1,
+        "content_type": 9
+    },
+    "model": "admin.logentry",
+    "pk": 96
+},
+{
+    "fields": {
+        "action_flag": 2,
+        "action_time": "2017-01-17T18:25:52.010Z",
+        "object_repr": "josue1",
+        "object_id": "12",
+        "change_message": "Modificado/a avatar.",
+        "user": 1,
+        "content_type": 9
+    },
+    "model": "admin.logentry",
+    "pk": 97
+},
+{
+    "fields": {
+        "action_flag": 2,
+        "action_time": "2017-01-17T18:25:55.578Z",
+        "object_repr": "elisita",
+        "object_id": "13",
+        "change_message": "Modificado/a avatar.",
+        "user": 1,
+        "content_type": 9
+    },
+    "model": "admin.logentry",
+    "pk": 98
+},
+{
+    "fields": {
+        "action_flag": 2,
+        "action_time": "2017-01-17T18:25:58.868Z",
+        "object_repr": "lorenzo",
+        "object_id": "2",
+        "change_message": "Modificado/a avatar.",
+        "user": 1,
+        "content_type": 9
+    },
+    "model": "admin.logentry",
+    "pk": 99
+},
+{
+    "fields": {
+        "action_flag": 2,
+        "action_time": "2017-01-19T10:14:57.263Z",
+        "object_repr": "juanmtriguero",
+        "object_id": "1",
+        "change_message": "Modificado/a following.",
+        "user": 1,
+        "content_type": 9
+    },
+    "model": "admin.logentry",
+    "pk": 100
+},
+{
+    "fields": {
+        "action_flag": 2,
+        "action_time": "2017-01-19T10:52:13.019Z",
+        "object_repr": "juanan",
+        "object_id": "4",
+        "change_message": "Modificado/a following.",
+        "user": 1,
+        "content_type": 9
+    },
+    "model": "admin.logentry",
+    "pk": 101
+},
+{
+    "fields": {
+        "action_flag": 2,
+        "action_time": "2017-01-19T12:43:36.758Z",
+        "object_repr": "elisita",
+        "object_id": "13",
+        "change_message": "Modificado/a avatar.",
+        "user": 1,
+        "content_type": 9
+    },
+    "model": "admin.logentry",
+    "pk": 102
+},
+{
+    "fields": {
+        "action_flag": 3,
+        "action_time": "2017-01-19T17:13:47.947Z",
+        "object_repr": "",
+        "object_id": "14",
+        "change_message": "",
+        "user": 1,
+        "content_type": 9
+    },
+    "model": "admin.logentry",
+    "pk": 103
+},
+{
+    "fields": {
+        "action_flag": 3,
+        "action_time": "2017-01-19T17:47:36.948Z",
+        "object_repr": "juanmtriguero ha marcado el DLC Grito de Libertad (2014) como Completado",
+        "object_id": "1",
+        "change_message": "",
+        "user": 1,
+        "content_type": 18
+    },
+    "model": "admin.logentry",
+    "pk": 104
+},
+{
+    "fields": {
+        "action_flag": 3,
+        "action_time": "2017-01-19T17:47:44.943Z",
+        "object_repr": "usuario24 ha marcado el libro Cazadores de piratas (2016) como Le\u00eddo",
+        "object_id": "2",
+        "change_message": "",
+        "user": 1,
+        "content_type": 13
+    },
+    "model": "admin.logentry",
+    "pk": 105
+},
+{
+    "fields": {
+        "action_flag": 3,
+        "action_time": "2017-01-19T17:47:44.965Z",
+        "object_repr": "juanmtriguero ha marcado el libro Cazadores de piratas (2016) como Pendiente",
+        "object_id": "1",
+        "change_message": "",
+        "user": 1,
+        "content_type": 13
+    },
+    "model": "admin.logentry",
+    "pk": 106
+},
+{
+    "fields": {
+        "action_flag": 3,
+        "action_time": "2017-01-19T17:47:55.044Z",
+        "object_repr": "juanmtriguero ha marcado el juego Assassin's Creed IV: Black Flag (2013) como Terminado",
+        "object_id": "1",
+        "change_message": "",
+        "user": 1,
+        "content_type": 17
+    },
+    "model": "admin.logentry",
+    "pk": 107
+},
+{
+    "fields": {
+        "action_flag": 2,
+        "action_time": "2017-01-30T12:24:48.895Z",
+        "object_repr": "juanan",
+        "object_id": "5",
+        "change_message": "Modificado/a is_active.",
+        "user": 1,
+        "content_type": 4
+    },
+    "model": "admin.logentry",
+    "pk": 108
+},
+{
+    "fields": {
+        "action_flag": 2,
+        "action_time": "2017-01-30T14:15:14.419Z",
+        "object_repr": "juanan",
+        "object_id": "5",
+        "change_message": "Modificado/a is_active.",
+        "user": 1,
+        "content_type": 4
+    },
+    "model": "admin.logentry",
+    "pk": 109
+},
+{
+    "fields": {
+        "action_flag": 2,
+        "action_time": "2017-01-30T14:15:20.892Z",
+        "object_repr": "usuario",
+        "object_id": "6",
+        "change_message": "Modificado/a is_active.",
+        "user": 1,
+        "content_type": 4
+    },
+    "model": "admin.logentry",
+    "pk": 110
+},
+{
+    "fields": {
+        "action_flag": 2,
+        "action_time": "2017-01-30T14:15:25.694Z",
+        "object_repr": "usuario24",
+        "object_id": "7",
+        "change_message": "Modificado/a is_active.",
+        "user": 1,
+        "content_type": 4
+    },
+    "model": "admin.logentry",
+    "pk": 111
+},
+{
+    "fields": {
+        "action_flag": 1,
+        "action_time": "2017-02-01T11:39:08.274Z",
+        "object_repr": "juanmtriguero ha marcado el libro Cazadores de piratas (2016) como Pendiente",
+        "object_id": "3",
+        "change_message": "",
+        "user": 1,
+        "content_type": 13
+    },
+    "model": "admin.logentry",
+    "pk": 112
+},
+{
+    "fields": {
+        "action_flag": 2,
+        "action_time": "2017-02-01T12:08:57.415Z",
+        "object_repr": "juanmtriguero ha marcado el libro Cazadores de piratas (2016) como Pendiente",
+        "object_id": "3",
+        "change_message": "Modificado/a fav.",
+        "user": 1,
+        "content_type": 13
+    },
+    "model": "admin.logentry",
+    "pk": 113
+},
+{
+    "fields": {
+        "action_flag": 1,
+        "action_time": "2017-02-01T13:36:36.048Z",
+        "object_repr": "juanmtriguero ha marcado el pel La vida secreta de Walter Mitty (2014) como Visto",
+        "object_id": "1",
+        "change_message": "",
+        "user": 1,
+        "content_type": 32
+    },
+    "model": "admin.logentry",
+    "pk": 114
+},
+{
+    "fields": {
+        "action_flag": 1,
+        "action_time": "2017-02-01T13:47:30.422Z",
+        "object_repr": "juanmtriguero ha marcado el pro Top Gear (2002) como Finalizado",
+        "object_id": "1",
+        "change_message": "",
+        "user": 1,
+        "content_type": 31
+    },
+    "model": "admin.logentry",
+    "pk": 115
+},
+{
+    "fields": {
+        "action_flag": 1,
+        "action_time": "2017-02-01T14:03:52.596Z",
+        "object_repr": "juanmtriguero ha marcado el c\u00f3mic Tint\u00edn - La oreja rota (1937) como Le\u00eddo",
+        "object_id": "2",
+        "change_message": "",
+        "user": 1,
+        "content_type": 25
+    },
+    "model": "admin.logentry",
+    "pk": 116
+},
+{
+    "fields": {
+        "action_flag": 1,
+        "action_time": "2017-02-01T14:07:40.649Z",
+        "object_repr": "juanmtriguero ha marcado la serie de c\u00f3mics Superman/Batman (2003) como Pausado",
+        "object_id": "1",
+        "change_message": "",
+        "user": 1,
+        "content_type": 36
+    },
+    "model": "admin.logentry",
+    "pk": 117
+},
+{
+    "fields": {
+        "action_flag": 1,
+        "action_time": "2017-02-02T17:50:57.770Z",
+        "object_repr": "juanmtriguero ha marcado el juego Uncharted: El tesoro de Drake (2007) como Terminado",
+        "object_id": "2",
+        "change_message": "",
+        "user": 1,
+        "content_type": 17
+    },
+    "model": "admin.logentry",
+    "pk": 118
+},
+{
+    "fields": {
+        "action_flag": 1,
+        "action_time": "2017-02-03T12:09:45.945Z",
+        "object_repr": "juanmtriguero ha marcado el DLC Grito de Libertad (2014) como Completado",
+        "object_id": "2",
+        "change_message": "",
+        "user": 1,
+        "content_type": 18
+    },
+    "model": "admin.logentry",
+    "pk": 119
+},
+{
+    "fields": {
+        "action_flag": 2,
+        "action_time": "2017-02-07T15:40:41.668Z",
+        "object_repr": "juanmtriguero ha marcado el Pel\u00edcula La vida secreta de Walter Mitty (2014) como Visto",
+        "object_id": "1",
+        "change_message": "Modificado/a fav.",
+        "user": 1,
+        "content_type": 32
+    },
+    "model": "admin.logentry",
+    "pk": 120
+},
+{
+    "fields": {
+        "action_flag": 2,
+        "action_time": "2017-02-14T18:32:55.126Z",
+        "object_repr": "juanmtriguero ha marcado el libro El Hobbit (1936) como ",
+        "object_id": "4",
+        "change_message": "Modificado/a option.",
+        "user": 1,
+        "content_type": 13
+    },
+    "model": "admin.logentry",
+    "pk": 121
+},
+{
+    "fields": {
+        "action_flag": 2,
+        "action_time": "2017-02-14T18:34:59.833Z",
+        "object_repr": "juanmtriguero ha marcado el libro El Hobbit (1936) como ",
+        "object_id": "4",
+        "change_message": "No ha cambiado ning\u00fan campo.",
+        "user": 1,
+        "content_type": 13
+    },
+    "model": "admin.logentry",
+    "pk": 122
+},
+{
+    "fields": {
+        "action_flag": 2,
+        "action_time": "2017-02-15T09:38:10.538Z",
+        "object_repr": "juanmtriguero ha marcado el libro El Hobbit (1936) como ",
+        "object_id": "4",
+        "change_message": "No ha cambiado ning\u00fan campo.",
+        "user": 1,
+        "content_type": 13
+    },
+    "model": "admin.logentry",
+    "pk": 123
+},
+{
+    "fields": {
+        "action_flag": 2,
+        "action_time": "2017-02-15T13:00:24.077Z",
+        "object_repr": "Sherlock (2010) - 1x1: Estudio en rosa",
+        "object_id": "1",
+        "change_message": "Modificado/a tics.",
+        "user": 1,
+        "content_type": 30
+    },
+    "model": "admin.logentry",
+    "pk": 124
+},
+{
+    "fields": {
+        "action_flag": 2,
+        "action_time": "2017-02-15T13:59:07.803Z",
+        "object_repr": "Batman: The Dark Knight Returns (1986) - 2: El Triunfo del Se\u00f1or de la Noche",
+        "object_id": "2",
+        "change_message": "Modificado/a tics.",
+        "user": 1,
+        "content_type": 23
+    },
+    "model": "admin.logentry",
+    "pk": 125
+}
+]

@@ -8,4 +8,4 @@ install:
   - pip install -q Django==$DJANGO_VERSION
 # command to run tests
 script:
-  - python manage.py test
+  - python EntHub/manage.py test

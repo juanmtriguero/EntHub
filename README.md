@@ -1,5 +1,7 @@
 # EntHub
 
+[![Build Status](https://travis-ci.org/juanmtriguero/EntHub.svg?branch=master)](https://travis-ci.org/juanmtriguero/EntHub)
+
 EntHub es la abreviatura de "Entertainment Hub" (centro de entretinimiento). Es una red social de ocio desarollada en Django para marcar, comentar y compartir con amigos películas, series, juegos, libros, etc.
 
 Este proyecto utiliza [Travis CI](https://travis-ci.org/) para la **integración continua**.

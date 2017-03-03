@@ -14,4 +14,4 @@ before_script:
   - psql -c "CREATE USER enthub WITH PASSWORD 'enthub';" -U postgres
   - psql -c "ALTER USER enthub CREATEDB;" -U postgres
 script:
-  - python EntHub/manage.py test
+  - python EntHub/manage.py test --verbosity=2

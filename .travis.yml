@@ -13,5 +13,6 @@ install:
 before_script:
   - psql -c "CREATE USER enthub WITH PASSWORD 'enthub';" -U postgres
   - psql -c "ALTER USER enthub CREATEDB;" -U postgres
+  - cd EntHub/
 script:
-  - python EntHub/manage.py test --verbosity=2
+  - python manage.py test --verbosity=2

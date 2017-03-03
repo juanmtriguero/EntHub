@@ -9,12 +9,14 @@ class IndexTestCase(TestCase):
 
 	# Unregistered users are redirected to login
 	def test_unregistered_index(self):
-		response = self.client.get('/', follow=True)
+		response = self.client.get('/')
 		self.assertEqual(response.status_code, 302)
-		self.assertTemplateUsed(response, 'main/login.html')
+		redirect = self.client.get('/', follow=True)
+		self.assertEqual(redirect.status_code, 200)
+		self.assertTemplateUsed(redirect, 'main/login.html')
 
 	# Registered users go to index
-	def test_unregistered_index(self):
+	def test_registered_index(self):
 		self.client.login(username='user', password='user')
 		response = self.client.get('/')
 		self.assertEqual(response.status_code, 200)

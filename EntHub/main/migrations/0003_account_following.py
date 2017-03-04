@@ -14,6 +14,6 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name='account',
             name='following',
-            field=models.ManyToManyField(related_name='_account_following_+', to='main.Account', blank=True),
+            field=models.ManyToManyField(related_name='followers', to='main.Account', blank=True),
         ),
     ]

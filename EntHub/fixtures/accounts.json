@@ -1,0 +1,13 @@
+[
+{
+    "fields": {
+        "following": [],
+        "text": "Soy el administrador de EntHub",
+        "user": 1,
+        "birth": "2016-01-01",
+        "avatar": ""
+    },
+    "model": "main.account",
+    "pk": 1
+}
+]

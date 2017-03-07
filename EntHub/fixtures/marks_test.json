@@ -1,0 +1,200 @@
+[
+{
+    "fields": {
+        "rating": null,
+        "book": 1,
+        "fav": true,
+        "user": 2,
+        "option": "pen"
+    },
+    "model": "items.bookmark",
+    "pk": 3
+},
+{
+    "fields": {
+        "rating": null,
+        "book": 5,
+        "fav": false,
+        "user": 2,
+        "option": "ley"
+    },
+    "model": "items.bookmark",
+    "pk": 4
+},
+{
+    "fields": {
+        "rating": null,
+        "book": 6,
+        "fav": false,
+        "user": 2,
+        "option": "lei"
+    },
+    "model": "items.bookmark",
+    "pk": 5
+},
+{
+    "fields": {
+        "rating": null,
+        "book": 7,
+        "fav": false,
+        "user": 2,
+        "option": "ley"
+    },
+    "model": "items.bookmark",
+    "pk": 6
+},
+{
+    "fields": {
+        "rating": null,
+        "game": 2,
+        "fav": false,
+        "user": 2,
+        "option": "pen"
+    },
+    "model": "items.gamemark",
+    "pk": 2
+},
+{
+    "fields": {
+        "rating": null,
+        "game": 1,
+        "fav": true,
+        "user": 2,
+        "option": "jug"
+    },
+    "model": "items.gamemark",
+    "pk": 3
+},
+{
+    "fields": {
+        "dlc": 1,
+        "rating": null,
+        "fav": false,
+        "user": 2,
+        "option": "com"
+    },
+    "model": "items.dlcmark",
+    "pk": 2
+},
+{
+    "fields": {
+        "dlc": 3,
+        "rating": null,
+        "fav": true,
+        "user": 2,
+        "option": "jug"
+    },
+    "model": "items.dlcmark",
+    "pk": 3
+},
+{
+    "fields": {
+        "rating": null,
+        "comic": 1,
+        "fav": true,
+        "user": 2,
+        "option": "ley"
+    },
+    "model": "items.comicmark",
+    "pk": 2
+},
+{
+    "fields": {
+        "rating": null,
+        "comic": 2,
+        "fav": true,
+        "user": 2,
+        "option": "pau"
+    },
+    "model": "items.comicseriesmark",
+    "pk": 1
+},
+{
+    "fields": {
+        "rating": null,
+        "comic": 1,
+        "fav": false,
+        "user": 2,
+        "option": "sig"
+    },
+    "model": "items.comicseriesmark",
+    "pk": 2
+},
+{
+    "fields": {
+        "series": 2,
+        "rating": null,
+        "fav": true,
+        "user": 2,
+        "option": "fin"
+    },
+    "model": "items.seriesmark",
+    "pk": 1
+},
+{
+    "fields": {
+        "series": 1,
+        "rating": null,
+        "fav": true,
+        "user": 2,
+        "option": "sig"
+    },
+    "model": "items.seriesmark",
+    "pk": 2
+},
+{
+    "fields": {
+        "series": 3,
+        "rating": null,
+        "fav": false,
+        "user": 2,
+        "option": ""
+    },
+    "model": "items.seriesmark",
+    "pk": 3
+},
+{
+    "fields": {
+        "rating": null,
+        "fav": true,
+        "user": 2,
+        "option": "vis",
+        "movie": 2
+    },
+    "model": "items.moviemark",
+    "pk": 1
+},
+{
+    "fields": {
+        "rating": null,
+        "fav": true,
+        "user": 2,
+        "option": "pen",
+        "movie": 5
+    },
+    "model": "items.moviemark",
+    "pk": 3
+},
+{
+    "fields": {
+        "rating": null,
+        "fav": true,
+        "user": 2,
+        "option": "",
+        "movie": 4
+    },
+    "model": "items.moviemark",
+    "pk": 4
+},
+{
+    "fields": {
+        "rating": null,
+        "fav": true,
+        "user": 2,
+        "option": "vis",
+        "movie": 1
+    },
+    "model": "items.moviemark",
+    "pk": 5
+}
+]

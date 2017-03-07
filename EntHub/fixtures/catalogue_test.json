@@ -1,0 +1,937 @@
+[
+{
+    "fields": {
+        "name": "Acci\u00f3n"
+    },
+    "model": "items.genre",
+    "pk": 1
+},
+{
+    "fields": {
+        "name": "Aventura"
+    },
+    "model": "items.genre",
+    "pk": 2
+},
+{
+    "fields": {
+        "name": "Deportes"
+    },
+    "model": "items.genre",
+    "pk": 3
+},
+{
+    "fields": {
+        "name": "Biograf\u00eda"
+    },
+    "model": "items.genre",
+    "pk": 4
+},
+{
+    "fields": {
+        "name": "Comedia"
+    },
+    "model": "items.genre",
+    "pk": 5
+},
+{
+    "fields": {
+        "name": "Misterio"
+    },
+    "model": "items.genre",
+    "pk": 6
+},
+{
+    "fields": {
+        "bio": "William Bradley Pitt (Shawnee, Oklahoma; 18 de diciembre de 1963) es un actor y productor de cine estadounidense. Adem\u00e1s de por su trabajo interpretativo, por el que ha sido nominado en tres ocasiones a los Premios \u00d3scar y en cuatro a los Premios Globo de Oro, su significativa presencia medi\u00e1tica se debe tambi\u00e9n a su consideraci\u00f3n como uno de los hombres m\u00e1s atractivos del mundo.",
+        "image": "http://img.wennermedia.com/article-leads-vertical-300/1250530894_brad_pitt_290x402.jpg",
+        "name": "Brad Pitt"
+    },
+    "model": "items.agent",
+    "pk": 1
+},
+{
+    "fields": {
+        "bio": "Ubisoft es una compa\u00f1\u00eda francesa que desarrolla y distribuye videojuegos.",
+        "image": "",
+        "name": "Ubisoft"
+    },
+    "model": "items.agent",
+    "pk": 2
+},
+{
+    "fields": {
+        "bio": "Ariel fue fundada en 1942 y pronto se convirti\u00f3 en una de las editoriales de referencia en el campo del ensayo, la edici\u00f3n acad\u00e9mica y la divulgaci\u00f3n. Cuatro d\u00e9cadas despu\u00e9s de su creaci\u00f3n se incorpor\u00f3 al Grupo Planeta.\r\n\r\nEn Ariel encuentran su espacio todas las disciplinas del pensamiento: arte, historia, ciencia y ciencias humanas y sociales, entre otras. Por su prestigio y adaptaci\u00f3n a la actualidad del mundo editorial y cultural act\u00faa como v\u00ednculo entre ensayistas, divulgadores y todos aquellos lectores que desean disfrutar del placer de los libros.",
+        "image": "http://www.planetadelibros.com/img/sellos/logo_ARIEL.png",
+        "name": "Ariel"
+    },
+    "model": "items.agent",
+    "pk": 3
+},
+{
+    "fields": {
+        "bio": "Robert Kurson salt\u00f3 a la fama en Estados Unidos en 2004 gracias a su libro Tras la sombra de un submarino (RBA), un gran \u00e9xito internacional que narraba el hallazgo de un submarino alem\u00e1n en la costa de Nueva Jersey.\r\n\r\nAunque curs\u00f3 los estudios de derecho en Harvard y en sus primeros a\u00f1os trabaj\u00f3 en un despacho de abogados, pronto se decant\u00f3 por la labor de escritura, primero como periodista deportivo y despu\u00e9s como articulista para revistas como Esquire o Rolling Stone.",
+        "image": "http://www.robertkurson.com/wp-content/themes/the-bootstrap/img/biophoto.png",
+        "name": "Robert Kurson"
+    },
+    "model": "items.agent",
+    "pk": 4
+},
+{
+    "fields": {
+        "bio": "Comenz\u00f3 su carrera profesional como escritor publicitario, pero lo dej\u00f3 para continuar con carpinter\u00eda y construir muebles. Cuando su mujer dej\u00f3 el trabajo como profesora, se movieron a la zona de las monta\u00f1as de Catskill. Esta estancia ser\u00e1 decisiva para su futuro, ya que comenzar\u00e1 a leer diversas novelas, sobre todo de misterio. Descubri\u00f3 los cl\u00e1sicos libros de Conan Doyle o Ross Macdonald, pero lo que m\u00e1s le fascin\u00f3 fue la construcci\u00f3n mec\u00e1nica que ten\u00edan. Hasta que su mujer le propuso escribir su propia novela de misterio, el resultado, despu\u00e9s de dos a\u00f1os, fue S\u00e9 lo que est\u00e1s pensando. Posteriormente, se ver\u00e1n una serie de subsecuentes \u00e9xitos, al igual que cr\u00edticas. Su agente publicitario le pide que redacte m\u00e1s novelas con los mismos personajes principales. El resultado fue No abras los ojos, la que se convirti\u00f3 en otro bestseller internacional, traducida a m\u00e1s de 20 idiomas. La tercera novela ser\u00e1 Deja en paz al diablo, publicada en 2012, la cuarta, No conf\u00edes en Peter Pan.",
+        "image": "http://1.bp.blogspot.com/-7nmhO8BqFx8/UBQw1prh4sI/AAAAAAAAGSs/Lhz04_xYpaY/s1600/John-Verdon.jpg",
+        "name": "John Verdon"
+    },
+    "model": "items.agent",
+    "pk": 5
+},
+{
+    "fields": {
+        "bio": "Jeremy Charles Robert Clarkson (Doncaster, Yorkshire del Sur, 11 de abril de 1960) es un automovilista y periodista especializado en automovilismo ingl\u00e9s. Es principalmente conocido por su participaci\u00f3n en el programa de la BBC 2 Top Gear junto con los copresentadores Richard Hammond (H\u00e1mster), y James May (Captain Slow). Tambi\u00e9n escribe columnas semanales en The Times. Sus opiniones tienden a crear pol\u00e9mica y controversia. En marzo de 2015 fue despedido de Top Gear por agredir a un productor del programa.",
+        "image": "https://static.independent.co.uk/s3fs-public/thumbnails/image/2014/05/07/09/jeremy-clarkson-v2.jpg",
+        "name": "Jeremy Clarkson"
+    },
+    "model": "items.agent",
+    "pk": 6
+},
+{
+    "fields": {
+        "bio": "Benedict Timothy Carlton Cumberbatch (Hammersmith, Londres; 19 de julio de 1976) es un galardonado actor brit\u00e1nico de televisi\u00f3n, teatro, cine y voz.1 Accedi\u00f3 a la fama con su interpretaci\u00f3n de Stephen Hawking en la pel\u00edcula televisiva Hawking (2004); posteriormente, interpret\u00f3 el personaje de William Pitt en la pel\u00edcula hist\u00f3rica Amazing Grace (2006), as\u00ed como del rol del c\u00e9lebre detective Sherlock Holmes en una adaptaci\u00f3n moderna del personaje de Sir Arthur Conan Doyle en la serie Sherlock (2010\u2013presente); ambas producciones de la BBC e interpreta a Doctor Strange en el Universo cinematogr\u00e1fico de Marvel.",
+        "image": "http://www.benedictcumberbatch.co.uk/wordpress/wp-content/uploads/2012/11/ak1.jpg",
+        "name": "Benedict Cumberbatch"
+    },
+    "model": "items.agent",
+    "pk": 7
+},
+{
+    "fields": {
+        "bio": "Martin John C. Freeman (n. Aldershot, Hampshire; 8 de septiembre de 1971) es un actor brit\u00e1nico conocido por su papel en la pel\u00edcula Gu\u00eda del autoestopista gal\u00e1ctico (2005) y las series The Office (2001-2003), Sherlock (2010-presente) y Fargo (2014). El 14 de diciembre de 2012 se estren\u00f3 El hobbit: un viaje inesperado, pel\u00edcula en la cual interpreta al famoso hobbit Bilbo Bols\u00f3n, papel que repite en 2013 y 2014 en sus secuelas.",
+        "image": "http://akns-images.eonline.com/eol_images/Entire_Site/2013112/rs_634x1024-131202201142-634.Martin-Freeman-The-Hobbit.ms.120213.jpg",
+        "name": "Martin Freeman"
+    },
+    "model": "items.agent",
+    "pk": 8
+},
+{
+    "fields": {
+        "bio": "Georges Prosper Remi (Etterbeek, 22 de mayo de 1907 - Woluwe-Saint-Lambert, 3 de marzo de 1983) fue un historietista belga, m\u00e1s conocido por el seud\u00f3nimo art\u00edstico de Herg\u00e9, por ser \u00e9sa la pronunciaci\u00f3n de sus iniciales invertidas (R.G.) en franc\u00e9s.\r\n\r\nHerg\u00e9 fue el creador de Las aventuras de Tint\u00edn en 1929, que a d\u00eda de hoy siguen ejerciendo una importante influencia en el mundo de la historieta, particularmente en Europa. Adem\u00e1s de esta serie, Herg\u00e9 cre\u00f3 otras con diferentes personajes, entre las que cabe se\u00f1alar Las aventuras de Jo, Zette y Jocko y Quique y Flupi.",
+        "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a5/Galerie_de_Traitres_-_Herg%C3%A92.JPG/220px-Galerie_de_Traitres_-_Herg%C3%A92.JPG",
+        "name": "Herg\u00e9"
+    },
+    "model": "items.agent",
+    "pk": 9
+},
+{
+    "fields": {
+        "image": "",
+        "short": "PS3",
+        "name": "PlayStation 3"
+    },
+    "model": "items.platform",
+    "pk": 1
+},
+{
+    "fields": {
+        "image": "",
+        "short": "PS4",
+        "name": "PlayStation 4"
+    },
+    "model": "items.platform",
+    "pk": 2
+},
+{
+    "fields": {
+        "image": "",
+        "short": "WiiU",
+        "name": "Wii U"
+    },
+    "model": "items.platform",
+    "pk": 3
+},
+{
+    "fields": {
+        "image": "",
+        "short": "PC",
+        "name": "Personal computer"
+    },
+    "model": "items.platform",
+    "pk": 4
+},
+{
+    "fields": {
+        "image": "",
+        "short": "X360",
+        "name": "Xbox 360"
+    },
+    "model": "items.platform",
+    "pk": 5
+},
+{
+    "fields": {
+        "image": "",
+        "short": "XONE",
+        "name": "Xbox ONE"
+    },
+    "model": "items.platform",
+    "pk": 6
+},
+{
+    "fields": {
+        "count": 2,
+        "rating": 3.5,
+        "genres": [
+            2,
+            4
+        ],
+        "description": "La fascinante historia de dos cazadores de tesoros a la b\u00fasqueda del m\u00e1s legendario de los barcos piratas en la costa del Caribe.\r\n\r\nLa historia de dos hombres que en el a\u00f1o 2009 se lanzaron a surcar los mares en busca de un barco pirata legendario, el Golden Fleece, dispuestos a arriesgarlo todo --tiempo, dinero y vida sentimental--, a sortear todo tipo de dificultades y a enfrentarse a rivales en duelos dignos de la \u00e9poca de los corsarios. Dos cazadores de tesoros empecinados en encontrar en las profundidades del Mar Caribe un nav\u00edo capitaneado por el m\u00edtico Joseph Bannister, famoso en su \u00e9poca por haber derrotado a la mism\u00edsima Royal Navy, y emblema de la que fue la Edad Dorada de la pirater\u00eda en el siglo xvii.\r\n\r\nEsta es la historia de esa haza\u00f1a no exenta de locura y heroicidad, con dos personajes quijotescos que se acaban convirtiendo en versiones modernas de los piratas que tanto les han obsesionado y en la que se da cuenta tambi\u00e9n de la vida del corsario Joseph Bannister y de su buque, en un momento y un lugar en el que la pirater\u00eda era un lucrativo negocio alrededor del cual funcionaba toda la vida econ\u00f3mica y social del momento.\r\n\r\nFascinante y adictiva, una original combinaci\u00f3n de personajes en la l\u00ednea de Ocean\u00b4s Eleven, el reportaje period\u00edstico y las novelas marinas de Patrick O\u2019Brian. Un libro que sumerge al lector en las c\u00e1lidas aguas caribe\u00f1as y lo traslada a los tiempos turbulentos de la pirater\u00eda, relatando esos cuatro a\u00f1os consagrados a una haza\u00f1a s\u00f3lo comparable a lo que supuso hallar los restos del Titanic o alcanzar la cima del Everest por primera vez.",
+        "title": "Cazadores de piratas",
+        "image": "http://image5.casadellibro.com/a/l/t0/95/9788434423695.jpg",
+        "lists": [],
+        "year": 2016
+    },
+    "model": "items.book",
+    "pk": 1
+},
+{
+    "fields": {
+        "count": 0,
+        "rating": 0.0,
+        "genres": [
+            2
+        ],
+        "description": "Un incre\u00edble viaje en la historia hasta la Antigua Roma.",
+        "title": "Una historia en la historia",
+        "image": "http://static.fnac-static.com/multimedia/ES/images_produits/ES/ZoomPE/7/2/1/9788421663127.jpg",
+        "lists": [],
+        "year": 1988
+    },
+    "model": "items.book",
+    "pk": 2
+},
+{
+    "fields": {
+        "count": 0,
+        "rating": 0.0,
+        "genres": [
+            2
+        ],
+        "description": "Un hobbit de la Comarca, Bilbo Bols\u00f3n, recibe la visita del viejo mago Gandalf el Gris y un ruidoso pero entra\u00f1able grupo de enanos. De repente, se ver\u00e1 envuelto en un viaje inesperado que le har\u00e1 viajar por toda la Tierra Media para recuperar un tesoro robado por un temible drag\u00f3n.",
+        "title": "El Hobbit",
+        "image": "https://imagessl3.casadellibro.com/a/l/t0/03/9788445073803.jpg",
+        "lists": [],
+        "year": 1936
+    },
+    "model": "items.book",
+    "pk": 5
+},
+{
+    "fields": {
+        "count": 0,
+        "rating": 0.0,
+        "genres": [
+            1
+        ],
+        "description": "El asesinato de un rico empresario ocurrido tiempo atr\u00e1s es el punto de partida de una compleja red de mentiras que David Gurney deber\u00e1 desentra\u00f1ar. Y la identidad del asesino resulta ser la m\u00e1s grande de todas las sorpresas.",
+        "title": "No conf\u00edes en Peter Pan",
+        "image": "http://3.bp.blogspot.com/-mje0PEYIBNw/Uvzy44gUgrI/AAAAAAAACes/7qvkJ2E6SaQ/s1600/no+confies.jpg",
+        "lists": [],
+        "year": 2013
+    },
+    "model": "items.book",
+    "pk": 6
+},
+{
+    "fields": {
+        "count": 0,
+        "rating": 0.0,
+        "genres": [
+            2
+        ],
+        "description": "El Se\u00f1or de los Anillos (t\u00edtulo original en ingl\u00e9s: The Lord of the Rings) es una novela de fantas\u00eda \u00e9pica escrita por el fil\u00f3logo y escritor brit\u00e1nico J. R. R. Tolkien.\r\n\r\nSu historia se desarrolla en la Tercera Edad del Sol de la Tierra Media, un lugar ficticio poblado por hombres y otras razas antropomorfas como los hobbits, los elfos o los enanos, as\u00ed como por muchas otras criaturas reales y fant\u00e1sticas. La novela narra el viaje del protagonista principal, el hobbit Frodo Bols\u00f3n, para destruir el Anillo \u00danico y la consiguiente guerra que provocar\u00e1 el enemigo para recuperarlo, ya que es la principal fuente de poder de su creador, el Se\u00f1or oscuro Sauron.",
+        "title": "El Se\u00f1or de los Anillos",
+        "image": "http://www.quelibroleo.com/images/libros/libro_1322009207.jpg",
+        "lists": [],
+        "year": 1954
+    },
+    "model": "items.book",
+    "pk": 7
+},
+{
+    "fields": {
+        "count": 0,
+        "rating": 0.0,
+        "genres": [
+            1,
+            2
+        ],
+        "description": "Controla a Edward Kenway, un asesino pirata, y vence a los templarios en el Caribe.",
+        "title": "Assassin's Creed IV: Black Flag",
+        "image": "http://img1.meristation.com/files/imagenes/general/assassins-creed-iv-black-flag-sml.jpg",
+        "lists": [],
+        "platforms": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6
+        ],
+        "year": 2013
+    },
+    "model": "items.game",
+    "pk": 1
+},
+{
+    "fields": {
+        "count": 0,
+        "rating": 0.0,
+        "genres": [
+            1,
+            2
+        ],
+        "description": "Uncharted: El tesoro de Drake, titulado originalmente Uncharted: Drake's Fortune, es un videojuego de acci\u00f3n-aventura, desarrollado por Naughty Dog, y publicado por Sony Computer Entertainment para la consola PlayStation 3. Una demo para el juego fue lanzada el 8 de noviembre de 2007, en PlayStation Network. Aunque en EE.UU. se fij\u00f3 fecha para el 19 de noviembre, fue lanzado el d\u00eda 16 en unas \u00e1reas seleccionadas.\r\n\r\nEs el inicio de una impresionante saga exclusiva para PS3 que ha vendido millones de unidades desde su lanzamiento en todo el mundo. El estudio Naughty Dog ha vuelto a conseguir sacarse otro conejo de la chistera para esta generaci\u00f3n de consolas con este nuevo y fresco t\u00edtulo que ha arrasado en esta plataforma virtual debido a su incre\u00edble historia y detallad\u00edsimos gr\u00e1ficos, siendo as\u00ed todo un logro satisfactorio para los desarrolladores de la compa\u00f1\u00eda, dando a conocer que su esfuerzo y trabajo logr\u00f3 un buen fin.",
+        "title": "Uncharted: El tesoro de Drake",
+        "image": "http://uvejuegos.com/img/caratulas/21075/Uncharted_DF_pal_.jpg",
+        "lists": [],
+        "platforms": [
+            1,
+            2
+        ],
+        "year": 2007
+    },
+    "model": "items.game",
+    "pk": 2
+},
+{
+    "fields": {
+        "count": 0,
+        "rating": 0.0,
+        "genres": [
+            1,
+            2
+        ],
+        "description": "Lib\u00e9rate de tus cadenas y gu\u00eda a tus compa\u00f1eros hasta la libertad.",
+        "title": "Grito de Libertad",
+        "image": "http://www.3djuegos.com/juegos/10406/assassins_creed_4_black_flag__grito_de_libertad/fotos/ficha/assassins_creed_4_black_flag__grito_de_libertad-2430448.jpg",
+        "lists": [],
+        "platforms": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6
+        ],
+        "game": 1,
+        "year": 2014
+    },
+    "model": "items.dlc",
+    "pk": 1
+},
+{
+    "fields": {
+        "count": 0,
+        "rating": 0.0,
+        "genres": [
+            1,
+            2
+        ],
+        "description": "Misiones secundarias de b\u00fasqueda de cofres con contenido adicional.",
+        "title": "Piratas Ilustres",
+        "image": "http://im.ziffdavisinternational.com/ign_es/screenshot/l/llega-el-illustrious-pirates-pack-a-assassins-cree/llega-el-illustrious-pirates-pack-a-assassins-cree_cz7v.jpg",
+        "lists": [],
+        "platforms": [],
+        "game": 1,
+        "year": 2013
+    },
+    "model": "items.dlc",
+    "pk": 3
+},
+{
+    "fields": {
+        "count": 0,
+        "rating": 0.0,
+        "genres": [
+            1,
+            2
+        ],
+        "description": "Un fetiche arumbaya ha sido robado del Museo etnogr\u00e1fico y Tint\u00edn inicia su b\u00fasqueda. Siguiendo las pistas, descubre que dos hombres llamados Ram\u00f3n Bada y Alonso P\u00e9rez se interesan tambi\u00e9n por el mismo fetiche. Estos hombres se dirigen hacia San Theodoros, una rep\u00fablica de Sudam\u00e9rica. Tint\u00edn les sigue y se encuentra en el centro de una revoluci\u00f3n. Por una serie de casualidades termina convertido en ayudante de campo del General Alc\u00e1zar. Estalla la guerra entre San Teodoro y su vecino, Nuevo Rico. Tint\u00edn, perseguido por todos, huye hasta territorio de los arumbayas. Ah\u00ed descubre por fin el secreto del \u00eddolo: contiene un peque\u00f1o diamante. Finalmente, el fetiche es recuperado en Europa y devuelto al museo.",
+        "title": "Tint\u00edn - La oreja rota",
+        "image": "http://www.editorialjuventud.es/img/0274.jpg",
+        "lists": [],
+        "year": 1937
+    },
+    "model": "items.comic",
+    "pk": 1
+},
+{
+    "fields": {
+        "count": 0,
+        "rating": 0.0,
+        "genres": [
+            1,
+            6
+        ],
+        "description": "Batman: The Dark Knight Returns es una miniserie de historietas estadounidense de cuatro n\u00fameros de Batman, publicada entre febrero y junio de 1986 por DC Comics. Fue escrita e ilustrada por Frank Miller, entintada por Klaus Janson y coloreada por Lynn Varley. La historieta es considerada la m\u00e1s importante de Batman publicada en los \u00faltimos a\u00f1os. La trama, que transcurre durante una ucr\u00f3nica d\u00e9cada de 1980, narra la vuelta de un Batman quincuagenario a la actividad \u00abpara una \u00faltima limpieza de su amada ciudad de Gotham, convirti\u00e9ndose definitivamente en leyenda\u00bb.\r\n\r\nLa obra encumbr\u00f3 a Miller como estrella del c\u00f3mic en los Estados Unidos y supuso una revoluci\u00f3n en el subg\u00e9nero de los superh\u00e9roes junto con Watchmen, de Alan Moore, convirti\u00e9ndose en s\u00edmbolo de una era de superh\u00e9roes m\u00e1s violentos y moralmente complejos. Ambas fueron el origen de una de las dos v\u00edas de la novela gr\u00e1fica contempor\u00e1nea, la superheroica y comercial, frente a la independiente y autobiogr\u00e1fica, representada por Maus: Relato de un superviviente.\r\n\r\nA\u00f1os despu\u00e9s Miller realiz\u00f3 una secuela, Batman: The Dark Knight Strikes Again (El se\u00f1or de la noche contraataca, 2002), que no tuvo el \u00e9xito ni la repercusi\u00f3n del original.",
+        "title": "Batman: The Dark Knight Returns",
+        "image": "http://www.nidodehistorietas.com/comics/batman-the-dark-returns-el-regreso-del-caballero-de-la-noche.jpg",
+        "lists": [],
+        "year": 1986
+    },
+    "model": "items.comicseries",
+    "pk": 1
+},
+{
+    "fields": {
+        "count": 0,
+        "rating": 0.0,
+        "genres": [
+            1
+        ],
+        "description": "En el primer arco de la historia, \"Enemigos p\u00fablicos\" (n\u00fameros 1-6, ilustrados por Ed McGuinness), el entonces Presidente de los Estados Unidos Lex Luthor declara a Superman y Batman enemigos de estado, mientras muestra que un asteroide de kriptonita se dirige hacia la Tierra conectado a un plan maligno de Superman. Luthor ofrece una recompensa de mil millones de d\u00f3lares, que anima a supervillanos y superh\u00e9roes para atacar a los dos h\u00e9roes. Superman casi mata al Presidente Luthor en la Oficina Oval, mientras Batman se mantiene al margen. En el \u00faltimo momento, Superman cambia de idea. Batman y Superman buscan al nuevo Toyman, Hiro Okamura, que construye una nave espacial con suficiente potencia de fuego como para destruir al asteroide. Cuando el plan de Luthor est\u00e1 en peligro, \u00e9ste se inyecta una mezcla de Venom y kryptonita sint\u00e9tica, se pone un traje de batalla del planeta Apokolips, y se enfrenta a Batman y Superman. Luthor es derrotado y parece morir en la lucha, aunque luego se muestra que ha sobrevivido. En el curso de la pelea, Luthor se muestra al mundo como un villano, por primera vez en la continuidad Post-crisis. Perdida la presidencia, Luthor es sucedido en el cargo por Pete Ross.",
+        "title": "Superman/Batman",
+        "image": "http://www.elmultiverso52.com/wp-content/uploads/2016/03/SupermanBatmanvol1-SupermanBatmanPublicEnemies.jpg",
+        "lists": [],
+        "year": 2003
+    },
+    "model": "items.comicseries",
+    "pk": 2
+},
+{
+    "fields": {
+        "count": 0,
+        "rating": 0.0,
+        "genres": [
+            3,
+            4
+        ],
+        "description": "Moneyball (2011) es una pel\u00edcula dirigida por Bennett Miller y protagonizada por Brad Pitt, Jonah Hill y Philip Seymour Hoffman. Basada en la historia real de Billy Beane, gerente general del equipo Atl\u00e9ticos de Oakland, la pel\u00edcula es una adaptaci\u00f3n de la novela Moneyball: the art of winning an unfair game (2003). Columbia Pictures adquiri\u00f3 los derechos en 2004 y, tras siete a\u00f1os de desarrollo, se present\u00f3 en el Festival Internacional de Cine de Toronto en 2011. Fue estrenada en cines el 23 de septiembre.",
+        "title": "Moneyball: rompiendo las reglas",
+        "image": "http://www.impawards.com/2011/posters/moneyball_ver2.jpg",
+        "lists": [],
+        "year": 2011,
+        "duration": 133,
+        "category": "pel"
+    },
+    "model": "items.movie",
+    "pk": 1
+},
+{
+    "fields": {
+        "count": 0,
+        "rating": 0.0,
+        "genres": [
+            2,
+            5
+        ],
+        "description": "The Secret Life of Walter Mitty (La vida secreta de Walter Mitty en Espa\u00f1a, La incre\u00edble vida de Walter Mitty en Hispanoam\u00e9rica) es la segunda adaptaci\u00f3n cinematogr\u00e1fica del cuento The Secret Life of Walter Mitty publicado en 1939.\r\n\r\nFue dirigida y protagonizada por Ben Stiller como Walter Mitty, y Kristen Wiig. Se estren\u00f3 en el Festival de Cine de Nueva York el 5 de octubre de 2013, despu\u00e9s se estren\u00f3 en los Estados Unidos y en Espa\u00f1a el 25 de diciembre de 2013, y en Chile el 23 de enero de 2014. Recibi\u00f3 cr\u00edticas mixtas de los cr\u00edticos. Fue filmada en Los \u00c1ngeles, Nueva York, Islandia y Groenlandia.",
+        "title": "La vida secreta de Walter Mitty",
+        "image": "http://es.web.img3.acsta.net/pictures/210/591/21059131_20131119154913018.jpg",
+        "lists": [],
+        "year": 2014,
+        "duration": 114,
+        "category": "pel"
+    },
+    "model": "items.movie",
+    "pk": 2
+},
+{
+    "fields": {
+        "count": 0,
+        "rating": 0.0,
+        "genres": [
+            5
+        ],
+        "description": "El periodista Bob Wilton (Ewan McGregor) est\u00e1 detr\u00e1s de su pr\u00f3xima gran historia, cuando se cruza con Lyn Cassady (George Clooney), un personaje misterioso que proclama ser parte de una unidad experimental secreta del Ej\u00e9rcito de los Estados Unidos. Seg\u00fan Cassady, este Ej\u00e9rcito de la Nueva Tierra est\u00e1 cambiando las t\u00e1cticas de combate. Se trata de una legi\u00f3n de \u2018Guerreros Monje\u2019 que posee una serie de poderes sin parang\u00f3n, tales como leer la mente del enemigo, atravesar paredes o incluso matar una cabra con tan s\u00f3lo mirarla fijamente. El fundador del programa, Bill Django (Jeff Bridges), ex-combatiente de Vietnam y estudioso de la Nueva era ha desaparecido, y la misi\u00f3n de Cassady es encontrarle.\r\n\r\nIntrigado por las incre\u00edbles historias que narra este reci\u00e9n conocido, Bob decide impulsivamente seguirle. Cuando la pareja da con la pista de Django, se topan con un campamento de entrenamiento clandestino dirigido por un renegado vidente y ex-miembro del Ej\u00e9rcito de la Nueva Tierra, Larry Hooper, (Kevin Spacey). El reportero se ve atrapado en una rencilla entre el Ej\u00e9rcito de Django y la milicia personal de super soldados de Hooper. Para sobrevivir a esta salvaje aventura, Bob tendr\u00e1 que burlar a un enemigo que jam\u00e1s crey\u00f3 que pudiera existir.",
+        "title": "Los hombres que miraban fijamente a las cabras",
+        "image": "http://i1007.photobucket.com/albums/af196/Diego20E/1znsm8n.jpg",
+        "lists": [],
+        "year": 2009,
+        "duration": 95,
+        "category": "pel"
+    },
+    "model": "items.movie",
+    "pk": 4
+},
+{
+    "fields": {
+        "count": 0,
+        "rating": 0.0,
+        "genres": [
+            5
+        ],
+        "description": "Borat: Cultural Learnings of America for Make Benefit Glorious Nation of Kazakhstan (titulada Borat: lecciones culturales de Estados Unidos para beneficio de la gloriosa naci\u00f3n de Kazajist\u00e1n en espa\u00f1ol), mejor conocida como Borat, es un falso documental de Sacha Baron Cohen de 2006 dirigido por Larry Charles. El t\u00edtulo est\u00e1 humor\u00edsticamente mal redactado en ingl\u00e9s y traducido en el DVD como Borat: Aprendizajes Culturales de Estados Unidos para Beneficio de la Gloriosa Naci\u00f3n de Kazajist\u00e1n, refiri\u00e9ndose a Estados Unidos como Am\u00e9rica. El personaje de Borat ya hab\u00eda sido empleado en Ali G anda suelto, la anterior cinta de Baron Cohen.",
+        "title": "Borat: lecciones culturales de Estados Unidos para beneficio de la gloriosa naci\u00f3n de Kazajist\u00e1n",
+        "image": "http://es.web.img2.acsta.net/medias/nmedia/18/89/72/83/20064056.jpg",
+        "lists": [],
+        "year": 2006,
+        "duration": 84,
+        "category": "pel"
+    },
+    "model": "items.movie",
+    "pk": 5
+},
+{
+    "fields": {
+        "count": 0,
+        "rating": 0.0,
+        "genres": [
+            3,
+            4
+        ],
+        "description": "Senna es un documental ingl\u00e9s lanzado en 2010, que aborda la vida \u00edntima y profesional del c\u00e9lebre piloto brasile\u00f1o de F\u00f3rmula 1, Ayrton Senna. Fue dirigida por Asif Kapadia, producida en conjunto por ESPN films y Working title films, y distribuida por Universal Pictures. Tras su lanzamiento recibi\u00f3 excelentes comentarios por parte de la cr\u00edtica especializada.\r\n\r\nEl film est\u00e1 basado tanto en archivos familiares del fallecido piloto, como tambi\u00e9n material audiovisual de televisi\u00f3n, brasile\u00f1a y mundial de la \u00e9poca. Se muestra a Ayrton Senna muy religioso, preocupado por sus compa\u00f1eros de trabajo, perfeccionista hasta el m\u00ednimo detalle, obsesionado con el triunfo, \u00eddolo de millones alrededor del mundo e idolatrado en su pa\u00eds natal.",
+        "title": "Senna",
+        "image": "http://i2.esmas.com/galerias/fotos/2012/1/_brit5-39c1d3ee-928f-102f-b536-0019b9d5c8df.jpg",
+        "lists": [],
+        "year": 2010,
+        "duration": 106,
+        "category": "doc"
+    },
+    "model": "items.movie",
+    "pk": 6
+},
+{
+    "fields": {
+        "count": 0,
+        "rating": 0.0,
+        "genres": [
+            6
+        ],
+        "description": "Ubicada en el Londres del siglo XXI, la serie sigue los pasos del exc\u00e9ntrico detective Sherlock Holmes junto a su compa\u00f1ero el doctor John H. Watson, en su b\u00fasqueda por resolver los brutales cr\u00edmenes que se van desarrollando. Sus insuperables habilidades de deducci\u00f3n y su arrogante distanciamiento emocional le convierten en el perfecto detective, pero pronto descubrir\u00e1 que hay alguien m\u00e1s que le sigue los pasos, el misterioso James Moriarty.",
+        "title": "Sherlock",
+        "image": "https://s-media-cache-ak0.pinimg.com/564x/60/3c/65/603c652261b739c30b1d6ffbf8945c54.jpg",
+        "lists": [],
+        "status": "esp",
+        "year": 2010,
+        "category": "ser"
+    },
+    "model": "items.series",
+    "pk": 1
+},
+{
+    "fields": {
+        "count": 0,
+        "rating": 0.0,
+        "genres": [
+            5
+        ],
+        "description": "Top Gear es un programa de la televisi\u00f3n brit\u00e1nica sobre veh\u00edculos de motor, principalmente coches, y es el programa de coches m\u00e1s visto del mundo. Comenz\u00f3 en 1977 como un programa de coches convencional. Con el tiempo, y sobre todo desde un relanzamiento en 2002, ha desarrollado un estilo peculiar, humor\u00edstico y a veces controvertido. El espect\u00e1culo se presenta actualmente por Chris Evans y Matt LeBlanc, despu\u00e9s de que el ex presentador Jeremy Clarkson tuviera una peque\u00f1a discusi\u00f3n con el productor de Top Gear (el 18 de Noviembre se estrena la nueva serie de los antiguos presentadores de Top Gear: The Grand Tour). Ha ofrecido al menos tres pilotos de pruebas diferentes conocidos como The Stig. Se estima que el programa tiene alrededor de 350 millones de espectadores por semana en m\u00e1s 170 pa\u00edses diferentes.",
+        "title": "Top Gear",
+        "image": "http://cdn.cineworm.com/posters/74608-7.jpg",
+        "lists": [],
+        "status": "emi",
+        "year": 2002,
+        "category": "pro"
+    },
+    "model": "items.series",
+    "pk": 2
+},
+{
+    "fields": {
+        "count": 0,
+        "rating": 0.0,
+        "genres": [
+            1,
+            4
+        ],
+        "description": "The Pacific es una miniserie de televisi\u00f3n ambientada en la Segunda Guerra Mundial, producida por HBO, que se estren\u00f3 en marzo de 2010. La serie se centra en la intervenci\u00f3n militar estadounidense en el Teatro del Pac\u00edfico. Es un proyecto \u00edntimamente ligado y sucesor de Band of Brothers, que se centraba en el continente europeo.\r\n\r\nThe Pacific se basa en las memorias de dos marines, Helmet for My Pillow de Robert Leckie y With the Old Breed de Eugene Sledge. La miniserie narra la historia de ambos autores y la del marine John Basilone en las batallas contra el Imperio del Jap\u00f3n.",
+        "title": "The Pacific",
+        "image": "http://www.vipmoviewatch.com/images/joomlart/movies/pacific.jpg",
+        "lists": [],
+        "status": "fin",
+        "year": 2010,
+        "category": "min"
+    },
+    "model": "items.series",
+    "pk": 3
+},
+{
+    "fields": {
+        "comic": 1,
+        "tics": [],
+        "number": 1,
+        "name": "El Regreso del Caballero Oscuro"
+    },
+    "model": "items.number",
+    "pk": 1
+},
+{
+    "fields": {
+        "comic": 1,
+        "tics": [],
+        "number": 2,
+        "name": "El Triunfo del Se\u00f1or de la Noche"
+    },
+    "model": "items.number",
+    "pk": 2
+},
+{
+    "fields": {
+        "comic": 1,
+        "tics": [],
+        "number": 3,
+        "name": "A la Caza del Se\u00f1or de la Noche"
+    },
+    "model": "items.number",
+    "pk": 3
+},
+{
+    "fields": {
+        "comic": 1,
+        "tics": [],
+        "number": 4,
+        "name": "La Ca\u00edda del Se\u00f1or de la Noche"
+    },
+    "model": "items.number",
+    "pk": 4
+},
+{
+    "fields": {
+        "series": 1,
+        "season": 1,
+        "tics": [],
+        "number": 1,
+        "name": "Estudio en rosa"
+    },
+    "model": "items.chapter",
+    "pk": 1
+},
+{
+    "fields": {
+        "series": 1,
+        "season": 1,
+        "tics": [],
+        "number": 2,
+        "name": "El banquero ciego"
+    },
+    "model": "items.chapter",
+    "pk": 2
+},
+{
+    "fields": {
+        "series": 1,
+        "season": 1,
+        "tics": [],
+        "number": 3,
+        "name": "El gran juego"
+    },
+    "model": "items.chapter",
+    "pk": 3
+},
+{
+    "fields": {
+        "series": 1,
+        "season": 2,
+        "tics": [],
+        "number": 1,
+        "name": "Esc\u00e1ndalo en Belgravia"
+    },
+    "model": "items.chapter",
+    "pk": 4
+},
+{
+    "fields": {
+        "series": 1,
+        "season": 2,
+        "tics": [],
+        "number": 2,
+        "name": "Los perros de Baskerville"
+    },
+    "model": "items.chapter",
+    "pk": 5
+},
+{
+    "fields": {
+        "series": 1,
+        "season": 2,
+        "tics": [],
+        "number": 3,
+        "name": "La ca\u00edda de Reichenbach"
+    },
+    "model": "items.chapter",
+    "pk": 6
+},
+{
+    "fields": {
+        "series": 1,
+        "season": 3,
+        "tics": [],
+        "number": 1,
+        "name": "La carroza f\u00fanebre vac\u00eda"
+    },
+    "model": "items.chapter",
+    "pk": 7
+},
+{
+    "fields": {
+        "series": 1,
+        "season": 3,
+        "tics": [],
+        "number": 2,
+        "name": "S\u00edntomas de ser tres"
+    },
+    "model": "items.chapter",
+    "pk": 8
+},
+{
+    "fields": {
+        "series": 1,
+        "season": 3,
+        "tics": [],
+        "number": 3,
+        "name": "Su \u00faltimo juramento"
+    },
+    "model": "items.chapter",
+    "pk": 9
+},
+{
+    "fields": {
+        "series": 1,
+        "season": 0,
+        "tics": [],
+        "number": 2,
+        "name": "La novia abominable"
+    },
+    "model": "items.chapter",
+    "pk": 10
+},
+{
+    "fields": {
+        "series": 1,
+        "season": 0,
+        "tics": [],
+        "number": 1,
+        "name": "Muchas felicidades"
+    },
+    "model": "items.chapter",
+    "pk": 11
+},
+{
+    "fields": {
+        "series": 3,
+        "season": 1,
+        "tics": [],
+        "number": 1,
+        "name": "Guadalcanal / Leckie"
+    },
+    "model": "items.chapter",
+    "pk": 12
+},
+{
+    "fields": {
+        "series": 3,
+        "season": 1,
+        "tics": [],
+        "number": 2,
+        "name": "Guadalcanal / Basilone"
+    },
+    "model": "items.chapter",
+    "pk": 16
+},
+{
+    "fields": {
+        "series": 3,
+        "season": 1,
+        "tics": [],
+        "number": 3,
+        "name": "Melbourne"
+    },
+    "model": "items.chapter",
+    "pk": 17
+},
+{
+    "fields": {
+        "series": 3,
+        "season": 1,
+        "tics": [],
+        "number": 4,
+        "name": "Gloucester / Pavuvu / Banika"
+    },
+    "model": "items.chapter",
+    "pk": 18
+},
+{
+    "fields": {
+        "series": 3,
+        "season": 1,
+        "tics": [],
+        "number": 5,
+        "name": "Desembarco en Peleliu"
+    },
+    "model": "items.chapter",
+    "pk": 19
+},
+{
+    "fields": {
+        "series": 3,
+        "season": 1,
+        "tics": [],
+        "number": 6,
+        "name": "El aer\u00f3dromo de Peleliu"
+    },
+    "model": "items.chapter",
+    "pk": 20
+},
+{
+    "fields": {
+        "series": 3,
+        "season": 1,
+        "tics": [],
+        "number": 7,
+        "name": "Las colinas de Peleliu"
+    },
+    "model": "items.chapter",
+    "pk": 21
+},
+{
+    "fields": {
+        "series": 3,
+        "season": 1,
+        "tics": [],
+        "number": 8,
+        "name": "Iwo Jima"
+    },
+    "model": "items.chapter",
+    "pk": 22
+},
+{
+    "fields": {
+        "series": 3,
+        "season": 1,
+        "tics": [],
+        "number": 9,
+        "name": "Okinawa"
+    },
+    "model": "items.chapter",
+    "pk": 23
+},
+{
+    "fields": {
+        "series": 3,
+        "season": 1,
+        "tics": [],
+        "number": 10,
+        "name": "Casa"
+    },
+    "model": "items.chapter",
+    "pk": 24
+},
+{
+    "fields": {
+        "book": 1,
+        "role": "edi",
+        "agent": 3
+    },
+    "model": "items.bookinvolvement",
+    "pk": 1
+},
+{
+    "fields": {
+        "book": 1,
+        "role": "esc",
+        "agent": 4
+    },
+    "model": "items.bookinvolvement",
+    "pk": 2
+},
+{
+    "fields": {
+        "book": 6,
+        "role": "esc",
+        "agent": 5
+    },
+    "model": "items.bookinvolvement",
+    "pk": 3
+},
+{
+    "fields": {
+        "game": 1,
+        "role": "des",
+        "agent": 2
+    },
+    "model": "items.gameinvolvement",
+    "pk": 1
+},
+{
+    "fields": {
+        "game": 1,
+        "role": "dis",
+        "agent": 2
+    },
+    "model": "items.gameinvolvement",
+    "pk": 2
+},
+{
+    "fields": {
+        "dlc": 1,
+        "role": "des",
+        "agent": 2
+    },
+    "model": "items.dlcinvolvement",
+    "pk": 2
+},
+{
+    "fields": {
+        "dlc": 1,
+        "role": "dis",
+        "agent": 2
+    },
+    "model": "items.dlcinvolvement",
+    "pk": 4
+},
+{
+    "fields": {
+        "comic": 1,
+        "role": "gui",
+        "agent": 9
+    },
+    "model": "items.comicinvolvement",
+    "pk": 4
+},
+{
+    "fields": {
+        "comic": 1,
+        "role": "dib",
+        "agent": 9
+    },
+    "model": "items.comicinvolvement",
+    "pk": 5
+},
+{
+    "fields": {
+        "movie": 1,
+        "role": "act",
+        "agent": 1
+    },
+    "model": "items.movieinvolvement",
+    "pk": 2
+},
+{
+    "fields": {
+        "series": 2,
+        "role": "pre",
+        "agent": 6
+    },
+    "model": "items.seriesinvolvement",
+    "pk": 1
+},
+{
+    "fields": {
+        "series": 1,
+        "role": "act",
+        "agent": 7
+    },
+    "model": "items.seriesinvolvement",
+    "pk": 2
+},
+{
+    "fields": {
+        "series": 1,
+        "role": "act",
+        "agent": 8
+    },
+    "model": "items.seriesinvolvement",
+    "pk": 3
+}
+]

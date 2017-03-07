@@ -1,0 +1,35 @@
+[
+{
+    "fields": {
+        "following": [],
+        "text": "Soy el administrador de EntHub",
+        "user": 1,
+        "birth": "2016-01-01",
+        "avatar": ""
+    },
+    "model": "main.account",
+    "pk": 1
+},
+{
+    "fields": {
+        "following": [],
+        "text": "Soy Juan Torres Alba",
+        "user": 2,
+        "birth": "1990-01-01",
+        "avatar": ""
+    },
+    "model": "main.account",
+    "pk": 2
+},
+{
+    "fields": {
+        "following": [],
+        "text": "",
+        "user": 3,
+        "birth": "1996-05-12",
+        "avatar": ""
+    },
+    "model": "main.account",
+    "pk": 3
+}
+]

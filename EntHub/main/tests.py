@@ -1,34 +1,58 @@
 from django.test import TestCase
 from django.contrib.auth.models import User
 from main.models import Account
+from items import models
 
-# main.views.index
+# Index
 class IndexTestCase(TestCase):
 
-	def setUp(self):
-		user = User.objects.create_user('user', 'user@mail.com', 'user')
+	fixtures = ['catalogue_test', 'users_test', 'marks_test']
 
 	# Unregistered users are redirected to login
-	def test_unregistered_index(self):
+	def test_index_anonymous(self):
 		response = self.client.get('/')
 		self.assertEqual(response.status_code, 302)
 		redirect = self.client.get('/', follow=True)
 		self.assertEqual(redirect.status_code, 200)
 		self.assertTemplateUsed(redirect, 'main/login.html')
 
-	# Registered users go to index
-	def test_registered_index(self):
-		self.client.login(username='user', password='user')
+	# Index shows four last items of each category
+	def test_index(self):
+		self.client.login(username='anita', password='password')
 		response = self.client.get('/')
 		self.assertEqual(response.status_code, 200)
 		self.assertTemplateUsed(response, 'main/index.html')
+		# Context
+		movies = [i.id for i in response.context['movies']]
+		self.assertEqual(movies, [2,4,5,6])
+		series = [i.id for i in response.context['series']]
+		self.assertEqual(series, [1,2,3])
+		books = [i.id for i in response.context['books']]
+		self.assertEqual(books, [2,5,6,7])
+		games = [i.id for i in response.context['games']]
+		self.assertEqual(games, [1,2])
+		comics = [i.id for i in response.context['comics']]
+		self.assertEqual(comics, [1])
+		comic_series = [i.id for i in response.context['comic_series']]
+		self.assertEqual(comic_series, [1,2])
 
-# main.models
-class ModelsTestCase(TestCase):
+	# Items show user's marks
+	def test_index_marks(self):
+		self.client.login(username='jtorres', password='password')
+		response = self.client.get('/')
+		self.assertEqual(response.context['movies'][models.Movie.objects.get(id=5)], "pen")
+		self.assertEqual(response.context['series'][models.Series.objects.get(id=2)], "fin")
+		self.assertEqual(response.context['books'][models.Book.objects.get(id=6)], "lei")
+		self.assertEqual(response.context['games'][models.Game.objects.get(id=1)], "jug")
+		self.assertEqual(response.context['comics'][models.Comic.objects.get(id=1)], "ley")
+		self.assertEqual(response.context['comic_series'][models.ComicSeries.objects.get(id=2)], "pau")
 
-	fixtures = ['users', 'accounts']
+# Account
+class AccountTestCase(TestCase):
 
-	# models.Account
+	fixtures = ['users_test', 'accounts_test']
+
+	# Model test
 	def test_account_unicode(self):
 		account = Account.objects.get(id=1)
 		self.assertEqual(unicode(account), "admin")

@@ -113,3 +113,35 @@ class AccountTestCase(TestCase):
 		self.assertEqual(response.status_code, 200)
 		self.assertTemplateUsed(response, 'main/account_list.html')
 		self.assertEqual(response.context['accounts'], None)
+
+# User
+class UserTestCase(TestCase):
+
+	# User register
+	def test_user_register(self):
+		form_data = {
+			'username': 'user',
+			'first_name': 'Usuario',
+			'last_name': 'De Ejemplo',
+			'email': 'user@mail.com',
+			'password1': 'password',
+			'password2': 'password'
+		}
+		response = self.client.post('/accounts/register/', form_data, follow=True)
+		self.assertEqual(response.status_code, 200)
+		self.assertTemplateUsed(response, 'main/index.html')
+		user = User.objects.get(username='user')
+		self.assertIsNotNone(user.account)
+
+	# User invalid register
+	def test_user_invalid_register(self):
+		form_data = {
+			'username': '',
+			'first_name': 'Usuario',
+			'last_name': 'De Ejemplo',
+			'email': 'user@mail.com',
+			'password1': 'password',
+			'password2': 'password'
+		}
+		response = self.client.post('/accounts/register/', form_data, follow=True)
+		self.assertFormError(response, 'form', 'username', 'Este campo es obligatorio.')

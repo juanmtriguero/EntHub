@@ -1,3 +1,5 @@
+#encoding:utf-8
+
 from django.test import TestCase
 from django.contrib.auth.models import User
 from main.models import Account
@@ -102,6 +104,43 @@ class AccountTestCase(TestCase):
 		# Bad filtering
 		response = self.client.post('/accounts', {'s': 'bad'})
 		self.assertEqual(response.context['accounts'], None)
+
+	# Account update
+	def test_account_update(self):
+		self.client.login(username='anita', password='password')
+		get_response = self.client.get('/accounts/edit/')
+		self.assertEqual(get_response.status_code, 200)
+		self.assertTemplateUsed(get_response, 'main/account_form.html')
+		self.assertIn('form', get_response.context)
+		self.assertIn('form2', get_response.context)
+		form_data = {
+			'first_name': 'Ana',
+			'last_name': 'Espinosa Test',
+        	'birth': '1996-05-12',
+        	'text': 'Texto de prueba',
+        	'avatar': ''
+		}
+		post_response = self.client.post('/accounts/edit/', form_data, follow=True)
+		self.assertRedirects(post_response, '/accounts/3/')
+		user = User.objects.get(username='anita')
+		self.assertEqual(user.last_name, 'Espinosa Test')
+		self.assertEqual(user.account.text, 'Texto de prueba')
+
+	# Account invalid update
+	def test_account_invalid_update(self):
+		self.client.login(username='anita', password='password')
+		form_data = {
+			'first_name': 'Ana',
+			'last_name': 'Espinosa Test',
+        	'birth': '1996-05-12',
+        	'text': 'Texto de prueba',
+        	'avatar': 'not_url'
+		}
+		response = self.client.post('/accounts/edit/', form_data, follow=True)
+		self.assertFormError(response, 'form', 'avatar', u'Introduzca una URL válida.')
+		user = User.objects.get(username='anita')
+		self.assertEqual(user.last_name, 'Espinosa')
+		self.assertEqual(user.account.text, '')
 
 # User
 class UserTestCase(TestCase):

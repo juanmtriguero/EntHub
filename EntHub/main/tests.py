@@ -196,3 +196,37 @@ class UserTestCase(TestCase):
 		self.assertTrue(response.context['error'])
 		user = User.objects.get(username='jtorres')
 		self.assertTrue(user.is_active)
+
+# Follow & unfollow
+class FollowingTestCase(TestCase):
+
+	fixtures = ['users_test', 'accounts_test']
+
+	def setUp(self):
+		self.client.login(username='anita', password='password')
+
+	# Follow user
+	def test_follow(self):
+		self.client.get('/accounts/follow/1/')
+		account = Account.objects.get(id=1)
+		self_account = Account.objects.get(id=3)
+		self.assertIn(account, self_account.following.all())
+		self.assertIn(self_account, account.followers.all())
+
+	# Cannot follow itself
+	def test_follow_self(self):
+		response = self.client.get('/accounts/follow/3/')
+		self.assertEqual(response.status_code, 403)
+
+	# Unollow user
+	def test_unfollow(self):
+		self.client.get('/accounts/unfollow/2/')
+		account = Account.objects.get(id=2)
+		self_account = Account.objects.get(id=3)
+		self.assertNotIn(account, self_account.following.all())
+		self.assertNotIn(self_account, account.followers.all())
+
+	# Cannot unfollow itself
+	def test_unfollow_self(self):
+		response = self.client.get('/accounts/unfollow/3/')
+		self.assertEqual(response.status_code, 403)

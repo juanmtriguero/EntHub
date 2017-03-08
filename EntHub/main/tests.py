@@ -106,6 +106,8 @@ class AccountTestCase(TestCase):
 # User
 class UserTestCase(TestCase):
 
+	fixtures = ['users_test']
+
 	# User register
 	def test_user_register(self):
 		form_data = {
@@ -134,3 +136,24 @@ class UserTestCase(TestCase):
 		}
 		response = self.client.post('/accounts/register/', form_data, follow=True)
 		self.assertFormError(response, 'form', 'username', 'Este campo es obligatorio.')
+
+	# User deactivate
+	def test_user_deactivate(self):
+		self.client.login(username='jtorres', password='password')
+		response = self.client.get('/accounts/deactivate/')
+		self.assertEqual(response.status_code, 200)
+		self.assertTemplateUsed(response, 'main/user_deactivate.html')
+		response = self.client.post('/accounts/deactivate/',
+				{'password': 'password'}, follow=True)
+		self.assertRedirects(response, '/accounts/login/')
+		user = User.objects.get(username='jtorres')
+		self.assertFalse(user.is_active)
+
+	# User invalid deactivate
+	def test_user_invalid_deactivate(self):
+		self.client.login(username='jtorres', password='password')
+		response = self.client.post('/accounts/deactivate/', {'password': 'false_password'})
+		self.assertTemplateUsed(response, 'main/user_deactivate.html')
+		self.assertTrue(response.context['error'])
+		user = User.objects.get(username='jtorres')
+		self.assertTrue(user.is_active)

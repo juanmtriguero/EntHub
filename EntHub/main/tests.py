@@ -69,3 +69,47 @@ class AccountTestCase(TestCase):
 		self.assertEqual([i.id for i in response.context['comics']], [1])
 		self.assertEqual([i.id for i in response.context['games']], [1])
 		self.assertEqual([i.id for i in response.context['dlcs']], [3])
+
+	# Account list
+	def test_account_list(self):
+		self.client.login(username='jtorres', password='password')
+		# All accounts
+		response = self.client.get('/accounts')
+		self.assertEqual(response.status_code, 200)
+		self.assertTemplateUsed(response, 'main/account_list.html')
+		self.assertEqual([i.id for i in response.context['accounts']], [1,2,3])
+		self.assertEqual(response.context['q'], "")
+		self.assertEqual(response.context['s'], "all")
+		# Filter by search
+		response = self.client.post('/accounts', {'q': 'adm'})
+		self.assertEqual(response.status_code, 200)
+		self.assertTemplateUsed(response, 'main/account_list.html')
+		self.assertEqual([i.id for i in response.context['accounts']], [1])
+		self.assertEqual(response.context['q'], "adm")
+		self.assertEqual(response.context['s'], "all")
+		# Followers
+		response = self.client.post('/accounts', {'s': 'fers'})
+		self.assertEqual(response.status_code, 200)
+		self.assertTemplateUsed(response, 'main/account_list.html')
+		self.assertEqual([i.id for i in response.context['accounts']], [3])
+		self.assertEqual(response.context['q'], "")
+		self.assertEqual(response.context['s'], "fers")
+		# Following
+		response = self.client.post('/accounts', {'s': 'fing'})
+		self.assertEqual(response.status_code, 200)
+		self.assertTemplateUsed(response, 'main/account_list.html')
+		self.assertEqual([i.id for i in response.context['accounts']], [1,3])
+		self.assertEqual(response.context['q'], "")
+		self.assertEqual(response.context['s'], "fing")
+		# Mixed search
+		response = self.client.post('/accounts', {'q': 'a', 's': 'fers'})
+		self.assertEqual(response.status_code, 200)
+		self.assertTemplateUsed(response, 'main/account_list.html')
+		self.assertEqual([i.id for i in response.context['accounts']], [3])
+		self.assertEqual(response.context['q'], "a")
+		self.assertEqual(response.context['s'], "fers")
+		# Bad filtering
+		response = self.client.post('/accounts', {'s': 'bad'})
+		self.assertEqual(response.status_code, 200)
+		self.assertTemplateUsed(response, 'main/account_list.html')
+		self.assertEqual(response.context['accounts'], None)

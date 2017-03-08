@@ -50,9 +50,22 @@ class IndexTestCase(TestCase):
 # Account
 class AccountTestCase(TestCase):
 
-	fixtures = ['users_test', 'accounts_test']
+	fixtures = ['users_test', 'accounts_test', 'catalogue_test', 'marks_test']
 
-	# Model test
-	def test_account_unicode(self):
+	# Account model
+	def test_account_model(self):
 		account = Account.objects.get(id=1)
 		self.assertEqual(unicode(account), "admin")
+
+	# Account detail
+	def test_account_detail(self):
+		self.client.login(username='anita', password='password')
+		response = self.client.get('/accounts/2/')
+		self.assertEqual(response.status_code, 200)
+		self.assertTemplateUsed(response, 'main/account_detail.html')
+		self.assertEqual([i.id for i in response.context['series']], [1])
+		self.assertEqual([i.id for i in response.context['comicseries']], [1])
+		self.assertEqual([i.id for i in response.context['books']], [5,7])
+		self.assertEqual([i.id for i in response.context['comics']], [1])
+		self.assertEqual([i.id for i in response.context['games']], [1])
+		self.assertEqual([i.id for i in response.context['dlcs']], [3])

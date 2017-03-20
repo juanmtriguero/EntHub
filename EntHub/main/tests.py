@@ -4,6 +4,8 @@ from django.test import TestCase
 from django.contrib.auth.models import User
 from main.models import Account
 from items import models
+from django.contrib.staticfiles.testing import StaticLiveServerTestCase
+from selenium.webdriver.firefox.webdriver import WebDriver
 
 # Index
 class IndexTestCase(TestCase):
@@ -116,9 +118,9 @@ class AccountTestCase(TestCase):
 		form_data = {
 			'first_name': 'Ana',
 			'last_name': 'Espinosa Test',
-        	'birth': '1996-05-12',
-        	'text': 'Texto de prueba',
-        	'avatar': ''
+			'birth': '1996-05-12',
+			'text': 'Texto de prueba',
+			'avatar': ''
 		}
 		post_response = self.client.post('/accounts/edit/', form_data, follow=True)
 		self.assertRedirects(post_response, '/accounts/3/')
@@ -132,9 +134,9 @@ class AccountTestCase(TestCase):
 		form_data = {
 			'first_name': 'Ana',
 			'last_name': 'Espinosa Test',
-        	'birth': '1996-05-12',
-        	'text': 'Texto de prueba',
-        	'avatar': 'not_url'
+			'birth': '1996-05-12',
+			'text': 'Texto de prueba',
+			'avatar': 'not_url'
 		}
 		response = self.client.post('/accounts/edit/', form_data, follow=True)
 		self.assertFormError(response, 'form', 'avatar', u'Introduzca una URL válida.')
@@ -230,3 +232,41 @@ class FollowingTestCase(TestCase):
 	def test_unfollow_self(self):
 		response = self.client.get('/accounts/unfollow/3/')
 		self.assertEqual(response.status_code, 403)
+
+
+# ACCEPTANCE TESTS
+
+# Login 
+class LoginAcceptanceTestCase(StaticLiveServerTestCase):
+
+	fixtures = ['users_test']
+	
+	@classmethod
+	def setUpClass(cls):
+		super(LoginAcceptanceTestCase, cls).setUpClass()
+		cls.selenium = WebDriver()
+		cls.selenium.implicitly_wait(30)
+
+	@classmethod
+	def tearDownClass(cls):
+		cls.selenium.quit()
+		super(LoginAcceptanceTestCase, cls).tearDownClass()
+	
+	def test_acceptance_login(self):
+		driver = self.selenium
+		driver.get(self.live_server_url + "/accounts/login/")
+		driver.find_element_by_css_selector("button.btn.btn-primary").click()
+		self.assertEqual(u"Nombre de usuario\nEste campo es obligatorio.", driver.find_element_by_css_selector("div.form-group.has-error").text)
+		self.assertEqual(u"Contraseña\nEste campo es obligatorio.", driver.find_element_by_xpath("//div[2]").text)
+		driver.find_element_by_name("username").clear()
+		driver.find_element_by_name("username").send_keys("not_user")
+		driver.find_element_by_name("password").clear()
+		driver.find_element_by_name("password").send_keys("not_password")
+		driver.find_element_by_css_selector("button.btn.btn-primary").click()
+		self.assertEqual(u"Por favor, introduce un nombre de usuario y clave correctos. Observa que ambos campos pueden ser sensibles a mayúsculas.", driver.find_element_by_css_selector("div.non-field-error-message").text)
+		driver.find_element_by_name("username").clear()
+		driver.find_element_by_name("username").send_keys("jtorres")
+		driver.find_element_by_name("password").clear()
+		driver.find_element_by_name("password").send_keys("password")
+		driver.find_element_by_css_selector("button.btn.btn-primary").click()
+		self.assertEqual(u"Lo último en cine", driver.find_element_by_css_selector("h2").text)

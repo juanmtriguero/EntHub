@@ -1,5 +1,5 @@
 body{
-	background-image: url('http://www.gtreview.com/wp-content/uploads/2014/11/Sky-Clouds.jpg');
+	background-image: {% static 'images/auth-background.jpg' %};
 	background-color: lightblue;
 	background-size: cover;
 }

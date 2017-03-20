@@ -7,6 +7,7 @@ services:
   - postgresql
 addons:
   postgresql: "9.3"
+  firefox: "52.0"
 before_install:
   - wget https://github.com/mozilla/geckodriver/releases/download/v0.14.0/geckodriver-v0.14.0-linux64.tar.gz
   - mkdir geckodriver
@@ -24,4 +25,4 @@ before_script:
 script:
   - coverage run --source='.' manage.py test --verbosity=2
 after_script:
-  - coverage report -m
+  - coverage report

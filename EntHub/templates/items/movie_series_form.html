@@ -1,0 +1,55 @@
+{% extends "items/item_form.html" %}
+
+{% block movie_series %}
+
+<form method="post" action="{{cancel_url}}/imdb/" id="imdb" class="form-horizontal col-md-8">
+	{% csrf_token %}
+	<div class="alert alert-info">
+		<span>Puedes crear una película a partir de una ficha de <b>IMDb</b> (<a href="http://www.imdb.org" target="_blank"><u>Internet Movie Database</u></a>). Introduce la dirección de enlace a la ficha que quieres importar. Si no, introduce manualmente los campos más abajo.</span>
+	</div>
+	<div class="form-group">
+		<label class="col-md-2 control-label">Enlace</label> 
+		<div class="col-md-7">
+			<input type="url" name="imdb" class="form-control">
+			<div hidden class="alert alert-danger error-message">
+			</div>
+		</div>
+		<div class="col-md-3 text-right">
+			<button type="submit" form="imdb" class="btn btn-primary btn-block">Enviar</button>
+		</div>
+	</div>
+	<hr/>
+</form>
+
+{% endblock movie_series %}
+
+{% block scripts %}
+
+<script type="text/javascript">
+	var form = $('#imdb');
+	form.submit(function(event) {
+		event.preventDefault();
+		$.ajax({
+			type: form.attr('method'),
+			url: form.attr('action'),
+			data: form.serialize(),
+			success: function(response) {
+				if (response['error']) {
+					$('#imdb .form-group').addClass('has-error');
+					$('#imdb .error-message').html('<span>' + response['error'] + '</span>');
+					$('#imdb .error-message').show();
+				} else {
+					window.location.href = response['success_url'];
+				}
+			},
+			error: function(error) {
+				$('#imdb .form-group').addClass('has-error');
+				$('#imdb .error-message').html('<span>Ha ocurrido un error. Por favor, refresca la página y vuelve a intentarlo.</span>');
+				$('#imdb .error-message').show();
+				console.log(error);
+			}
+		});
+	});
+</script>
+
+{% endblock scripts %}

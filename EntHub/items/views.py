@@ -1,7 +1,7 @@
 #encoding:utf-8
 
 from django.shortcuts import render
-from django.http import HttpResponse
+from django.http import HttpResponse, JsonResponse
 from django.views.generic import DetailView, CreateView, UpdateView, DeleteView
 from django.core.urlresolvers import reverse_lazy
 from items import models, forms
@@ -270,7 +270,7 @@ class MovieDetail(DetailView):
 class MovieCreate(CreateView):
 	model = models.Movie
 	form_class = forms.MovieForm
-	template_name = 'items/item_form.html'
+	template_name = 'items/movie_series_form.html'
 	
 	def get_context_data(self, **kwargs):
 		context = super(MovieCreate, self).get_context_data(**kwargs)
@@ -344,6 +344,10 @@ def movie_fav(request):
 		mark.fav = False
 	mark.save()
 	return HttpResponse(fav)
+
+# TODO Implementar método
+def movie_imdb(request):
+	return JsonResponse({'error': 'Esta función no está disponible.'})
 
 # Series
 

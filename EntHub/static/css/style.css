@@ -8,7 +8,7 @@ body{
 	margin-left: 5px !important;
 }
 
-/* Book form */
+/* Item form */
 
 .error-message{
 	padding: 5px 10px;
@@ -20,6 +20,11 @@ body{
 	padding: 5px 10px;
 	margin-top: 20px;
 	margin-bottom: 15px;
+}
+
+.alert-info a{
+	text-decoration: none;
+	color: white;
 }
 
 /* Item detail */

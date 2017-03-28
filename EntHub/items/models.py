@@ -50,7 +50,7 @@ class Item(models.Model):
 	image = models.URLField(blank=True)
 	rating = models.FloatField(default=0.0)
 	count = models.IntegerField(default=0)
-	genres = models.ManyToManyField(Genre)
+	genres = models.ManyToManyField(Genre, blank=True)
 	lists = models.ManyToManyField(List, blank=True)
 
 	class Meta:

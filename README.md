@@ -16,4 +16,7 @@ Las contraseñas, por seguridad, no están incluidas en el control de versiones.
 // Email host
 $ export ENTHUB_EMAIL_HOST_USER=your_email_user
 $ export ENTHUB_EMAIL_HOST_PASSWORD=your_email_password
+
+// The Movie Database API key
+$ export TMDB_API_KEY=your_api_key
 ```

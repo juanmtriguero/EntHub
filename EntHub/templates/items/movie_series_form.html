@@ -5,7 +5,7 @@
 <form method="post" action="{{cancel_url}}/imdb/" id="imdb" class="form-horizontal col-md-8">
 	{% csrf_token %}
 	<div class="alert alert-info">
-		<span>Puedes crear una película a partir de una ficha de <b>IMDb</b> (<a href="http://www.imdb.org" target="_blank"><u>Internet Movie Database</u></a>). Introduce la dirección de enlace a la ficha que quieres importar. Si no, introduce manualmente los campos más abajo.</span>
+		<span>Puede crear una película a partir de una ficha de <b>IMDb</b> (<a href="http://www.imdb.org" target="_blank"><u>Internet Movie Database</u></a>). Introduzca la dirección de enlace a la ficha que quiere importar. Si no, introduzca manualmente los campos más abajo.</span>
 	</div>
 	<div class="form-group">
 		<label class="col-md-2 control-label">Enlace</label> 
@@ -42,13 +42,13 @@
 					window.location.href = response['success_url'];
 				}
 			},
-			error: function(error) {
+			error: function() {
 				$('#imdb .form-group').addClass('has-error');
-				$('#imdb .error-message').html('<span>Ha ocurrido un error. Por favor, refresca la página y vuelve a intentarlo.</span>');
+				$('#imdb .error-message').html('<span>Ha ocurrido un error. Por favor, refresque la página y vuelva a intentarlo.</span>');
 				$('#imdb .error-message').show();
-				console.log(error);
 			}
 		});
+		form.find('button[type="submit"]').blur();
 	});
 </script>
 

@@ -5,6 +5,7 @@ from django.http import HttpResponse, JsonResponse
 from django.views.generic import DetailView, CreateView, UpdateView, DeleteView
 from django.core.urlresolvers import reverse_lazy
 from items import models, forms
+import os, requests, json
 
 # Item search
 
@@ -345,9 +346,31 @@ def movie_fav(request):
 	mark.save()
 	return HttpResponse(fav)
 
-# TODO Implementar método
+# TODO add genres
 def movie_imdb(request):
-	return JsonResponse({'error': 'Esta función no está disponible.'})
+	try:
+		imdb_url = request.POST.get('imdb')
+		# http://www.imdb.com/title/ttXXXXXXX/
+		imdb_id = imdb_url[26:35]
+		api_key = os.environ['TMDB_API_KEY']
+		url = "https://api.themoviedb.org/3/movie/" + imdb_id + "?api_key=" + api_key + "&language=es-ES"
+		fields = json.loads(requests.get(url).text)
+		movie = models.Movie()
+		movie.title = fields['title']
+		movie.year = fields['release_date'][0:4]
+		if fields['overview']:
+			movie.description = fields['overview']
+		if fields['poster_path']:
+			movie.image = "http://image.tmdb.org/t/p/w342" + fields['poster_path']
+		if fields['runtime']:
+			movie.duration = fields['runtime']
+		else:
+			movie.duration = 0
+		movie.save()
+		success_url = '/items/movies/' + str(movie.id)
+		return JsonResponse({'success_url': success_url})
+	except:
+		return JsonResponse({'error': 'Por favor, introduzca un enlace válido.'})
 
 # Series
 

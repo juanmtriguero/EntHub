@@ -29,6 +29,9 @@
 	var form = $('#api');
 	form.submit(function(event) {
 		event.preventDefault();
+		submit_button = form.find('button[type="submit"]');
+		submit_button.prop('disabled', true);
+		submit_button.text('Enviando...');
 		$.ajax({
 			type: form.attr('method'),
 			url: form.attr('action'),
@@ -38,6 +41,8 @@
 					$('#api .form-group').addClass('has-error');
 					$('#api .error-message').html('<span>' + response['error'] + '</span>');
 					$('#api .error-message').show();
+					submit_button.prop('disabled', false);
+					submit_button.text('Enviar');
 				} else {
 					window.location.href = response['success_url'];
 				}
@@ -46,9 +51,11 @@
 				$('#api .form-group').addClass('has-error');
 				$('#api .error-message').html('<span>Ha ocurrido un error. Por favor, refresque la página y vuelva a intentarlo.</span>');
 				$('#api .error-message').show();
+				submit_button.prop('disabled', false);
+				submit_button.text('Enviar');
 			}
 		});
-		form.find('button[type="submit"]').blur();
+		submit_button.blur();
 	});
 </script>
 

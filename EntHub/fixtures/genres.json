@@ -40,5 +40,96 @@
     },
     "model": "items.genre",
     "pk": 6
+},
+{
+    "fields": {
+        "name": "Animaci\u00f3n"
+    },
+    "model": "items.genre",
+    "pk": 7
+},
+{
+    "fields": {
+        "name": "Crimen"
+    },
+    "model": "items.genre",
+    "pk": 8
+},
+{
+    "fields": {
+        "name": "Drama"
+    },
+    "model": "items.genre",
+    "pk": 9
+},
+{
+    "fields": {
+        "name": "Western"
+    },
+    "model": "items.genre",
+    "pk": 10
+},
+{
+    "fields": {
+        "name": "Familia"
+    },
+    "model": "items.genre",
+    "pk": 11
+},
+{
+    "fields": {
+        "name": "Fantas\u00eda"
+    },
+    "model": "items.genre",
+    "pk": 12
+},
+{
+    "fields": {
+        "name": "Historia"
+    },
+    "model": "items.genre",
+    "pk": 13
+},
+{
+    "fields": {
+        "name": "Terror"
+    },
+    "model": "items.genre",
+    "pk": 14
+},
+{
+    "fields": {
+        "name": "M\u00fasica"
+    },
+    "model": "items.genre",
+    "pk": 15
+},
+{
+    "fields": {
+        "name": "Romance"
+    },
+    "model": "items.genre",
+    "pk": 16
+},
+{
+    "fields": {
+        "name": "Ciencia ficci\u00f3n"
+    },
+    "model": "items.genre",
+    "pk": 17
+},
+{
+    "fields": {
+        "name": "Suspense"
+    },
+    "model": "items.genre",
+    "pk": 18
+},
+{
+    "fields": {
+        "name": "Guerra"
+    },
+    "model": "items.genre",
+    "pk": 19
 }
 ]

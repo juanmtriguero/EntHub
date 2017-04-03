@@ -16,10 +16,11 @@
 					{% if field != form.genres and field != form.category and field != form.status and field != form.platforms %}
 					{{field}}
 					{% elif field == form.genres or field == form.platforms %}
-					<div class="checkbox">
+					<div class="checkbox row">
 						{% for checkbox in field %}
-						<label>{{checkbox.tag}}{{checkbox.choice_label}}</label>
-						<br/>
+						<div class="col-md-4">
+							<label>{{checkbox.tag}}{{checkbox.choice_label}}</label>
+						</div>
 						{% endfor %}
 					</div>
 					{% else %}

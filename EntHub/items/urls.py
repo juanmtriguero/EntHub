@@ -27,6 +27,7 @@ urlpatterns = [
 	url(r'^series/delete/(?P<pk>\d+)/', login_required(views.SeriesDelete.as_view()), name='series_delete'),
 	url(r'^series/mark/', login_required(views.series_mark), name='series_mark'),
 	url(r'^series/fav/', login_required(views.series_fav), name='series_fav'),
+	url(r'^series/api/', login_required(views.series_api), name='series_api'),
 
 	url(r'^chapter/add/(?P<pk>\d+)/', login_required(views.ChapterCreate.as_view()), name='add_chapter'),
 	url(r'^chapter/tic/(?P<chapter_id>\d+)/', login_required(views.chapter_tic), name='chapter_tic'),

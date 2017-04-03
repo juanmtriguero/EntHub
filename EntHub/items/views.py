@@ -277,6 +277,7 @@ class MovieCreate(CreateView):
 		context = super(MovieCreate, self).get_context_data(**kwargs)
 		context['legend'] = "Nueva película"
 		context['cancel_url'] = "/items/movies"
+		context['tmdb_placeholder'] = "https://www.themoviedb.org/movie/..."
 		return context
 
 	def get_success_url(self):
@@ -348,8 +349,10 @@ def movie_fav(request):
 
 def movie_api(request):
 	try:
-		tmdb_url = request.POST.get('tmdb')
 		# https://www.themoviedb.org/movie/[id]-[title]
+		tmdb_url = request.POST.get('tmdb')
+		# URL is not from TV
+		assert not tmdb_url.startswith("https://www.themoviedb.org/tv/")
 		tmdb_id = tmdb_url.partition("/movie/")[2].partition("-")[0]
 		api_key = os.environ['TMDB_API_KEY']
 		url = "https://api.themoviedb.org/3/movie/" + tmdb_id + "?api_key=" + api_key + "&language=es-ES"
@@ -376,6 +379,8 @@ def movie_api(request):
 					movie.save()
 		success_url = '/items/movies/' + str(movie.id)
 		return JsonResponse({'success_url': success_url})
+	except AssertionError:
+		return JsonResponse({'error': 'Por favor, introduzca el enlace de una ficha de cine.'})
 	except:
 		return JsonResponse({'error': 'Por favor, introduzca un enlace válido.'})
 
@@ -460,12 +465,13 @@ class SeriesDetail(DetailView):
 class SeriesCreate(CreateView):
 	model = models.Series
 	form_class = forms.SeriesForm
-	template_name = 'items/item_form.html'
+	template_name = 'items/movie_series_form.html'
 	
 	def get_context_data(self, **kwargs):
 		context = super(SeriesCreate, self).get_context_data(**kwargs)
 		context['legend'] = "Nueva serie"
 		context['cancel_url'] = "/items/series"
+		context['tmdb_placeholder'] = "https://www.themoviedb.org/tv/..."
 		return context
 
 	def get_success_url(self):
@@ -534,6 +540,48 @@ def series_fav(request):
 		mark.fav = False
 	mark.save()
 	return HttpResponse(fav)
+
+# TODO importar capítulos
+def series_api(request):
+	try:
+		# https://www.themoviedb.org/tv/[id]-[title]
+		tmdb_url = request.POST.get('tmdb')
+		# URL is not from movie
+		assert not tmdb_url.startswith("https://www.themoviedb.org/movie/")
+		tmdb_id = tmdb_url.partition("/tv/")[2].partition("-")[0]
+		api_key = os.environ['TMDB_API_KEY']
+		url = "https://api.themoviedb.org/3/tv/" + tmdb_id + "?api_key=" + api_key + "&language=es-ES"
+		fields = json.loads(requests.get(url).text)
+		series = models.Series()
+		series.title = fields['name']
+		series.year = fields['first_air_date'][0:4]
+		if fields['overview']:
+			series.description = fields['overview']
+		if fields['poster_path']:
+			series.image = "http://image.tmdb.org/t/p/w342" + fields['poster_path']
+		if fields['status']:
+			status = fields['status']
+			if status == "Canceled":
+				series.status = "can"
+			elif status == "Ended":
+				series.status = "fin"
+			elif status == "Returning Series":
+				series.status = "esp"
+		series.save()
+		for g in fields['genres']:
+			try:
+				genre = models.Genre.objects.get(name=g['name'])
+				series.genres.add(genre)
+			except models.Genre.DoesNotExist:
+				if g['name']=="Documental":
+					series.category = "doc"
+					series.save()
+		success_url = '/items/series/' + str(series.id)
+		return JsonResponse({'success_url': success_url})
+	except AssertionError:
+		return JsonResponse({'error': 'Por favor, introduzca el enlace de una ficha de TV.'})
+	except:
+		return JsonResponse({'error': 'Por favor, introduzca un enlace válido.'})
 
 # Chapter
 

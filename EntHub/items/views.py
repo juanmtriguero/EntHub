@@ -346,7 +346,6 @@ def movie_fav(request):
 	mark.save()
 	return HttpResponse(fav)
 
-# TODO add genres
 def movie_imdb(request):
 	try:
 		imdb_url = request.POST.get('imdb')
@@ -367,6 +366,14 @@ def movie_imdb(request):
 		else:
 			movie.duration = 0
 		movie.save()
+		for g in fields['genres']:
+			try:
+				genre = models.Genre.objects.get(name=g['name'])
+				movie.genres.add(genre)
+			except models.Genre.DoesNotExist:
+				if g['name']=="Documental":
+					movie.category = "doc"
+					movie.save()
 		success_url = '/items/movies/' + str(movie.id)
 		return JsonResponse({'success_url': success_url})
 	except:

@@ -541,7 +541,6 @@ def series_fav(request):
 	mark.save()
 	return HttpResponse(fav)
 
-# TODO importar capítulos
 def series_api(request):
 	try:
 		# https://www.themoviedb.org/tv/[id]-[title]
@@ -576,6 +575,20 @@ def series_api(request):
 				if g['name']=="Documental":
 					series.category = "doc"
 					series.save()
+		# Chapters creation
+		for s in fields['seasons']:
+			season = s['season_number']
+			season_url = "https://api.themoviedb.org/3/tv/" + tmdb_id + "/season/" + str(season) \
+					+ "?api_key=" + api_key + "&language=es-ES"
+			season_fields = json.loads(requests.get(season_url).text)
+			chapters = season_fields['episodes']
+			for c in chapters:
+				chapter = models.Chapter()
+				chapter.series = series
+				chapter.season = season
+				chapter.number = c['episode_number']
+				chapter.name = c['name']
+				chapter.save()
 		success_url = '/items/series/' + str(series.id)
 		return JsonResponse({'success_url': success_url})
 	except AssertionError:

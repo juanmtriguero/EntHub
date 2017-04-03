@@ -67,7 +67,7 @@ class ComicSeriesForm(ItemForm):
         model = models.ComicSeries
 
 class GameItemForm(ItemForm):
-    class Meta:
+    class Meta(ItemForm.Meta):
         abstract = True
         fields = ItemForm.Meta.fields + ['platforms',]
         labels = {
@@ -80,11 +80,11 @@ class GameItemForm(ItemForm):
         widgets.update(ItemForm.Meta.widgets)
 
 class GameForm(GameItemForm):
-    class Meta(ItemForm.Meta):
+    class Meta(GameItemForm.Meta):
         model = models.Game
 
 class DLCForm(GameItemForm):
-    class Meta(ItemForm.Meta):
+    class Meta(GameItemForm.Meta):
         model = models.DLC
 
 # Sub-items

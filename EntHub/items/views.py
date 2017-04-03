@@ -346,13 +346,13 @@ def movie_fav(request):
 	mark.save()
 	return HttpResponse(fav)
 
-def movie_imdb(request):
+def movie_api(request):
 	try:
-		imdb_url = request.POST.get('imdb')
-		# http://www.imdb.com/title/ttXXXXXXX/
-		imdb_id = imdb_url[26:35]
+		tmdb_url = request.POST.get('tmdb')
+		# https://www.themoviedb.org/movie/[id]-[title]
+		tmdb_id = tmdb_url.partition("/movie/")[2].partition("-")[0]
 		api_key = os.environ['TMDB_API_KEY']
-		url = "https://api.themoviedb.org/3/movie/" + imdb_id + "?api_key=" + api_key + "&language=es-ES"
+		url = "https://api.themoviedb.org/3/movie/" + tmdb_id + "?api_key=" + api_key + "&language=es-ES"
 		fields = json.loads(requests.get(url).text)
 		movie = models.Movie()
 		movie.title = fields['title']

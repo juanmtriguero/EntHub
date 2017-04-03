@@ -18,7 +18,7 @@ urlpatterns = [
 	url(r'^movies/delete/(?P<pk>\d+)/', login_required(views.MovieDelete.as_view()), name='movie_delete'),
 	url(r'^movies/mark/', login_required(views.movie_mark), name='movie_mark'),
 	url(r'^movies/fav/', login_required(views.movie_fav), name='movie_fav'),
-	url(r'^movies/imdb/', login_required(views.movie_imdb), name='movie_imdb'),
+	url(r'^movies/api/', login_required(views.movie_api), name='movie_api'),
 
 	url(r'^series$', login_required(views.series_list), name='series_list'),
 	url(r'^series/(?P<pk>\d+)/', login_required(views.SeriesDetail.as_view()), name='series_detail'),

@@ -19,4 +19,7 @@ $ export ENTHUB_EMAIL_HOST_PASSWORD=your_email_password
 
 // The Movie Database API key
 $ export TMDB_API_KEY=your_api_key
+
+// Google Books API key
+$ export GOOGLE_API_KEY=your_api_key
 ```

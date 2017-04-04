@@ -5,7 +5,7 @@ from django.http import HttpResponse, JsonResponse
 from django.views.generic import DetailView, CreateView, UpdateView, DeleteView
 from django.core.urlresolvers import reverse_lazy
 from items import models, forms
-import os, requests, json
+import os, requests, json, re
 
 # Item search
 
@@ -143,12 +143,15 @@ class BookDetail(DetailView):
 class BookCreate(CreateView):
 	model = models.Book
 	form_class = forms.BookForm
-	template_name = 'items/item_form.html'
+	template_name = 'items/api_form.html'
 	
 	def get_context_data(self, **kwargs):
 		context = super(BookCreate, self).get_context_data(**kwargs)
 		context['legend'] = "Nuevo libro"
 		context['cancel_url'] = "/items/books"
+		context['api_name'] = "Google Books"
+		context['api_url'] = "https://books.google.com"
+		context['link_placeholder'] = "https://books.google.com/books..."
 		return context
 
 	def get_success_url(self):
@@ -217,6 +220,38 @@ def book_fav(request):
 		mark.fav = False
 	mark.save()
 	return HttpResponse(fav)
+
+def book_api(request):
+	try:
+		# https://books.google.es/books?id=[id]
+		link = request.POST.get('link')
+		gb_id = link.partition("?id=")[2].partition("&")[0]
+		api_key = os.environ['GOOGLE_API_KEY']
+		url = "https://www.googleapis.com/books/v1/volumes/" + gb_id + "?key=" + api_key
+		fields = json.loads(requests.get(url).text)['volumeInfo']
+		book = models.Book()
+		book.title = fields['title']
+		book.year = fields['publishedDate'][0:4]
+		if 'description' in fields:
+			book.description = re.sub("<.*?>", "", fields['description'])
+		images = fields['imageLinks']
+		if 'medium' in images:
+			book.image = images['medium'].partition("&imgtk")[0]
+		elif 'small' in images:
+			book.image = images['small'].partition("&imgtk")[0]
+		elif 'large' in images:
+			book.image = images['large'].partition("&imgtk")[0]
+		elif 'extraLarge' in images:
+			book.image = images['extraLarge'].partition("&imgtk")[0]
+		elif 'thumbnail' in images:
+			book.image = images['thumbnail'].partition("&imgtk")[0]
+		elif 'smallThumbnail' in images:
+			book.image = images['smallThumbnail'].partition("&imgtk")[0]
+		book.save()
+		success_url = '/items/books/' + str(book.id)
+		return JsonResponse({'success_url': success_url})
+	except:
+		return JsonResponse({'error': 'Por favor, introduzca un enlace válido.'})
 
 # Movie
 

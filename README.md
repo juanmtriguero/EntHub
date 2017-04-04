@@ -22,4 +22,7 @@ $ export TMDB_API_KEY=your_api_key
 
 // Google Books API key
 $ export GOOGLE_API_KEY=your_api_key
+
+// Giant Bomb API key
+$ export GBOMB_API_KEY=your_api_key
 ```

@@ -271,13 +271,15 @@ class MovieDetail(DetailView):
 class MovieCreate(CreateView):
 	model = models.Movie
 	form_class = forms.MovieForm
-	template_name = 'items/movie_series_form.html'
+	template_name = 'items/api_form.html'
 	
 	def get_context_data(self, **kwargs):
 		context = super(MovieCreate, self).get_context_data(**kwargs)
 		context['legend'] = "Nueva película"
 		context['cancel_url'] = "/items/movies"
-		context['tmdb_placeholder'] = "https://www.themoviedb.org/movie/..."
+		context['api_name'] = "The Movie Database"
+		context['api_url'] = "https://www.themoviedb.org"
+		context['link_placeholder'] = "https://www.themoviedb.org/movie/..."
 		return context
 
 	def get_success_url(self):
@@ -350,10 +352,10 @@ def movie_fav(request):
 def movie_api(request):
 	try:
 		# https://www.themoviedb.org/movie/[id]-[title]
-		tmdb_url = request.POST.get('tmdb')
-		# URL is not from TV
-		assert not tmdb_url.startswith("https://www.themoviedb.org/tv/")
-		tmdb_id = tmdb_url.partition("/movie/")[2].partition("-")[0]
+		link = request.POST.get('link')
+		# Link is not from TV
+		assert not link.startswith("https://www.themoviedb.org/tv/")
+		tmdb_id = link.partition("/movie/")[2].partition("-")[0]
 		api_key = os.environ['TMDB_API_KEY']
 		url = "https://api.themoviedb.org/3/movie/" + tmdb_id + "?api_key=" + api_key + "&language=es-ES"
 		fields = json.loads(requests.get(url).text)
@@ -465,13 +467,15 @@ class SeriesDetail(DetailView):
 class SeriesCreate(CreateView):
 	model = models.Series
 	form_class = forms.SeriesForm
-	template_name = 'items/movie_series_form.html'
+	template_name = 'items/api_form.html'
 	
 	def get_context_data(self, **kwargs):
 		context = super(SeriesCreate, self).get_context_data(**kwargs)
 		context['legend'] = "Nueva serie"
 		context['cancel_url'] = "/items/series"
-		context['tmdb_placeholder'] = "https://www.themoviedb.org/tv/..."
+		context['api_name'] = "The Movie Database"
+		context['api_url'] = "https://www.themoviedb.org"
+		context['link_placeholder'] = "https://www.themoviedb.org/tv/..."
 		return context
 
 	def get_success_url(self):
@@ -544,10 +548,10 @@ def series_fav(request):
 def series_api(request):
 	try:
 		# https://www.themoviedb.org/tv/[id]-[title]
-		tmdb_url = request.POST.get('tmdb')
-		# URL is not from movie
-		assert not tmdb_url.startswith("https://www.themoviedb.org/movie/")
-		tmdb_id = tmdb_url.partition("/tv/")[2].partition("-")[0]
+		link = request.POST.get('link')
+		# Link is not from movie
+		assert not link.startswith("https://www.themoviedb.org/movie/")
+		tmdb_id = link.partition("/tv/")[2].partition("-")[0]
 		api_key = os.environ['TMDB_API_KEY']
 		url = "https://api.themoviedb.org/3/tv/" + tmdb_id + "?api_key=" + api_key + "&language=es-ES"
 		fields = json.loads(requests.get(url).text)

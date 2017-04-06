@@ -1141,7 +1141,7 @@ def game_api(request):
 					platform.save()
 					game.platforms.add(platform)
 		# DLCs creation
-		if fields['dlcs']:
+		if 'dlcs' in fields:
 			for d in fields['dlcs']:
 				url = d['api_detail_url'].replace("\\", "") + "?api_key=" + api_key + "&format=JSON"
 				dfields = json.loads(requests.get(url, headers={'user-agent': 'enthub'}).text)['results']

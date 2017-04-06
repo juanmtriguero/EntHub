@@ -61,6 +61,7 @@ urlpatterns = [
 	url(r'^games/delete/(?P<pk>\d+)/', login_required(views.GameDelete.as_view()), name='game_delete'),
 	url(r'^games/mark/', login_required(views.game_mark), name='game_mark'),
 	url(r'^games/fav/', login_required(views.game_fav), name='game_fav'),
+	url(r'^games/api/', login_required(views.game_api), name='game_api'),
 
 	url(r'^dlcs/(?P<pk>\d+)/', login_required(views.DLCDetail.as_view()), name='dlc_detail'),
 	url(r'^dlcs/new/(?P<pk>\d+)/', login_required(views.DLCCreate.as_view()), name='dlc_create'),

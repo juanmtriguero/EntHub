@@ -1026,12 +1026,15 @@ class GameDetail(DetailView):
 class GameCreate(CreateView):
 	model = models.Game
 	form_class = forms.GameForm
-	template_name = 'items/item_form.html'
+	template_name = 'items/api_form.html'
 	
 	def get_context_data(self, **kwargs):
 		context = super(GameCreate, self).get_context_data(**kwargs)
 		context['legend'] = "Nuevo videojuego"
 		context['cancel_url'] = "/items/games"
+		context['api_name'] = "Giant Bomb"
+		context['api_url'] = "https://www.giantbomb.com"
+		context['link_placeholder'] = "https://www.giantbomb.com/..."
 		return context
 
 	def get_success_url(self):
@@ -1100,6 +1103,77 @@ def game_fav(request):
 		mark.fav = False
 	mark.save()
 	return HttpResponse(fav)
+
+# TODO genres
+def game_api(request):
+	try:
+		# https://www.giantbomb.com/[name]/[id]/
+		link = request.POST.get('link')
+		gb_id = link.partition(".com/")[2].partition("/")[2].partition("/")[0]
+		api_key = os.environ['GBOMB_API_KEY']
+		url = "https://www.giantbomb.com/api/game/" + gb_id + "/?api_key=" + api_key + "&format=JSON"
+		fields = json.loads(requests.get(url, headers={'user-agent': 'enthub'}).text)['results']
+		game = models.Game()
+		game.title = fields['name']
+		if fields['original_release_date']:
+			game.year = fields['original_release_date'][0:4]
+		else:
+			game.year = fields['expected_release_year']
+		if fields['deck']:
+			game.description = fields['deck']
+		if fields['image']:
+			game.image = fields['image']['small_url']
+		game.save()
+		# Platforms
+		if fields['platforms']:
+			for p in fields['platforms']:
+				try:
+					platform = models.Platform.objects.get(name=p['name'])
+					game.platforms.add(platform)
+				except models.Platform.DoesNotExist:
+					url = p['api_detail_url'].replace("\\", "") + "?api_key=" + api_key + "&format=JSON"
+					pfields = json.loads(requests.get(url, headers={'user-agent': 'enthub'}).text)['results']
+					platform = models.Platform()
+					platform.name = pfields['name']
+					platform.short = pfields['abbreviation']
+					if pfields['image']:
+						platform.image = pfields['image']['small_url']
+					platform.save()
+					game.platforms.add(platform)
+		# DLCs creation
+		if fields['dlcs']:
+			for d in fields['dlcs']:
+				url = d['api_detail_url'].replace("\\", "") + "?api_key=" + api_key + "&format=JSON"
+				dfields = json.loads(requests.get(url, headers={'user-agent': 'enthub'}).text)['results']
+				dlc = models.DLC()
+				dlc.game = game
+				dlc.title = dfields['name']
+				dlc.year = dfields['release_date'][0:4]
+				if dfields['deck']:
+					dlc.description = dfields['deck']
+				if dfields['image']:
+					dlc.image = dfields['image']['small_url']
+				dlc.save()
+				# Platform
+				if dfields['platform']:
+					p = dfields['platform']
+					try:
+						platform = models.Platform.objects.get(name=p['name'])
+						dlc.platforms.add(platform)
+					except models.Platform.DoesNotExist:
+						url = p['api_detail_url'].replace("\\", "") + "?api_key=" + api_key + "&format=JSON"
+						pfields = json.loads(requests.get(url, headers={'user-agent': 'enthub'}).text)['results']
+						platform = models.Platform()
+						platform.name = pfields['name']
+						platform.short = pfields['abbreviation']
+						if pfields['image']:
+							platform.image = pfields['image']['small_url']
+						platform.save()
+						dlc.platforms.add(platform)
+		success_url = '/items/games/' + str(game.id)
+		return JsonResponse({'success_url': success_url})
+	except:
+		return JsonResponse({'error': 'Por favor, introduzca un enlace válido.'})
 
 # DLC
 

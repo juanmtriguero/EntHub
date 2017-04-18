@@ -853,12 +853,15 @@ class ComicSeriesDetail(DetailView):
 class ComicSeriesCreate(CreateView):
 	model = models.ComicSeries
 	form_class = forms.ComicSeriesForm
-	template_name = 'items/item_form.html'
+	template_name = 'items/api_form.html'
 	
 	def get_context_data(self, **kwargs):
 		context = super(ComicSeriesCreate, self).get_context_data(**kwargs)
 		context['legend'] = "Nueva serie de cómics"
 		context['cancel_url'] = "/items/comicseries"
+		context['api_name'] = "Comic Vine"
+		context['api_url'] = "https://comicvine.gamespot.com/"
+		context['link_placeholder'] = "https://comicvine.gamespot.com/..."
 		return context
 
 	def get_success_url(self):
@@ -927,6 +930,42 @@ def comic_series_fav(request):
 		mark.fav = False
 	mark.save()
 	return HttpResponse(fav)
+
+# TODO genres
+def comic_series_api(request):
+	try:
+		# https://www.comicvine.gamespot.com/[name]/[id]/
+		link = request.POST.get('link')
+		cv_id = link.partition(".com/")[2].partition("/")[2].partition("/")[0]
+		api_key = os.environ['CVINE_API_KEY']
+		url = "https://www.comicvine.gamespot.com/api/volume/" + cv_id + "/?api_key=" + api_key + "&format=JSON"
+		fields = json.loads(requests.get(url, headers={'user-agent': 'enthub'}).text)['results']
+		comic = models.ComicSeries()
+		comic.title = fields['name']
+		comic.year = fields['start_year']
+		if fields['deck']:
+			comic.description = fields['deck']
+		if fields['image']:
+			comic.image = fields['image']['small_url']
+		comic.save()
+		# Numbers creation
+		if 'issues' in fields:
+			for issue in fields['issues']:
+				try:
+					number = models.Number()
+					number.number = issue['issue_number']
+					if issue['name']:
+						number.name = issue['name'][:100]
+					else:
+						number.name = "Número " + str(issue['issue_number'])
+					number.comic = comic
+					number.save()
+				except:
+					pass
+		success_url = '/items/comicseries/' + str(comic.id)
+		return JsonResponse({'success_url': success_url})
+	except:
+		return JsonResponse({'error': 'Por favor, introduzca un enlace válido.'})
 
 # Number
 

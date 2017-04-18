@@ -25,4 +25,7 @@ $ export GOOGLE_API_KEY=your_api_key
 
 // Giant Bomb API key
 $ export GBOMB_API_KEY=your_api_key
+
+// Comic Vine API key
+$ export CVINE_API_KEY=your_api_key
 ```

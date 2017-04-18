@@ -49,6 +49,7 @@ urlpatterns = [
 	url(r'^comicseries/delete/(?P<pk>\d+)/', login_required(views.ComicSeriesDelete.as_view()), name='comic_series_delete'),
 	url(r'^comicseries/mark/', login_required(views.comic_series_mark), name='comic_series_mark'),
 	url(r'^comicseries/fav/', login_required(views.comic_series_fav), name='comic_series_fav'),
+	url(r'^comicseries/api/', login_required(views.comic_series_api), name='comic_series_api'),
 	
 	url(r'^number/add/(?P<pk>\d+)/', login_required(views.NumberCreate.as_view()), name='add_number'),
 	url(r'^number/tic/(?P<number_id>\d+)/', login_required(views.number_tic), name='number_tic'),

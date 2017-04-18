@@ -23,6 +23,8 @@ install:
   - pip install selenium==3.0.2
   - pip install coverage
   - pip install requests
+  - pip install ndg-httpsclient
+  - pip install pyasn1
 before_script:
   - psql -c "CREATE USER enthub WITH PASSWORD 'enthub';" -U postgres
   - psql -c "ALTER USER enthub CREATEDB;" -U postgres

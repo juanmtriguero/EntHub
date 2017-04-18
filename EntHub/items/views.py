@@ -1182,33 +1182,36 @@ def game_api(request):
 		# DLCs creation
 		if 'dlcs' in fields:
 			for d in fields['dlcs']:
-				url = d['api_detail_url'].replace("\\", "") + "?api_key=" + api_key + "&format=JSON"
-				dfields = json.loads(requests.get(url, headers={'user-agent': 'enthub'}).text)['results']
-				dlc = models.DLC()
-				dlc.game = game
-				dlc.title = dfields['name']
-				dlc.year = dfields['release_date'][0:4]
-				if dfields['deck']:
-					dlc.description = dfields['deck']
-				if dfields['image']:
-					dlc.image = dfields['image']['small_url']
-				dlc.save()
-				# Platform
-				if dfields['platform']:
-					p = dfields['platform']
-					try:
-						platform = models.Platform.objects.get(name=p['name'])
-						dlc.platforms.add(platform)
-					except models.Platform.DoesNotExist:
-						url = p['api_detail_url'].replace("\\", "") + "?api_key=" + api_key + "&format=JSON"
-						pfields = json.loads(requests.get(url, headers={'user-agent': 'enthub'}).text)['results']
-						platform = models.Platform()
-						platform.name = pfields['name']
-						platform.short = pfields['abbreviation']
-						if pfields['image']:
-							platform.image = pfields['image']['small_url']
-						platform.save()
-						dlc.platforms.add(platform)
+				try:
+					url = d['api_detail_url'].replace("\\", "") + "?api_key=" + api_key + "&format=JSON"
+					dfields = json.loads(requests.get(url, headers={'user-agent': 'enthub'}).text)['results']
+					dlc = models.DLC()
+					dlc.game = game
+					dlc.title = dfields['name']
+					dlc.year = dfields['release_date'][0:4]
+					if dfields['deck']:
+						dlc.description = dfields['deck']
+					if dfields['image']:
+						dlc.image = dfields['image']['small_url']
+					dlc.save()
+					# Platform
+					if dfields['platform']:
+						p = dfields['platform']
+						try:
+							platform = models.Platform.objects.get(name=p['name'])
+							dlc.platforms.add(platform)
+						except models.Platform.DoesNotExist:
+							url = p['api_detail_url'].replace("\\", "") + "?api_key=" + api_key + "&format=JSON"
+							pfields = json.loads(requests.get(url, headers={'user-agent': 'enthub'}).text)['results']
+							platform = models.Platform()
+							platform.name = pfields['name']
+							platform.short = pfields['abbreviation']
+							if pfields['image']:
+								platform.image = pfields['image']['small_url']
+							platform.save()
+							dlc.platforms.add(platform)
+				except:
+					pass
 		success_url = '/items/games/' + str(game.id)
 		return JsonResponse({'success_url': success_url})
 	except:

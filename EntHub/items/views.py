@@ -135,15 +135,10 @@ class BookDetail(DetailView):
 			mark = self.request.user.bookmark_set.get(book=self.object)
 			context['mark'] = mark.option
 			fav = mark.fav
-			if mark.rating:
-				rate = mark.rating
-			else:
-				rate = 0
+			context['rate'] = mark.rating
 		except models.BookMark.DoesNotExist:
 			fav = False
-			rate = 0
 		context['fav'] = fav
-		context['rate'] = rate
 		return context
 
 class BookCreate(CreateView):
@@ -321,6 +316,7 @@ class MovieDetail(DetailView):
 			mark = self.request.user.moviemark_set.get(movie=self.object)
 			context['mark'] = mark.option
 			fav = mark.fav
+			context['rate'] = mark.rating
 		except models.MovieMark.DoesNotExist:
 			fav = False
 		context['fav'] = fav
@@ -406,6 +402,23 @@ def movie_fav(request):
 		mark.fav = False
 	mark.save()
 	return HttpResponse(fav)
+
+def movie_rate(request):
+	user = request.user
+	movie_id = request.POST['id']
+	old_rating = None
+	try:
+		mark = user.moviemark_set.get(movie__id=movie_id)
+		old_rating = mark.rating
+	except models.MovieMark.DoesNotExist:
+		mark = models.MovieMark()
+		mark.user = user
+		mark.movie_id = movie_id
+	new_rating = int(request.POST.get('rating'))
+	mark.rating = new_rating
+	mark.save()
+	new_item_rating = update_item_rating(mark.movie, old_rating, new_rating)
+	return HttpResponse(new_item_rating)
 
 def movie_api(request):
 	try:
@@ -493,6 +506,7 @@ class SeriesDetail(DetailView):
 			mark = self.request.user.seriesmark_set.get(series=self.object)
 			context['mark'] = mark.option
 			fav = mark.fav
+			context['rate'] = mark.rating
 		except models.SeriesMark.DoesNotExist:
 			fav = False
 		context['fav'] = fav
@@ -602,6 +616,23 @@ def series_fav(request):
 		mark.fav = False
 	mark.save()
 	return HttpResponse(fav)
+
+def series_rate(request):
+	user = request.user
+	series_id = request.POST['id']
+	old_rating = None
+	try:
+		mark = user.seriesmark_set.get(series__id=series_id)
+		old_rating = mark.rating
+	except models.SeriesMark.DoesNotExist:
+		mark = models.SeriesMark()
+		mark.user = user
+		mark.series_id = series_id
+	new_rating = int(request.POST.get('rating'))
+	mark.rating = new_rating
+	mark.save()
+	new_item_rating = update_item_rating(mark.series, old_rating, new_rating)
+	return HttpResponse(new_item_rating)
 
 def series_api(request):
 	try:
@@ -738,6 +769,7 @@ class ComicDetail(DetailView):
 			mark = self.request.user.comicmark_set.get(comic=self.object)
 			context['mark'] = mark.option
 			fav = mark.fav
+			context['rate'] = mark.rating
 		except models.ComicMark.DoesNotExist:
 			fav = False
 		context['fav'] = fav
@@ -821,6 +853,23 @@ def comic_fav(request):
 	mark.save()
 	return HttpResponse(fav)
 
+def comic_rate(request):
+	user = request.user
+	comic_id = request.POST['id']
+	old_rating = None
+	try:
+		mark = user.comicmark_set.get(comic__id=comic_id)
+		old_rating = mark.rating
+	except models.ComicMark.DoesNotExist:
+		mark = models.ComicMark()
+		mark.user = user
+		mark.comic_id = comic_id
+	new_rating = int(request.POST.get('rating'))
+	mark.rating = new_rating
+	mark.save()
+	new_item_rating = update_item_rating(mark.comic, old_rating, new_rating)
+	return HttpResponse(new_item_rating)
+
 # ComicSeries
 
 def comic_series_list(request):
@@ -868,6 +917,7 @@ class ComicSeriesDetail(DetailView):
 			mark = self.request.user.comicseriesmark_set.get(comic=self.object)
 			context['mark'] = mark.option
 			fav = mark.fav
+			context['rate'] = mark.rating
 		except models.ComicSeriesMark.DoesNotExist:
 			fav = False
 		context['fav'] = fav
@@ -953,6 +1003,23 @@ def comic_series_fav(request):
 		mark.fav = False
 	mark.save()
 	return HttpResponse(fav)
+
+def comic_series_rate(request):
+	user = request.user
+	comic_id = request.POST['id']
+	old_rating = None
+	try:
+		mark = user.comicseriesmark_set.get(comic__id=comic_id)
+		old_rating = mark.rating
+	except models.ComicSeriesMark.DoesNotExist:
+		mark = models.ComicSeriesMark()
+		mark.user = user
+		mark.comic_id = comic_id
+	new_rating = int(request.POST.get('rating'))
+	mark.rating = new_rating
+	mark.save()
+	new_item_rating = update_item_rating(mark.comic, old_rating, new_rating)
+	return HttpResponse(new_item_rating)
 
 # TODO genres
 def comic_series_api(request):
@@ -1071,6 +1138,7 @@ class GameDetail(DetailView):
 			mark = self.request.user.gamemark_set.get(game=self.object)
 			context['mark'] = mark.option
 			fav = mark.fav
+			context['rate'] = mark.rating
 		except models.GameMark.DoesNotExist:
 			fav = False
 		context['fav'] = fav
@@ -1166,6 +1234,23 @@ def game_fav(request):
 	mark.save()
 	return HttpResponse(fav)
 
+def game_rate(request):
+	user = request.user
+	game_id = request.POST['id']
+	old_rating = None
+	try:
+		mark = user.gamemark_set.get(game__id=game_id)
+		old_rating = mark.rating
+	except models.GameMark.DoesNotExist:
+		mark = models.GameMark()
+		mark.user = user
+		mark.game_id = game_id
+	new_rating = int(request.POST.get('rating'))
+	mark.rating = new_rating
+	mark.save()
+	new_item_rating = update_item_rating(mark.game, old_rating, new_rating)
+	return HttpResponse(new_item_rating)
+
 # TODO genres
 def game_api(request):
 	try:
@@ -1256,6 +1341,7 @@ class DLCDetail(DetailView):
 			mark = self.request.user.dlcmark_set.get(dlc=self.object)
 			context['mark'] = mark.option
 			fav = mark.fav
+			context['rate'] = mark.rating
 		except models.DLCMark.DoesNotExist:
 			fav = False
 		context['fav'] = fav
@@ -1345,6 +1431,23 @@ def dlc_fav(request):
 		mark.fav = False
 	mark.save()
 	return HttpResponse(fav)
+
+def dlc_rate(request):
+	user = request.user
+	dlc_id = request.POST['id']
+	old_rating = None
+	try:
+		mark = user.dlcmark_set.get(dlc__id=dlc_id)
+		old_rating = mark.rating
+	except models.DLCMark.DoesNotExist:
+		mark = models.DLCMark()
+		mark.user = user
+		mark.dlc_id = dlc_id
+	new_rating = int(request.POST.get('rating'))
+	mark.rating = new_rating
+	mark.save()
+	new_item_rating = update_item_rating(mark.dlc, old_rating, new_rating)
+	return HttpResponse(new_item_rating)
 
 # Return involvements gruped by agent
 def group_agents(involvements):

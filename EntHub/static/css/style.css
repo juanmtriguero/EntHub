@@ -52,8 +52,12 @@ body{
 	padding: 20px !important;
 }
 
-#rating{
-	margin-top: 0;
+.rating-header{
+	margin-bottom: 10px;
+}
+
+.rating-header h2, h4{
+	display: inline;
 }
 
 /* Series items detail */

@@ -108,7 +108,10 @@
 		<div class="col-md-3">
 
 			<div class="jumbotron text-center rating">
-				<h3 id="rating">{{object.rating|floatformat:1}}</h3>
+				<div class="rating-header">
+					<h2 id="rating">{{object.rating|floatformat:1}}</h2>
+					<h4>/5</h4>
+				</div>
 				<form action="/items/{% if object.game %}dlcs{% else %}{{item_path}}{% endif %}/rate/" id="rate" method="post">
 					{% csrf_token %}
 					<input type="hidden" name="id" value="{{object.id}}">

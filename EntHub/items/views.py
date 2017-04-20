@@ -135,9 +135,15 @@ class BookDetail(DetailView):
 			mark = self.request.user.bookmark_set.get(book=self.object)
 			context['mark'] = mark.option
 			fav = mark.fav
+			if mark.rating:
+				rate = mark.rating
+			else:
+				rate = 0
 		except models.BookMark.DoesNotExist:
 			fav = False
+			rate = 0
 		context['fav'] = fav
+		context['rate'] = rate
 		return context
 
 class BookCreate(CreateView):
@@ -220,6 +226,23 @@ def book_fav(request):
 		mark.fav = False
 	mark.save()
 	return HttpResponse(fav)
+
+def book_rate(request):
+	user = request.user
+	book_id = request.POST['id']
+	old_rating = None
+	try:
+		mark = user.bookmark_set.get(book__id=book_id)
+		old_rating = mark.rating
+	except models.BookMark.DoesNotExist:
+		mark = models.BookMark()
+		mark.user = user
+		mark.book_id = book_id
+	new_rating = int(request.POST.get('rating'))
+	mark.rating = new_rating
+	mark.save()
+	update_item_rating(mark.book, old_rating, new_rating)
+	return HttpResponse()
 
 def book_api(request):
 	try:
@@ -1332,3 +1355,16 @@ def group_agents(involvements):
 		else:
 			agents[i.agent] = [i.get_role_display(),]
 	return agents
+
+# Update item rating
+def update_item_rating(item, old_rating, new_rating):
+	old_sum = item.rating * item.count
+	if old_rating:
+		new_sum = old_sum + new_rating - old_rating
+		item.rating = new_sum / item.count
+	else:
+		new_sum = old_sum + new_rating
+		new_count = item.count + 1
+		item.rating = new_sum / new_count
+		item.count = new_count
+	item.save()

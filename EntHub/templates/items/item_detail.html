@@ -85,6 +85,27 @@
 				</button>
 				{% endif %}
 			</form>
+			<br/>
+			<form action="/items/{% if object.game %}dlcs{% else %}{{item_path}}{% endif %}/rate/" id="rate" method="post">
+				{% csrf_token %}
+				<input type="hidden" name="id" value="{{object.id}}">
+				<span>Tu voto:&nbsp;</span>
+				<button id="rate-1" data-value="1" class="btn btn-{% if rate == 1 %}primary{% else %}default{% endif %}">
+					<span>1</span>
+				</button>
+				<button id="rate-2" data-value="2" class="btn btn-{% if rate == 2 %}primary{% else %}default{% endif %}">
+					<span>2</span>
+				</button>
+				<button id="rate-3" data-value="3" class="btn btn-{% if rate == 3 %}primary{% else %}default{% endif %}">
+					<span>3</span>
+				</button>
+				<button id="rate-4" data-value="4" class="btn btn-{% if rate == 4 %}primary{% else %}default{% endif %}">
+					<span>4</span>
+				</button>
+				<button id="rate-5" data-value="5" class="btn btn-{% if rate == 5 %}primary{% else %}default{% endif %}">
+					<span>5</span>
+				</button>
+			</form>
 		</div>
 		
 		<div class="col-md-6">
@@ -197,6 +218,29 @@
 				button.blur();
 			}
 		});
+		return false;
+	});
+</script>
+
+{# Rate buttons #}
+<script type="text/javascript">
+	var rateForm = $('#rate');
+	$('#rate button').on('click', function() {
+		button = $(this);
+		rating = button.data('value');
+		$.ajax({
+			type: rateForm.attr('method'),
+			url: rateForm.attr('action'),
+			data: rateForm.serialize() + "&rating=" + rating,
+			success: function() {
+				old_button = $('#rate .btn-primary');
+				old_button.addClass('btn-default');
+				old_button.removeClass('btn-primary');
+				button.addClass('btn-primary');
+				button.removeClass('btn-default');
+			}
+		});
+		button.blur();
 		return false;
 	});
 </script>

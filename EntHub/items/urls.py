@@ -10,6 +10,7 @@ urlpatterns = [
 	url(r'^books/delete/(?P<pk>\d+)/', login_required(views.BookDelete.as_view()), name='book_delete'),
 	url(r'^books/mark/', login_required(views.book_mark), name='book_mark'),
 	url(r'^books/fav/', login_required(views.book_fav), name='book_fav'),
+	url(r'^books/rate/', login_required(views.book_rate), name='book_rate'),
 	url(r'^books/api/', login_required(views.book_api), name='book_api'),
 
 	url(r'^movies$', login_required(views.movie_list), name='movie_list'),

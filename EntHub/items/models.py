@@ -139,7 +139,7 @@ class Chapter(Subitem):
 class Mark(models.Model):
 	user = models.ForeignKey(User, on_delete=models.CASCADE)
 	rating = models.IntegerField(null=True, blank=True, choices=
-		[(i, i) for i in range(1,6)]) # TODO Update item rating
+		[(i, i) for i in range(1,6)])
 	fav = models.BooleanField(default=False)
 
 	class Meta:

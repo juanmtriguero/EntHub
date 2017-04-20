@@ -85,27 +85,6 @@
 				</button>
 				{% endif %}
 			</form>
-			<br/>
-			<form action="/items/{% if object.game %}dlcs{% else %}{{item_path}}{% endif %}/rate/" id="rate" method="post">
-				{% csrf_token %}
-				<input type="hidden" name="id" value="{{object.id}}">
-				<span>Tu voto:&nbsp;</span>
-				<button id="rate-1" data-value="1" class="btn btn-{% if rate == 1 %}primary{% else %}default{% endif %}">
-					<span>1</span>
-				</button>
-				<button id="rate-2" data-value="2" class="btn btn-{% if rate == 2 %}primary{% else %}default{% endif %}">
-					<span>2</span>
-				</button>
-				<button id="rate-3" data-value="3" class="btn btn-{% if rate == 3 %}primary{% else %}default{% endif %}">
-					<span>3</span>
-				</button>
-				<button id="rate-4" data-value="4" class="btn btn-{% if rate == 4 %}primary{% else %}default{% endif %}">
-					<span>4</span>
-				</button>
-				<button id="rate-5" data-value="5" class="btn btn-{% if rate == 5 %}primary{% else %}default{% endif %}">
-					<span>5</span>
-				</button>
-			</form>
 		</div>
 		
 		<div class="col-md-6">
@@ -113,7 +92,6 @@
 			<h1>{{object.title}}</h1>
 			<hr/>
 			<p><b>Año: </b>{{object.year}}</p>
-			<p><b>Puntuación: </b>{{object.rating|floatformat}}</p>
 			{% block more_fields %}
 			{% endblock %}
 			<div align="justify">
@@ -128,6 +106,32 @@
 		</div>
 
 		<div class="col-md-3">
+
+			<div class="jumbotron text-center rating">
+				<h3 id="rating">{{object.rating|floatformat:1}}</h3>
+				<form action="/items/{% if object.game %}dlcs{% else %}{{item_path}}{% endif %}/rate/" id="rate" method="post">
+					{% csrf_token %}
+					<input type="hidden" name="id" value="{{object.id}}">
+					<span>Tu voto:</span>
+					<br>
+					<button id="rate-1" data-value="1" class="btn btn-{% if rate == 1 %}primary{% else %}default{% endif %}">
+						<span>1</span>
+					</button>
+					<button id="rate-2" data-value="2" class="btn btn-{% if rate == 2 %}primary{% else %}default{% endif %}">
+						<span>2</span>
+					</button>
+					<button id="rate-3" data-value="3" class="btn btn-{% if rate == 3 %}primary{% else %}default{% endif %}">
+						<span>3</span>
+					</button>
+					<button id="rate-4" data-value="4" class="btn btn-{% if rate == 4 %}primary{% else %}default{% endif %}">
+						<span>4</span>
+					</button>
+					<button id="rate-5" data-value="5" class="btn btn-{% if rate == 5 %}primary{% else %}default{% endif %}">
+						<span>5</span>
+					</button>
+				</form>
+			</div>
+
 			<div class="list-group">
 				<span class="list-group-item active">
 					<b>Agentes</b>
@@ -232,12 +236,13 @@
 			type: rateForm.attr('method'),
 			url: rateForm.attr('action'),
 			data: rateForm.serialize() + "&rating=" + rating,
-			success: function() {
+			success: function(new_item_rating) {
 				old_button = $('#rate .btn-primary');
 				old_button.addClass('btn-default');
 				old_button.removeClass('btn-primary');
 				button.addClass('btn-primary');
 				button.removeClass('btn-default');
+				$('#rating').text(new_item_rating);
 			}
 		});
 		button.blur();

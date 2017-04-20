@@ -48,6 +48,14 @@ body{
 	margin-top: 2px;
 }
 
+.rating{
+	padding: 20px !important;
+}
+
+#rating{
+	margin-top: 0;
+}
+
 /* Series items detail */
 
 .subitems-title{

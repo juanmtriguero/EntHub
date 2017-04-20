@@ -241,8 +241,8 @@ def book_rate(request):
 	new_rating = int(request.POST.get('rating'))
 	mark.rating = new_rating
 	mark.save()
-	update_item_rating(mark.book, old_rating, new_rating)
-	return HttpResponse()
+	new_item_rating = update_item_rating(mark.book, old_rating, new_rating)
+	return HttpResponse(new_item_rating)
 
 def book_api(request):
 	try:
@@ -1368,3 +1368,6 @@ def update_item_rating(item, old_rating, new_rating):
 		item.rating = new_sum / new_count
 		item.count = new_count
 	item.save()
+	# Returns new item rating formatted to template
+	new_item_rating = ('%.1f' % item.rating).replace('.', ',')
+	return new_item_rating

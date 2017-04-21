@@ -12,50 +12,80 @@ from main import forms
 from main.models import Account
 
 def index(request):
+	# Items recommended, lastest or best rated
+	o = request.POST.get('option', 'rec')
+	if o == "rec":
+		# TODO Improve recommendations
+		movie_list = models.Movie.objects.all().order_by('rating').reverse()[:4]
+		series_list = models.Series.objects.all().order_by('rating').reverse()[:4]
+		book_list = models.Book.objects.all().order_by('rating').reverse()[:4]
+		game_list = models.Game.objects.all().order_by('rating').reverse()[:4]
+		comic_list = models.Comic.objects.all().order_by('rating').reverse()[:2]
+		comic_series_list = models.ComicSeries.objects.all().order_by('rating').reverse()[:2]
+		prefix = "Te recomendamos"
+	elif o == "nov":
+		movie_list = models.Movie.objects.all().order_by('id').reverse()[:4]
+		series_list = models.Series.objects.all().order_by('id').reverse()[:4]
+		book_list = models.Book.objects.all().order_by('id').reverse()[:4]
+		game_list = models.Game.objects.all().order_by('id').reverse()[:4]
+		comic_list = models.Comic.objects.all().order_by('id').reverse()[:2]
+		comic_series_list = models.ComicSeries.objects.all().order_by('id').reverse()[:2]
+		prefix = "Lo último"
+	elif o == "val":
+		movie_list = models.Movie.objects.all().order_by('rating').reverse()[:4]
+		series_list = models.Series.objects.all().order_by('rating').reverse()[:4]
+		book_list = models.Book.objects.all().order_by('rating').reverse()[:4]
+		game_list = models.Game.objects.all().order_by('rating').reverse()[:4]
+		comic_list = models.Comic.objects.all().order_by('rating').reverse()[:2]
+		comic_series_list = models.ComicSeries.objects.all().order_by('rating').reverse()[:2]
+		prefix = "Lo mejor"
+	# Adds user's marks to items
 	movie_set = {}
-	for movie in models.Movie.objects.all().order_by('id').reverse()[:4]:
+	for movie in movie_list:
 		try:
 			option = request.user.moviemark_set.get(movie=movie).option
 		except models.MovieMark.DoesNotExist:
 			option = None
 		movie_set.update({movie: option})
 	series_set = {}
-	for series in models.Series.objects.all().order_by('id').reverse()[:4]:
+	for series in series_list:
 		try:
 			option = request.user.seriesmark_set.get(series=series).option
 		except models.SeriesMark.DoesNotExist:
 			option = None
 		series_set.update({series: option})
 	book_set = {}
-	for book in models.Book.objects.all().order_by('id').reverse()[:4]:
+	for book in book_list:
 		try:
 			option = request.user.bookmark_set.get(book=book).option
 		except models.BookMark.DoesNotExist:
 			option = None
 		book_set.update({book: option})
 	game_set = {}
-	for game in models.Game.objects.all().order_by('id').reverse()[:4]:
+	for game in game_list:
 		try:
 			option = request.user.gamemark_set.get(game=game).option
 		except models.GameMark.DoesNotExist:
 			option = None
 		game_set.update({game: option})
 	comic_set = {}
-	for comic in models.Comic.objects.all().order_by('id').reverse()[:2]:
+	for comic in comic_list:
 		try:
 			option = request.user.comicmark_set.get(comic=comic).option
 		except models.ComicMark.DoesNotExist:
 			option = None
 		comic_set.update({comic: option})
 	comic_series_set = {}
-	for comic_series in models.ComicSeries.objects.all().order_by('id').reverse()[:2]:
+	for comic_series in comic_series_list:
 		try:
 			option = request.user.comicseriesmark_set.get(comic=comic_series).option
 		except models.ComicSeriesMark.DoesNotExist:
 			option = None
 		comic_series_set.update({comic_series: option})
-	context = {'movies': movie_set, 'series': series_set, 'books': book_set,
-			'games': game_set, 'comics': comic_set, 'comic_series': comic_series_set}
+	# Context
+	context = {'option': o, 'prefix': prefix, 'movies': movie_set,
+			'series': series_set, 'books': book_set, 'games': game_set,
+			'comics': comic_set, 'comic_series': comic_series_set}
 	return render(request, 'main/index.html', context)
 
 class UserRegister(CreateView):

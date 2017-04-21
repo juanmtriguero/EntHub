@@ -5,7 +5,16 @@
 <div class="container">
 	<div class="row">
 		<div class="col-md-9 col-md-offset-3">
-			<h2>Lo último en cine</h2>
+			<form action="{% url 'main:index' %}" id="form" method="post">
+				{% csrf_token %}
+				<input type="hidden" name="option" value="{{option}}" />
+				<div class="btn-group btn-group-justified tabs" id="option">
+					<a href="#" data-option="rec" class="btn btn-{% if option == 'rec' %}primary{% else %}default{% endif %}">Recomendado para ti</a>
+					<a href="#" data-option="nov" class="btn btn-{% if option == 'nov' %}primary{% else %}default{% endif %}">Novedades</a>
+					<a href="#" data-option="val" class="btn btn-{% if option == 'val' %}primary{% else %}default{% endif %}">Mejor valorados</a>
+				</div>
+			</form>
+			<h3>{{prefix}} en cine</h3>
 			<hr/>
 			<div class="row">
 				{% for item, option in movies.items %}
@@ -14,7 +23,7 @@
 				</div>
 				{% endfor %}
 			</div>
-			<h2>Lo último en televisión</h2>
+			<h3>{{prefix}} en televisión</h3>
 			<hr/>
 			<div class="row">
 				{% for item, option in series.items %}
@@ -23,7 +32,7 @@
 				</div>
 				{% endfor %}
 			</div>
-			<h2>Lo último en libros</h2>
+			<h3>{{prefix}} en libros</h3>
 			<hr/>
 			<div class="row">
 				{% for item, option in books.items %}
@@ -32,7 +41,7 @@
 				</div>
 				{% endfor %}
 			</div>
-			<h2>Lo último en videojuegos</h2>
+			<h3>{{prefix}} en videojuegos</h3>
 			<hr/>
 			<div class="row">
 				{% for item, option in games.items %}
@@ -41,7 +50,7 @@
 				</div>
 				{% endfor %}
 			</div>
-			<h2>Lo último en cómics</h2>
+			<h3>{{prefix}} en cómics</h3>
 			<hr/>
 			<div class="row">
 				{% for item, option in comics.items %}
@@ -60,3 +69,15 @@
 </div>
 
 {% endblock %}
+
+{% block scripts %}
+
+<script type="text/javascript">
+	$('#option a').on('click', function(event) {
+		event.preventDefault();
+		$('input[name="option"]').val($(this).data('option'));
+		$('#form').submit();
+	});
+</script>
+
+{% endblock scripts %}

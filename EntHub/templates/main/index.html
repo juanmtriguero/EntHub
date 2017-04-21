@@ -4,7 +4,42 @@
 
 <div class="container">
 	<div class="row">
-		<div class="col-md-9 col-md-offset-3">
+
+		<div class="col-md-3">
+			<div class="panel panel-primary activity">
+				<div class="panel-heading">
+					<h3 class="panel-title">Actividad reciente</h3>
+				</div>
+				<div class="panel-body">
+					<table class="table table-striped table-hover">
+						<tbody>
+							<!-- TODO get all logs ordered in view -->
+							{% for log in request.user.account.subject.all %}
+							<tr>
+								<td>
+									<a href="/accounts/{{log.follower.id}}"><h6>{{log.follower}}</h6></a> ha empezado a seguir a <a href="/accounts/{{log.following}}"><h6>{{log.following}}</h6></a>
+									<br/>
+									<small class="text-muted">{{log.date}}</small>
+								</td>
+							</tr>
+							{% endfor %}
+							<!-- TODO item logs -->
+							<!-- {% for mark in request.user.moviemark_set.all %}
+							<tr>
+								<td>
+									<a href="/accounts/{{mark.user.id}}"><h6>{{mark.user}}</h6></a> ha marcado {% if mark.movie.category == 'pel' %}la{% else %}el{% endif %} <span class="text-primary">{{mark.movie.get_category_display|lower}}</span> <a href="/items/movies/{{mark.movie.id}}"><h6>{{mark.movie}}</h6></a> como <h6>{{mark.get_option_display|lower}}</h6>
+									<br/>
+									<small>15/04/2017 23:59</small>
+								</td>
+							</tr>
+							{% endfor %} -->
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</div>
+
+		<div class="col-md-9">
 			<form action="{% url 'main:index' %}" id="form" method="post">
 				{% csrf_token %}
 				<input type="hidden" name="option" value="{{option}}" />
@@ -65,6 +100,7 @@
 				{% endfor %}
 			</div>
 		</div>
+
 	</div>
 </div>
 

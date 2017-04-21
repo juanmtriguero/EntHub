@@ -119,6 +119,19 @@ button.list-group-item .glyphicon{
 
 .cover-preview{
 	padding: 0;
+	border-bottom: 0;
+	position: relative;
+}
+
+.img-rating{
+	position: absolute;
+	right: 10px;
+	bottom: 10px;
+	background-color: white;
+	width: 45px;
+	height: 45px;
+	padding: 10px;
+	border-radius: 50%;
 }
 
 .cover-preview img{

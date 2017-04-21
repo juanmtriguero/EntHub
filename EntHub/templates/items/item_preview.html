@@ -1,6 +1,9 @@
 <div class="list-group">
 	<a href="/items/{{item_path}}/{{item.id}}" class="list-group-item cover-preview">
 		<img src="{{item.image}}">
+		<div class="img-rating">
+			<b>{{item.rating|floatformat:1}}</b>
+		</div>
 	</a>
 	<a href="/items/{{item_path}}/{{item.id}}" class="list-group-item">
 		<h5 class="list-group-item-heading title-preview">{{item.title}}</h5>

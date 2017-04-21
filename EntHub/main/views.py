@@ -9,7 +9,7 @@ from django.contrib.auth.models import User
 from django.contrib.auth.views import logout_then_login
 from items import models
 from main import forms
-from main.models import Account
+from main.models import Account, FollowingLog
 
 def index(request):
 	# Items recommended, lastest or best rated
@@ -199,6 +199,11 @@ def follow(request, account_id):
 	account = Account.objects.get(id=account_id)
 	if my_account != account:
 		my_account.following.add(account)
+		# Log creation
+		log = FollowingLog()
+		log.follower = my_account
+		log.following = account
+		log.save()
 		return HttpResponse()
 	else:
 		return HttpResponse(status=403)

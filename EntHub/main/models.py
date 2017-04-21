@@ -12,3 +12,13 @@ class Account(models.Model):
 
     def __unicode__(self):
         return unicode(self.user.username)
+
+# Logs
+
+class FollowingLog(models.Model):
+    follower = models.ForeignKey(Account, on_delete=models.CASCADE, related_name='subject')
+    following = models.ForeignKey(Account, on_delete=models.CASCADE, related_name='object+')
+    date = models.DateTimeField(auto_now_add=True)
+
+    def __unicode__(self):
+        return unicode(self.follower) + " ha empezado a seguir a " + unicode(self.following)

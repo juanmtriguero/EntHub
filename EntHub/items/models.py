@@ -335,3 +335,66 @@ class SeriesInvolvement(MovieItemInvolvement):
 	def __unicode__(self):
 		return unicode(self.agent) + " aparece en " + unicode(self.series.get_category_display())\
 			   + " " + unicode(self.series) + " como " + unicode(self.get_role_display())
+
+# Logs
+
+class BookMarkLog(IndividualMark):
+	date = models.DateTimeField(auto_now_add=True)
+	book = models.ForeignKey(Book, on_delete=models.CASCADE, related_name='+')
+
+	def __unicode__(self):
+		return unicode(self.user) + " ha marcado el libro "\
+			   + unicode(self.book) + " como " + unicode(self.get_option_display())
+
+class MovieMarkLog(Mark):
+	date = models.DateTimeField(auto_now_add=True)
+	movie = models.ForeignKey(Movie, on_delete=models.CASCADE, related_name='+')
+	OPTION_CHOICES = (
+		('pen', 'Pendiente'),
+		('vis', 'Visto'),
+	)
+	option = models.CharField(max_length=3, choices=OPTION_CHOICES, blank=True)
+
+	def __unicode__(self):
+		return unicode(self.user) + " ha marcado el " + unicode(self.movie.get_category_display())\
+			   + " " + unicode(self.movie) + " como " + unicode(self.get_option_display())
+
+class SeriesMarkLog(GroupMark):
+	date = models.DateTimeField(auto_now_add=True)
+	series = models.ForeignKey(Series, on_delete=models.CASCADE, related_name='+')
+
+	def __unicode__(self):
+		return unicode(self.user) + " ha marcado el " + unicode(self.series.get_category_display())\
+			   + " " + unicode(self.series) + " como " + unicode(self.get_option_display())
+
+class ComicMarkLog(IndividualMark):
+	date = models.DateTimeField(auto_now_add=True)
+	comic = models.ForeignKey(Comic, on_delete=models.CASCADE, related_name='+')
+
+	def __unicode__(self):
+		return unicode(self.user) + u" ha marcado el cómic "\
+			   + unicode(self.comic) + " como " + unicode(self.get_option_display())
+
+class ComicSeriesMarkLog(GroupMark):
+	date = models.DateTimeField(auto_now_add=True)
+	comic = models.ForeignKey(ComicSeries, on_delete=models.CASCADE, related_name='+')
+
+	def __unicode__(self):
+		return unicode(self.user) + u" ha marcado la serie de cómics "\
+			   + unicode(self.comic) + " como " + unicode(self.get_option_display())
+
+class GameMarkLog(PlayableMark):
+	date = models.DateTimeField(auto_now_add=True)
+	game = models.ForeignKey(Game, on_delete=models.CASCADE, related_name='+')
+
+	def __unicode__(self):
+		return unicode(self.user) + " ha marcado el juego "\
+			   + unicode(self.game) + " como " + unicode(self.get_option_display())
+
+class DLCMarkLog(PlayableMark):
+	date = models.DateTimeField(auto_now_add=True)
+	dlc = models.ForeignKey(DLC, on_delete=models.CASCADE, related_name='+')
+
+	def __unicode__(self):
+		return unicode(self.user) + " ha marcado el DLC "\
+			   + unicode(self.dlc) + " como " + unicode(self.get_option_display())

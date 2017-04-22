@@ -200,6 +200,12 @@ def book_mark(request):
 		mark.option = ""
 	else:
 		mark.option = option
+		# Log creation
+		log = models.BookMarkLog()
+		log.user = user
+		log.book_id = book_id
+		log.option = option
+		log.save()
 	mark.save()
 	return HttpResponse()
 
@@ -381,6 +387,12 @@ def movie_mark(request):
 		mark.option = ""
 	else:
 		mark.option = option
+		# Log creation
+		log = models.MovieMarkLog()
+		log.user = user
+		log.movie_id = movie_id
+		log.option = option
+		log.save()
 	mark.save()
 	return HttpResponse()
 
@@ -595,6 +607,12 @@ def series_mark(request):
 		mark.option = ""
 	else:
 		mark.option = option
+		# Log creation
+		log = models.SeriesMarkLog()
+		log.user = user
+		log.series_id = series_id
+		log.option = option
+		log.save()
 	mark.save()
 	return HttpResponse()
 
@@ -831,6 +849,12 @@ def comic_mark(request):
 		mark.option = ""
 	else:
 		mark.option = option
+		# Log creation
+		log = models.ComicMarkLog()
+		log.user = user
+		log.comic_id = comic_id
+		log.option = option
+		log.save()
 	mark.save()
 	return HttpResponse()
 
@@ -982,6 +1006,12 @@ def comic_series_mark(request):
 		mark.option = ""
 	else:
 		mark.option = option
+		# Log creation
+		log = models.ComicSeriesMarkLog()
+		log.user = user
+		log.comic_id = comic_id
+		log.option = option
+		log.save()
 	mark.save()
 	return HttpResponse()
 
@@ -1212,6 +1242,12 @@ def game_mark(request):
 		mark.option = ""
 	else:
 		mark.option = option
+		# Log creation
+		log = models.GameMarkLog()
+		log.user = user
+		log.game_id = game_id
+		log.option = option
+		log.save()
 	mark.save()
 	return HttpResponse()
 
@@ -1410,6 +1446,12 @@ def dlc_mark(request):
 		mark.option = ""
 	else:
 		mark.option = option
+		# Log creation
+		log = models.DLCMarkLog()
+		log.user = user
+		log.dlc_id = dlc_id
+		log.option = option
+		log.save()
 	mark.save()
 	return HttpResponse()
 

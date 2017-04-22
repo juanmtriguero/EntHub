@@ -2,7 +2,7 @@
 
 from django.test import TestCase
 from django.contrib.auth.models import User
-from main.models import Account
+from main.models import Account, FollowingLog
 from items import models
 from django.contrib.staticfiles.testing import StaticLiveServerTestCase
 from selenium.webdriver.firefox.webdriver import WebDriver
@@ -244,7 +244,7 @@ class FollowingTestCase(TestCase):
 		response = self.client.get('/accounts/follow/3/')
 		self.assertEqual(response.status_code, 403)
 
-	# Unollow user
+	# Unfollow user
 	def test_unfollow(self):
 		self.client.get('/accounts/unfollow/2/')
 		account = Account.objects.get(id=2)
@@ -257,6 +257,18 @@ class FollowingTestCase(TestCase):
 		response = self.client.get('/accounts/unfollow/3/')
 		self.assertEqual(response.status_code, 403)
 
+# FollowingLog
+class FollowingLogTestCase(TestCase):
+
+	fixtures = ['users_test', 'accounts_test']
+
+	# FollowingLog model
+	def test_following_log_model(self):
+		log = FollowingLog()
+		log.follower = Account.objects.get(id=2)
+		log.following = Account.objects.get(id=3)
+		log.save()
+		self.assertEqual(unicode(log), "jtorres ha empezado a seguir a anita")
 
 # ACCEPTANCE TESTS
 

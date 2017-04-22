@@ -222,6 +222,12 @@ def book_fav(request):
 	if fav == "unfav":
 		fav = "fav"
 		mark.fav = True
+		# Log creation
+		log = models.BookMarkLog()
+		log.user = user
+		log.book_id = book_id
+		log.fav = True
+		log.save()
 	elif fav == "fav":
 		fav = "unfav"
 		mark.fav = False
@@ -243,6 +249,12 @@ def book_rate(request):
 	mark.rating = new_rating
 	mark.save()
 	new_item_rating = update_item_rating(mark.book, old_rating, new_rating)
+	# Log creation
+	log = models.BookMarkLog()
+	log.user = user
+	log.book_id = book_id
+	log.rating = new_rating
+	log.save()
 	return HttpResponse(new_item_rating)
 
 def book_api(request):
@@ -409,6 +421,12 @@ def movie_fav(request):
 	if fav == "unfav":
 		fav = "fav"
 		mark.fav = True
+		# Log creation
+		log = models.MovieMarkLog()
+		log.user = user
+		log.movie_id = movie_id
+		log.fav = True
+		log.save()
 	elif fav == "fav":
 		fav = "unfav"
 		mark.fav = False
@@ -430,6 +448,12 @@ def movie_rate(request):
 	mark.rating = new_rating
 	mark.save()
 	new_item_rating = update_item_rating(mark.movie, old_rating, new_rating)
+	# Log creation
+	log = models.MovieMarkLog()
+	log.user = user
+	log.movie_id = movie_id
+	log.rating = new_rating
+	log.save()
 	return HttpResponse(new_item_rating)
 
 def movie_api(request):
@@ -629,6 +653,12 @@ def series_fav(request):
 	if fav == "unfav":
 		fav = "fav"
 		mark.fav = True
+		# Log creation
+		log = models.SeriesMarkLog()
+		log.user = user
+		log.series_id = series_id
+		log.fav = True
+		log.save()
 	elif fav == "fav":
 		fav = "unfav"
 		mark.fav = False
@@ -650,6 +680,12 @@ def series_rate(request):
 	mark.rating = new_rating
 	mark.save()
 	new_item_rating = update_item_rating(mark.series, old_rating, new_rating)
+	# Log creation
+	log = models.SeriesMarkLog()
+	log.user = user
+	log.series_id = series_id
+	log.rating = new_rating
+	log.save()
 	return HttpResponse(new_item_rating)
 
 def series_api(request):
@@ -871,6 +907,12 @@ def comic_fav(request):
 	if fav == "unfav":
 		fav = "fav"
 		mark.fav = True
+		# Log creation
+		log = models.ComicMarkLog()
+		log.user = user
+		log.comic_id = comic_id
+		log.fav = True
+		log.save()
 	elif fav == "fav":
 		fav = "unfav"
 		mark.fav = False
@@ -892,6 +934,12 @@ def comic_rate(request):
 	mark.rating = new_rating
 	mark.save()
 	new_item_rating = update_item_rating(mark.comic, old_rating, new_rating)
+	# Log creation
+	log = models.ComicMarkLog()
+	log.user = user
+	log.comic_id = comic_id
+	log.rating = new_rating
+	log.save()
 	return HttpResponse(new_item_rating)
 
 # ComicSeries
@@ -1028,6 +1076,12 @@ def comic_series_fav(request):
 	if fav == "unfav":
 		fav = "fav"
 		mark.fav = True
+		# Log creation
+		log = models.ComicSeriesMarkLog()
+		log.user = user
+		log.comicseries_id = comic_id
+		log.fav = True
+		log.save()
 	elif fav == "fav":
 		fav = "unfav"
 		mark.fav = False
@@ -1049,6 +1103,12 @@ def comic_series_rate(request):
 	mark.rating = new_rating
 	mark.save()
 	new_item_rating = update_item_rating(mark.comic, old_rating, new_rating)
+	# Log creation
+	log = models.ComicSeriesMarkLog()
+	log.user = user
+	log.comicseries_id = comic_id
+	log.rating = new_rating
+	log.save()
 	return HttpResponse(new_item_rating)
 
 # TODO genres
@@ -1264,6 +1324,12 @@ def game_fav(request):
 	if fav == "unfav":
 		fav = "fav"
 		mark.fav = True
+		# Log creation
+		log = models.GameMarkLog()
+		log.user = user
+		log.game_id = game_id
+		log.fav = True
+		log.save()
 	elif fav == "fav":
 		fav = "unfav"
 		mark.fav = False
@@ -1285,6 +1351,12 @@ def game_rate(request):
 	mark.rating = new_rating
 	mark.save()
 	new_item_rating = update_item_rating(mark.game, old_rating, new_rating)
+	# Log creation
+	log = models.GameMarkLog()
+	log.user = user
+	log.game_id = game_id
+	log.rating = new_rating
+	log.save()
 	return HttpResponse(new_item_rating)
 
 # TODO genres
@@ -1468,6 +1540,12 @@ def dlc_fav(request):
 	if fav == "unfav":
 		fav = "fav"
 		mark.fav = True
+		# Log creation
+		log = models.DLCMarkLog()
+		log.user = user
+		log.dlc_id = dlc_id
+		log.fav = True
+		log.save()
 	elif fav == "fav":
 		fav = "unfav"
 		mark.fav = False
@@ -1489,6 +1567,12 @@ def dlc_rate(request):
 	mark.rating = new_rating
 	mark.save()
 	new_item_rating = update_item_rating(mark.dlc, old_rating, new_rating)
+	# Log creation
+	log = models.DLCMarkLog()
+	log.user = user
+	log.dlc_id = dlc_id
+	log.rating = new_rating
+	log.save()
 	return HttpResponse(new_item_rating)
 
 # Return involvements gruped by agent

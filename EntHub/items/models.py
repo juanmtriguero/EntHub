@@ -377,7 +377,7 @@ class ComicMarkLog(IndividualMark):
 
 class ComicSeriesMarkLog(GroupMark):
 	date = models.DateTimeField(auto_now_add=True)
-	comic = models.ForeignKey(ComicSeries, on_delete=models.CASCADE, related_name='+')
+	comicseries = models.ForeignKey(ComicSeries, on_delete=models.CASCADE, related_name='+')
 
 	def __unicode__(self):
 		return unicode(self.user) + u" ha marcado la serie de cómics "\

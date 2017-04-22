@@ -1009,7 +1009,7 @@ def comic_series_mark(request):
 		# Log creation
 		log = models.ComicSeriesMarkLog()
 		log.user = user
-		log.comic_id = comic_id
+		log.comicseries_id = comic_id
 		log.option = option
 		log.save()
 	mark.save()

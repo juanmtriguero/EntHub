@@ -86,7 +86,21 @@ def index(request):
 	logs = []
 	for account in request.user.account.following.all():
 		logs.extend(account.following_logs.all())
+		logs.extend(account.user.bookmarklog_set.all())
+		logs.extend(account.user.moviemarklog_set.all())
+		logs.extend(account.user.seriesmarklog_set.all())
+		logs.extend(account.user.comicmarklog_set.all())
+		logs.extend(account.user.comicseriesmarklog_set.all())
+		logs.extend(account.user.gamemarklog_set.all())
+		logs.extend(account.user.dlcmarklog_set.all())
 	logs.extend(request.user.account.following_logs.all())
+	logs.extend(request.user.bookmarklog_set.all())
+	logs.extend(request.user.moviemarklog_set.all())
+	logs.extend(request.user.seriesmarklog_set.all())
+	logs.extend(request.user.comicmarklog_set.all())
+	logs.extend(request.user.comicseriesmarklog_set.all())
+	logs.extend(request.user.gamemarklog_set.all())
+	logs.extend(request.user.dlcmarklog_set.all())
 	logs.sort(key=lambda log: log.date, reverse=True)
 	# Context
 	context = {'option': o, 'prefix': prefix, 'movies': movie_set,

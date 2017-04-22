@@ -82,10 +82,16 @@ def index(request):
 		except models.ComicSeriesMark.DoesNotExist:
 			option = None
 		comic_series_set.update({comic_series: option})
+	# Logs
+	logs = []
+	for account in request.user.account.following.all():
+		logs.extend(account.following_logs.all())
+	logs.extend(request.user.account.following_logs.all())
+	logs.sort(key=lambda log: log.date, reverse=True)
 	# Context
 	context = {'option': o, 'prefix': prefix, 'movies': movie_set,
 			'series': series_set, 'books': book_set, 'games': game_set,
-			'comics': comic_set, 'comic_series': comic_series_set}
+			'comics': comic_set, 'comic_series': comic_series_set, 'logs': logs[:15]}
 	return render(request, 'main/index.html', context)
 
 class UserRegister(CreateView):

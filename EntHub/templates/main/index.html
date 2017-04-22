@@ -5,6 +5,8 @@
 <div class="container">
 	<div class="row">
 
+	{{datexd|timesince}}
+
 		<div class="col-md-3">
 			<div class="panel panel-primary activity">
 				<div class="panel-heading">
@@ -13,16 +15,21 @@
 				<div class="panel-body">
 					<table class="table table-striped table-hover">
 						<tbody>
-							<!-- TODO get all logs ordered in view -->
-							{% for log in request.user.account.subject.all %}
+							{% if logs %}
+							{% for log in logs %}
 							<tr>
 								<td>
-									<a href="/accounts/{{log.follower.id}}"><h6>{{log.follower}}</h6></a> ha empezado a seguir a <a href="/accounts/{{log.following}}"><h6>{{log.following}}</h6></a>
+									<a href="/accounts/{{log.follower.id}}"><h6>{{log.follower}}</h6></a> ha empezado a seguir a <a href="/accounts/{{log.following.id}}"><h6>{{log.following}}</h6></a>
 									<br/>
-									<small class="text-muted">{{log.date}}</small>
+									<small class="text-muted">Hace {{log.date|timesince}}</small>
 								</td>
 							</tr>
 							{% endfor %}
+							{% else %}
+							<tr>
+								<td>No hay actividad reciente</td>
+							</tr>
+							{% endif %}
 							<!-- TODO item logs -->
 							<!-- {% for mark in request.user.moviemark_set.all %}
 							<tr>

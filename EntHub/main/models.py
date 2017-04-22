@@ -16,8 +16,8 @@ class Account(models.Model):
 # Logs
 
 class FollowingLog(models.Model):
-    follower = models.ForeignKey(Account, on_delete=models.CASCADE, related_name='subject')
-    following = models.ForeignKey(Account, on_delete=models.CASCADE, related_name='object+')
+    follower = models.ForeignKey(Account, on_delete=models.CASCADE, related_name='following_logs')
+    following = models.ForeignKey(Account, on_delete=models.CASCADE, related_name='f_logs+')
     date = models.DateTimeField(auto_now_add=True)
 
     def __unicode__(self):

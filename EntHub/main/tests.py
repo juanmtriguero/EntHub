@@ -25,6 +25,9 @@ class IndexTestCase(TestCase):
 		response = self.client.get('/')
 		self.assertEqual(response.status_code, 200)
 		self.assertTemplateUsed(response, 'main/index.html')
+		# TODO test logs are shown
+
+	# TODO 'Recommended' shows four items recommended to user of each category
 
 	# 'Latest' shows four last items of each category
 	def test_index_latest(self):

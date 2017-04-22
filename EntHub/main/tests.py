@@ -10,7 +10,7 @@ from selenium.webdriver.firefox.webdriver import WebDriver
 # Index
 class IndexTestCase(TestCase):
 
-	fixtures = ['catalogue_test', 'users_test', 'marks_test']
+	fixtures = ['catalogue_test', 'users_test', 'accounts_test', 'marks_test']
 
 	# Unregistered users are redirected to login
 	def test_index_anonymous(self):
@@ -275,7 +275,7 @@ class FollowingLogTestCase(TestCase):
 # Login 
 class LoginAcceptanceTestCase(StaticLiveServerTestCase):
 
-	fixtures = ['users_test']
+	fixtures = ['users_test', 'accounts_test']
 	
 	@classmethod
 	def setUpClass(cls):

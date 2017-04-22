@@ -163,6 +163,18 @@ class AccountDetail(DetailView):
 		context['comics'] = [m.comic for m in user.comicmark_set.filter(option='ley')]
 		context['games'] = [m.game for m in user.gamemark_set.filter(option='jug')]
 		context['dlcs'] = [m.dlc for m in user.dlcmark_set.filter(option='jug')]
+		# Logs
+		logs = []
+		logs.extend(user.account.following_logs.all())
+		logs.extend(user.bookmarklog_set.all())
+		logs.extend(user.moviemarklog_set.all())
+		logs.extend(user.seriesmarklog_set.all())
+		logs.extend(user.comicmarklog_set.all())
+		logs.extend(user.comicseriesmarklog_set.all())
+		logs.extend(user.gamemarklog_set.all())
+		logs.extend(user.dlcmarklog_set.all())
+		logs.sort(key=lambda log: log.date, reverse=True)
+		context['logs'] = logs[:15]
 		return context
 
 class AccountUpdate(UpdateView):

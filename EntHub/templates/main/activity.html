@@ -1,0 +1,38 @@
+<div class="panel panel-primary activity">
+	<div class="panel-heading">
+		<h3 class="panel-title">Actividad reciente</h3>
+	</div>
+	<div class="panel-body">
+		<table class="table table-striped table-hover">
+			<tbody>
+				{% if logs %}
+					{% for log in logs %}
+					<tr>
+						<td>
+							{% if log.follower %}
+							<a href="/accounts/{{log.follower.id}}"><h6>{{log.follower}}</h6></a> ha empezado a seguir a <a href="/accounts/{{log.following.id}}"><h6>{{log.following}}</h6></a>
+							{% else %}
+							<a href="/accounts/{{log.user.account.id}}"><h6>{{log.user}}</h6></a> ha {% if log.rating %}puntuado{% else %}marcado{% endif %}
+							{% if log.book %}el <span class="text-success">libro</span> <a href="/items/books/{{log.book.id}}"><h6>{{log.book}}</h6></a>
+							{% elif log.movie %}{% if log.movie.category == 'pel' %}la{% else %}el{% endif %} <span class="text-primary">{{log.movie.get_category_display|lower}}</span> <a href="/items/movies/{{log.movie.id}}"><h6>{{log.movie}}</h6></a>
+							{% elif log.series %}{% if log.series.category in 'ser min' %}la{% else %}el{% endif %} <span class="text-info">{{log.series.get_category_display|lower}}</span> <a href="/items/series/{{log.series.id}}"><h6>{{log.series}}</h6></a>
+							{% elif log.comic %}el <span class="text-warning">cómic</span> <a href="/items/comics/{{log.comic.id}}"><h6>{{log.comic}}</h6></a>
+							{% elif log.comicseries %}la <span class="text-warning">comicserie</span> <a href="/items/comicseries/{{log.comicseries.id}}"><h6>{{log.comicseries}}</h6></a>
+							{% elif log.game %}el <span class="text-danger">videojuego</span> <a href="/items/games/{{log.game.id}}"><h6>{{log.game}}</h6></a>
+							{% elif log.dlc %}el <span class="text-danger">DLC</span> <a href="/items/dlcs/{{log.dlc.id}}"><h6>{{log.dlc}}</h6></a>
+							{% endif %} {% if log.rating %}con un{% else %}como{% endif %} <h6>{% if log.rating %}{{log.rating}}{% elif log.fav %}favorito{% else %}{{log.get_option_display|lower}}{% endif %}</h6>
+							{% endif %}
+							<br/>
+							<small class="text-muted">Hace {{log.date|timesince}}</small>
+						</td>
+					</tr>
+					{% endfor %}
+				{% else %}
+				<tr>
+					<td>No hay actividad reciente</td>
+				</tr>
+				{% endif %}
+			</tbody>
+		</table>
+	</div>
+</div>

@@ -290,4 +290,4 @@ class LoginAcceptanceTestCase(StaticLiveServerTestCase):
 		driver.find_element_by_name("password").clear()
 		driver.find_element_by_name("password").send_keys("password")
 		driver.find_element_by_css_selector("button.btn.btn-primary").click()
-		self.assertEqual(u"Lo último en cine", driver.find_element_by_css_selector("h2").text)
+		self.assertEqual("Actividad reciente", driver.find_element_by_css_selector("h3.panel-title").text)

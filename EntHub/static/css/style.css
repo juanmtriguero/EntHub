@@ -56,7 +56,7 @@ body{
 	margin-bottom: 10px;
 }
 
-.rating-header h2, h4{
+.rating-header h2, .rating-header h4{
 	display: inline;
 }
 

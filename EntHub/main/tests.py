@@ -96,6 +96,7 @@ class AccountTestCase(TestCase):
 		self.assertEqual([i.id for i in response.context['comics']], [1])
 		self.assertEqual([i.id for i in response.context['games']], [1])
 		self.assertEqual([i.id for i in response.context['dlcs']], [3])
+		# TODO test logs are shown
 
 	# Account list
 	def test_account_list(self):

@@ -47,28 +47,44 @@
 			{% endif %}
 			<a href="/accounts" class="btn btn-link">Volver</a>
 
-			<hr/>
-			<div class="text-left">
-				{% include "main/activity.html" %}
-			</div>
-
 		</div>
 
 		<div class="col-md-9">
-			<div class="row">
+				
+			<ul class="nav nav-pills nav-justified">
+				<li role="presentation" class="active">
+					<a href="#activity" data-toggle="tab">Actividad</a>
+				</li>
+				<li role="presentation">
+					<a href="#now" data-toggle="tab">Siguiendo/leyendo/jugando ahora</a>
+				</li>
+				<li role="presentation">
+					<a href="#social" data-toggle="tab">Seguidores y siguiendo</a>
+				</li>
+			</ul>
 
-				<div class="col-md-6">
-					<h2>Siguiendo ahora</h2>
+			<div class="tab-content">
+
+			<div class="row tab-pane fade in active" id="activity">
+				<div class="col-md-12">
+					<br/>
+					{% include "main/activity.html" %}
+				</div>
+			</div>
+
+			<div class="row tab-pane fade" id="now">
+				<div class="col-md-12">
+					<h3>Siguiendo ahora</h3>
 					<hr/>
 					{% if series or comicseries %}
 					<div class="row">
 						{% for item in series %}
-						<div class="col-md-6">
+						<div class="col-md-3">
 							{% include "items/item_preview.html" with option="sig" item_path="series" %}
 						</div>
 						{% endfor %}
 						{% for item in comicseries %}
-						<div class="col-md-6">
+						<div class="col-md-3">
 							{% include "items/item_preview.html" with option="sig" item_path="comicseries" %}
 						</div>
 						{% endfor %}
@@ -78,17 +94,17 @@
 						<span>No hay nada para mostrar</span>
 					</div>
 					{% endif %}
-					<h2>Leyendo ahora</h2>
+					<h3>Leyendo ahora</h3>
 					<hr/>
 					{% if books or comics %}
 					<div class="row">
 						{% for item in books %}
-						<div class="col-md-6">
+						<div class="col-md-3">
 							{% include "items/item_preview.html" with option="ley" item_path="books" %}
 						</div>
 						{% endfor %}
 						{% for item in comics %}
-						<div class="col-md-6">
+						<div class="col-md-3">
 							{% include "items/item_preview.html" with option="ley" item_path="comics" %}
 						</div>
 						{% endfor %}
@@ -98,17 +114,17 @@
 						<span>No hay nada para mostrar</span>
 					</div>
 					{% endif %}
-					<h2>Jugando ahora</h2>
+					<h3>Jugando ahora</h3>
 					<hr/>
 					{% if games or dlcs %}
 					<div class="row">
 						{% for item in games %}
-						<div class="col-md-6">
+						<div class="col-md-3">
 							{% include "items/item_preview.html" with option="jug" item_path="games" %}
 						</div>
 						{% endfor %}
 						{% for item in dlcs %}
-						<div class="col-md-6">
+						<div class="col-md-3">
 							{% include "items/item_preview.html" with option="jug" item_path="dlcs" %}
 						</div>
 						{% endfor %}
@@ -119,9 +135,11 @@
 					</div>
 					{% endif %}
 				</div>
+			</div>
 
+			<div class="row tab-pane fade" id="social">
 				<div class="col-md-6">
-					<h2>Seguidores</h2>
+					<h3>Seguidores</h3>
 					<hr/>
 					{% if object.followers.all %}
 					{% for account in object.followers.all %}
@@ -134,7 +152,9 @@
 						<span><b>{{object.user.username}}</b> no tiene seguidores</span>
 					</div>
 					{% endif %}
-					<h2>Siguiendo</h2>
+				</div>
+				<div class="col-md-6">
+					<h3>Siguiendo</h3>
 					<hr/>
 					{% if object.following.all %}
 					{% for account in object.following.all %}
@@ -148,8 +168,10 @@
 					</div>
 					{% endif %}
 				</div>
+			</div>
 
 			</div>
+
 		</div>
 	
 	</div>

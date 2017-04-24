@@ -78,14 +78,14 @@
 					<hr/>
 					{% if series or comicseries %}
 					<div class="row">
-						{% for item in series %}
+						{% for item, option in series.items %}
 						<div class="col-md-3">
-							{% include "items/item_preview.html" with option="sig" item_path="series" %}
+							{% include "items/item_preview.html" with item_path="series" %}
 						</div>
 						{% endfor %}
-						{% for item in comicseries %}
+						{% for item, option in comicseries.items %}
 						<div class="col-md-3">
-							{% include "items/item_preview.html" with option="sig" item_path="comicseries" %}
+							{% include "items/item_preview.html" with item_path="comicseries" %}
 						</div>
 						{% endfor %}
 					</div>
@@ -98,14 +98,14 @@
 					<hr/>
 					{% if books or comics %}
 					<div class="row">
-						{% for item in books %}
+						{% for item, option in books.items %}
 						<div class="col-md-3">
-							{% include "items/item_preview.html" with option="ley" item_path="books" %}
+							{% include "items/item_preview.html" with item_path="books" %}
 						</div>
 						{% endfor %}
-						{% for item in comics %}
+						{% for item, option in comics.items %}
 						<div class="col-md-3">
-							{% include "items/item_preview.html" with option="ley" item_path="comics" %}
+							{% include "items/item_preview.html" with item_path="comics" %}
 						</div>
 						{% endfor %}
 					</div>
@@ -118,14 +118,14 @@
 					<hr/>
 					{% if games or dlcs %}
 					<div class="row">
-						{% for item in games %}
+						{% for item, option in games.items %}
 						<div class="col-md-3">
-							{% include "items/item_preview.html" with option="jug" item_path="games" %}
+							{% include "items/item_preview.html" with item_path="games" %}
 						</div>
 						{% endfor %}
-						{% for item in dlcs %}
+						{% for item, option in dlcs.items %}
 						<div class="col-md-3">
-							{% include "items/item_preview.html" with option="jug" item_path="dlcs" %}
+							{% include "items/item_preview.html" with item_path="dlcs" %}
 						</div>
 						{% endfor %}
 					</div>

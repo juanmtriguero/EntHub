@@ -10,7 +10,7 @@ from selenium.webdriver.firefox.webdriver import WebDriver
 # Index
 class IndexTestCase(TestCase):
 
-	fixtures = ['catalogue_test', 'users_test', 'accounts_test', 'marks_test']
+	fixtures = ['catalogue_test', 'users_test', 'accounts_test', 'marks_test', 'logs_test']
 
 	# Unregistered users are redirected to login
 	def test_index_anonymous(self):
@@ -19,13 +19,15 @@ class IndexTestCase(TestCase):
 		redirect = self.client.get('/', follow=True)
 		self.assertTemplateUsed(redirect, 'main/login.html')
 
-	# Registered users can access index
+	# Registered users see the recent activity of them and their following users
 	def test_index(self):
 		self.client.login(username='anita', password='password')
 		response = self.client.get('/')
 		self.assertEqual(response.status_code, 200)
 		self.assertTemplateUsed(response, 'main/index.html')
-		# TODO test logs are shown
+		# 15 most recent logs are shown ordered by date
+		logs = [3,3,4,3,2,2,1,1,2,1,2,1,3,2,1]
+		self.assertEqual([i.id for i in response.context['logs']], logs)
 
 	# TODO 'Recommended' shows four items recommended to user of each category
 
@@ -77,7 +79,7 @@ class IndexTestCase(TestCase):
 # Account
 class AccountTestCase(TestCase):
 
-	fixtures = ['users_test', 'accounts_test', 'catalogue_test', 'marks_test']
+	fixtures = ['users_test', 'accounts_test', 'catalogue_test', 'marks_test', 'logs_test']
 
 	# Account model
 	def test_account_model(self):
@@ -96,7 +98,9 @@ class AccountTestCase(TestCase):
 		self.assertEqual([i.id for i in response.context['comics']], [1])
 		self.assertEqual([i.id for i in response.context['games']], [1])
 		self.assertEqual([i.id for i in response.context['dlcs']], [3])
-		# TODO test logs are shown
+		# 15 most recent logs are shown ordered by date
+		logs = [3,4,3,2,2,1,1,2,1,2,1,3,2,1,1]
+		self.assertEqual([i.id for i in response.context['logs']], logs)
 
 	# Account list
 	def test_account_list(self):

@@ -1,5 +1,5 @@
 body{
-	background-image: {% static 'images/auth-background.jpg' %};
+	background-image: url('../images/auth-background.jpg');
 	background-color: lightblue;
 	background-size: cover;
 }

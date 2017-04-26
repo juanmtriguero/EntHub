@@ -10,18 +10,18 @@ from django.contrib.auth.views import logout_then_login
 from items import models
 from main import forms
 from main.models import Account, FollowingLog
+import recommendations
 
 def index(request):
 	# Items recommended, lastest or best rated
 	o = request.POST.get('option', 'rec')
 	if o == "rec":
-		# TODO Improve recommendations
-		movie_list = models.Movie.objects.all().order_by('rating').reverse()[:4]
-		series_list = models.Series.objects.all().order_by('rating').reverse()[:4]
-		book_list = models.Book.objects.all().order_by('rating').reverse()[:4]
-		game_list = models.Game.objects.all().order_by('rating').reverse()[:4]
-		comic_list = models.Comic.objects.all().order_by('rating').reverse()[:2]
-		comic_series_list = models.ComicSeries.objects.all().order_by('rating').reverse()[:2]
+		movie_list = recommendations.recommended_movies(request.user, 4)
+		series_list = recommendations.recommended_series(request.user, 4)
+		book_list = recommendations.recommended_books(request.user, 4)
+		game_list = recommendations.recommended_games(request.user, 4)
+		comic_list = recommendations.recommended_comics(request.user, 4)
+		comic_series_list = recommendations.recommended_comicseries(request.user, 4)
 		prefix = "Te recomendamos"
 	elif o == "nov":
 		movie_list = models.Movie.objects.all().order_by('id').reverse()[:4]

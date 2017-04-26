@@ -14,7 +14,7 @@
 				<div class="btn-group btn-group-justified tabs" id="option">
 					<a href="#" data-option="rec" class="btn btn-{% if option == 'rec' %}primary{% else %}default{% endif %}">Recomendado para ti</a>
 					<a href="#" data-option="nov" class="btn btn-{% if option == 'nov' %}primary{% else %}default{% endif %}">Novedades</a>
-					<a href="#" data-option="val" class="btn btn-{% if option == 'val' %}primary{% else %}default{% endif %}">Mejor valorados</a>
+					<a href="#" data-option="val" class="btn btn-{% if option == 'val' %}primary{% else %}default{% endif %}">Más populares</a>
 				</div>
 			</form>
 			<h3>{{prefix}} en cine</h3>
@@ -26,6 +26,12 @@
 				</div>
 				{% endfor %}
 			</div>
+			{% if not movies %}
+			<div class="alert alert-warning">
+				<span>Puntúa películas, cortos y docufilms para que podamos recomendarte correctamente. Cuanto más puntúes, mejor serán las recomendaciones.</span>
+			</div>
+			<br/>
+			{% endif %}
 			<h3>{{prefix}} en televisión</h3>
 			<hr/>
 			<div class="row">
@@ -35,6 +41,12 @@
 				</div>
 				{% endfor %}
 			</div>
+			{% if not series %}
+			<div class="alert alert-warning">
+				<span>Puntúa series, miniseries, programas de TV y documentales para que podamos recomendarte correctamente. Cuanto más puntúes, mejor serán las recomendaciones.</span>
+			</div>
+			<br/>
+			{% endif %}
 			<h3>{{prefix}} en libros</h3>
 			<hr/>
 			<div class="row">
@@ -44,6 +56,12 @@
 				</div>
 				{% endfor %}
 			</div>
+			{% if not books %}
+			<div class="alert alert-warning">
+				<span>Puntúa libros para que podamos recomendarte correctamente. Cuanto más puntúes, mejor serán las recomendaciones.</span>
+			</div>
+			<br/>
+			{% endif %}
 			<h3>{{prefix}} en videojuegos</h3>
 			<hr/>
 			<div class="row">
@@ -53,6 +71,12 @@
 				</div>
 				{% endfor %}
 			</div>
+			{% if not games %}
+			<div class="alert alert-warning">
+				<span>Puntúa videojuegos para que podamos recomendarte correctamente. Cuanto más puntúes, mejor serán las recomendaciones.</span>
+			</div>
+			<br/>
+			{% endif %}
 			<h3>{{prefix}} en cómics</h3>
 			<hr/>
 			<div class="row">
@@ -67,6 +91,12 @@
 				</div>
 				{% endfor %}
 			</div>
+			{% if not comics and not comicseries %}
+			<div class="alert alert-warning">
+				<span>Puntúa cómics y series de cómics para que podamos recomendarte correctamente. Cuanto más puntúes, mejor serán las recomendaciones.</span>
+			</div>
+			<br/>
+			{% endif %}
 		</div>
 	</div>
 </div>

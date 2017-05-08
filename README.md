@@ -29,3 +29,5 @@ $ export GBOMB_API_KEY=your_api_key
 // Comic Vine API key
 $ export CVINE_API_KEY=your_api_key
 ```
+
+En el **entorno de producción** hay que añadir la contraseña de la base de datos: `$ export POSTGRES_PASSWORD=your_db_key`.

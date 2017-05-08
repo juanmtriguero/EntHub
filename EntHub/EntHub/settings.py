@@ -78,6 +78,7 @@ WSGI_APPLICATION = 'EntHub.wsgi.application'
 # https://docs.djangoproject.com/en/1.8/ref/settings/#databases
 
 DATABASES = {
+    # Development
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'NAME': 'enthub',
@@ -86,6 +87,15 @@ DATABASES = {
         'HOST': 'localhost',
         'PORT': 5432,
     }
+    # Production (Docker)
+    # 'default': {
+    #     'ENGINE': 'django.db.backends.postgresql_psycopg2',
+    #     'NAME': 'enthub',
+    #     'USER': 'enthub',
+    #     'PASSWORD': os.environ['POSTGRES_PASSWORD'],
+    #     'HOST': 'db',
+    #     'PORT': 5432,
+    # }
 }
 
 

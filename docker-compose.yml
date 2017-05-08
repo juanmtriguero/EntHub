@@ -1,0 +1,26 @@
+version: '2'
+services:
+  db:
+    image: postgres:9.3
+    ports:
+      - "5432"
+    environment:
+      - POSTGRES_USER=enthub
+      - POSTGRES_PASSWORD
+      - POSTGRES_DB=enthub
+  web:
+    build: .
+    command: bash -c "python EntHub/manage.py migrate && python EntHub/manage.py runserver 0.0.0.0:8000"
+    volumes:
+      - .:/code
+    ports:
+      - "8000:8000"
+    depends_on:
+      - db
+    environment:
+      - ENTHUB_EMAIL_HOST_USER
+      - ENTHUB_EMAIL_HOST_PASSWORD
+      - TMDB_API_KEY
+      - GOOGLE_API_KEY
+      - GBOMB_API_KEY
+      - CVINE_API_KEY

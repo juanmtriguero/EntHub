@@ -64,7 +64,7 @@ class Book(Item):
 	agents = models.ManyToManyField(Agent, through="BookInvolvement")
 
 class GameItem(Item):
-	platforms = models.ManyToManyField(Platform)
+	platforms = models.ManyToManyField(Platform, blank=True)
 
 	class Meta:
 		abstract = True

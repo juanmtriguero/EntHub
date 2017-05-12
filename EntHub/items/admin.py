@@ -1,9 +1,12 @@
 from django.contrib import admin
 import items.models as models
 
+# Enabled in production
 admin.site.register(models.Genre)
-admin.site.register(models.Agent)
 admin.site.register(models.Platform)
+
+# Disabled in production
+admin.site.register(models.Agent)
 admin.site.register(models.List)
 
 admin.site.register(models.Book)

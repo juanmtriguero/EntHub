@@ -22,11 +22,13 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = ')^hp@73a0s6xdod5%7dq5vyvmr(yn1w_9t2wt*m3ocs8jt^r=o'
+# Production
+# SECRET_KEY = os.environ['SECRET_KEY']
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['localhost', '127.0.0.1']
 
 
 # Application definition
@@ -130,6 +132,8 @@ EMAIL_PORT = 25
 EMAIL_HOST_USER = os.environ['ENTHUB_EMAIL_HOST_USER']
 EMAIL_HOST_PASSWORD = os.environ['ENTHUB_EMAIL_HOST_PASSWORD']
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+DEFAULT_FROM_EMAIL = os.environ['ENTHUB_EMAIL_HOST_USER']
+SERVER_EMAIL = os.environ['ENTHUB_EMAIL_HOST_USER']
 
 
 FIXTURE_DIRS = (os.path.join(BASE_DIR, 'fixtures'),)

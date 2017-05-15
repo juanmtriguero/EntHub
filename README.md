@@ -30,4 +30,12 @@ $ export GBOMB_API_KEY=your_api_key
 $ export CVINE_API_KEY=your_api_key
 ```
 
-En el **entorno de producción** hay que añadir la contraseña de la base de datos: `$ export POSTGRES_PASSWORD=your_db_key`.
+En el **entorno de producción** hay que añadir la contraseña del administrador de la base de datos y la clave secreta del proyecto:
+
+```
+// Database admin password
+$ export POSTGRES_PASSWORD=your_db_key
+
+// Django secret key
+$ export SECRET_KEY=your_secret_key
+```

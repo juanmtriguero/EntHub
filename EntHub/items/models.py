@@ -311,7 +311,7 @@ class MovieItemInvolvement(Involvement):
 	ROLE_CHOICES = (
 		('pra', 'Productora'),
 		('dis', 'Distribuidora'),
-		('pro', 'Productora'),
+		('pro', 'Productor'),
 		('dir', 'Director'),
 		('gui', 'Guionista'),
 		('act', 'Actor'),

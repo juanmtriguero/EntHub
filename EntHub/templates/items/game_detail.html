@@ -12,7 +12,9 @@
 <p>
 	<b>Plataformas:</b>
 	{% for platform in object.platforms.all %}
-	<a href="/items/platforms/{{platform.id}}" class="label label-default">{{platform.short}}</a>
+	<!-- TODO No en esta version -->
+	<!-- <a href="/items/platforms/{{platform.id}}" class="label label-default">{{platform.short}}</a> -->
+	<span class="label label-default">{{platform.short}}</span>
 	{% endfor %}
 </p>
 

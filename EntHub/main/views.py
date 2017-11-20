@@ -14,16 +14,19 @@ import recommendations
 
 def index(request):
 	# Items recommended, lastest or best rated
-	o = request.POST.get('option', 'rec')
-	if o == "rec":
-		movie_list = recommendations.recommended_movies(request.user, 4)
-		series_list = recommendations.recommended_series(request.user, 4)
-		book_list = recommendations.recommended_books(request.user, 4)
-		game_list = recommendations.recommended_games(request.user, 4)
-		comic_list = recommendations.recommended_comics(request.user, 4)
-		comic_series_list = recommendations.recommended_comicseries(request.user, 4)
-		prefix = "Te recomendamos"
-	elif o == "nov":
+	# TODO fix recommendations
+	# o = request.POST.get('option', 'rec')
+	# if o == "rec":
+	# 	movie_list = recommendations.recommended_movies(request.user, 4)
+	# 	series_list = recommendations.recommended_series(request.user, 4)
+	# 	book_list = recommendations.recommended_books(request.user, 4)
+	# 	game_list = recommendations.recommended_games(request.user, 4)
+	# 	comic_list = recommendations.recommended_comics(request.user, 4)
+	# 	comic_series_list = recommendations.recommended_comicseries(request.user, 4)
+	# 	prefix = "Te recomendamos"
+	# elif o == "nov":
+	o = request.POST.get('option', 'nov')
+	if o == "nov":
 		movie_list = models.Movie.objects.all().order_by('id').reverse()[:4]
 		series_list = models.Series.objects.all().order_by('id').reverse()[:4]
 		book_list = models.Book.objects.all().order_by('id').reverse()[:4]

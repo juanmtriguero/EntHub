@@ -12,7 +12,8 @@
 				{% csrf_token %}
 				<input type="hidden" name="option" value="{{option}}" />
 				<div class="btn-group btn-group-justified tabs" id="option">
-					<a href="#" data-option="rec" class="btn btn-{% if option == 'rec' %}primary{% else %}default{% endif %}">Recomendado para ti</a>
+					<!-- TODO fix recommendations -->
+					<!-- <a href="#" data-option="rec" class="btn btn-{% if option == 'rec' %}primary{% else %}default{% endif %}">Recomendado para ti</a> -->
 					<a href="#" data-option="nov" class="btn btn-{% if option == 'nov' %}primary{% else %}default{% endif %}">Novedades</a>
 					<a href="#" data-option="val" class="btn btn-{% if option == 'val' %}primary{% else %}default{% endif %}">Más populares</a>
 				</div>

@@ -100,18 +100,51 @@
 			<a href="/items/{{item_path}}" class="label label-{% if object.bookmark_set %}success{% elif object.moviemark_set %}primary{% elif object.seriesmark_set %}info{% elif object.comicmark_set or object.comicseriesmark_set %}warning{% elif object.gamemark_set or object.dlcmark_set %}danger{% else %}default{% endif %}">{{item_name}}</a>
 			<h1>{{object.title}}</h1>
 			<hr/>
-			<p><b>Año: </b>{{object.year}}</p>
-			{% block more_fields %}
-			{% endblock %}
-			<div align="justify">
-				<p><b>Descripción:</b>{{object.description|linebreaks}}</p>
+			<ul class="nav nav-pills nav-justified">
+				<li role="presentation" class="active">
+					<a href="#info" data-toggle="tab">Información</a>
+				</li>
+				{% block subitems_tab %}
+				{% endblock %}
+				<li role="presentation">
+					<a href="#comments" data-toggle="tab">Comentarios</a>
+				</li>
+				<!-- <li role="presentation">
+					<a href="#agents" data-toggle="tab">Agentes</a>
+				</li> -->
+			</ul>
+			<br>
+			<div class="tab-content">
+				<div class="row tab-pane fade in active" id="info">
+					<div class="col-md-12">
+						<p><b>Año: </b>{{object.year}}</p>
+						{% block more_fields %}
+						{% endblock %}
+						<div align="justify">
+							<p>{{object.description|linebreaks}}</p>
+						</div>
+						<p>
+							<b>Géneros:</b>
+							{% for genre in object.genres.all %}
+							<span class="label label-default">{{genre}}</span>
+							{% endfor %}
+						</p>
+					</div>
+				</div>
+				<div class="row tab-pane fade" id="subitems">
+					<div class="col-md-12">
+						{% block subitems %}
+						{% endblock %}
+					</div>
+				</div>
+				<div class="row tab-pane fade" id="comments">
+					<div class="col-md-12">
+						<div class="alert alert-warning">
+							Esta funcionalidad aún no está disponible.
+						</div>
+					</div>
+				</div>
 			</div>
-			<p>
-				<b>Géneros:</b>
-				{% for genre in object.genres.all %}
-				<span class="label label-default">{{genre}}</span>
-				{% endfor %}
-			</p>
 		</div>
 
 		<!-- Right column -->
@@ -173,9 +206,6 @@
 				{% endif %}
 			</div>
 			<a href="#" class="btn btn-primary btn-block">Añadir agente</a> -->
-
-			{% block subitems %}
-			{% endblock %}
 
 		</div>
 	

@@ -6,6 +6,7 @@
 
 	<div class="row">
 		
+		<!-- Left column -->
 		<div class="col-md-3 text-center">
 			<img src="{{object.image}}" class="img-responsive">
 			<br/>
@@ -87,6 +88,7 @@
 			</form>
 		</div>
 		
+		<!-- Central body -->
 		<div class="col-md-6">
 			<a href="/items/{{item_path}}" class="label label-{% if object.bookmark_set %}success{% elif object.moviemark_set %}primary{% elif object.seriesmark_set %}info{% elif object.comicmark_set or object.comicseriesmark_set %}warning{% elif object.gamemark_set or object.dlcmark_set %}danger{% else %}default{% endif %}">{{item_name}}</a>
 			<h1>{{object.title}}</h1>
@@ -105,8 +107,10 @@
 			</p>
 		</div>
 
+		<!-- Right column -->
 		<div class="col-md-3">
 
+			<!-- Rating -->
 			<div class="jumbotron text-center rating">
 				<div class="rating-header">
 					<h2 id="rating">{{object.rating|floatformat:1}}</h2>
@@ -135,7 +139,9 @@
 				</form>
 			</div>
 
-			<div class="list-group">
+			<!-- Agents -->
+			<!-- TODO not in this version -->
+			<!-- <div class="list-group">
 				<span class="list-group-item active">
 					<b>Agentes</b>
 				</span>
@@ -159,10 +165,11 @@
 				<span class="list-group-item text-danger">No hay ningún agente</span>
 				{% endif %}
 			</div>
-			<!-- TODO No en esta version -->
-			<!-- <a href="#" class="btn btn-primary btn-block">Añadir agente</a> -->
+			<a href="#" class="btn btn-primary btn-block">Añadir agente</a> -->
+
 			{% block subitems %}
 			{% endblock %}
+
 		</div>
 	
 	</div>

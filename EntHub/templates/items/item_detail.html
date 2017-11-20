@@ -8,8 +8,12 @@
 		
 		<!-- Left column -->
 		<div class="col-md-3 text-center">
+
+			<!-- Item cover -->
 			<img src="{{object.image}}" class="img-responsive">
 			<br/>
+
+			<!-- Mark button -->
 			<form action="/items/{% if object.game %}dlcs{% else %}{{item_path}}{% endif %}/mark/" id="mark" method="post">
 				{% csrf_token %}
 				<input type="hidden" name="id" value="{{object.id}}">
@@ -71,6 +75,8 @@
 					</ul>
 				</div>
 			</form>
+
+			<!-- Fav button -->
 			<form action="/items/{% if object.game %}dlcs{% else %}{{item_path}}{% endif %}/fav/" id="fav" method="post">
 				{% csrf_token %}
 				<input type="hidden" name="id" value="{{object.id}}">
@@ -86,6 +92,7 @@
 				</button>
 				{% endif %}
 			</form>
+
 		</div>
 		
 		<!-- Central body -->
@@ -121,20 +128,20 @@
 					<input type="hidden" name="id" value="{{object.id}}">
 					<span>Tu voto:</span>
 					<br>
-					<button id="rate-1" data-value="1" class="btn btn-{% if rate == 1 %}primary{% else %}default{% endif %}">
-						<span>1</span>
+					<button id="rate-1" data-value="1" class="btn btn-{% if rate == 1 %}primary{% else %}default{% endif %}" data-toggle="tooltip" data-placement="bottom" data-original-title="Lo odio">
+						<span class="icon-angry"></span>
 					</button>
-					<button id="rate-2" data-value="2" class="btn btn-{% if rate == 2 %}primary{% else %}default{% endif %}">
-						<span>2</span>
+					<button id="rate-2" data-value="2" class="btn btn-{% if rate == 2 %}primary{% else %}default{% endif %}" data-toggle="tooltip" data-placement="bottom" data-original-title="No me gusta">
+						<span class="icon-sad"></span>
 					</button>
-					<button id="rate-3" data-value="3" class="btn btn-{% if rate == 3 %}primary{% else %}default{% endif %}">
-						<span>3</span>
+					<button id="rate-3" data-value="3" class="btn btn-{% if rate == 3 %}primary{% else %}default{% endif %}" data-toggle="tooltip" data-placement="bottom" data-original-title="Meh">
+						<span class="icon-neutral"></span>
 					</button>
-					<button id="rate-4" data-value="4" class="btn btn-{% if rate == 4 %}primary{% else %}default{% endif %}">
-						<span>4</span>
+					<button id="rate-4" data-value="4" class="btn btn-{% if rate == 4 %}primary{% else %}default{% endif %}" data-toggle="tooltip" data-placement="bottom" data-original-title="Me gusta">
+						<span class="icon-smile"></span>
 					</button>
-					<button id="rate-5" data-value="5" class="btn btn-{% if rate == 5 %}primary{% else %}default{% endif %}">
-						<span>5</span>
+					<button id="rate-5" data-value="5" class="btn btn-{% if rate == 5 %}primary{% else %}default{% endif %}" data-toggle="tooltip" data-placement="bottom" data-original-title="Me encanta">
+						<span class="icon-grin"></span>
 					</button>
 				</form>
 			</div>

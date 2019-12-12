@@ -15,7 +15,8 @@ before_install:
   - tar -xzf geckodriver-v0.14.0-linux64.tar.gz -C geckodriver
   - export PATH=$PATH:$PWD/geckodriver
   - echo $PATH
-  - "export DISPLAY=:99.0"	
+  - "export DISPLAY=:99.0" 
+  - "sh -e /etc/init.d/xvfb start"	
   - sleep 3 # give xvfb some time to start
 install:
   - pip install -q Django==$DJANGO_VERSION

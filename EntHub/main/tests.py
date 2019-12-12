@@ -304,7 +304,7 @@ class LoginAcceptanceTestCase(StaticLiveServerTestCase):
 		driver.find_element_by_name("password").clear()
 		driver.find_element_by_name("password").send_keys("not_password")
 		driver.find_element_by_css_selector("button.btn.btn-primary").click()
-		self.assertEqual(u"Por favor, introduce un nombre de usuario y clave correctos. Observa que ambos campos pueden ser sensibles a mayúsculas.", driver.find_element_by_css_selector("div.non-field-error-message").text)
+		self.assertEqual(u"Por favor, introduzca un nombre de usuario y clave correctos. Observe que ambos campos pueden ser sensibles a mayúsculas.", driver.find_element_by_css_selector("div.non-field-error-message").text)
 		driver.find_element_by_name("username").clear()
 		driver.find_element_by_name("username").send_keys("jtorres")
 		driver.find_element_by_name("password").clear()

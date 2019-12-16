@@ -10,7 +10,7 @@ class Account(models.Model):
     avatar = models.URLField(blank=True)
     following = models.ManyToManyField("self", symmetrical=False, related_name="followers", blank=True)
 
-    def __unicode__(self):
+    def __str__(self):
         return str(self.user.username)
 
 # Logs
@@ -20,5 +20,5 @@ class FollowingLog(models.Model):
     following = models.ForeignKey(Account, on_delete=models.CASCADE, related_name='f_logs+')
     date = models.DateTimeField(auto_now_add=True)
 
-    def __unicode__(self):
+    def __str__(self):
         return str(self.follower) + " ha empezado a seguir a " + str(self.following)

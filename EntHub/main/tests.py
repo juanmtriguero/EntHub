@@ -5,7 +5,7 @@ from django.contrib.auth.models import User
 from main.models import Account, FollowingLog
 from items import models
 from django.contrib.staticfiles.testing import StaticLiveServerTestCase
-from selenium.webdriver.firefox.webdriver import WebDriver
+# from selenium.webdriver.firefox.webdriver import WebDriver
 
 # Index
 class IndexTestCase(TestCase):
@@ -36,28 +36,28 @@ class IndexTestCase(TestCase):
 		self.client.login(username='anita', password='password')
 		response = self.client.post('/', {'option': 'nov'})
 		movies = [i.id for i in response.context['movies']]
-		self.assertEqual(movies, [2,4,5,6])
+		self.assertEqual(movies, [6,5,4,2])
 		series = [i.id for i in response.context['series']]
-		self.assertEqual(series, [1,2,3])
+		self.assertEqual(series, [3,2,1])
 		books = [i.id for i in response.context['books']]
-		self.assertEqual(books, [2,5,6,7])
+		self.assertEqual(books, [7,6,5,2])
 		games = [i.id for i in response.context['games']]
-		self.assertEqual(games, [1,2])
+		self.assertEqual(games, [2,1])
 		comics = [i.id for i in response.context['comics']]
 		self.assertEqual(comics, [1])
 		comic_series = [i.id for i in response.context['comic_series']]
-		self.assertEqual(comic_series, [1,2])
+		self.assertEqual(comic_series, [2,1])
 
 	# 'Best rated' shows four best rated items of each category
 	def test_index_best_rated(self):
 		self.client.login(username='anita', password='password')
 		response = self.client.post('/', {'option': 'val'})
 		movies = [i.id for i in response.context['movies']]
-		self.assertEqual(movies, [2,4,5,6])
+		self.assertEqual(movies, [4,2,6,5])
 		series = [i.id for i in response.context['series']]
 		self.assertEqual(series, [1,2,3])
 		books = [i.id for i in response.context['books']]
-		self.assertEqual(books, [1,2,5,7])
+		self.assertEqual(books, [5,7,1,2])
 		games = [i.id for i in response.context['games']]
 		self.assertEqual(games, [1,2])
 		comics = [i.id for i in response.context['comics']]
@@ -278,36 +278,36 @@ class FollowingLogTestCase(TestCase):
 # ACCEPTANCE TESTS
 
 # Login 
-class LoginAcceptanceTestCase(StaticLiveServerTestCase):
+# class LoginAcceptanceTestCase(StaticLiveServerTestCase):
 
-	fixtures = ['users_test', 'accounts_test']
+# 	fixtures = ['users_test', 'accounts_test']
 	
-	@classmethod
-	def setUpClass(cls):
-		super(LoginAcceptanceTestCase, cls).setUpClass()
-		cls.selenium = WebDriver()
-		cls.selenium.implicitly_wait(30)
+# 	@classmethod
+# 	def setUpClass(cls):
+# 		super(LoginAcceptanceTestCase, cls).setUpClass()
+# 		cls.selenium = WebDriver()
+# 		cls.selenium.implicitly_wait(30)
 
-	@classmethod
-	def tearDownClass(cls):
-		cls.selenium.quit()
-		super(LoginAcceptanceTestCase, cls).tearDownClass()
+# 	@classmethod
+# 	def tearDownClass(cls):
+# 		cls.selenium.quit()
+# 		super(LoginAcceptanceTestCase, cls).tearDownClass()
 	
-	def test_acceptance_login(self):
-		driver = self.selenium
-		driver.get(self.live_server_url + "/accounts/login/")
-		driver.find_element_by_css_selector("button.btn.btn-primary").click()
-		self.assertEqual(u"Nombre de usuario\nEste campo es obligatorio.", driver.find_element_by_css_selector("div.form-group.has-error").text)
-		self.assertEqual(u"Contraseña\nEste campo es obligatorio.", driver.find_element_by_xpath("//div[2]").text)
-		driver.find_element_by_name("username").clear()
-		driver.find_element_by_name("username").send_keys("not_user")
-		driver.find_element_by_name("password").clear()
-		driver.find_element_by_name("password").send_keys("not_password")
-		driver.find_element_by_css_selector("button.btn.btn-primary").click()
-		self.assertEqual(u"Por favor, introduzca un nombre de usuario y clave correctos. Observe que ambos campos pueden ser sensibles a mayúsculas.", driver.find_element_by_css_selector("div.non-field-error-message").text)
-		driver.find_element_by_name("username").clear()
-		driver.find_element_by_name("username").send_keys("jtorres")
-		driver.find_element_by_name("password").clear()
-		driver.find_element_by_name("password").send_keys("password")
-		driver.find_element_by_css_selector("button.btn.btn-primary").click()
-		self.assertEqual("Actividad reciente", driver.find_element_by_css_selector("h3.panel-title").text)
+# 	def test_acceptance_login(self):
+# 		driver = self.selenium
+# 		driver.get(self.live_server_url + "/accounts/login/")
+# 		driver.find_element_by_css_selector("button.btn.btn-primary").click()
+# 		self.assertEqual(u"Nombre de usuario\nEste campo es obligatorio.", driver.find_element_by_css_selector("div.form-group.has-error").text)
+# 		self.assertEqual(u"Contraseña\nEste campo es obligatorio.", driver.find_element_by_xpath("//div[2]").text)
+# 		driver.find_element_by_name("username").clear()
+# 		driver.find_element_by_name("username").send_keys("not_user")
+# 		driver.find_element_by_name("password").clear()
+# 		driver.find_element_by_name("password").send_keys("not_password")
+# 		driver.find_element_by_css_selector("button.btn.btn-primary").click()
+# 		self.assertEqual(u"Por favor, introduzca un nombre de usuario y clave correctos. Observe que ambos campos pueden ser sensibles a mayúsculas.", driver.find_element_by_css_selector("div.non-field-error-message").text)
+# 		driver.find_element_by_name("username").clear()
+# 		driver.find_element_by_name("username").send_keys("jtorres")
+# 		driver.find_element_by_name("password").clear()
+# 		driver.find_element_by_name("password").send_keys("password")
+# 		driver.find_element_by_css_selector("button.btn.btn-primary").click()
+# 		self.assertEqual("Actividad reciente", driver.find_element_by_css_selector("h3.panel-title").text)

@@ -10,7 +10,7 @@ from django.contrib.auth.views import logout_then_login
 from items import models
 from main import forms
 from main.models import Account, FollowingLog
-import recommendations
+from main import recommendations
 
 def index(request):
 	# Items recommended, lastest or best rated

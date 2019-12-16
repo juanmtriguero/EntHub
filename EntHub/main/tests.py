@@ -5,7 +5,7 @@ from django.contrib.auth.models import User
 from main.models import Account, FollowingLog
 from items import models
 from django.contrib.staticfiles.testing import StaticLiveServerTestCase
-# from selenium.webdriver.firefox.webdriver import WebDriver
+from selenium.webdriver.firefox.webdriver import WebDriver
 
 # Index
 class IndexTestCase(TestCase):
@@ -278,36 +278,36 @@ class FollowingLogTestCase(TestCase):
 # ACCEPTANCE TESTS
 
 # Login 
-# class LoginAcceptanceTestCase(StaticLiveServerTestCase):
+class LoginAcceptanceTestCase(StaticLiveServerTestCase):
 
-# 	fixtures = ['users_test', 'accounts_test']
+	fixtures = ['users_test', 'accounts_test']
 	
-# 	@classmethod
-# 	def setUpClass(cls):
-# 		super(LoginAcceptanceTestCase, cls).setUpClass()
-# 		cls.selenium = WebDriver()
-# 		cls.selenium.implicitly_wait(30)
+	@classmethod
+	def setUpClass(cls):
+		super(LoginAcceptanceTestCase, cls).setUpClass()
+		cls.selenium = WebDriver()
+		cls.selenium.implicitly_wait(30)
 
-# 	@classmethod
-# 	def tearDownClass(cls):
-# 		cls.selenium.quit()
-# 		super(LoginAcceptanceTestCase, cls).tearDownClass()
+	@classmethod
+	def tearDownClass(cls):
+		cls.selenium.quit()
+		super(LoginAcceptanceTestCase, cls).tearDownClass()
 	
-# 	def test_acceptance_login(self):
-# 		driver = self.selenium
-# 		driver.get(self.live_server_url + "/accounts/login/")
-# 		driver.find_element_by_css_selector("button.btn.btn-primary").click()
-# 		self.assertEqual(u"Nombre de usuario\nEste campo es obligatorio.", driver.find_element_by_css_selector("div.form-group.has-error").text)
-# 		self.assertEqual(u"Contraseña\nEste campo es obligatorio.", driver.find_element_by_xpath("//div[2]").text)
-# 		driver.find_element_by_name("username").clear()
-# 		driver.find_element_by_name("username").send_keys("not_user")
-# 		driver.find_element_by_name("password").clear()
-# 		driver.find_element_by_name("password").send_keys("not_password")
-# 		driver.find_element_by_css_selector("button.btn.btn-primary").click()
-# 		self.assertEqual(u"Por favor, introduzca un nombre de usuario y clave correctos. Observe que ambos campos pueden ser sensibles a mayúsculas.", driver.find_element_by_css_selector("div.non-field-error-message").text)
-# 		driver.find_element_by_name("username").clear()
-# 		driver.find_element_by_name("username").send_keys("jtorres")
-# 		driver.find_element_by_name("password").clear()
-# 		driver.find_element_by_name("password").send_keys("password")
-# 		driver.find_element_by_css_selector("button.btn.btn-primary").click()
-# 		self.assertEqual("Actividad reciente", driver.find_element_by_css_selector("h3.panel-title").text)
+	def test_acceptance_login(self):
+		driver = self.selenium
+		driver.get(self.live_server_url + "/accounts/login/")
+		driver.find_element_by_css_selector("button.btn.btn-primary").click()
+		self.assertEqual(u"Nombre de usuario\nEste campo es obligatorio.", driver.find_element_by_css_selector("div.form-group.has-error").text)
+		self.assertEqual(u"Contraseña\nEste campo es obligatorio.", driver.find_element_by_xpath("//div[2]").text)
+		driver.find_element_by_name("username").clear()
+		driver.find_element_by_name("username").send_keys("not_user")
+		driver.find_element_by_name("password").clear()
+		driver.find_element_by_name("password").send_keys("not_password")
+		driver.find_element_by_css_selector("button.btn.btn-primary").click()
+		self.assertEqual(u"Por favor, introduzca un nombre de usuario y clave correctos. Observe que ambos campos pueden ser sensibles a mayúsculas.", driver.find_element_by_css_selector("div.non-field-error-message").text)
+		driver.find_element_by_name("username").clear()
+		driver.find_element_by_name("username").send_keys("jtorres")
+		driver.find_element_by_name("password").clear()
+		driver.find_element_by_name("password").send_keys("password")
+		driver.find_element_by_css_selector("button.btn.btn-primary").click()
+		self.assertEqual("Actividad reciente", driver.find_element_by_css_selector("h3.panel-title").text)

@@ -84,7 +84,7 @@ class AccountTestCase(TestCase):
 	# Account model
 	def test_account_model(self):
 		account = Account.objects.get(id=1)
-		self.assertEqual(unicode(account), "admin")
+		self.assertEqual(str(account), "admin")
 
 	# Account detail
 	def test_account_detail(self):
@@ -273,7 +273,7 @@ class FollowingLogTestCase(TestCase):
 		log.follower = Account.objects.get(id=2)
 		log.following = Account.objects.get(id=3)
 		log.save()
-		self.assertEqual(unicode(log), "jtorres ha empezado a seguir a anita")
+		self.assertEqual(str(log), "jtorres ha empezado a seguir a anita")
 
 # ACCEPTANCE TESTS
 

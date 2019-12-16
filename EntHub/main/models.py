@@ -11,7 +11,7 @@ class Account(models.Model):
     following = models.ManyToManyField("self", symmetrical=False, related_name="followers", blank=True)
 
     def __unicode__(self):
-        return unicode(self.user.username)
+        return str(self.user.username)
 
 # Logs
 
@@ -21,4 +21,4 @@ class FollowingLog(models.Model):
     date = models.DateTimeField(auto_now_add=True)
 
     def __unicode__(self):
-        return unicode(self.follower) + " ha empezado a seguir a " + unicode(self.following)
+        return str(self.follower) + " ha empezado a seguir a " + str(self.following)

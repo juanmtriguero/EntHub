@@ -167,7 +167,7 @@ class BookUpdate(UpdateView):
 	def get_context_data(self, **kwargs):
 		context = super(BookUpdate, self).get_context_data(**kwargs)
 		context['legend'] = "Editar libro"
-		context['cancel_url'] = "/items/books/" + unicode(self.object.id)
+		context['cancel_url'] = "/items/books/" + str(self.object.id)
 		return context
 
 	def get_success_url(self):
@@ -183,7 +183,7 @@ class BookDelete(DeleteView):
 	def get_context_data(self, **kwargs):
 		context = super(BookDelete, self).get_context_data(**kwargs)
 		context['message'] = "el libro"
-		context['cancel_url'] = "/items/books/" + unicode(self.object.id)
+		context['cancel_url'] = "/items/books/" + str(self.object.id)
 		return context
 
 def book_mark(request):
@@ -366,7 +366,7 @@ class MovieUpdate(UpdateView):
 	def get_context_data(self, **kwargs):
 		context = super(MovieUpdate, self).get_context_data(**kwargs)
 		context['legend'] = "Editar película"
-		context['cancel_url'] = "/items/movies/" + unicode(self.object.id)
+		context['cancel_url'] = "/items/movies/" + str(self.object.id)
 		return context
 
 	def get_success_url(self):
@@ -382,7 +382,7 @@ class MovieDelete(DeleteView):
 	def get_context_data(self, **kwargs):
 		context = super(MovieDelete, self).get_context_data(**kwargs)
 		context['message'] = "la película"
-		context['cancel_url'] = "/items/movies/" + unicode(self.object.id)
+		context['cancel_url'] = "/items/movies/" + str(self.object.id)
 		return context
 
 def movie_mark(request):
@@ -598,7 +598,7 @@ class SeriesUpdate(UpdateView):
 	def get_context_data(self, **kwargs):
 		context = super(SeriesUpdate, self).get_context_data(**kwargs)
 		context['legend'] = "Editar serie"
-		context['cancel_url'] = "/items/series/" + unicode(self.object.id)
+		context['cancel_url'] = "/items/series/" + str(self.object.id)
 		return context
 
 	def get_success_url(self):
@@ -614,7 +614,7 @@ class SeriesDelete(DeleteView):
 	def get_context_data(self, **kwargs):
 		context = super(SeriesDelete, self).get_context_data(**kwargs)
 		context['message'] = "la serie"
-		context['cancel_url'] = "/items/series/" + unicode(self.object.id)
+		context['cancel_url'] = "/items/series/" + str(self.object.id)
 		return context
 
 def series_mark(request):
@@ -753,7 +753,7 @@ class ChapterCreate(CreateView):
 	def get_context_data(self, **kwargs):
 		context = super(ChapterCreate, self).get_context_data(**kwargs)
 		context['legend'] = "Añadir capítulo"
-		context['cancel_url'] = "/items/series/" + unicode(self.kwargs['pk'])
+		context['cancel_url'] = "/items/series/" + str(self.kwargs['pk'])
 		return context
 
 	def form_valid(self, form):
@@ -852,7 +852,7 @@ class ComicUpdate(UpdateView):
 	def get_context_data(self, **kwargs):
 		context = super(ComicUpdate, self).get_context_data(**kwargs)
 		context['legend'] = "Editar cómic"
-		context['cancel_url'] = "/items/comics/" + unicode(self.object.id)
+		context['cancel_url'] = "/items/comics/" + str(self.object.id)
 		return context
 
 	def get_success_url(self):
@@ -868,7 +868,7 @@ class ComicDelete(DeleteView):
 	def get_context_data(self, **kwargs):
 		context = super(ComicDelete, self).get_context_data(**kwargs)
 		context['message'] = "el cómic"
-		context['cancel_url'] = "/items/comics/" + unicode(self.object.id)
+		context['cancel_url'] = "/items/comics/" + str(self.object.id)
 		return context
 
 def comic_mark(request):
@@ -1021,7 +1021,7 @@ class ComicSeriesUpdate(UpdateView):
 	def get_context_data(self, **kwargs):
 		context = super(ComicSeriesUpdate, self).get_context_data(**kwargs)
 		context['legend'] = "Editar serie de cómics"
-		context['cancel_url'] = "/items/comicseries/" + unicode(self.object.id)
+		context['cancel_url'] = "/items/comicseries/" + str(self.object.id)
 		return context
 
 	def get_success_url(self):
@@ -1037,7 +1037,7 @@ class ComicSeriesDelete(DeleteView):
 	def get_context_data(self, **kwargs):
 		context = super(ComicSeriesDelete, self).get_context_data(**kwargs)
 		context['message'] = "la serie de cómics"
-		context['cancel_url'] = "/items/comicseries/" + unicode(self.object.id)
+		context['cancel_url'] = "/items/comicseries/" + str(self.object.id)
 		return context
 
 def comic_series_mark(request):
@@ -1157,7 +1157,7 @@ class NumberCreate(CreateView):
 	def get_context_data(self, **kwargs):
 		context = super(NumberCreate, self).get_context_data(**kwargs)
 		context['legend'] = "Añadir número"
-		context['cancel_url'] = "/items/comicseries/" + unicode(self.kwargs['pk'])
+		context['cancel_url'] = "/items/comicseries/" + str(self.kwargs['pk'])
 		return context
 
 	def form_valid(self, form):
@@ -1269,7 +1269,7 @@ class GameUpdate(UpdateView):
 	def get_context_data(self, **kwargs):
 		context = super(GameUpdate, self).get_context_data(**kwargs)
 		context['legend'] = "Editar videojuego"
-		context['cancel_url'] = "/items/games/" + unicode(self.object.id)
+		context['cancel_url'] = "/items/games/" + str(self.object.id)
 		return context
 
 	def get_success_url(self):
@@ -1285,7 +1285,7 @@ class GameDelete(DeleteView):
 	def get_context_data(self, **kwargs):
 		context = super(GameDelete, self).get_context_data(**kwargs)
 		context['message'] = "el videojuego"
-		context['cancel_url'] = "/items/games/" + unicode(self.object.id)
+		context['cancel_url'] = "/items/games/" + str(self.object.id)
 		return context
 
 def game_mark(request):
@@ -1441,7 +1441,7 @@ class DLCDetail(DetailView):
 
 	def get_context_data(self, **kwargs):
 		context = super(DLCDetail, self).get_context_data(**kwargs)
-		context['item_path'] = 'games/' + unicode(self.object.game.id)
+		context['item_path'] = 'games/' + str(self.object.game.id)
 		context['item_name'] = 'DLC'
 		context['agents'] = group_agents(self.object.dlcinvolvement_set.all())
 		context['mark_options'] = models.DLCMark.OPTION_CHOICES
@@ -1463,7 +1463,7 @@ class DLCCreate(CreateView):
 	def get_context_data(self, **kwargs):
 		context = super(DLCCreate, self).get_context_data(**kwargs)
 		context['legend'] = "Nuevo DLC"
-		context['cancel_url'] = "/items/games/" + unicode(self.kwargs['pk'])
+		context['cancel_url'] = "/items/games/" + str(self.kwargs['pk'])
 		return context
 
 	def form_valid(self, form):
@@ -1482,7 +1482,7 @@ class DLCUpdate(UpdateView):
 	def get_context_data(self, **kwargs):
 		context = super(DLCUpdate, self).get_context_data(**kwargs)
 		context['legend'] = "Editar DLC"
-		context['cancel_url'] = "/items/dlcs/" + unicode(self.object.id)
+		context['cancel_url'] = "/items/dlcs/" + str(self.object.id)
 		return context
 
 	def get_success_url(self):
@@ -1497,7 +1497,7 @@ class DLCDelete(DeleteView):
 	def get_context_data(self, **kwargs):
 		context = super(DLCDelete, self).get_context_data(**kwargs)
 		context['message'] = "el DLC"
-		context['cancel_url'] = "/items/dlcs/" + unicode(self.object.id)
+		context['cancel_url'] = "/items/dlcs/" + str(self.object.id)
 		return context
 
 	def get_success_url(self):

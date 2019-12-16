@@ -9,7 +9,7 @@ class Genre(models.Model):
 	name = models.CharField(max_length=20)
 
 	def __unicode__(self):
-		return unicode(self.name)
+		return str(self.name)
 
 # Agent
 
@@ -19,7 +19,7 @@ class Agent(models.Model):
 	image = models.URLField(blank=True)
 
 	def __unicode__(self):
-		return unicode(self.name)
+		return str(self.name)
 
 # Platform
 
@@ -29,7 +29,7 @@ class Platform(models.Model):
 	image = models.URLField(blank=True)
 
 	def __unicode__(self):
-		return unicode(self.name)
+		return str(self.name)
 
 #List
 
@@ -39,7 +39,7 @@ class List(models.Model):
 	followers = models.ManyToManyField(User, related_name="follower", blank=True)
 
 	def __unicode__(self):
-		return unicode(self.name)
+		return str(self.name)
 
 # Items
 
@@ -57,8 +57,8 @@ class Item(models.Model):
 		abstract = True
 
 	def __unicode__(self):
-		return unicode(self.title) + " ("\
-			   + unicode(self.year) + ")"
+		return str(self.title) + " ("\
+			   + str(self.year) + ")"
 
 class Book(Item):
 	agents = models.ManyToManyField(Agent, through="BookInvolvement")
@@ -123,16 +123,16 @@ class Number(Subitem):
 	comic = models.ForeignKey(ComicSeries, on_delete=models.CASCADE)
 
 	def __unicode__(self):
-		return unicode(self.comic) + " - " + unicode(self.number)\
-			   + ": " + unicode(self.name)
+		return str(self.comic) + " - " + str(self.number)\
+			   + ": " + str(self.name)
 
 class Chapter(Subitem):
 	season = models.IntegerField()
 	series = models.ForeignKey(Series, on_delete=models.CASCADE)
 
 	def __unicode__(self):
-		return unicode(self.series) + " - " + unicode(self.season)\
-			   + "x" + unicode(self.number) + ": " + unicode(self.name)
+		return str(self.series) + " - " + str(self.season)\
+			   + "x" + str(self.number) + ": " + str(self.name)
 
 # Marks
 
@@ -161,8 +161,8 @@ class BookMark(IndividualMark):
 	book = models.ForeignKey(Book, on_delete=models.CASCADE)
 
 	def __unicode__(self):
-		return unicode(self.user) + " ha marcado el libro "\
-			   + unicode(self.book) + " como " + unicode(self.get_option_display())
+		return str(self.user) + " ha marcado el libro "\
+			   + str(self.book) + " como " + str(self.get_option_display())
 
 class PlayableMark(Mark):
 	OPTION_CHOICES = (
@@ -181,22 +181,22 @@ class GameMark(PlayableMark):
 	game = models.ForeignKey(Game, on_delete=models.CASCADE)
 
 	def __unicode__(self):
-		return unicode(self.user) + " ha marcado el juego "\
-			   + unicode(self.game) + " como " + unicode(self.get_option_display())
+		return str(self.user) + " ha marcado el juego "\
+			   + str(self.game) + " como " + str(self.get_option_display())
 
 class DLCMark(PlayableMark):
 	dlc = models.ForeignKey(DLC, on_delete=models.CASCADE)
 
 	def __unicode__(self):
-		return unicode(self.user) + " ha marcado el DLC "\
-			   + unicode(self.dlc) + " como " + unicode(self.get_option_display())
+		return str(self.user) + " ha marcado el DLC "\
+			   + str(self.dlc) + " como " + str(self.get_option_display())
 
 class ComicMark(IndividualMark):
 	comic = models.ForeignKey(Comic, on_delete=models.CASCADE)
 
 	def __unicode__(self):
-		return unicode(self.user) + u" ha marcado el cómic "\
-			   + unicode(self.comic) + " como " + unicode(self.get_option_display())
+		return str(self.user) + u" ha marcado el cómic "\
+			   + str(self.comic) + " como " + str(self.get_option_display())
 
 class GroupMark(Mark):
 	OPTION_CHOICES = (
@@ -214,15 +214,15 @@ class ComicSeriesMark(GroupMark):
 	comic = models.ForeignKey(ComicSeries, on_delete=models.CASCADE)
 
 	def __unicode__(self):
-		return unicode(self.user) + u" ha marcado la serie de cómics "\
-			   + unicode(self.comic) + " como " + unicode(self.get_option_display())
+		return str(self.user) + u" ha marcado la serie de cómics "\
+			   + str(self.comic) + " como " + str(self.get_option_display())
 
 class SeriesMark(GroupMark):
 	series = models.ForeignKey(Series, on_delete=models.CASCADE)
 
 	def __unicode__(self):
-		return unicode(self.user) + " ha marcado el " + unicode(self.series.get_category_display())\
-			   + " " + unicode(self.series) + " como " + unicode(self.get_option_display())
+		return str(self.user) + " ha marcado el " + str(self.series.get_category_display())\
+			   + " " + str(self.series) + " como " + str(self.get_option_display())
 
 class MovieMark(Mark):
 	movie = models.ForeignKey(Movie, on_delete=models.CASCADE)
@@ -233,8 +233,8 @@ class MovieMark(Mark):
 	option = models.CharField(max_length=3, choices=OPTION_CHOICES, blank=True)
 
 	def __unicode__(self):
-		return unicode(self.user) + " ha marcado el " + unicode(self.movie.get_category_display())\
-			   + " " + unicode(self.movie) + " como " + unicode(self.get_option_display())
+		return str(self.user) + " ha marcado el " + str(self.movie.get_category_display())\
+			   + " " + str(self.movie) + " como " + str(self.get_option_display())
 
 # Involvements
 
@@ -255,8 +255,8 @@ class BookInvolvement(Involvement):
 	role = models.CharField(max_length=3, choices=ROLE_CHOICES)
 
 	def __unicode__(self):
-		return unicode(self.agent) + " aparece en el libro "\
-			   + unicode(self.book) + " como " + unicode(self.get_role_display())
+		return str(self.agent) + " aparece en el libro "\
+			   + str(self.book) + " como " + str(self.get_role_display())
 
 class GameItemInvolvement(Involvement):
 	ROLE_CHOICES = (
@@ -272,15 +272,15 @@ class GameInvolvement(GameItemInvolvement):
 	game = models.ForeignKey(Game, on_delete=models.CASCADE)
 
 	def __unicode__(self):
-		return unicode(self.agent) + " aparece en el juego "\
-			   + unicode(self.game) + " como " + unicode(self.get_role_display())
+		return str(self.agent) + " aparece en el juego "\
+			   + str(self.game) + " como " + str(self.get_role_display())
 
 class DLCInvolvement(GameItemInvolvement):
 	dlc = models.ForeignKey(DLC, on_delete=models.CASCADE)
 
 	def __unicode__(self):
-		return unicode(self.agent) + " aparece en el DLC "\
-			   + unicode(self.dlc) + " como " + unicode(self.get_role_display())
+		return str(self.agent) + " aparece en el DLC "\
+			   + str(self.dlc) + " como " + str(self.get_role_display())
 
 class ComicItemInvolvement(Involvement):
 	ROLE_CHOICES = (
@@ -297,15 +297,15 @@ class ComicInvolvement(ComicItemInvolvement):
 	comic = models.ForeignKey(Comic, on_delete=models.CASCADE)
 
 	def __unicode__(self):
-		return unicode(self.agent) + u" aparece en el cómic "\
-			   + unicode(self.comic) + " como " + unicode(self.get_role_display())
+		return str(self.agent) + u" aparece en el cómic "\
+			   + str(self.comic) + " como " + str(self.get_role_display())
 
 class ComicSeriesInvolvement(ComicItemInvolvement):
 	comic = models.ForeignKey(ComicSeries, on_delete=models.CASCADE)
 
 	def __unicode__(self):
-		return unicode(self.agent) + u" aparece en la serie de cómics "\
-			   + unicode(self.comic) + " como " + unicode(self.get_role_display())
+		return str(self.agent) + u" aparece en la serie de cómics "\
+			   + str(self.comic) + " como " + str(self.get_role_display())
 
 class MovieItemInvolvement(Involvement):
 	ROLE_CHOICES = (
@@ -326,15 +326,15 @@ class MovieInvolvement(MovieItemInvolvement):
 	movie = models.ForeignKey(Movie, on_delete=models.CASCADE)
 
 	def __unicode__(self):
-		return unicode(self.agent) + " aparece en " + unicode(self.movie.get_category_display())\
-			   + " " + unicode(self.movie) + " como " + unicode(self.get_role_display())
+		return str(self.agent) + " aparece en " + str(self.movie.get_category_display())\
+			   + " " + str(self.movie) + " como " + str(self.get_role_display())
 
 class SeriesInvolvement(MovieItemInvolvement):
 	series = models.ForeignKey(Series, on_delete=models.CASCADE)
 
 	def __unicode__(self):
-		return unicode(self.agent) + " aparece en " + unicode(self.series.get_category_display())\
-			   + " " + unicode(self.series) + " como " + unicode(self.get_role_display())
+		return str(self.agent) + " aparece en " + str(self.series.get_category_display())\
+			   + " " + str(self.series) + " como " + str(self.get_role_display())
 
 # Logs
 
@@ -343,8 +343,8 @@ class BookMarkLog(IndividualMark):
 	book = models.ForeignKey(Book, on_delete=models.CASCADE, related_name='+')
 
 	def __unicode__(self):
-		return unicode(self.user) + " ha marcado el libro "\
-			   + unicode(self.book) + " como " + unicode(self.get_option_display())
+		return str(self.user) + " ha marcado el libro "\
+			   + str(self.book) + " como " + str(self.get_option_display())
 
 class MovieMarkLog(Mark):
 	date = models.DateTimeField(auto_now_add=True)
@@ -356,45 +356,45 @@ class MovieMarkLog(Mark):
 	option = models.CharField(max_length=3, choices=OPTION_CHOICES, blank=True)
 
 	def __unicode__(self):
-		return unicode(self.user) + " ha marcado el " + unicode(self.movie.get_category_display())\
-			   + " " + unicode(self.movie) + " como " + unicode(self.get_option_display())
+		return str(self.user) + " ha marcado el " + str(self.movie.get_category_display())\
+			   + " " + str(self.movie) + " como " + str(self.get_option_display())
 
 class SeriesMarkLog(GroupMark):
 	date = models.DateTimeField(auto_now_add=True)
 	series = models.ForeignKey(Series, on_delete=models.CASCADE, related_name='+')
 
 	def __unicode__(self):
-		return unicode(self.user) + " ha marcado el " + unicode(self.series.get_category_display())\
-			   + " " + unicode(self.series) + " como " + unicode(self.get_option_display())
+		return str(self.user) + " ha marcado el " + str(self.series.get_category_display())\
+			   + " " + str(self.series) + " como " + str(self.get_option_display())
 
 class ComicMarkLog(IndividualMark):
 	date = models.DateTimeField(auto_now_add=True)
 	comic = models.ForeignKey(Comic, on_delete=models.CASCADE, related_name='+')
 
 	def __unicode__(self):
-		return unicode(self.user) + u" ha marcado el cómic "\
-			   + unicode(self.comic) + " como " + unicode(self.get_option_display())
+		return str(self.user) + u" ha marcado el cómic "\
+			   + str(self.comic) + " como " + str(self.get_option_display())
 
 class ComicSeriesMarkLog(GroupMark):
 	date = models.DateTimeField(auto_now_add=True)
 	comicseries = models.ForeignKey(ComicSeries, on_delete=models.CASCADE, related_name='+')
 
 	def __unicode__(self):
-		return unicode(self.user) + u" ha marcado la serie de cómics "\
-			   + unicode(self.comic) + " como " + unicode(self.get_option_display())
+		return str(self.user) + u" ha marcado la serie de cómics "\
+			   + str(self.comic) + " como " + str(self.get_option_display())
 
 class GameMarkLog(PlayableMark):
 	date = models.DateTimeField(auto_now_add=True)
 	game = models.ForeignKey(Game, on_delete=models.CASCADE, related_name='+')
 
 	def __unicode__(self):
-		return unicode(self.user) + " ha marcado el juego "\
-			   + unicode(self.game) + " como " + unicode(self.get_option_display())
+		return str(self.user) + " ha marcado el juego "\
+			   + str(self.game) + " como " + str(self.get_option_display())
 
 class DLCMarkLog(PlayableMark):
 	date = models.DateTimeField(auto_now_add=True)
 	dlc = models.ForeignKey(DLC, on_delete=models.CASCADE, related_name='+')
 
 	def __unicode__(self):
-		return unicode(self.user) + " ha marcado el DLC "\
-			   + unicode(self.dlc) + " como " + unicode(self.get_option_display())
+		return str(self.user) + " ha marcado el DLC "\
+			   + str(self.dlc) + " como " + str(self.get_option_display())

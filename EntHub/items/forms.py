@@ -8,7 +8,8 @@ from items import models
 class ItemForm(forms.ModelForm):
     class Meta:
         abstract = True
-        fields = ['title','year','description','image','genres']
+        fields = ['title','year','description','image']
+        #fields = ['title','year','description','image','genres']
         labels = {
             'title': 'Título',
             'year': 'Año',

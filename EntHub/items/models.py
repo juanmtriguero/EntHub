@@ -52,6 +52,9 @@ class Item(models.Model):
 	count = models.IntegerField(default=0)
 	genres = models.ManyToManyField(Genre, blank=True)
 	lists = models.ManyToManyField(List, blank=True)
+	originId = models.CharField(max_length=16, blank=True)
+	createdDate = models.DateTimeField(auto_now_add=True)
+	lastModifiedDate = models.DateTimeField(auto_now_add=True)
 
 	class Meta:
 		abstract = True

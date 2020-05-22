@@ -188,7 +188,9 @@
         "title": "Cazadores de piratas",
         "image": "http://image5.casadellibro.com/a/l/t0/95/9788434423695.jpg",
         "lists": [],
-        "year": 2016
+        "year": 2016,
+        "createdDate": "2020-01-01T00:00:00.000Z",
+        "lastModifiedDate": "2020-01-01T00:00:00.000Z"
     },
     "model": "items.book",
     "pk": 1
@@ -204,7 +206,9 @@
         "title": "Una historia en la historia",
         "image": "http://static.fnac-static.com/multimedia/ES/images_produits/ES/ZoomPE/7/2/1/9788421663127.jpg",
         "lists": [],
-        "year": 1988
+        "year": 1988,
+        "createdDate": "2020-01-01T00:00:00.000Z",
+        "lastModifiedDate": "2020-01-01T00:00:00.000Z"
     },
     "model": "items.book",
     "pk": 2
@@ -220,7 +224,9 @@
         "title": "El Hobbit",
         "image": "https://imagessl3.casadellibro.com/a/l/t0/03/9788445073803.jpg",
         "lists": [],
-        "year": 1936
+        "year": 1936,
+        "createdDate": "2020-01-01T00:00:00.000Z",
+        "lastModifiedDate": "2020-01-01T00:00:00.000Z"
     },
     "model": "items.book",
     "pk": 5
@@ -236,7 +242,9 @@
         "title": "No conf\u00edes en Peter Pan",
         "image": "http://3.bp.blogspot.com/-mje0PEYIBNw/Uvzy44gUgrI/AAAAAAAACes/7qvkJ2E6SaQ/s1600/no+confies.jpg",
         "lists": [],
-        "year": 2013
+        "year": 2013,
+        "createdDate": "2020-01-01T00:00:00.000Z",
+        "lastModifiedDate": "2020-01-01T00:00:00.000Z"
     },
     "model": "items.book",
     "pk": 6
@@ -252,7 +260,9 @@
         "title": "El Se\u00f1or de los Anillos",
         "image": "http://www.quelibroleo.com/images/libros/libro_1322009207.jpg",
         "lists": [],
-        "year": 1954
+        "year": 1954,
+        "createdDate": "2020-01-01T00:00:00.000Z",
+        "lastModifiedDate": "2020-01-01T00:00:00.000Z"
     },
     "model": "items.book",
     "pk": 7
@@ -277,7 +287,9 @@
             5,
             6
         ],
-        "year": 2013
+        "year": 2013,
+        "createdDate": "2020-01-01T00:00:00.000Z",
+        "lastModifiedDate": "2020-01-01T00:00:00.000Z"
     },
     "model": "items.game",
     "pk": 1
@@ -298,7 +310,9 @@
             1,
             2
         ],
-        "year": 2007
+        "year": 2007,
+        "createdDate": "2020-01-01T00:00:00.000Z",
+        "lastModifiedDate": "2020-01-01T00:00:00.000Z"
     },
     "model": "items.game",
     "pk": 2
@@ -324,7 +338,9 @@
             6
         ],
         "game": 1,
-        "year": 2014
+        "year": 2014,
+        "createdDate": "2020-01-01T00:00:00.000Z",
+        "lastModifiedDate": "2020-01-01T00:00:00.000Z"
     },
     "model": "items.dlc",
     "pk": 1
@@ -343,7 +359,9 @@
         "lists": [],
         "platforms": [],
         "game": 1,
-        "year": 2013
+        "year": 2013,
+        "createdDate": "2020-01-01T00:00:00.000Z",
+        "lastModifiedDate": "2020-01-01T00:00:00.000Z"
     },
     "model": "items.dlc",
     "pk": 3
@@ -360,7 +378,9 @@
         "title": "Tint\u00edn - La oreja rota",
         "image": "http://www.editorialjuventud.es/img/0274.jpg",
         "lists": [],
-        "year": 1937
+        "year": 1937,
+        "createdDate": "2020-01-01T00:00:00.000Z",
+        "lastModifiedDate": "2020-01-01T00:00:00.000Z"
     },
     "model": "items.comic",
     "pk": 1
@@ -377,7 +397,9 @@
         "title": "Batman: The Dark Knight Returns",
         "image": "http://www.nidodehistorietas.com/comics/batman-the-dark-returns-el-regreso-del-caballero-de-la-noche.jpg",
         "lists": [],
-        "year": 1986
+        "year": 1986,
+        "createdDate": "2020-01-01T00:00:00.000Z",
+        "lastModifiedDate": "2020-01-01T00:00:00.000Z"
     },
     "model": "items.comicseries",
     "pk": 1
@@ -393,7 +415,9 @@
         "title": "Superman/Batman",
         "image": "http://www.elmultiverso52.com/wp-content/uploads/2016/03/SupermanBatmanvol1-SupermanBatmanPublicEnemies.jpg",
         "lists": [],
-        "year": 2003
+        "year": 2003,
+        "createdDate": "2020-01-01T00:00:00.000Z",
+        "lastModifiedDate": "2020-01-01T00:00:00.000Z"
     },
     "model": "items.comicseries",
     "pk": 2
@@ -412,7 +436,9 @@
         "lists": [],
         "year": 2011,
         "duration": 133,
-        "category": "pel"
+        "category": "pel",
+        "createdDate": "2020-01-01T00:00:00.000Z",
+        "lastModifiedDate": "2020-01-01T00:00:00.000Z"
     },
     "model": "items.movie",
     "pk": 1
@@ -431,7 +457,9 @@
         "lists": [],
         "year": 2014,
         "duration": 114,
-        "category": "pel"
+        "category": "pel",
+        "createdDate": "2020-01-01T00:00:00.000Z",
+        "lastModifiedDate": "2020-01-01T00:00:00.000Z"
     },
     "model": "items.movie",
     "pk": 2
@@ -449,7 +477,9 @@
         "lists": [],
         "year": 2009,
         "duration": 95,
-        "category": "pel"
+        "category": "pel",
+        "createdDate": "2020-01-01T00:00:00.000Z",
+        "lastModifiedDate": "2020-01-01T00:00:00.000Z"
     },
     "model": "items.movie",
     "pk": 4
@@ -467,7 +497,9 @@
         "lists": [],
         "year": 2006,
         "duration": 84,
-        "category": "pel"
+        "category": "pel",
+        "createdDate": "2020-01-01T00:00:00.000Z",
+        "lastModifiedDate": "2020-01-01T00:00:00.000Z"
     },
     "model": "items.movie",
     "pk": 5
@@ -486,7 +518,9 @@
         "lists": [],
         "year": 2010,
         "duration": 106,
-        "category": "doc"
+        "category": "doc",
+        "createdDate": "2020-01-01T00:00:00.000Z",
+        "lastModifiedDate": "2020-01-01T00:00:00.000Z"
     },
     "model": "items.movie",
     "pk": 6
@@ -504,7 +538,9 @@
         "lists": [],
         "status": "esp",
         "year": 2010,
-        "category": "ser"
+        "category": "ser",
+        "createdDate": "2020-01-01T00:00:00.000Z",
+        "lastModifiedDate": "2020-01-01T00:00:00.000Z"
     },
     "model": "items.series",
     "pk": 1
@@ -522,7 +558,9 @@
         "lists": [],
         "status": "emi",
         "year": 2002,
-        "category": "pro"
+        "category": "pro",
+        "createdDate": "2020-01-01T00:00:00.000Z",
+        "lastModifiedDate": "2020-01-01T00:00:00.000Z"
     },
     "model": "items.series",
     "pk": 2
@@ -541,7 +579,9 @@
         "lists": [],
         "status": "fin",
         "year": 2010,
-        "category": "min"
+        "category": "min",
+        "createdDate": "2020-01-01T00:00:00.000Z",
+        "lastModifiedDate": "2020-01-01T00:00:00.000Z"
     },
     "model": "items.series",
     "pk": 3

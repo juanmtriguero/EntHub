@@ -54,7 +54,7 @@ class Item(models.Model):
 	lists = models.ManyToManyField(List, blank=True)
 	originId = models.CharField(max_length=16, blank=True)
 	createdDate = models.DateTimeField(auto_now_add=True)
-	lastModifiedDate = models.DateTimeField(auto_now_add=True)
+	lastModifiedDate = models.DateTimeField(auto_now=True)
 
 	class Meta:
 		abstract = True

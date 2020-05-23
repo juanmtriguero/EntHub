@@ -318,7 +318,7 @@ def movie_list(request):
 	vis = request.user.moviemark_set.filter(option='vis').count()
 	marks = {'pen': pen, 'vis': vis}
 	fav = request.user.moviemark_set.filter(fav='True').count()
-	header = 'Catálogo de cine y TV'
+	header = 'Catálogo de cine'
 	item_path = 'movies'
 	context = {'items': items, 'm': m, 'marks': marks, 'fav': fav,
 			'header': header, 'item_path': item_path}
@@ -528,7 +528,7 @@ def series_list(request):
 	fin = request.user.seriesmark_set.filter(option='fin').count()
 	marks = {'pen': pen, 'sig': sig, 'pau': pau, 'fin': fin}
 	fav = request.user.seriesmark_set.filter(fav='True').count()
-	header = 'Catálogo de cine y TV'
+	header = 'Catálogo de televisión'
 	item_path = 'series'
 	context = {'items': items, 'm': m, 'marks': marks, 'fav': fav,
 			'header': header, 'item_path': item_path}

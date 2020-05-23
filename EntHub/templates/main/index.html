@@ -81,20 +81,20 @@
 			<h3>{{prefix}} en cómics</h3>
 			<hr/>
 			<div class="row">
-				{% for item, option in comics.items %}
+				<!-- {% for item, option in comics.items %}
 				<div class="col-md-3">
 					{% include "items/item_preview.html" with item_path="comics" %}
 				</div>
-				{% endfor %}
+				{% endfor %} -->
 				{% for item, option in comic_series.items %}
 				<div class="col-md-3">
 					{% include "items/item_preview.html" with item_path="comicseries" %}
 				</div>
 				{% endfor %}
 			</div>
-			{% if not comics and not comicseries %}
+			{% if not comic_series %}
 			<div class="alert alert-warning">
-				<span>Puntúa cómics y series de cómics para que podamos recomendarte correctamente. Cuanto más puntúes, mejor serán las recomendaciones.</span>
+				<span>Puntúa cómics para que podamos recomendarte correctamente. Cuanto más puntúes, mejor serán las recomendaciones.</span>
 			</div>
 			<br/>
 			{% endif %}

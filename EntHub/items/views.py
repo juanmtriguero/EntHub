@@ -47,15 +47,15 @@ def search(request):
 				option = None
 			items.update({item: option})
 	if c == "comics" or aux:
-		comics = models.Comic.objects.filter(title__icontains=q)
-		if g:
-			comics = comics.filter(genres__pk__in=g)
-		for item in comics:
-			try:
-				option = request.user.comicmark_set.get(comic=item).option
-			except models.ComicMark.DoesNotExist:
-				option = None
-			items.update({item: option})
+		# comics = models.Comic.objects.filter(title__icontains=q)
+		# if g:
+		# 	comics = comics.filter(genres__pk__in=g)
+		# for item in comics:
+		# 	try:
+		# 		option = request.user.comicmark_set.get(comic=item).option
+		# 	except models.ComicMark.DoesNotExist:
+		# 		option = None
+		# 	items.update({item: option})
 		comicseries = models.ComicSeries.objects.filter(title__icontains=q)
 		if g:
 			comicseries = comicseries.filter(genres__pk__in=g)
@@ -994,7 +994,7 @@ class ComicSeriesDetail(DetailView):
 	def get_context_data(self, **kwargs):
 		context = super(ComicSeriesDetail, self).get_context_data(**kwargs)
 		context['item_path'] = 'comicseries'
-		context['item_name'] = 'Serie de cómics'
+		context['item_name'] = 'Cómic'
 		context['agents'] = group_agents(self.object.comicseriesinvolvement_set.all())
 		context['mark_options'] = models.ComicSeriesMark.OPTION_CHOICES
 		try:
@@ -1018,7 +1018,7 @@ class ComicSeriesCreate(CreateView):
 	
 	def get_context_data(self, **kwargs):
 		context = super(ComicSeriesCreate, self).get_context_data(**kwargs)
-		context['legend'] = "Nueva serie de cómics"
+		context['legend'] = "Nuevo cómic"
 		context['cancel_url'] = "/items/comicseries"
 		context['api_name'] = "Comic Vine"
 		context['api_url'] = "https://comicvine.gamespot.com/"
@@ -1036,7 +1036,7 @@ class ComicSeriesUpdate(UpdateView):
 	
 	def get_context_data(self, **kwargs):
 		context = super(ComicSeriesUpdate, self).get_context_data(**kwargs)
-		context['legend'] = "Editar serie de cómics"
+		context['legend'] = "Editar cómic"
 		context['cancel_url'] = "/items/comicseries/" + str(self.object.id)
 		return context
 
@@ -1052,7 +1052,7 @@ class ComicSeriesDelete(DeleteView):
 	
 	def get_context_data(self, **kwargs):
 		context = super(ComicSeriesDelete, self).get_context_data(**kwargs)
-		context['message'] = "la serie de cómics"
+		context['message'] = "el cómic"
 		context['cancel_url'] = "/items/comicseries/" + str(self.object.id)
 		return context
 

@@ -217,7 +217,7 @@ class ComicSeriesMark(GroupMark):
 	comic = models.ForeignKey(ComicSeries, on_delete=models.CASCADE)
 
 	def __str__(self):
-		return str(self.user) + u" ha marcado la serie de cómics "\
+		return str(self.user) + u" ha marcado el cómic "\
 			   + str(self.comic) + " como " + str(self.get_option_display())
 
 class SeriesMark(GroupMark):
@@ -307,7 +307,7 @@ class ComicSeriesInvolvement(ComicItemInvolvement):
 	comic = models.ForeignKey(ComicSeries, on_delete=models.CASCADE)
 
 	def __str__(self):
-		return str(self.agent) + u" aparece en la serie de cómics "\
+		return str(self.agent) + u" aparece en el cómic "\
 			   + str(self.comic) + " como " + str(self.get_role_display())
 
 class MovieItemInvolvement(Involvement):
@@ -383,7 +383,7 @@ class ComicSeriesMarkLog(GroupMark):
 	comicseries = models.ForeignKey(ComicSeries, on_delete=models.CASCADE, related_name='+')
 
 	def __str__(self):
-		return str(self.user) + u" ha marcado la serie de cómics "\
+		return str(self.user) + u" ha marcado el cómic "\
 			   + str(self.comic) + " como " + str(self.get_option_display())
 
 class GameMarkLog(PlayableMark):

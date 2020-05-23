@@ -31,16 +31,16 @@ def index(request):
 		series_list = models.Series.objects.all().order_by('id').reverse()[:4]
 		book_list = models.Book.objects.all().order_by('id').reverse()[:4]
 		game_list = models.Game.objects.all().order_by('id').reverse()[:4]
-		comic_list = models.Comic.objects.all().order_by('id').reverse()[:2]
-		comic_series_list = models.ComicSeries.objects.all().order_by('id').reverse()[:2]
+		# comic_list = models.Comic.objects.all().order_by('id').reverse()[:2]
+		comic_series_list = models.ComicSeries.objects.all().order_by('id').reverse()[:4]
 		prefix = "Lo último"
 	elif o == "val":
 		movie_list = models.Movie.objects.all().order_by('rating').reverse()[:4]
 		series_list = models.Series.objects.all().order_by('rating').reverse()[:4]
 		book_list = models.Book.objects.all().order_by('rating').reverse()[:4]
 		game_list = models.Game.objects.all().order_by('rating').reverse()[:4]
-		comic_list = models.Comic.objects.all().order_by('rating').reverse()[:2]
-		comic_series_list = models.ComicSeries.objects.all().order_by('rating').reverse()[:2]
+		# comic_list = models.Comic.objects.all().order_by('rating').reverse()[:2]
+		comic_series_list = models.ComicSeries.objects.all().order_by('rating').reverse()[:4]
 		prefix = "Lo mejor"
 	# Adds user's marks to items
 	movie_set = {}
@@ -71,13 +71,13 @@ def index(request):
 		except models.GameMark.DoesNotExist:
 			option = None
 		game_set.update({game: option})
-	comic_set = {}
-	for comic in comic_list:
-		try:
-			option = request.user.comicmark_set.get(comic=comic).option
-		except models.ComicMark.DoesNotExist:
-			option = None
-		comic_set.update({comic: option})
+	# comic_set = {}
+	# for comic in comic_list:
+	# 	try:
+	# 		option = request.user.comicmark_set.get(comic=comic).option
+	# 	except models.ComicMark.DoesNotExist:
+	# 		option = None
+	# 	comic_set.update({comic: option})
 	comic_series_set = {}
 	for comic_series in comic_series_list:
 		try:
@@ -92,7 +92,7 @@ def index(request):
 		logs.extend(account.user.bookmarklog_set.all())
 		logs.extend(account.user.moviemarklog_set.all())
 		logs.extend(account.user.seriesmarklog_set.all())
-		logs.extend(account.user.comicmarklog_set.all())
+		# logs.extend(account.user.comicmarklog_set.all())
 		logs.extend(account.user.comicseriesmarklog_set.all())
 		logs.extend(account.user.gamemarklog_set.all())
 		logs.extend(account.user.dlcmarklog_set.all())
@@ -100,7 +100,7 @@ def index(request):
 	logs.extend(request.user.bookmarklog_set.all())
 	logs.extend(request.user.moviemarklog_set.all())
 	logs.extend(request.user.seriesmarklog_set.all())
-	logs.extend(request.user.comicmarklog_set.all())
+	# logs.extend(request.user.comicmarklog_set.all())
 	logs.extend(request.user.comicseriesmarklog_set.all())
 	logs.extend(request.user.gamemarklog_set.all())
 	logs.extend(request.user.dlcmarklog_set.all())
@@ -185,12 +185,12 @@ class AccountDetail(DetailView):
 			book_set.update({book: option})
 		context['books'] = book_set
 		comic_set = {}
-		for comic in [m.comic for m in user.comicmark_set.filter(option='ley')]:
-			try:
-				option = self.request.user.comicmark_set.get(comic=comic).option
-			except models.ComicMark.DoesNotExist:
-				option = None
-			comic_set.update({comic: option})
+		# for comic in [m.comic for m in user.comicmark_set.filter(option='ley')]:
+		# 	try:
+		# 		option = self.request.user.comicmark_set.get(comic=comic).option
+		# 	except models.ComicMark.DoesNotExist:
+		# 		option = None
+		# 	comic_set.update({comic: option})
 		context['comics'] = comic_set
 		game_set = {}
 		for game in [m.game for m in user.gamemark_set.filter(option='jug')]:
@@ -214,7 +214,7 @@ class AccountDetail(DetailView):
 		logs.extend(user.bookmarklog_set.all())
 		logs.extend(user.moviemarklog_set.all())
 		logs.extend(user.seriesmarklog_set.all())
-		logs.extend(user.comicmarklog_set.all())
+		# logs.extend(user.comicmarklog_set.all())
 		logs.extend(user.comicseriesmarklog_set.all())
 		logs.extend(user.gamemarklog_set.all())
 		logs.extend(user.dlcmarklog_set.all())

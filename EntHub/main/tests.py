@@ -43,8 +43,8 @@ class IndexTestCase(TestCase):
 		self.assertEqual(books, [7,6,5,2])
 		games = [i.id for i in response.context['games']]
 		self.assertEqual(games, [2,1])
-		comics = [i.id for i in response.context['comics']]
-		self.assertEqual(comics, [1])
+		# comics = [i.id for i in response.context['comics']]
+		# self.assertEqual(comics, [1])
 		comic_series = [i.id for i in response.context['comic_series']]
 		self.assertEqual(comic_series, [2,1])
 
@@ -60,8 +60,8 @@ class IndexTestCase(TestCase):
 		self.assertEqual(books, [5,7,1,2])
 		games = [i.id for i in response.context['games']]
 		self.assertEqual(games, [1,2])
-		comics = [i.id for i in response.context['comics']]
-		self.assertEqual(comics, [1])
+		# comics = [i.id for i in response.context['comics']]
+		# self.assertEqual(comics, [1])
 		comic_series = [i.id for i in response.context['comic_series']]
 		self.assertEqual(comic_series, [1,2])
 
@@ -73,7 +73,7 @@ class IndexTestCase(TestCase):
 		self.assertEqual(response.context['series'][models.Series.objects.get(id=2)], "fin")
 		self.assertEqual(response.context['books'][models.Book.objects.get(id=6)], "lei")
 		self.assertEqual(response.context['games'][models.Game.objects.get(id=1)], "jug")
-		self.assertEqual(response.context['comics'][models.Comic.objects.get(id=1)], "ley")
+		# self.assertEqual(response.context['comics'][models.Comic.objects.get(id=1)], "ley")
 		self.assertEqual(response.context['comic_series'][models.ComicSeries.objects.get(id=2)], "pau")
 
 # Account
@@ -95,11 +95,11 @@ class AccountTestCase(TestCase):
 		self.assertEqual([i.id for i in response.context['series']], [1])
 		self.assertEqual([i.id for i in response.context['comicseries']], [1])
 		self.assertEqual([i.id for i in response.context['books']], [5,7])
-		self.assertEqual([i.id for i in response.context['comics']], [1])
+		# self.assertEqual([i.id for i in response.context['comics']], [1])
 		self.assertEqual([i.id for i in response.context['games']], [1])
 		self.assertEqual([i.id for i in response.context['dlcs']], [3])
 		# 15 most recent logs are shown ordered by date
-		logs = [3,4,3,2,2,1,1,2,1,2,1,3,2,1,1]
+		logs = [3,4,3,2,2,1,2,1,2,1,3,2,1,1,1]
 		self.assertEqual([i.id for i in response.context['logs']], logs)
 
 	# Account list

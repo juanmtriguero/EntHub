@@ -139,6 +139,10 @@ class BookDetail(DetailView):
 		except models.BookMark.DoesNotExist:
 			fav = False
 		context['fav'] = fav
+		if self.object.originId:
+			context['origin_path'] = 'https://books.google.es/books?id=' + self.object.originId
+			context['origin_icon'] = '/static/images/google_icon.svg'
+			context['origin_name'] = 'Google Books'
 		return context
 
 class BookCreate(CreateView):
@@ -338,6 +342,10 @@ class MovieDetail(DetailView):
 		except models.MovieMark.DoesNotExist:
 			fav = False
 		context['fav'] = fav
+		if self.object.originId:
+			context['origin_path'] = 'https://www.themoviedb.org/movie/' + self.object.originId
+			context['origin_icon'] = '/static/images/tmdb_icon.svg'
+			context['origin_name'] = 'The Movie Database'
 		return context
 
 class MovieCreate(CreateView):
@@ -546,6 +554,10 @@ class SeriesDetail(DetailView):
 		except models.SeriesMark.DoesNotExist:
 			fav = False
 		context['fav'] = fav
+		if self.object.originId:
+			context['origin_path'] = 'https://www.themoviedb.org/tv/' + self.object.originId
+			context['origin_icon'] = '/static/images/tmdb_icon.svg'
+			context['origin_name'] = 'The Movie Database'
 		return context
 	
 	# Set label color by status
@@ -993,6 +1005,10 @@ class ComicSeriesDetail(DetailView):
 		except models.ComicSeriesMark.DoesNotExist:
 			fav = False
 		context['fav'] = fav
+		if self.object.originId:
+			context['origin_path'] = 'https://comicvine.gamespot.com/comic/' + self.object.originId
+			context['origin_icon'] = '/static/images/cvine_icon.svg'
+			context['origin_name'] = 'Comic Vine'
 		return context
 
 class ComicSeriesCreate(CreateView):
@@ -1232,6 +1248,10 @@ class GameDetail(DetailView):
 		except models.GameMark.DoesNotExist:
 			fav = False
 		context['fav'] = fav
+		if self.object.originId:
+			context['origin_path'] = 'https://www.giantbomb.com/game/' + self.object.originId
+			context['origin_icon'] = '/static/images/gbomb_icon.svg'
+			context['origin_name'] = 'Giant Bomb'
 		# DLCs
 		dlcs = {}
 		for dlc in self.object.dlc_set.all():

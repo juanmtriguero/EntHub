@@ -71,6 +71,30 @@ body{
 	text-align: center;
 }
 
+/* Origin link */
+
+.origin-block {
+	padding: 5px 10px 5px 10px;
+	border: 1px solid #4582ec;
+	border-radius: 4px;
+}
+
+.origin-block .origin-icon {
+	display: inline-block;
+	vertical-align: top;
+}
+
+.origin-block .origin-icon img {
+	width: 45px;
+	height: 45px;
+}
+
+.origin-block .origin-link {
+	display: inline-block;
+	vertical-align: middle;
+	margin-left: 10px;
+}
+
 /* Series items detail */
 
 .subitems-title{

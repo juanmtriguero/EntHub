@@ -71,7 +71,7 @@ def index(request):
 		except models.GameMark.DoesNotExist:
 			option = None
 		game_set.update({game: option})
-	# comic_set = {}
+	comic_set = {}
 	# for comic in comic_list:
 	# 	try:
 	# 		option = request.user.comicmark_set.get(comic=comic).option

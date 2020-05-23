@@ -26,7 +26,7 @@ class IndexTestCase(TestCase):
 		self.assertEqual(response.status_code, 200)
 		self.assertTemplateUsed(response, 'main/index.html')
 		# 15 most recent logs are shown ordered by date
-		logs = [3,3,4,3,2,2,1,1,2,1,2,1,3,2,1]
+		logs = [3,3,4,3,2,2,1,2,1,2,1,3,2,1,1]
 		self.assertEqual([i.id for i in response.context['logs']], logs)
 
 	# TODO 'Recommended' shows four items recommended to user of each category

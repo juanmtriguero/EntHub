@@ -8,6 +8,20 @@ Este proyecto utiliza [Travis CI](https://travis-ci.org/) para la **integración
 
 > Actualmente se encuentra en desarrollo
 
+## Integración con orígenes
+
+Las fichas se obtienen mediante llamadas a las siguientes APIs:
+
+<img src="./EntHub/static/images/tmdb_icon.svg" height="45" width="45" />&nbsp;&nbsp;
+<img src="./EntHub/static/images/google_icon.svg" height="45" width="45" />&nbsp;&nbsp;
+<img src="./EntHub/static/images/gbomb_icon.svg" height="45" width="45" />&nbsp;&nbsp;
+<img src="./EntHub/static/images/cvine_icon.svg" height="45" width="45" />
+
+* **[The Movie Database](https://www.themoviedb.org/)** para cine y TV
+* **[Google Books](https://books.google.es/)** para los libros
+* **[Giant Bomb](https://www.giantbomb.com/)** para los videojuegos
+* **[Comic Vine](https://comicvine.gamespot.com/)** para los cómics
+
 ## Contraseñas
 
 Las contraseñas, por seguridad, no están incluidas en el control de versiones. En vez de eso, están almacenadas en variables de entorno que deben ser creadas al inicializar el proyecto. Para crear dichas variables, hay que ejecutar los siguientes comandos:

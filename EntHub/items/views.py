@@ -544,7 +544,11 @@ class SeriesDetail(DetailView):
 		context['item_name'] = 'Televisión'
 		context['agents'] = group_agents(self.object.seriesinvolvement_set.all())
 		context['label'] = self.get_label()
-		context['chapters'] = self.get_chapters()
+		chapters = self.get_chapters()
+		context['chapters'] = chapters
+		ordered_seasons = list(chapters.keys())
+		ordered_seasons.sort()
+		context['seasons'] = ordered_seasons
 		context['mark_options'] = models.SeriesMark.OPTION_CHOICES
 		try:
 			mark = self.request.user.seriesmark_set.get(series=self.object)

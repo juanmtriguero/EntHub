@@ -24,7 +24,7 @@
 {% if chapters %}
 
 <ul class="nav nav-tabs seasons">
-	{% for season in chapters.keys %}
+	{% for season in seasons %}
 	<li class="{% if season == 1 %}active{% endif %}">
 		<a href="#{{season}}" data-toggle="tab">
 			{% if season == 0 %}Extras{% else %}T{{season}}{% endif %}

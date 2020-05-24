@@ -10,6 +10,14 @@
 
 {% if object.number_set.all %}
 
+<div class="row">
+	<div class="col-md-12 text-right comicseries-numbers-header">
+		<button onclick="ticAll($(this),'number');return false;" class="btn btn-tic-all" data-toggle="tooltip" data-placement="left" title="Marcar todo">
+			<i class="glyphicon glyphicon-eye-open"></i>
+		</button>
+	</div>
+</div>
+
 <table class="table table-striped table-hover">
 	<tbody>
 		{% for number in object.number_set.all|dictsort:"number" %}

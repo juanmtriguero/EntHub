@@ -105,6 +105,19 @@ body{
 	border-bottom: 0;
 }
 
+td.text-right button.btn {
+	border: 1px solid #dddddd;
+}
+
+.btn-tic-all {
+	margin-right: 8px;
+	border: 1px solid #dddddd;
+}
+
+.comicseries-numbers-header {
+	margin-bottom: 15px;
+}
+
 /* Item and Account lists */
 
 .filter .form-group{

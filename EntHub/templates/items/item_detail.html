@@ -336,7 +336,7 @@
 						$this.attr('title', 'Quitar leído');
 					}
 					$this.tooltip('fixTitle')
-					$this.tooltip('show');
+					$this.tooltip('hide');
 					eye.addClass('glyphicon-eye-close');
 					eye.removeClass('glyphicon-eye-open');
 				}
@@ -353,12 +353,36 @@
 						$this.attr('title', 'Marcar leído');
 					}
 					$this.tooltip('fixTitle')
-					$this.tooltip('show');
+					$this.tooltip('hide');
 					eye.addClass('glyphicon-eye-open');
 					eye.removeClass('glyphicon-eye-close');
 				}
 			});
 		}
+		$this.blur();
+		return false;
+	}
+</script>
+
+{# Tic all button #}
+<script type="text/javascript">
+	function ticAll($this, subitem) {
+		if (subitem == 'number') {
+			$("div#subitems tbody > tr button").each(function(index, button) {
+				console.log(button.getAttribute("value"));
+				if (button.getAttribute("value") == "tic") {
+					button.click();
+				}
+			});
+		} else if (subitem == 'chapter') {
+			$("div#subitems div.tab-pane.fade.in.active tbody > tr button").each(function(index, button) {
+				console.log(button.getAttribute("value"));
+				if (button.getAttribute("value") == "tic") {
+					button.click();
+				}
+			});
+		}
+		$this.tooltip('hide');
 		$this.blur();
 		return false;
 	}

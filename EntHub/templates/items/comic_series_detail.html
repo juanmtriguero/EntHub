@@ -48,6 +48,8 @@
 
 {% endif %}
 
+{% if user.is_staff %}
 <a href="{% url 'items:add_number' pk=object.id %}" class="btn btn-link">Añadir número</a>
+{% endif %}
 
 {% endblock %}

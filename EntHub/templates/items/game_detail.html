@@ -56,7 +56,9 @@
 </div>
 {% endif %}
 
+{% if user.is_staff %}
 <a href="{% url 'items:dlc_create' pk=object.id %}" class="btn btn-primary btn-block">Añadir DLC</a>
+{% endif %}
 
 {% endif %}
 

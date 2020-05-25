@@ -55,7 +55,9 @@
 				</div>
 			</form>
 
+			{% if user.is_staff %}
 			<a href="/items/{{item_path}}/new" class="btn btn-primary btn-block">Añadir nuevo</a>
+			{% endif %}
 
 		</div>
 

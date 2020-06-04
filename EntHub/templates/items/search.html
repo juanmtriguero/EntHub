@@ -65,9 +65,24 @@
 				</div>
 				{% endfor %}
 			</div>
-			{% else %}
+			{% elif c == 'all' %}
 			<div class="alert alert-warning">
 				<span>No hay nada para mostrar</span>
+			</div>
+			{% else %}
+			<div class="alert alert-info">
+				<span>¿No encuentras lo que buscas? Prueba a añadir una ficha nueva:</span>
+				{% if c == 'movies' %}
+				<a href="/items/movies/add"><u>Añadir una película</u></a>
+				{% elif c == 'series' %}
+				<a href="/items/series/add"><u>Añadir una serie</u></a>
+				{% elif c == 'books' %}
+				<a href="/items/books/add"><u>Añadir un libro</u></a>
+				{% elif c == 'games' %}
+				<a href="/items/games/add"><u>Añadir un juego</u></a>
+				{% elif c == 'comics' %}
+				<a href="/items/comicseries/add"><u>Añadir un cómic</u></a>
+				{% endif %}
 			</div>
 			{% endif %}
 		</div>

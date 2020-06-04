@@ -7,6 +7,7 @@
 		<legend>{{legend}}</legend>
 		{% block api %}
 		{% endblock api %}
+		{% if not is_add %}
 		<form method="post" class="form-horizontal col-md-8">
 			{% csrf_token %}
 			{% for field in form %}
@@ -47,6 +48,7 @@
 				</div>
 			</div>
 		</form>
+		{% endif %}
 	</fieldset>
 </div>
 

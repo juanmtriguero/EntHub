@@ -162,6 +162,16 @@ class BookCreate(CreateView):
 		return reverse_lazy('items:book_detail', 
 			kwargs={'pk': self.object.id})
 
+def book_add(request):
+	context = {}
+	context['legend'] = "Nuevo libro"
+	context['cancel_url'] = "/items/books"
+	context['api_name'] = "Google Books"
+	context['api_url'] = "https://books.google.com"
+	context['link_placeholder'] = "https://books.google.com/books..."
+	context['is_add'] = True
+	return render(request, 'items/api_form.html', context)
+	
 class BookUpdate(UpdateView):
 	model = models.Book
 	form_class = forms.BookForm
@@ -347,6 +357,16 @@ class MovieCreate(CreateView):
 	def get_success_url(self):
 		return reverse_lazy('items:movie_detail', 
 			kwargs={'pk': self.object.id})
+
+def movie_add(request):
+	context = {}
+	context['legend'] = "Nueva película"
+	context['cancel_url'] = "/items/movies"
+	context['api_name'] = "The Movie Database"
+	context['api_url'] = "https://www.themoviedb.org"
+	context['link_placeholder'] = "https://www.themoviedb.org/movie/..."
+	context['is_add'] = True
+	return render(request, 'items/api_form.html', context)
 
 class MovieUpdate(UpdateView):
 	model = models.Movie
@@ -569,6 +589,16 @@ class SeriesCreate(CreateView):
 	def get_success_url(self):
 		return reverse_lazy('items:series_detail', 
 			kwargs={'pk': self.object.id})
+
+def series_add(request):
+	context = {}
+	context['legend'] = "Nueva serie"
+	context['cancel_url'] = "/items/series"
+	context['api_name'] = "The Movie Database"
+	context['api_url'] = "https://www.themoviedb.org"
+	context['link_placeholder'] = "https://www.themoviedb.org/tv/..."
+	context['is_add'] = True
+	return render(request, 'items/api_form.html', context)
 
 class SeriesUpdate(UpdateView):
 	model = models.Series
@@ -961,6 +991,16 @@ class ComicSeriesCreate(CreateView):
 		return reverse_lazy('items:comic_series_detail', 
 			kwargs={'pk': self.object.id})
 
+def comic_series_add(request):
+	context = {}
+	context['legend'] = "Nuevo cómic"
+	context['cancel_url'] = "/items/comicseries"
+	context['api_name'] = "Comic Vine"
+	context['api_url'] = "https://comicvine.gamespot.com/"
+	context['link_placeholder'] = "https://comicvine.gamespot.com/..."
+	context['is_add'] = True
+	return render(request, 'items/api_form.html', context)
+
 class ComicSeriesUpdate(UpdateView):
 	model = models.ComicSeries
 	form_class = forms.ComicSeriesForm
@@ -1191,6 +1231,16 @@ class GameCreate(CreateView):
 	def get_success_url(self):
 		return reverse_lazy('items:game_detail', 
 			kwargs={'pk': self.object.id})
+
+def game_add(request):
+	context = {}
+	context['legend'] = "Nuevo videojuego"
+	context['cancel_url'] = "/items/games"
+	context['api_name'] = "Giant Bomb"
+	context['api_url'] = "https://www.giantbomb.com"
+	context['link_placeholder'] = "https://www.giantbomb.com/..."
+	context['is_add'] = True
+	return render(request, 'items/api_form.html', context)
 
 class GameUpdate(UpdateView):
 	model = models.Game

@@ -5,7 +5,7 @@
 <form method="post" action="{{cancel_url}}/api/" id="api" class="form-horizontal col-md-8">
 	{% csrf_token %}
 	<div class="alert alert-info">
-		<span>Puede importar la información a partir de una ficha de <b>{{api_name}}</b> (<a href="{{api_url}}" target="_blank"><u>visitar la página</u></a>). Introduzca la dirección de enlace a la ficha que quiere importar. Si no, introduzca manualmente los campos más abajo.</span>
+		<span>Puede importar la información a partir de una ficha de <b>{{api_name}}</b> (<a href="{{api_url}}" target="_blank"><u>visitar la página</u></a>). Introduzca la dirección de enlace a la ficha que quiere importar. {% if not is_add %}Si no, introduzca manualmente los campos más abajo.{% endif %}</span>
 	</div>
 	<div class="form-group">
 		<label class="col-md-2 control-label">Enlace</label> 
@@ -18,7 +18,9 @@
 			<button type="submit" form="api" class="btn btn-primary btn-block">Enviar</button>
 		</div>
 	</div>
+	{% if not is_add %}
 	<hr/>
+	{% endif %}
 </form>
 
 {% endblock api %}

@@ -1,7 +1,13 @@
+{% load staticfiles %}
+
 <div class="row">
 	<div class="col-md-5">
 		<a href="/accounts/{{account.id}}">
+			{% if account.avatar %}
 			<img src="{{account.avatar}}" class="img-circle" />
+			{% else %}
+			<img src="{% static 'images/avatar.svg' %}" class="img-circle" />
+			{% endif %}
 		</a>
 	</div>
 	<div class="col-md-7">

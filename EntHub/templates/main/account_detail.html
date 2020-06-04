@@ -1,4 +1,5 @@
 {% extends 'base/base.html' %}
+{% load staticfiles %}
 
 {% block content %}
 
@@ -8,7 +9,11 @@
 
 		<div class="col-md-3 text-center">
 			
+			{% if object.avatar %}
 			<img src="{{object.avatar}}" class="img-responsive" />
+			{% else %}
+			<img src="{% static 'images/avatar.svg' %}" class="img-responsive" />
+			{% endif %}
 			
 			<h2>{{object.user.username}}</h2>
 			

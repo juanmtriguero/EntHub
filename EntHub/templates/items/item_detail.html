@@ -11,7 +11,11 @@
 		<div class="col-md-3 text-center">
 
 			<!-- Item cover -->
+			{% if object.image %}
 			<img src="{{object.image}}" class="img-responsive">
+			{% else %}
+			<img src="{% static 'images/no_image.svg' %}" class="img-responsive">
+			{% endif %}
 			<br/>
 
 			<!-- Mark button -->

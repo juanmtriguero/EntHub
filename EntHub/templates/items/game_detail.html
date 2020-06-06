@@ -20,12 +20,17 @@
 
 {% endblock %}
 
-{% block subitems %}
+{% block subitems_tab %}
 
 {% if object.dlc_set %}
+<li role="presentation">
+	<a href="#subitems" data-toggle="tab">DLCs y expansiones</a>
+</li>
+{% endif %}
 
-<hr/>
-<h4 class="subitems-title">DLCs y expansiones</h4>
+{% endblock %}
+
+{% block subitems %}
 
 {% if dlcs %}
 <div class="list-group">
@@ -57,9 +62,7 @@
 {% endif %}
 
 {% if user.is_staff %}
-<a href="{% url 'items:dlc_create' pk=object.id %}" class="btn btn-primary btn-block">Añadir DLC</a>
-{% endif %}
-
+<a href="{% url 'items:dlc_create' pk=object.id %}" class="btn btn-link">Añadir DLC</a>
 {% endif %}
 
 {% endblock %}

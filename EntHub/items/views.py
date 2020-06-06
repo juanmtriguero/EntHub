@@ -1173,12 +1173,35 @@ def game_list(request):
 	pau = request.user.gamemark_set.filter(option='pau').count()
 	ter = request.user.gamemark_set.filter(option='ter').count()
 	com = request.user.gamemark_set.filter(option='com').count()
+	# Add DLCs
+	add_dlcs = request.POST.get('add-dlcs')
+	if add_dlcs:
+		if m:
+			if m != 'fav':
+				dlc_marks = request.user.dlcmark_set.filter(option=m)
+			else:
+				dlc_marks = request.user.dlcmark_set.filter(fav='True')
+			dlc_list = [mark.dlc for mark in dlc_marks]
+		else:
+			dlc_list = models.DLC.objects.all()
+		for item in dlc_list:
+			try:
+				option = request.user.dlcmark_set.get(dlc=item).option
+			except models.DLCMark.DoesNotExist:
+				option = None
+			items.update({item: option})
+		# Count by mark
+		pen += request.user.dlcmark_set.filter(option='pen').count()
+		jug += request.user.dlcmark_set.filter(option='jug').count()
+		pau += request.user.dlcmark_set.filter(option='pau').count()
+		ter += request.user.dlcmark_set.filter(option='ter').count()
+		com += request.user.dlcmark_set.filter(option='com').count()
 	marks = {'pen': pen, 'jug': jug, 'pau': pau, 'ter': ter, 'com': com}
 	fav = request.user.gamemark_set.filter(fav='True').count()
 	header = 'Catálogo de videojuegos'
 	item_path = 'games'
 	context = {'items': items, 'm': m, 'marks': marks, 'fav': fav,
-			'header': header, 'item_path': item_path}
+			'header': header, 'item_path': item_path, 'add_dlcs': add_dlcs}
 	return render(request, 'items/item_list.html', context)
 
 class GameDetail(DetailView):

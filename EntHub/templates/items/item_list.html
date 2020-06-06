@@ -53,6 +53,22 @@
 						<i class="glyphicon glyphicon-heart"></i>Favorito
 					</button>
 				</div>
+				{% if item_path == 'games' %}
+				<div class="panel panel-default">
+					<div class="panel-body">
+						<div class="row col-md-4">
+							<div class="toggle-switch">
+								<input id="add-dlcs" type="checkbox" name="add-dlcs" 
+									{% if add_dlcs %}checked{% endif %} />
+								<label for="add-dlcs" class="label-primary"></label>
+							</div>
+						</div>
+						<div class="col-md-8">
+							<span>Incluir DLCs</span>
+						</div>
+					</div>
+				</div>
+				{% endif %}
 			</form>
 
 			{% if user.is_staff %}
@@ -88,3 +104,13 @@
 </div>
 
 {% endblock %}
+
+{% block scripts %}
+
+<script type="text/javascript">
+	$('#add-dlcs').on('change', function(event) {
+		$('button.list-group-item.active').click();
+	});
+</script>
+
+{% endblock scripts %}

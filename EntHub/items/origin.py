@@ -35,6 +35,20 @@ def book_create(originId):
 		book.rating = fields['averageRating']
 		book.count = 1
 	book.save()
+	# [TEMPORARY] Add authors as agents
+	if 'authors' in fields:
+		for author in fields['authors']:
+			try:
+				agent = models.Agent.objects.get(name=['author'])
+			except models.Agent.DoesNotExist:
+				agent = models.Agent()
+				agent.name = author
+				agent.save()
+			bi = models.BookInvolvement()
+			bi.book = book
+			bi.agent = agent
+			bi.role = 'esc'
+			bi.save()
 	return book
 
 # The Movie Database

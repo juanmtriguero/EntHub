@@ -1,0 +1,16 @@
+{% extends 'items/item_detail.html' %}
+
+{% block more_fields %}
+
+{% if agents %}
+<p>
+    <b>Autor(es):</b>&nbsp;
+    {% for agent, roles in agents.items %}
+        {% if 'Escritor' in roles %}
+            {{agent}}
+        {% endif %}
+    {% endfor %}
+</p>
+{% endif %}
+
+{% endblock %}

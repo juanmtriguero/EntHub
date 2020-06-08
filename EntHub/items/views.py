@@ -122,7 +122,7 @@ def book_list(request):
 
 class BookDetail(DetailView):
 	model = models.Book
-	template_name = 'items/item_detail.html'
+	template_name = 'items/book_detail.html'
 
 	def get_context_data(self, **kwargs):
 		context = super(BookDetail, self).get_context_data(**kwargs)

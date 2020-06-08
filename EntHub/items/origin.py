@@ -30,6 +30,10 @@ def book_create(originId):
 		elif 'smallThumbnail' in images:
 			book.image = images['smallThumbnail'].partition("&imgtk")[0]
 	book.originId = originId
+	# Initial rating
+	if 'averageRating' in fields:
+		book.rating = fields['averageRating']
+		book.count = 1
 	book.save()
 	return book
 
@@ -51,6 +55,10 @@ def movie_create(originId):
 	else:
 		movie.duration = 0
 	movie.originId = originId
+	# Initial rating
+	if 'vote_average' in fields:
+		movie.rating = round(fields['vote_average']/2, 1)
+		movie.count = 1
 	movie.save()
 	for g in fields['genres']:
 		try:
@@ -82,6 +90,10 @@ def series_create(originId):
 		elif status == "Returning Series":
 			series.status = "esp"
 	series.originId = originId
+	# Initial rating
+	if 'vote_average' in fields:
+		series.rating = round(fields['vote_average']/2, 1)
+		series.count = 1
 	series.save()
 	for g in fields['genres']:
 		try:

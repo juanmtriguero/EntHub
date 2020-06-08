@@ -13,7 +13,8 @@ def book_create(originId):
 	book.title = fields['title']
 	book.year = fields['publishedDate'][0:4]
 	if 'description' in fields:
-		book.description = re.sub("<.*?>", "", fields['description'])
+		description = re.sub("</p>|<br>", "\n", fields['description'])
+		book.description = re.sub("<.*?>", "", description)
 	if 'imageLinks' in fields:
 		images = fields['imageLinks']
 		if 'medium' in images:

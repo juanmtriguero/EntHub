@@ -43,48 +43,42 @@ def index(request):
 		comic_series_list = models.ComicSeries.objects.all().order_by('rating').reverse()[:4]
 		prefix = "Lo mejor"
 	# Adds user's marks to items
-	movie_set = {}
 	for movie in movie_list:
 		try:
 			option = request.user.moviemark_set.get(movie=movie).option
 		except models.MovieMark.DoesNotExist:
 			option = None
-		movie_set.update({movie: option})
-	series_set = {}
+		movie.option = option
 	for series in series_list:
 		try:
 			option = request.user.seriesmark_set.get(series=series).option
 		except models.SeriesMark.DoesNotExist:
 			option = None
-		series_set.update({series: option})
-	book_set = {}
+		series.option = option
 	for book in book_list:
 		try:
 			option = request.user.bookmark_set.get(book=book).option
 		except models.BookMark.DoesNotExist:
 			option = None
-		book_set.update({book: option})
-	game_set = {}
+		book.option = option
 	for game in game_list:
 		try:
 			option = request.user.gamemark_set.get(game=game).option
 		except models.GameMark.DoesNotExist:
 			option = None
-		game_set.update({game: option})
-	comic_set = {}
+		game.option = option
 	# for comic in comic_list:
 	# 	try:
 	# 		option = request.user.comicmark_set.get(comic=comic).option
 	# 	except models.ComicMark.DoesNotExist:
 	# 		option = None
-	# 	comic_set.update({comic: option})
-	comic_series_set = {}
+	# 	comic.option = option
 	for comic_series in comic_series_list:
 		try:
 			option = request.user.comicseriesmark_set.get(comic=comic_series).option
 		except models.ComicSeriesMark.DoesNotExist:
 			option = None
-		comic_series_set.update({comic_series: option})
+		comic_series.option = option
 	# Logs
 	logs = []
 	for account in request.user.account.following.all():
@@ -106,9 +100,10 @@ def index(request):
 	logs.extend(request.user.dlcmarklog_set.all())
 	logs.sort(key=lambda log: log.date, reverse=True)
 	# Context
-	context = {'option': o, 'prefix': prefix, 'movies': movie_set,
-			'series': series_set, 'books': book_set, 'games': game_set,
-			'comics': comic_set, 'comic_series': comic_series_set, 'logs': logs[:15]}
+	context = {'option': o, 'prefix': prefix, 'movies': movie_list,
+			'series': series_list, 'books': book_list, 'games': game_list,
+			# 'comics': comic_list, 
+			'comic_series': comic_series_list, 'logs': logs[:15]}
 	return render(request, 'main/index.html', context)
 
 class UserRegister(CreateView):
@@ -160,53 +155,59 @@ class AccountDetail(DetailView):
 	def get_context_data(self, **kwargs):
 		context = super(AccountDetail, self).get_context_data(**kwargs)
 		user = self.object.user
-		series_set = {}
+		series_set = []
 		for series in [m.series for m in user.seriesmark_set.filter(option='sig')]:
 			try:
 				option = self.request.user.seriesmark_set.get(series=series).option
 			except models.SeriesMark.DoesNotExist:
 				option = None
-			series_set.update({series: option})
+			series.option = option
+			series_set.append(series)
 		context['series'] = series_set
-		comic_series_set = {}
+		comic_series_set = []
 		for comic_series in [m.comic for m in user.comicseriesmark_set.filter(option='sig')]:
 			try:
 				option = self.request.user.comicseriesmark_set.get(comic=comic_series).option
 			except models.ComicSeriesMark.DoesNotExist:
 				option = None
-			comic_series_set.update({comic_series: option})
+			comic_series.option = option
+			comic_series_set.append(comic_series)
 		context['comicseries'] = comic_series_set
-		book_set = {}
+		book_set = []
 		for book in [m.book for m in user.bookmark_set.filter(option='ley')]:
 			try:
 				option = self.request.user.bookmark_set.get(book=book).option
 			except models.BookMark.DoesNotExist:
 				option = None
-			book_set.update({book: option})
+			book.option = option
+			book_set.append(book)
 		context['books'] = book_set
-		comic_set = {}
+		comic_set = []
 		# for comic in [m.comic for m in user.comicmark_set.filter(option='ley')]:
 		# 	try:
 		# 		option = self.request.user.comicmark_set.get(comic=comic).option
 		# 	except models.ComicMark.DoesNotExist:
 		# 		option = None
-		# 	comic_set.update({comic: option})
+		#	comic.option = option
+		#	comic_set.append(comic)
 		context['comics'] = comic_set
-		game_set = {}
+		game_set = []
 		for game in [m.game for m in user.gamemark_set.filter(option='jug')]:
 			try:
 				option = self.request.user.gamemark_set.get(game=game).option
 			except models.GameMark.DoesNotExist:
 				option = None
-			game_set.update({game: option})
+			game.option = option
+			game_set.append(game)
 		context['games'] = game_set
-		dlc_set = {}
+		dlc_set = []
 		for dlc in [m.dlc for m in user.dlcmark_set.filter(option='jug')]:
 			try:
 				option = self.request.user.dlcmark_set.get(dlc=dlc).option
 			except models.DLCMark.DoesNotExist:
 				option = None
-			dlc_set.update({dlc: option})
+			dlc.option = option
+			dlc_set.append(dlc)
 		context['dlcs'] = dlc_set
 		# Logs
 		logs = []

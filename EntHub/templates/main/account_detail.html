@@ -83,12 +83,12 @@
 					<hr/>
 					{% if series or comicseries %}
 					<div class="row">
-						{% for item, option in series.items %}
+						{% for item in series %}
 						<div class="col-md-3">
 							{% include "items/item_preview.html" with item_path="series" %}
 						</div>
 						{% endfor %}
-						{% for item, option in comicseries.items %}
+						{% for item in comicseries %}
 						<div class="col-md-3">
 							{% include "items/item_preview.html" with item_path="comicseries" %}
 						</div>
@@ -103,12 +103,12 @@
 					<hr/>
 					{% if books or comics %}
 					<div class="row">
-						{% for item, option in books.items %}
+						{% for item in books %}
 						<div class="col-md-3">
 							{% include "items/item_preview.html" with item_path="books" %}
 						</div>
 						{% endfor %}
-						{% for item, option in comics.items %}
+						{% for item in comics %}
 						<div class="col-md-3">
 							{% include "items/item_preview.html" with item_path="comics" %}
 						</div>
@@ -123,12 +123,12 @@
 					<hr/>
 					{% if games or dlcs %}
 					<div class="row">
-						{% for item, option in games.items %}
+						{% for item in games %}
 						<div class="col-md-3">
 							{% include "items/item_preview.html" with item_path="games" %}
 						</div>
 						{% endfor %}
-						{% for item, option in dlcs.items %}
+						{% for item in dlcs %}
 						<div class="col-md-3">
 							{% include "items/item_preview.html" with item_path="dlcs" %}
 						</div>

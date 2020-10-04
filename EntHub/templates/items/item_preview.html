@@ -31,17 +31,17 @@
 		<span class="label label-default">Item</span>
 		{% endif %}
 		<span class="label label-default">{{item.year}}</span>
-		{% if option %}
+		{% if item.option %}
 		<span class="pull-right">
-			{% if option == "pen" %}
+			{% if item.option == "pen" %}
 			<i class="glyphicon glyphicon-time"></i>
-			{% elif option in "ley jug sig" %}
+			{% elif item.option in "ley jug sig" %}
 			<i class="glyphicon glyphicon-play"></i>
-			{% elif option == "pau" %}
+			{% elif item.option == "pau" %}
 			<i class="glyphicon glyphicon-pause"></i>
-			{% elif option in "lei ter fin vis" %}
+			{% elif item.option in "lei ter fin vis" %}
 			<i class="glyphicon glyphicon-ok"></i>
-			{% elif option == "com" %}
+			{% elif item.option == "com" %}
 			<i class="glyphicon glyphicon-check"></i>
 			{% endif %}
 		</span>

@@ -4,12 +4,13 @@ from django.shortcuts import render
 from django.http import HttpResponse, JsonResponse
 from django.views.generic import DetailView, CreateView, UpdateView, DeleteView
 from django.core.urlresolvers import reverse_lazy
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from items import models, forms, origin
 
 # Item search
 
 def search(request):
-	items = {}
+	items = []
 	q = request.POST.get('q', '')
 	c = request.POST.get('c', 'all')
 	g = request.POST.getlist('genres')
@@ -24,7 +25,8 @@ def search(request):
 				option = request.user.bookmark_set.get(book=item).option
 			except models.BookMark.DoesNotExist:
 				option = None
-			items.update({item: option})
+			item.option = option
+			items.append(item)
 	if c == "movies" or aux:
 		movies = models.Movie.objects.filter(title__icontains=q)
 		if g:
@@ -34,7 +36,8 @@ def search(request):
 				option = request.user.moviemark_set.get(movie=item).option
 			except models.MovieMark.DoesNotExist:
 				option = None
-			items.update({item: option})
+			item.option = option
+			items.append(item)
 	if c == "series" or aux:
 		series = models.Series.objects.filter(title__icontains=q)
 		if g:
@@ -44,7 +47,8 @@ def search(request):
 				option = request.user.seriesmark_set.get(series=item).option
 			except models.SeriesMark.DoesNotExist:
 				option = None
-			items.update({item: option})
+			item.option = option
+			items.append(item)
 	if c == "comics" or aux:
 		# comics = models.Comic.objects.filter(title__icontains=q)
 		# if g:
@@ -54,7 +58,8 @@ def search(request):
 		# 		option = request.user.comicmark_set.get(comic=item).option
 		# 	except models.ComicMark.DoesNotExist:
 		# 		option = None
-		# 	items.update({item: option})
+		#	item.option = option
+		#	items.append(item)
 		comicseries = models.ComicSeries.objects.filter(title__icontains=q)
 		if g:
 			comicseries = comicseries.filter(genres__pk__in=g)
@@ -63,7 +68,8 @@ def search(request):
 				option = request.user.comicseriesmark_set.get(comic=item).option
 			except models.ComicSeriesMark.DoesNotExist:
 				option = None
-			items.update({item: option})
+			item.option = option
+			items.append(item)
 	if c == "games" or aux:
 		games = models.Game.objects.filter(title__icontains=q)
 		if g:
@@ -73,7 +79,8 @@ def search(request):
 				option = request.user.gamemark_set.get(game=item).option
 			except models.GameMark.DoesNotExist:
 				option = None
-			items.update({item: option})
+			item.option = option
+			items.append(item)
 		dlcs = models.DLC.objects.filter(title__icontains=q)
 		if g:
 			dlcs = dlcs.filter(genres__pk__in=g)
@@ -82,15 +89,17 @@ def search(request):
 				option = request.user.dlcmark_set.get(dlc=item).option
 			except models.DLCMark.DoesNotExist:
 				option = None
-			items.update({item: option})
+			item.option = option
+			items.append(item)
+	page = request.POST.get('page')
+	page_items = get_page_items(items, page)
 	genres = models.Genre.objects.all()
-	context = {'items': items, 'q': q, 'c': c, 'genres': genres, 'g': g}
+	context = {'items': page_items, 'q': q, 'c': c, 'genres': genres, 'g': g}
 	return render(request, 'items/search.html', context)
 
 # Book
 
 def book_list(request):
-	items = {}
 	# Filter by mark
 	m = request.POST.get('m')
 	if m:
@@ -106,7 +115,9 @@ def book_list(request):
 			option = request.user.bookmark_set.get(book=item).option
 		except models.BookMark.DoesNotExist:
 			option = None
-		items.update({item: option})
+		item.option = option
+	page = request.POST.get('page')
+	page_items = get_page_items(item_list, page)
 	# Count by mark
 	pen = request.user.bookmark_set.filter(option='pen').count()
 	ley = request.user.bookmark_set.filter(option='ley').count()
@@ -116,7 +127,7 @@ def book_list(request):
 	fav = request.user.bookmark_set.filter(fav='True').count()
 	header = 'Catálogo de libros'
 	item_path = 'books'
-	context = {'items': items, 'm': m, 'marks': marks, 'fav': fav,
+	context = {'items': page_items, 'm': m, 'marks': marks, 'fav': fav,
 			'header': header, 'item_path': item_path}
 	return render(request, 'items/item_list.html', context)
 
@@ -288,7 +299,6 @@ def book_api(request):
 # Movie
 
 def movie_list(request):
-	items = {}
 	# Filter by mark
 	m = request.POST.get('m')
 	if m:
@@ -304,7 +314,9 @@ def movie_list(request):
 			option = request.user.moviemark_set.get(movie=item).option
 		except models.MovieMark.DoesNotExist:
 			option = None
-		items.update({item: option})
+		item.option = option
+	page = request.POST.get('page')
+	page_items = get_page_items(item_list, page)
 	# Count by mark
 	pen = request.user.moviemark_set.filter(option='pen').count()
 	vis = request.user.moviemark_set.filter(option='vis').count()
@@ -312,7 +324,7 @@ def movie_list(request):
 	fav = request.user.moviemark_set.filter(fav='True').count()
 	header = 'Catálogo de cine'
 	item_path = 'movies'
-	context = {'items': items, 'm': m, 'marks': marks, 'fav': fav,
+	context = {'items': page_items, 'm': m, 'marks': marks, 'fav': fav,
 			'header': header, 'item_path': item_path}
 	return render(request, 'items/movie_list.html', context)
 
@@ -488,7 +500,6 @@ def movie_api(request):
 # Series
 
 def series_list(request):
-	items = {}
 	# Filter by mark
 	m = request.POST.get('m')
 	if m:
@@ -504,7 +515,9 @@ def series_list(request):
 			option = request.user.seriesmark_set.get(series=item).option
 		except models.SeriesMark.DoesNotExist:
 			option = None
-		items.update({item: option})
+		item.option = option
+	page = request.POST.get('page')
+	page_items = get_page_items(item_list, page)
 	# Count by mark
 	pen = request.user.seriesmark_set.filter(option='pen').count()
 	sig = request.user.seriesmark_set.filter(option='sig').count()
@@ -514,7 +527,7 @@ def series_list(request):
 	fav = request.user.seriesmark_set.filter(fav='True').count()
 	header = 'Catálogo de televisión'
 	item_path = 'series'
-	context = {'items': items, 'm': m, 'marks': marks, 'fav': fav,
+	context = {'items': page_items, 'm': m, 'marks': marks, 'fav': fav,
 			'header': header, 'item_path': item_path}
 	return render(request, 'items/series_list.html', context)
 
@@ -753,7 +766,6 @@ def chapter_untic(request, chapter_id):
 # Comic
 
 def comic_list(request):
-	items = {}
 	# Filter by mark
 	m = request.POST.get('m')
 	if m:
@@ -769,7 +781,9 @@ def comic_list(request):
 			option = request.user.comicmark_set.get(comic=item).option
 		except models.ComicMark.DoesNotExist:
 			option = None
-		items.update({item: option})
+		item.option = option
+	page = request.POST.get('page')
+	page_items = get_page_items(item_list, page)
 	# Count by mark
 	pen = request.user.comicmark_set.filter(option='pen').count()
 	ley = request.user.comicmark_set.filter(option='ley').count()
@@ -779,7 +793,7 @@ def comic_list(request):
 	fav = request.user.comicmark_set.filter(fav='True').count()
 	header = 'Catálogo de cómics'
 	item_path = 'comics'
-	context = {'items': items, 'm': m, 'marks': marks, 'fav': fav,
+	context = {'items': page_items, 'm': m, 'marks': marks, 'fav': fav,
 			'header': header, 'item_path': item_path}
 	return render(request, 'items/comic_list.html', context)
 
@@ -919,7 +933,6 @@ def comic_rate(request):
 # ComicSeries
 
 def comic_series_list(request):
-	items = {}
 	# Filter by mark
 	m = request.POST.get('m')
 	if m:
@@ -935,7 +948,9 @@ def comic_series_list(request):
 			option = request.user.comicseriesmark_set.get(comic=item).option
 		except models.ComicSeriesMark.DoesNotExist:
 			option = None
-		items.update({item: option})
+		item.option = option
+	page = request.POST.get('page')
+	page_items = get_page_items(item_list, page)
 	# Count by mark
 	pen = request.user.comicseriesmark_set.filter(option='pen').count()
 	sig = request.user.comicseriesmark_set.filter(option='sig').count()
@@ -945,7 +960,7 @@ def comic_series_list(request):
 	fav = request.user.comicseriesmark_set.filter(fav='True').count()
 	header = 'Catálogo de cómics'
 	item_path = 'comicseries'
-	context = {'items': items, 'm': m, 'marks': marks, 'fav': fav,
+	context = {'items': page_items, 'm': m, 'marks': marks, 'fav': fav,
 			'header': header, 'item_path': item_path}
 	return render(request, 'items/comic_series_list.html', context)
 
@@ -1150,7 +1165,7 @@ def number_untic(request, number_id):
 # Game
 
 def game_list(request):
-	items = {}
+	items = []
 	# Filter by mark
 	m = request.POST.get('m')
 	if m:
@@ -1166,7 +1181,8 @@ def game_list(request):
 			option = request.user.gamemark_set.get(game=item).option
 		except models.GameMark.DoesNotExist:
 			option = None
-		items.update({item: option})
+		item.option = option
+		items.append(item)
 	# Count by mark
 	pen = request.user.gamemark_set.filter(option='pen').count()
 	jug = request.user.gamemark_set.filter(option='jug').count()
@@ -1189,18 +1205,21 @@ def game_list(request):
 				option = request.user.dlcmark_set.get(dlc=item).option
 			except models.DLCMark.DoesNotExist:
 				option = None
-			items.update({item: option})
+			item.option = option
+			items.append(item)
 		# Count by mark
 		pen += request.user.dlcmark_set.filter(option='pen').count()
 		jug += request.user.dlcmark_set.filter(option='jug').count()
 		pau += request.user.dlcmark_set.filter(option='pau').count()
 		ter += request.user.dlcmark_set.filter(option='ter').count()
 		com += request.user.dlcmark_set.filter(option='com').count()
+	page = request.POST.get('page')
+	page_items = get_page_items(items, page)
 	marks = {'pen': pen, 'jug': jug, 'pau': pau, 'ter': ter, 'com': com}
 	fav = request.user.gamemark_set.filter(fav='True').count()
 	header = 'Catálogo de videojuegos'
 	item_path = 'games'
-	context = {'items': items, 'm': m, 'marks': marks, 'fav': fav,
+	context = {'items': page_items, 'm': m, 'marks': marks, 'fav': fav,
 			'header': header, 'item_path': item_path, 'add_dlcs': add_dlcs}
 	return render(request, 'items/item_list.html', context)
 
@@ -1545,3 +1564,14 @@ def update_item_rating(item, old_rating, new_rating):
 	# Returns new item rating formatted to template
 	new_item_rating = ('%.1f' % item.rating).replace('.', ',')
 	return new_item_rating
+
+# Add pagination
+def get_page_items(item_list, page):
+	paginator = Paginator(item_list, 20)
+	try:
+		page_items = paginator.page(page)
+	except PageNotAnInteger:
+		page_items = paginator.page(1)
+	except EmptyPage:
+		page_items = paginator.page(paginator.num_pages)
+	return page_items

@@ -41,7 +41,7 @@
 			</div>
 			{% if items %}
 			<div class="row">
-				{% for item, option in items.items %}
+				{% for item in items %}
 				<div class="col-md-3">
 					{% if c in "all games comics" %}
 						{% if item.bookmark_set %}
@@ -64,6 +64,24 @@
 					{% endif %}
 				</div>
 				{% endfor %}
+			</div>
+			<div class="row text-center">
+				{% if items.paginator.num_pages > 1 %}
+				<br>
+				<div class="btn-group" role="group">
+					{% if items.has_previous %}
+					<span id="previous-page" hidden>{{items.previous_page_number}}</span>
+					<button onclick="previousPage()" class="btn btn-primary">&laquo;</button>
+					{% endif %}
+					<span class="btn btn-primary">
+						Página {{items.number}} de {{items.paginator.num_pages}}
+					</span>
+					{% if items.has_next %}
+					<span id="next-page" hidden>{{items.next_page_number}}</span>
+					<button onclick="nextPage()" class="btn btn-primary">&raquo;</button>
+					{% endif %}
+				</div>
+				{% endif %}
 			</div>
 			{% elif c == 'all' %}
 			<div class="alert alert-warning">
@@ -100,6 +118,26 @@
 		$('input[name="c"]').val($(this).data('option'));
 		form.submit();
 	});
+</script>
+
+<script type="text/javascript">
+	function navToPage(page) {
+		var input = $("<input>")
+			.attr("type", "hidden")
+			.attr("name", "page")
+			.val(page);
+		form = $('#search');
+		form.append(input);
+		form.submit();
+	}
+	function previousPage() {
+		let page = $("#previous-page").text();
+		navToPage(page);
+	}
+	function nextPage() {
+		let page = $("#next-page").text();
+		navToPage(page);
+	}
 </script>
 
 {% endblock scripts %}

@@ -69,12 +69,12 @@ class IndexTestCase(TestCase):
 	def test_index_marks(self):
 		self.client.login(username='jtorres', password='password')
 		response = self.client.post('/', {'option': 'nov'})
-		self.assertEqual(response.context['movies'][models.Movie.objects.get(id=5)], "pen")
-		self.assertEqual(response.context['series'][models.Series.objects.get(id=2)], "fin")
-		self.assertEqual(response.context['books'][models.Book.objects.get(id=6)], "lei")
-		self.assertEqual(response.context['games'][models.Game.objects.get(id=1)], "jug")
-		# self.assertEqual(response.context['comics'][models.Comic.objects.get(id=1)], "ley")
-		self.assertEqual(response.context['comic_series'][models.ComicSeries.objects.get(id=2)], "pau")
+		self.assertEqual(next((x.option for x in response.context['movies'] if x.id == 5), None), "pen")
+		self.assertEqual(next((x.option for x in response.context['series'] if x.id == 2), None), "fin")
+		self.assertEqual(next((x.option for x in response.context['books'] if x.id == 6), None), "lei")
+		self.assertEqual(next((x.option for x in response.context['games'] if x.id == 1), None), "jug")
+		# self.assertEqual(next((x.option for x in response.context['comics'] if x.id == 1), None), "ley")
+		self.assertEqual(next((x.option for x in response.context['comic_series'] if x.id == 2), None), "pau")
 
 # Account
 class AccountTestCase(TestCase):

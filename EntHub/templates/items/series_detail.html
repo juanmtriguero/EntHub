@@ -23,6 +23,14 @@
 
 {% if chapters %}
 
+<div class="text-center">
+	<span id="progress-value">{{tic_chapters}}</span>
+	<span> / {{all_chapters}} capítulos vistos</span>
+</div>
+<div class="progress">
+	<div class="progress-bar" role="progressbar" style="{{progress}}" aria-valuenow="{{tic_chapters}}" aria-valuemin="0" aria-valuemax="{{all_chapters}}"></div>
+</div>
+
 <!-- <ul class="nav nav-tabs seasons">
 	{% for season in seasons %}
 	<li class="{% if season == 1 %}active{% endif %}">

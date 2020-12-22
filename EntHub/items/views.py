@@ -559,6 +559,12 @@ class SeriesDetail(DetailView):
 			context['origin_path'] = 'https://www.themoviedb.org/tv/' + self.object.originId
 			context['origin_icon'] = '/static/images/tmdb_icon.svg'
 			context['origin_name'] = 'The Movie Database'
+		# Progress
+		all_chapters = self.object.chapter_set.exclude(season=0).count()
+		context['all_chapters'] = all_chapters
+		tic_chapters = self.request.user.chapter_set.filter(series=self.object).exclude(season=0).count()
+		context['tic_chapters'] = tic_chapters
+		context['progress'] = 'width: ' + str((tic_chapters / all_chapters) * 100) + '%;'
 		return context
 	
 	# Set label color by status
@@ -986,6 +992,12 @@ class ComicSeriesDetail(DetailView):
 			context['origin_path'] = 'https://comicvine.gamespot.com/comic/' + self.object.originId
 			context['origin_icon'] = '/static/images/cvine_icon.svg'
 			context['origin_name'] = 'Comic Vine'
+		# Progress
+		all_numbers = self.object.number_set.count()
+		context['all_numbers'] = all_numbers
+		tic_numbers = self.request.user.number_set.filter(comic=self.object).count()
+		context['tic_numbers'] = tic_numbers
+		context['progress'] = 'width: ' + str((tic_numbers / all_numbers) * 100) + '%;'
 		return context
 
 class ComicSeriesCreate(CreateView):

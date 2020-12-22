@@ -346,6 +346,7 @@
 					$this.tooltip('hide');
 					eye.addClass('glyphicon-eye-close');
 					eye.removeClass('glyphicon-eye-open');
+					updateProgress(1, subitem);
 				}
 			});
 		} else if ($this.attr('value') == 'untic') {
@@ -363,6 +364,7 @@
 					$this.tooltip('hide');
 					eye.addClass('glyphicon-eye-open');
 					eye.removeClass('glyphicon-eye-close');
+					updateProgress(-1, subitem);
 				}
 			});
 		}
@@ -392,6 +394,29 @@
 		$this.tooltip('hide');
 		$this.blur();
 		return false;
+	}
+</script>
+
+{# Update progress #}
+
+<script type="text/javascript">
+	function updateProgress(addValue, subitem) {
+		// Ignore if season is 0 (Extras)
+		if (subitem == "chapter") {
+			let activeTab = $("div#subitems div.tab-pane.fade.in.active")[0];
+			if (activeTab.id == "season-0") {
+				return;	
+			}
+		}
+		// Update progress bar with new values
+		let progressBar = $("div.progress-bar")[0];
+		let newValue = parseInt(progressBar.getAttribute("aria-valuenow")) + addValue;
+		let newPercent = (newValue / parseInt(progressBar.getAttribute("aria-valuemax"))) * 100;
+		if (newValue > 0) {
+			$("span#progress-value").text(newValue);
+			progressBar.setAttribute("aria-valuenow", newValue);
+			progressBar.style.width = newPercent + "%";
+		}
 	}
 </script>
 

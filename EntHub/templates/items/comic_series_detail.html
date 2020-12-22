@@ -10,6 +10,14 @@
 
 {% if object.number_set.all %}
 
+<div class="text-center">
+	<span id="progress-value">{{tic_numbers}}</span>
+	<span> / {{all_numbers}} números leídos</span>
+</div>
+<div class="progress">
+	<div class="progress-bar" role="progressbar" style="{{progress}}" aria-valuenow="{{tic_numbers}}" aria-valuemin="0" aria-valuemax="{{all_numbers}}"></div>
+</div>
+
 <div class="row">
 	<div class="col-md-12 text-right comicseries-numbers-header">
 		<button onclick="ticAll($(this),'number');return false;" class="btn btn-tic-all" data-toggle="tooltip" data-placement="left" title="Marcar todo">

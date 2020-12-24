@@ -139,7 +139,7 @@ def account_list(request):
 	elif s == "fing":
 		accounts = acc.following.all()
 	else:
-		accounts = None
+		accounts = []
 
 	# Filter by search
 	q = request.POST.get('q', '')

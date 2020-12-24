@@ -134,7 +134,7 @@ class AccountTestCase(TestCase):
 		self.assertEqual(response.context['s'], "fers")
 		# Bad filtering
 		response = self.client.post('/accounts', {'s': 'bad'})
-		self.assertEqual(response.context['accounts'], None)
+		self.assertFalse(response.context['accounts'].object_list)
 
 	# Account update
 	def test_account_update(self):

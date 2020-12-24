@@ -4,6 +4,7 @@ from django.shortcuts import render
 from django.http import HttpResponse, HttpResponseRedirect
 from django.views.generic import CreateView, DetailView, UpdateView
 from django.core.urlresolvers import reverse_lazy
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.contrib.auth import authenticate, login
 from django.contrib.auth.models import User
 from django.contrib.auth.views import logout_then_login
@@ -145,7 +146,11 @@ def account_list(request):
 	if q:
 		accounts = accounts.filter(user__username__icontains=q)
 
-	context = {'accounts': accounts, 'q': q, 's': s}
+	# Pagination
+	page = request.POST.get('page')
+	page_accounts = get_page_accounts(accounts, page)
+
+	context = {'accounts': page_accounts, 'q': q, 's': s}
 	return render(request, 'main/account_list.html', context)
 
 class AccountDetail(DetailView):
@@ -294,3 +299,14 @@ def unfollow(request, account_id):
 		return HttpResponse()
 	else:
 		return HttpResponse(status=403)
+
+# Add pagination
+def get_page_accounts(accounts, page):
+	paginator = Paginator(accounts, 20)
+	try:
+		page_accounts = paginator.page(page)
+	except PageNotAnInteger:
+		page_accounts = paginator.page(1)
+	except EmptyPage:
+		page_accounts = paginator.page(paginator.num_pages)
+	return page_accounts

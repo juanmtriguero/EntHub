@@ -63,6 +63,25 @@
 		{% endfor %}
 		</div>
 
+		<div class="row text-center">
+			{% if accounts.paginator.num_pages > 1 %}
+			<br>
+			<div class="btn-group" role="group">
+				{% if accounts.has_previous %}
+				<span id="previous-page" hidden>{{accounts.previous_page_number}}</span>
+				<button onclick="previousPage()" class="btn btn-primary">&laquo;</button>
+				{% endif %}
+				<span class="btn btn-primary">
+					Página {{accounts.number}} de {{accounts.paginator.num_pages}}
+				</span>
+				{% if accounts.has_next %}
+				<span id="next-page" hidden>{{accounts.next_page_number}}</span>
+				<button onclick="nextPage()" class="btn btn-primary">&raquo;</button>
+				{% endif %}
+			</div>
+			{% endif %}
+		</div>
+
 		{% else %}
 
 		<div class="alert alert-warning">
@@ -110,6 +129,25 @@
 		}
 		$this.blur();
 		return false;
+	}
+</script>
+
+{# Navigation buttons #}
+<script type="text/javascript">
+	function navToPage(page) {
+		var input = $("<input>")
+			.attr("type", "hidden")
+			.attr("name", "page")
+			.val(page);
+		$("form").append(input).submit();
+	}
+	function previousPage() {
+		let page = $("#previous-page").text();
+		navToPage(page);
+	}
+	function nextPage() {
+		let page = $("#next-page").text();
+		navToPage(page);
 	}
 </script>
 
